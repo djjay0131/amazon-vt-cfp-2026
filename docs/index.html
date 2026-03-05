@@ -249,6 +249,62 @@
             color: var(--text-secondary);
             border-top: 1px solid var(--border);
         }
+
+        .work-plan {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.85rem;
+        }
+
+        .work-plan th {
+            text-align: left;
+            padding: 0.6rem 0.75rem;
+            border-bottom: 2px solid var(--border);
+            color: var(--text-secondary);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+
+        .work-plan td {
+            padding: 0.6rem 0.75rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .work-plan tr:hover {
+            background: rgba(255,255,255,0.02);
+        }
+
+        .work-plan .day-label {
+            color: var(--amazon-orange);
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        .work-plan .focus-text {
+            font-weight: 500;
+        }
+
+        .work-plan .hours {
+            color: var(--text-secondary);
+            white-space: nowrap;
+            text-align: right;
+        }
+
+        .work-plan .deadline-row td {
+            background: rgba(255,153,0,0.08);
+            font-weight: 600;
+        }
+
+        .critical-path {
+            margin-top: 1rem;
+            padding: 0.75rem 1rem;
+            background: rgba(255,153,0,0.08);
+            border: 1px solid rgba(255,153,0,0.2);
+            border-radius: 6px;
+            font-size: 0.85rem;
+            color: var(--amazon-orange);
+        }
     </style>
 </head>
 <body>
@@ -339,6 +395,68 @@
                     <div class="timeline-date">Aug/Sep 2026</div>
                     <div class="timeline-label">Projects begin</div>
                 </div>
+            </div>
+        </div>
+
+        <!-- Work Plan Section -->
+        <div class="section">
+            <h2>Work Plan (Mar 7 &ndash; Mar 13)</h2>
+            <table class="work-plan">
+                <thead>
+                    <tr>
+                        <th>Day</th>
+                        <th>Date</th>
+                        <th>Focus</th>
+                        <th>Est.</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="day-label">Sat</td>
+                        <td>Mar 7</td>
+                        <td class="focus-text">Topic lock-down &mdash; deep-dive, pick direction, no more pivoting</td>
+                        <td class="hours">2-3 hrs</td>
+                    </tr>
+                    <tr>
+                        <td class="day-label">Sun</td>
+                        <td>Mar 8</td>
+                        <td class="focus-text">First draft of 1-page abstract</td>
+                        <td class="hours">3-4 hrs</td>
+                    </tr>
+                    <tr>
+                        <td class="day-label">Mon</td>
+                        <td>Mar 9</td>
+                        <td class="focus-text">Refinement &mdash; sharpen novelty, Amazon angle, feasibility</td>
+                        <td class="hours">1-2 hrs</td>
+                    </tr>
+                    <tr>
+                        <td class="day-label">Tue</td>
+                        <td>Mar 10</td>
+                        <td class="focus-text">External review &amp; feedback incorporation</td>
+                        <td class="hours">1-2 hrs</td>
+                    </tr>
+                    <tr>
+                        <td class="day-label">Wed</td>
+                        <td>Mar 11</td>
+                        <td class="focus-text">Final polish, references</td>
+                        <td class="hours">1 hr</td>
+                    </tr>
+                    <tr>
+                        <td class="day-label">Thu</td>
+                        <td>Mar 12</td>
+                        <td class="focus-text">Portal registration, upload, buffer</td>
+                        <td class="hours">1 hr</td>
+                    </tr>
+                    <tr class="deadline-row">
+                        <td class="day-label">Fri</td>
+                        <td>Mar 13</td>
+                        <td class="focus-text">DEADLINE &mdash; Final review &amp; submit</td>
+                        <td class="hours">&mdash;</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="critical-path">
+                Critical path: Mar 7 (topic lock) &#8594; Mar 8 (first draft) &#8594; Mar 13 (submit) &middot; ~10-13 hrs total
             </div>
         </div>
 
