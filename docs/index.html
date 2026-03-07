@@ -306,6 +306,171 @@
             font-size: 0.85rem;
             color: var(--amazon-orange);
         }
+
+        /* Daily Task Tracker */
+        .day-block {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            overflow: hidden;
+        }
+
+        .day-block.today {
+            border-color: var(--amazon-orange);
+            box-shadow: 0 0 8px rgba(255,153,0,0.15);
+        }
+
+        .day-block.past .day-header {
+            opacity: 0.6;
+        }
+
+        .day-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.75rem 1rem;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .day-header:hover {
+            background: rgba(255,255,255,0.02);
+        }
+
+        .day-header-left {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .day-name {
+            font-weight: 700;
+            color: var(--amazon-orange);
+            min-width: 2.5rem;
+        }
+
+        .day-date {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+        }
+
+        .day-focus {
+            font-size: 0.85rem;
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+
+        .day-header-right {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .day-progress {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+        }
+
+        .progress-bar {
+            width: 60px;
+            height: 4px;
+            background: var(--border);
+            border-radius: 2px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            border-radius: 2px;
+            background: var(--amazon-orange);
+            transition: width 0.3s;
+        }
+
+        .progress-fill.complete {
+            background: #00c853;
+        }
+
+        .day-tasks {
+            padding: 0 1rem 0.75rem;
+            display: none;
+        }
+
+        .day-block.open .day-tasks {
+            display: block;
+        }
+
+        .day-block.today .day-tasks {
+            display: block;
+        }
+
+        .task-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.5rem;
+            padding: 0.35rem 0;
+            font-size: 0.85rem;
+        }
+
+        .task-check {
+            color: var(--border);
+            flex-shrink: 0;
+            margin-top: 1px;
+        }
+
+        .task-check.done {
+            color: #00c853;
+        }
+
+        .task-text {
+            color: var(--text-secondary);
+        }
+
+        .task-text.done {
+            text-decoration: line-through;
+            opacity: 0.5;
+        }
+
+        .day-milestone {
+            margin-top: 0.4rem;
+            padding: 0.4rem 0.6rem;
+            background: rgba(255,153,0,0.06);
+            border-radius: 4px;
+            font-size: 0.8rem;
+            color: var(--amazon-orange);
+            font-weight: 500;
+        }
+
+        .today-label {
+            font-size: 0.65rem;
+            padding: 0.1rem 0.4rem;
+            background: var(--amazon-orange);
+            color: #000;
+            border-radius: 3px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+        }
+
+        .deadline-label {
+            font-size: 0.65rem;
+            padding: 0.1rem 0.4rem;
+            background: #c62828;
+            color: #fff;
+            border-radius: 3px;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .chevron {
+            color: var(--text-secondary);
+            transition: transform 0.2s;
+            font-size: 0.8rem;
+        }
+
+        .day-block.open .chevron {
+            transform: rotate(90deg);
+        }
     </style>
 </head>
 <body>
@@ -399,63 +564,160 @@
             </div>
         </div>
 
-        <!-- Work Plan Section -->
+        <!-- Daily Task Tracker -->
         <div class="section">
-            <h2>Work Plan (Mar 7 &ndash; Mar 13)</h2>
-            <table class="work-plan">
-                <thead>
-                    <tr>
-                        <th>Day</th>
-                        <th>Date</th>
-                        <th>Focus</th>
-                        <th>Est.</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td class="day-label">Sat</td>
-                        <td>Mar 7</td>
-                        <td class="focus-text">Topic lock-down &mdash; deep-dive, pick direction, no more pivoting</td>
-                        <td class="hours">2-3 hrs</td>
-                    </tr>
-                    <tr>
-                        <td class="day-label">Sun</td>
-                        <td>Mar 8</td>
-                        <td class="focus-text">First draft of 1-page abstract</td>
-                        <td class="hours">3-4 hrs</td>
-                    </tr>
-                    <tr>
-                        <td class="day-label">Mon</td>
-                        <td>Mar 9</td>
-                        <td class="focus-text">Refinement &mdash; sharpen novelty, Amazon angle, feasibility</td>
-                        <td class="hours">1-2 hrs</td>
-                    </tr>
-                    <tr>
-                        <td class="day-label">Tue</td>
-                        <td>Mar 10</td>
-                        <td class="focus-text">External review &amp; feedback incorporation</td>
-                        <td class="hours">1-2 hrs</td>
-                    </tr>
-                    <tr>
-                        <td class="day-label">Wed</td>
-                        <td>Mar 11</td>
-                        <td class="focus-text">Final polish, references</td>
-                        <td class="hours">1 hr</td>
-                    </tr>
-                    <tr>
-                        <td class="day-label">Thu</td>
-                        <td>Mar 12</td>
-                        <td class="focus-text">Portal registration, upload, buffer</td>
-                        <td class="hours">1 hr</td>
-                    </tr>
-                    <tr class="deadline-row">
-                        <td class="day-label">Fri</td>
-                        <td>Mar 13</td>
-                        <td class="focus-text">DEADLINE &mdash; Final review &amp; submit</td>
-                        <td class="hours">&mdash;</td>
-                    </tr>
-                </tbody>
-            </table>
+            <h2>Daily Task Tracker (Mar 7 &ndash; Mar 13)</h2>
+
+            <div class="day-block today" data-date="2026-03-07" onclick="toggleDay(this)">
+                <div class="day-header">
+                    <div class="day-header-left">
+                        <span class="day-name">SAT</span>
+                        <span class="day-date">Mar 7</span>
+                        <span class="today-label">Today</span>
+                        <span class="day-focus">Topic Lock-Down</span>
+                    </div>
+                    <div class="day-header-right">
+                        <span class="day-progress">0/3</span>
+                        <div class="progress-bar"><div class="progress-fill" style="width:0%"></div></div>
+                        <span class="chevron">&#9654;</span>
+                    </div>
+                </div>
+                <div class="day-tasks">
+                    <div class="task-item"><span class="task-check">&#9744;</span><span class="task-text">Deep-dive on top candidate(s): literature scan, novelty gap check</span></div>
+                    <div class="task-item"><span class="task-check">&#9744;</span><span class="task-text">Confirm primary + secondary CFP topic categories</span></div>
+                    <div class="task-item"><span class="task-check">&#9744;</span><span class="task-text">Finalize research direction &mdash; no more pivoting after today</span></div>
+                    <div class="day-milestone">Milestone: Topic selected and committed (2-3 hrs)</div>
+                </div>
+            </div>
+
+            <div class="day-block" data-date="2026-03-08" onclick="toggleDay(this)">
+                <div class="day-header">
+                    <div class="day-header-left">
+                        <span class="day-name">SUN</span>
+                        <span class="day-date">Mar 8</span>
+                        <span class="day-focus">Abstract First Draft</span>
+                    </div>
+                    <div class="day-header-right">
+                        <span class="day-progress">0/3</span>
+                        <div class="progress-bar"><div class="progress-fill" style="width:0%"></div></div>
+                        <span class="chevron">&#9654;</span>
+                    </div>
+                </div>
+                <div class="day-tasks">
+                    <div class="task-item"><span class="task-check">&#9744;</span><span class="task-text">Write 1-page abstract draft (problem, approach, contributions, impact)</span></div>
+                    <div class="task-item"><span class="task-check">&#9744;</span><span class="task-text">Identify 3-5 key references (excluded from page count)</span></div>
+                    <div class="task-item"><span class="task-check">&#9744;</span><span class="task-text">Map every paragraph to a CFP topic requirement</span></div>
+                    <div class="day-milestone">Milestone: Complete first draft exists (3-4 hrs)</div>
+                </div>
+            </div>
+
+            <div class="day-block" data-date="2026-03-09" onclick="toggleDay(this)">
+                <div class="day-header">
+                    <div class="day-header-left">
+                        <span class="day-name">MON</span>
+                        <span class="day-date">Mar 9</span>
+                        <span class="day-focus">Refinement Pass 1</span>
+                    </div>
+                    <div class="day-header-right">
+                        <span class="day-progress">0/3</span>
+                        <div class="progress-bar"><div class="progress-fill" style="width:0%"></div></div>
+                        <span class="chevron">&#9654;</span>
+                    </div>
+                </div>
+                <div class="day-tasks">
+                    <div class="task-item"><span class="task-check">&#9744;</span><span class="task-text">Sharpen novelty claims &mdash; what exactly is new?</span></div>
+                    <div class="task-item"><span class="task-check">&#9744;</span><span class="task-text">Strengthen Amazon relevance angle</span></div>
+                    <div class="task-item"><span class="task-check">&#9744;</span><span class="task-text">Verify feasibility framing (1-year scope, clear deliverables)</span></div>
+                    <div class="day-milestone">Milestone: Draft is technically sound (1-2 hrs)</div>
+                </div>
+            </div>
+
+            <div class="day-block" data-date="2026-03-10" onclick="toggleDay(this)">
+                <div class="day-header">
+                    <div class="day-header-left">
+                        <span class="day-name">TUE</span>
+                        <span class="day-date">Mar 10</span>
+                        <span class="day-focus">External Review</span>
+                    </div>
+                    <div class="day-header-right">
+                        <span class="day-progress">0/3</span>
+                        <div class="progress-bar"><div class="progress-fill" style="width:0%"></div></div>
+                        <span class="chevron">&#9654;</span>
+                    </div>
+                </div>
+                <div class="day-tasks">
+                    <div class="task-item"><span class="task-check">&#9744;</span><span class="task-text">Share draft with collaborator (chbrown13) for feedback</span></div>
+                    <div class="task-item"><span class="task-check">&#9744;</span><span class="task-text">Review feedback and incorporate</span></div>
+                    <div class="task-item"><span class="task-check">&#9744;</span><span class="task-text">Check page count &mdash; must fit 1 page excluding references</span></div>
+                    <div class="day-milestone">Milestone: Reviewed draft ready (1-2 hrs)</div>
+                </div>
+            </div>
+
+            <div class="day-block" data-date="2026-03-11" onclick="toggleDay(this)">
+                <div class="day-header">
+                    <div class="day-header-left">
+                        <span class="day-name">WED</span>
+                        <span class="day-date">Mar 11</span>
+                        <span class="day-focus">Final Polish</span>
+                    </div>
+                    <div class="day-header-right">
+                        <span class="day-progress">0/3</span>
+                        <div class="progress-bar"><div class="progress-fill" style="width:0%"></div></div>
+                        <span class="chevron">&#9654;</span>
+                    </div>
+                </div>
+                <div class="day-tasks">
+                    <div class="task-item"><span class="task-check">&#9744;</span><span class="task-text">Final language polish, tighten prose</span></div>
+                    <div class="task-item"><span class="task-check">&#9744;</span><span class="task-text">Ensure primary/secondary categories are clearly justified</span></div>
+                    <div class="task-item"><span class="task-check">&#9744;</span><span class="task-text">Prepare reference list</span></div>
+                    <div class="day-milestone">Milestone: Submission-ready document (1 hr)</div>
+                </div>
+            </div>
+
+            <div class="day-block" data-date="2026-03-12" onclick="toggleDay(this)">
+                <div class="day-header">
+                    <div class="day-header-left">
+                        <span class="day-name">THU</span>
+                        <span class="day-date">Mar 12</span>
+                        <span class="day-focus">Portal Prep &amp; Buffer</span>
+                    </div>
+                    <div class="day-header-right">
+                        <span class="day-progress">0/5</span>
+                        <div class="progress-bar"><div class="progress-fill" style="width:0%"></div></div>
+                        <span class="chevron">&#9654;</span>
+                    </div>
+                </div>
+                <div class="day-tasks">
+                    <div class="task-item"><span class="task-check">&#9744;</span><span class="task-text">Register on Amazon Academic Research Portal (if not done)</span></div>
+                    <div class="task-item"><span class="task-check">&#9744;</span><span class="task-text">Set up profile (Institution: VT, Role: Faculty/Research Scientist)</span></div>
+                    <div class="task-item"><span class="task-check">&#9744;</span><span class="task-text">Complete abstract details form</span></div>
+                    <div class="task-item"><span class="task-check">&#9744;</span><span class="task-text">Upload 1-page abstract</span></div>
+                    <div class="task-item"><span class="task-check">&#9744;</span><span class="task-text">Buffer: Any last-minute revisions</span></div>
+                    <div class="day-milestone">Milestone: Portal ready, document uploaded (1 hr)</div>
+                </div>
+            </div>
+
+            <div class="day-block" data-date="2026-03-13" onclick="toggleDay(this)">
+                <div class="day-header">
+                    <div class="day-header-left">
+                        <span class="day-name">FRI</span>
+                        <span class="day-date">Mar 13</span>
+                        <span class="deadline-label">Deadline</span>
+                        <span class="day-focus">Submit Abstract</span>
+                    </div>
+                    <div class="day-header-right">
+                        <span class="day-progress">0/2</span>
+                        <div class="progress-bar"><div class="progress-fill" style="width:0%"></div></div>
+                        <span class="chevron">&#9654;</span>
+                    </div>
+                </div>
+                <div class="day-tasks">
+                    <div class="task-item"><span class="task-check">&#9744;</span><span class="task-text">Final review and submit via portal</span></div>
+                    <div class="task-item"><span class="task-check">&#9744;</span><span class="task-text">Confirm submission receipt</span></div>
+                    <div class="day-milestone">Milestone: Abstract submitted</div>
+                </div>
+            </div>
+
             <div class="critical-path">
                 Critical path: Mar 7 (topic lock) &#8594; Mar 8 (first draft) &#8594; Mar 13 (submit) &middot; ~10-13 hrs total
             </div>
@@ -488,5 +750,40 @@
     <div class="footer">
         Amazon-Virginia Tech Initiative 2026-2027 &middot; Research Proposal
     </div>
+
+    <script>
+        function toggleDay(block) {
+            block.classList.toggle('open');
+        }
+
+        // Auto-detect today and mark days accordingly
+        (function() {
+            const blocks = document.querySelectorAll('.day-block');
+            const today = new Date();
+            today.setHours(0,0,0,0);
+
+            blocks.forEach(block => {
+                const dateStr = block.getAttribute('data-date');
+                if (!dateStr) return;
+                const blockDate = new Date(dateStr + 'T00:00:00');
+
+                // Remove static today label
+                block.classList.remove('today');
+                const existingLabel = block.querySelector('.today-label');
+                if (existingLabel) existingLabel.remove();
+
+                if (blockDate.getTime() === today.getTime()) {
+                    block.classList.add('today', 'open');
+                    const dateSpan = block.querySelector('.day-date');
+                    const label = document.createElement('span');
+                    label.className = 'today-label';
+                    label.textContent = 'Today';
+                    dateSpan.after(label);
+                } else if (blockDate < today) {
+                    block.classList.add('past');
+                }
+            });
+        })();
+    </script>
 </body>
 </html>
