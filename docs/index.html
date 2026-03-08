@@ -471,6 +471,168 @@
         .day-block.open .chevron {
             transform: rotate(90deg);
         }
+
+        /* Proposal detail blocks */
+        .proposal-block {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            margin-bottom: 1.25rem;
+            overflow: hidden;
+        }
+
+        .proposal-block.recommended {
+            border-color: var(--amazon-orange);
+            box-shadow: 0 0 12px rgba(255,153,0,0.1);
+        }
+
+        .proposal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 1.25rem;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .proposal-header:hover {
+            background: rgba(255,255,255,0.02);
+        }
+
+        .proposal-header-left {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            flex: 1;
+        }
+
+        .proposal-rank {
+            font-size: 1.2rem;
+            min-width: 2rem;
+        }
+
+        .proposal-title-group {
+            flex: 1;
+        }
+
+        .proposal-title {
+            font-size: 1rem;
+            font-weight: 600;
+        }
+
+        .proposal-categories {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            margin-top: 0.15rem;
+        }
+
+        .proposal-body {
+            padding: 0 1.25rem 1.25rem;
+            display: none;
+        }
+
+        .proposal-block.open .proposal-body {
+            display: block;
+        }
+
+        .proposal-block.open .chevron {
+            transform: rotate(90deg);
+        }
+
+        .proposal-section-title {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--amazon-orange);
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            margin: 1rem 0 0.4rem;
+        }
+
+        .proposal-section-title:first-child {
+            margin-top: 0;
+        }
+
+        .proposal-body p, .proposal-body li {
+            font-size: 0.88rem;
+            color: var(--text-secondary);
+            line-height: 1.65;
+        }
+
+        .proposal-body ul, .proposal-body ol {
+            padding-left: 1.25rem;
+            margin: 0.25rem 0;
+        }
+
+        .proposal-body li {
+            margin-bottom: 0.2rem;
+        }
+
+        .strategy-box {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1.25rem;
+            margin-top: 1rem;
+        }
+
+        .strategy-box h3 {
+            font-size: 0.95rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .strategy-box p {
+            font-size: 0.88rem;
+            color: var(--text-secondary);
+        }
+
+        .alignment-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.85rem;
+            margin: 0.5rem 0;
+        }
+
+        .alignment-table th {
+            text-align: left;
+            padding: 0.5rem 0.75rem;
+            border-bottom: 2px solid var(--border);
+            color: var(--text-secondary);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+
+        .alignment-table td {
+            padding: 0.5rem 0.75rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .alignment-table tr:hover {
+            background: rgba(255,255,255,0.02);
+        }
+
+        .fit-fire { color: #ff6b35; font-weight: 600; }
+        .fit-strong { color: var(--amazon-orange); font-weight: 500; }
+        .fit-moderate { color: var(--text-secondary); }
+
+        .action-needed {
+            margin-top: 1.5rem;
+            padding: 1rem 1.25rem;
+            background: rgba(255,153,0,0.08);
+            border: 1px solid rgba(255,153,0,0.25);
+            border-radius: 8px;
+        }
+
+        .action-needed h3 {
+            color: var(--amazon-orange);
+            font-size: 0.95rem;
+            margin-bottom: 0.4rem;
+        }
+
+        .action-needed p {
+            font-size: 0.88rem;
+            color: var(--text-secondary);
+        }
     </style>
 </head>
 <body>
@@ -507,26 +669,262 @@
             </ul>
         </div>
 
-        <!-- Initial Analysis Section -->
-        <div class="section">
-            <h2>Initial Analysis</h2>
-            <div class="card-grid">
-                <div class="card">
-                    <span class="badge badge-active">Rank 1</span>
-                    <h3>Provenance-Aware Agentic KG Systems</h3>
-                    <p>Knowledge Grounding + Agentic AI. Hybrid KG + vector retrieval with provenance chains and multi-agent orchestration.</p>
+        <!-- Topic Analysis Section -->
+        <div class="section" id="topic-analysis">
+            <h2>Topic Analysis &amp; Candidate Proposals</h2>
+            <p style="font-size:0.9rem; color:var(--text-secondary); margin-bottom:1.25rem;">Three candidate directions ranked by CFP alignment, novelty, Amazon relevance, and 1-year feasibility. Click each to expand full details and draft abstract.</p>
+
+            <!-- Proposal 1 -->
+            <div class="proposal-block recommended open" onclick="toggleProposal(this)">
+                <div class="proposal-header">
+                    <div class="proposal-header-left">
+                        <span class="proposal-rank">&#129351;</span>
+                        <div class="proposal-title-group">
+                            <div class="proposal-title">Provenance-Aware Agentic Knowledge Graph Systems</div>
+                            <div class="proposal-categories">Primary: Knowledge Grounding &middot; Secondary: Agentic AI</div>
+                        </div>
+                    </div>
+                    <div style="display:flex; align-items:center; gap:0.75rem;">
+                        <span class="badge badge-active">Recommended</span>
+                        <span class="chevron">&#9654;</span>
+                    </div>
                 </div>
-                <div class="card">
-                    <span class="badge badge-pending">Rank 2</span>
-                    <h3>Structured Validation Framework</h3>
-                    <p>Agentic Evaluation + Responsible AI. Evaluation infrastructure for knowledge-grounded multi-agent systems.</p>
-                </div>
-                <div class="card">
-                    <span class="badge badge-pending">Rank 3</span>
-                    <h3>AI-Accelerated Engineering &amp; Digital Twins</h3>
-                    <p>AI for Science/Engineering + Agentic AI. KG-driven digital twins with physics-grounded reasoning agents.</p>
+                <div class="proposal-body">
+                    <div class="proposal-section-title">Working Title</div>
+                    <p><em>Provenance-Aware Agentic Knowledge Graph Systems for Reliable Multi-Source Grounded AI</em></p>
+
+                    <div class="proposal-section-title">Why This Direction?</div>
+                    <ul>
+                        <li>Direct CFP language match &mdash; hits &ldquo;memory-augmented generative systems,&rdquo; &ldquo;efficient multimodal retrieval across heterogeneous sources,&rdquo; and &ldquo;multi-agent orchestration&rdquo;</li>
+                        <li>Differentiates from generic RAG proposals through provenance chains and structured reasoning</li>
+                        <li>Strong Amazon relevance: enterprise AI, agent reliability, knowledge-intensive services</li>
+                        <li>Existing infrastructure and case studies to build on</li>
+                        <li>Highest funding probability of the three candidates</li>
+                    </ul>
+
+                    <div class="proposal-section-title">Motivation</div>
+                    <p>Current RAG systems rely primarily on vector similarity matching, which provides relevance but lacks structured reasoning, provenance tracking, and verifiable evidence chains. As agentic systems become autonomous, the lack of grounded traceability increases risks of hallucination, misinformation, and unverifiable decision-making.</p>
+
+                    <div class="proposal-section-title">Research Questions</div>
+                    <ol>
+                        <li>How can heterogeneous knowledge sources (KGs, databases, streaming data, documents) be fused into a unified structured reasoning substrate?</li>
+                        <li>How can agents dynamically select structured vs. vector retrieval pathways?</li>
+                        <li>How can provenance chains be automatically generated, verified, and audited?</li>
+                        <li>How does structured grounding affect reasoning accuracy, robustness, and inference efficiency?</li>
+                    </ol>
+
+                    <div class="proposal-section-title">Technical Approach</div>
+                    <ul>
+                        <li>Hybrid KG + vector retrieval architecture</li>
+                        <li>Agent orchestration workflows with validation nodes</li>
+                        <li>Provenance generation mechanisms</li>
+                        <li>Evaluation benchmarks: vector-only RAG vs. hybrid RAG vs. fully structured KG agents</li>
+                    </ul>
+                    <p style="margin-top:0.5rem"><strong>Case studies:</strong> Scientific research reasoning, engineering digital twin systems, real-time safety reasoning</p>
+
+                    <div class="proposal-section-title">Expected Contributions</div>
+                    <ul>
+                        <li>New architecture for agentic knowledge grounding</li>
+                        <li>Provenance-aware reasoning benchmark</li>
+                        <li>Evaluation metrics for grounded multi-agent systems</li>
+                        <li>Open-source reference implementation</li>
+                    </ul>
                 </div>
             </div>
+
+            <!-- Proposal 2 -->
+            <div class="proposal-block" onclick="toggleProposal(this)">
+                <div class="proposal-header">
+                    <div class="proposal-header-left">
+                        <span class="proposal-rank">&#129352;</span>
+                        <div class="proposal-title-group">
+                            <div class="proposal-title">Structured Validation Framework for KG-Grounded Agents</div>
+                            <div class="proposal-categories">Primary: Agentic Evaluation &middot; Secondary: Responsible AI</div>
+                        </div>
+                    </div>
+                    <div style="display:flex; align-items:center; gap:0.75rem;">
+                        <span class="badge badge-pending">Safest</span>
+                        <span class="chevron">&#9654;</span>
+                    </div>
+                </div>
+                <div class="proposal-body">
+                    <div class="proposal-section-title">Working Title</div>
+                    <p><em>A Structured Validation Framework for Evaluating Knowledge-Grounded and Multi-Agent AI Systems</em></p>
+
+                    <div class="proposal-section-title">Why This Direction?</div>
+                    <ul>
+                        <li>High strategic value &mdash; Amazon cares deeply about evaluation infrastructure</li>
+                        <li>Safest, most publishable option</li>
+                        <li>Leverages existing validation matrix research</li>
+                        <li>More focused scope than a broad agent proposal</li>
+                    </ul>
+
+                    <div class="proposal-section-title">Motivation</div>
+                    <p>While generative AI evaluation has focused on accuracy benchmarks and jailbreak robustness, there is limited infrastructure for evaluating structured reasoning correctness, multi-agent coordination reliability, knowledge grounding integrity, and provenance traceability.</p>
+
+                    <div class="proposal-section-title">Research Questions</div>
+                    <ol>
+                        <li>What dimensions define reliable grounded agent behavior?</li>
+                        <li>How do structured grounding mechanisms impact agent robustness?</li>
+                        <li>How can validation loops be embedded into agent execution pipelines?</li>
+                        <li>How do we benchmark multi-agent failure modes?</li>
+                    </ol>
+
+                    <div class="proposal-section-title">Technical Approach</div>
+                    <ul>
+                        <li>Validation matrix taxonomy</li>
+                        <li>Benchmark tasks across reasoning domains</li>
+                        <li>Agent failure scenario simulations</li>
+                        <li>Structured logging and provenance scoring</li>
+                        <li>Robustness evaluation under adversarial perturbations</li>
+                    </ul>
+
+                    <div class="proposal-section-title">Expected Contributions</div>
+                    <ul>
+                        <li>First structured evaluation framework for KG-grounded agents</li>
+                        <li>Metrics for agent traceability and reliability</li>
+                        <li>Benchmarks for multi-agent coordination integrity</li>
+                        <li>Evaluation dataset and benchmark suite</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Proposal 3 -->
+            <div class="proposal-block" onclick="toggleProposal(this)">
+                <div class="proposal-header">
+                    <div class="proposal-header-left">
+                        <span class="proposal-rank">&#129353;</span>
+                        <div class="proposal-title-group">
+                            <div class="proposal-title">AI-Accelerated Engineering via Agentic Digital Twins</div>
+                            <div class="proposal-categories">Primary: AI for Science &amp; Engineering &middot; Secondary: Agentic AI</div>
+                        </div>
+                    </div>
+                    <div style="display:flex; align-items:center; gap:0.75rem;">
+                        <span class="badge badge-complete">Visionary</span>
+                        <span class="chevron">&#9654;</span>
+                    </div>
+                </div>
+                <div class="proposal-body">
+                    <div class="proposal-section-title">Working Title</div>
+                    <p><em>Agentic Knowledge Graphs for AI-Accelerated Engineering Systems and Digital Twins</em></p>
+
+                    <div class="proposal-section-title">Why This Direction?</div>
+                    <ul>
+                        <li>Most compelling narrative &mdash; tangible engineering applications</li>
+                        <li>Strong alignment with Construction-AI and VTSI work</li>
+                        <li>High impact potential</li>
+                        <li>Slightly riskier &mdash; requires strong engineering framing to convince AI reviewers</li>
+                    </ul>
+
+                    <div class="proposal-section-title">Motivation</div>
+                    <p>Engineering workflows involve structured constraints, physical laws, and simulation models. Current generative systems struggle with physics-grounded reasoning and constraint validation.</p>
+
+                    <div class="proposal-section-title">Research Questions</div>
+                    <ol>
+                        <li>How can generative AI interact with physical simulation systems?</li>
+                        <li>How can agents reason over engineering constraints?</li>
+                        <li>How can digital twin feedback update agent knowledge graphs?</li>
+                        <li>What are efficiency gains from structured reasoning vs. unstructured LLM prompts?</li>
+                    </ol>
+
+                    <div class="proposal-section-title">Technical Approach</div>
+                    <ul>
+                        <li>Build structured engineering KGs</li>
+                        <li>Integrate simulation models (heat transfer, construction planning)</li>
+                        <li>Develop multi-agent reasoning pipelines</li>
+                        <li>Evaluate engineering decision accuracy</li>
+                    </ul>
+
+                    <div class="proposal-section-title">Expected Contributions</div>
+                    <ul>
+                        <li>Framework for AI-accelerated engineering reasoning</li>
+                        <li>Digital twin + agent integration architecture</li>
+                        <li>Quantitative comparison vs. prompt-only methods</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Strategy Box -->
+            <div class="strategy-box">
+                <h3>Strategic Summary</h3>
+                <table class="alignment-table">
+                    <tr>
+                        <th>If you want&hellip;</th>
+                        <th>Choose</th>
+                    </tr>
+                    <tr>
+                        <td>Highest funding probability</td>
+                        <td class="fit-fire">Proposal 1 &mdash; Provenance-Aware Agentic KG</td>
+                    </tr>
+                    <tr>
+                        <td>Safest + most publishable evaluation paper</td>
+                        <td class="fit-strong">Proposal 2 &mdash; Validation Framework</td>
+                    </tr>
+                    <tr>
+                        <td>Most visionary, high-impact narrative</td>
+                        <td class="fit-strong">Proposal 3 &mdash; Digital Twins</td>
+                    </tr>
+                    <tr>
+                        <td>Long-term &ldquo;Agentic KG&rdquo; research brand</td>
+                        <td class="fit-fire">Proposal 1</td>
+                    </tr>
+                </table>
+                <p style="margin-top:0.75rem; font-size:0.85rem; color:var(--text-secondary);">Note: Elements of Proposal 2 (evaluation) could be folded into Proposal 1 as a deliverable, combining both strengths.</p>
+            </div>
+
+            <!-- Action Needed -->
+            <div class="action-needed">
+                <h3>Decision Needed by Mar 8</h3>
+                <p>Select a direction so abstract drafting can begin. The abstract is only 1 page &mdash; the hardest part is deciding <em>what</em> to propose, not writing it.</p>
+            </div>
+        </div>
+
+        <!-- CFP Alignment Matrix -->
+        <div class="section" id="alignment">
+            <h2>CFP Alignment Matrix</h2>
+            <p style="font-size:0.9rem; color:var(--text-secondary); margin-bottom:0.75rem;">How your research maps to each CFP topic area.</p>
+            <table class="alignment-table">
+                <tr>
+                    <th>CFP Topic</th>
+                    <th>Fit</th>
+                    <th>Key Overlaps</th>
+                </tr>
+                <tr>
+                    <td>Knowledge Grounding</td>
+                    <td class="fit-fire">Extremely Strong</td>
+                    <td>Agentic KG-RAG, multi-source fusion, provenance chains, structured retrieval</td>
+                </tr>
+                <tr>
+                    <td>Agentic AI</td>
+                    <td class="fit-fire">Extremely Strong</td>
+                    <td>Multi-agent orchestration, research agents, validation loops, agent governance</td>
+                </tr>
+                <tr>
+                    <td>AI for Science &amp; Engineering</td>
+                    <td class="fit-fire">Very Strong</td>
+                    <td>Construction AI, digital twins, PDE simulation, physics-grounded reasoning</td>
+                </tr>
+                <tr>
+                    <td>Agentic Evaluation</td>
+                    <td class="fit-strong">Strong</td>
+                    <td>Validation frameworks, provenance-backed evaluation, agent reliability benchmarks</td>
+                </tr>
+                <tr>
+                    <td>Reasoning</td>
+                    <td class="fit-strong">Strong</td>
+                    <td>Engineering reasoning, temporal/spatial, scientific graph constraints, planning</td>
+                </tr>
+                <tr>
+                    <td>Efficient GenAI &amp; Inference</td>
+                    <td class="fit-moderate">Moderate&ndash;Strong</td>
+                    <td>KG pruning reduces token overhead, structured retrieval efficiency</td>
+                </tr>
+                <tr>
+                    <td>Responsible GenAI</td>
+                    <td class="fit-moderate">Moderate</td>
+                    <td>Provenance + evidence chains, human-in-the-loop validation</td>
+                </tr>
+            </table>
         </div>
 
         <!-- Timeline Section -->
@@ -723,28 +1121,7 @@
             </div>
         </div>
 
-        <!-- Topic Alignment Section -->
-        <div class="section">
-            <h2>CFP Topic Alignment</h2>
-            <div class="card-grid">
-                <div class="card">
-                    <h3>Knowledge Grounding</h3>
-                    <p>Extremely strong fit. Agentic KG-RAG, multi-source fusion, provenance chains, structured retrieval.</p>
-                </div>
-                <div class="card">
-                    <h3>Agentic AI</h3>
-                    <p>Extremely strong fit. Multi-agent orchestration, research agents, validation loops, agent governance.</p>
-                </div>
-                <div class="card">
-                    <h3>Agentic Evaluation</h3>
-                    <p>Strong fit. Validation frameworks, provenance-backed evaluation, agent reliability benchmarks.</p>
-                </div>
-                <div class="card">
-                    <h3>AI for Science &amp; Engineering</h3>
-                    <p>Very strong fit. Construction AI, digital twins, PDE simulation, physics-grounded reasoning.</p>
-                </div>
-            </div>
-        </div>
+        <!-- (Alignment matrix is now in the Topic Analysis section above) -->
     </div>
 
     <div class="footer">
@@ -753,6 +1130,10 @@
 
     <script>
         function toggleDay(block) {
+            block.classList.toggle('open');
+        }
+
+        function toggleProposal(block) {
             block.classList.toggle('open');
         }
 
