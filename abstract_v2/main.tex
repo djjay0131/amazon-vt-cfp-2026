@@ -1,0 +1,71 @@
+% ============================================================
+% Amazon-VT CFP 2026-2027 — 1-Page Abstract v2
+% Provenance-Aware Agentic Knowledge Graph Systems
+% Revised: SOA-grounded framing with 2024-2026 citations
+% ============================================================
+
+\documentclass[10pt, letterpaper]{article}
+
+% --- Packages ---
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[margin=0.85in, top=0.75in, bottom=0.75in]{geometry}
+\usepackage{hyperref}
+\usepackage{natbib}
+\usepackage{microtype}
+\usepackage{parskip}
+\setlength{\parskip}{0.3em}
+\usepackage{enumitem}
+\setlist{nosep, leftmargin=1.5em, topsep=0.2em}
+\usepackage{graphicx}
+\usepackage{caption}
+\captionsetup{font=small, labelfont=bf, skip=3pt}
+\usepackage{wrapfig}
+
+\usepackage{titlesec}
+\titlespacing*{\section}{0pt}{0.8em}{0.4em}
+
+% --- Metadata ---
+\title{\vspace{-2.5em}Provenance-Aware Agentic Knowledge Graph Systems\\for Reliable Multi-Source Grounded AI\vspace{-0.5em}}
+\author{}
+\date{}
+
+% ============================================================
+\begin{document}
+
+\maketitle
+\thispagestyle{empty}
+
+\vspace{-2.5em}
+
+\noindent\textbf{Primary Topic Area:} Knowledge Grounding \hfill
+\textbf{Secondary Topic Area:} Agentic AI
+
+\vspace{0.3em}
+
+Retrieval-augmented generation (RAG)~\cite{Lewis2020RAG} has become a foundational technique for grounding large language model (LLM) inference in external knowledge. Production systems have matured substantially: hybrid retrieval combining semantic (dense) and keyword (sparse) search is now standard practice~\cite{AWSBedrockHybridSearch2024}, and retrieval is increasingly exposed as a tool within agentic workflows where models decide \textit{when} and \textit{what} to retrieve~\cite{OpenAIFunctionCalling2025}. Yet despite these advances, two critical gaps remain. First, even state-of-the-art retrieval systems lack structured reasoning substrates capable of multi-hop synthesis across heterogeneous knowledge sources---a gap that graph-based approaches like GraphRAG~\cite{Edge2024GraphRAG} begin to address but do not fully resolve. Second, current systems provide limited provenance: they can cite documents, but cannot produce fine-grained, verifiable evidence chains linking individual model outputs to specific supporting knowledge, and they lack validation mechanisms that detect and recover from retrieval failures~\cite{Yan2024CRAG,Ji2023HallucinationSurvey}.
+
+This project proposes \textbf{Provenance-Aware Agentic Knowledge Graph Systems (PA-AKG)}, a hybrid architecture that targets both gaps by integrating structured knowledge graphs, multi-source retrieval, and agent orchestration to support reliable grounded reasoning. The core contribution is a unified framework in which agents reason over entities, relationships, and structured constraints while maintaining explicit, verifiable links to supporting evidence. Agents dynamically select among retrieval pathways---dense, sparse, structured graph queries, and hybrid combinations---based on task context and confidence, enabling reasoning workflows that balance semantic recall with symbolic precision.
+
+\begin{wrapfigure}{r}{0.46\textwidth}
+    \vspace{-0.8em}
+    \centering
+    \includegraphics[width=0.44\textwidth]{images/architecture-diagram.png}
+    \captionsetup{width=0.44\textwidth}
+    \caption{\textbf{Hybrid Knowledge-Grounded Agentic AI Architecture.} The PA-AKG architecture integrates heterogeneous knowledge sources with agentic reasoning workflows. A hybrid retrieval layer combines vector search and knowledge graph queries. An agent orchestration layer coordinates planning, retrieval, and validation agents. A provenance engine records evidence links enabling traceable, standards-aligned verification of generated outputs~\cite{OpenTelemetryGenAI2024}.}
+    \label{fig:architecture}
+    \vspace{-0.5em}
+\end{wrapfigure}
+
+The proposed system enables \textbf{multi-source knowledge grounding} across knowledge graphs, relational databases, scientific literature, and domain-specific document collections. A critical component is an automated \textbf{provenance generation and validation layer} that produces fine-grained evidence links from model outputs to specific supporting knowledge sources---going beyond document-level citation toward span- and entity-level traceability. Provenance signals are structured to align with emerging observability standards~\cite{OpenTelemetryGenAI2024}, making agent reasoning auditable across tool calls and retrieval actions. Validation agents monitor retrieval quality and trigger corrective actions when evidence is weak, contradictory, or insufficient, directly addressing failure modes documented in retrieval-control research~\cite{Yan2024CRAG}.
+
+This research investigates: (1)~how heterogeneous knowledge sources can be unified into a grounding framework supporting both semantic and structured retrieval; (2)~how agent workflows should route and validate across retrieval pathways under uncertainty; (3)~what mechanisms enable scalable fine-grained provenance generation tied to specific knowledge entities; and (4)~how structured KG grounding improves reasoning accuracy, robustness, and efficiency relative to hybrid RAG baselines.
+
+We will design and implement the PA-AKG architecture with integrated validation and provenance enforcement, and develop evaluation benchmarks measuring grounded reasoning quality, evidence completeness, and retrieval failure recovery. Experiments compare vector-based RAG, hybrid structured retrieval, GraphRAG-style corpus reasoning, and PA-AKG across \textbf{scientific research discovery and engineering decision-support} tasks. Expected outcomes include the PA-AKG open research prototype, provenance-aware grounded reasoning benchmarks, and reproducible baselines advancing \textbf{reliable, transparent, and auditable agentic AI} over complex, heterogeneous knowledge environments.
+
+\newpage
+\bibliographystyle{plainnat}
+\bibliography{references}
+
+\end{document}
