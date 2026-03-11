@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deep Research Report &mdash; RAG &amp; Graph Retrieval SOA</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <style>
+        :root {
+            --amazon-orange: #FF9900;
+            --vt-maroon: #861F41;
+            --vt-orange: #E5751F;
+            --bg-dark: #0a0a0a;
+            --bg-card: #141414;
+            --text-primary: #e8e8e8;
+            --text-secondary: #a0a0a0;
+            --border: #2a2a2a;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.7;
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--vt-maroon), #4a1128);
+            border-bottom: 3px solid var(--amazon-orange);
+            padding: 2rem 1rem;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: 0.3rem;
+        }
+
+        .header .subtitle {
+            color: var(--amazon-orange);
+            font-size: 0.95rem;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin: 1.5rem 0 0;
+            color: var(--amazon-orange);
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+        .back-link:hover { text-decoration: underline; }
+
+        .container {
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem 4rem;
+        }
+
+        h2 {
+            color: var(--amazon-orange);
+            font-size: 1.35rem;
+            margin: 2.5rem 0 0.8rem;
+            padding-bottom: 0.3rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        h3 {
+            color: var(--vt-orange);
+            font-size: 1.1rem;
+            margin: 1.8rem 0 0.6rem;
+        }
+
+        p {
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        strong { color: #fff; }
+
+        em { color: var(--text-secondary); font-style: italic; }
+
+        ul, ol {
+            margin: 0.5rem 0 1rem 1.5rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        blockquote {
+            border-left: 3px solid var(--amazon-orange);
+            padding: 0.8rem 1.2rem;
+            margin: 1rem 0;
+            background: var(--bg-card);
+            border-radius: 0 6px 6px 0;
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0 1.5rem;
+            font-size: 0.85rem;
+        }
+
+        th {
+            background: var(--bg-card);
+            color: var(--amazon-orange);
+            padding: 0.6rem 0.5rem;
+            text-align: left;
+            border-bottom: 2px solid var(--border);
+            font-weight: 600;
+        }
+
+        td {
+            padding: 0.5rem;
+            border-bottom: 1px solid var(--border);
+            color: var(--text-secondary);
+        }
+
+        tr:hover td { background: rgba(255, 153, 0, 0.04); }
+
+        pre {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 1rem;
+            overflow-x: auto;
+            font-size: 0.82rem;
+            margin: 1rem 0;
+        }
+
+        code {
+            font-family: 'SF Mono', 'Fira Code', monospace;
+            color: var(--amazon-orange);
+        }
+
+        .toc {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1.2rem 1.5rem;
+            margin: 1.5rem 0 2rem;
+        }
+
+        .toc h3 {
+            margin: 0 0 0.6rem;
+            color: var(--amazon-orange);
+        }
+
+        .toc ol {
+            margin: 0 0 0 1.2rem;
+        }
+
+        .toc li { margin-bottom: 0.3rem; }
+
+        .toc a {
+            color: var(--text-primary);
+            text-decoration: none;
+        }
+
+        .toc a:hover { color: var(--amazon-orange); }
+
+        .mermaid-placeholder {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            text-align: center;
+        }
+
+        .flowchart {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            justify-content: center;
+            align-items: center;
+            padding: 1rem;
+        }
+
+        .flow-box {
+            background: rgba(255, 153, 0, 0.08);
+            border: 1px solid var(--amazon-orange);
+            border-radius: 6px;
+            padding: 0.5rem 0.8rem;
+            font-size: 0.78rem;
+            color: var(--text-primary);
+            text-align: center;
+            min-width: 120px;
+        }
+
+        .flow-arrow {
+            color: var(--amazon-orange);
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        .note {
+            background: rgba(134, 31, 65, 0.15);
+            border-left: 3px solid var(--vt-maroon);
+            padding: 0.8rem 1rem;
+            margin: 1rem 0;
+            border-radius: 0 6px 6px 0;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <h1>Retrieval-Augmented Inference and Hybrid Retrieval for LLMs 2023&ndash;2026</h1>
+    <div class="subtitle">Deep Research Report &mdash; State of the Art Analysis</div>
+    <a href="index.html" class="back-link">&larr; Back to Dashboard</a>
+</div>
+
+<div class="container">
+
+    <div class="toc">
+        <h3>Table of Contents</h3>
+        <ol>
+            <li><a href="#executive-summary">Executive Summary</a></li>
+            <li><a href="#retrieval-advances">Retrieval Advances Beyond Classic Vector-Only RAG</a></li>
+            <li><a href="#graph-structured">Graph and Structured Retrieval with Knowledge-Graph Integration</a></li>
+            <li><a href="#provenance">Provenance and Evidence Tracking Methods</a></li>
+            <li><a href="#agent-orchestration">Agent Orchestration and Tool Use as Retrieval Control</a></li>
+            <li><a href="#efficiency">Efficiency and System-Level Improvements</a></li>
+            <li><a href="#industry">Industry Systems and Provider Features</a></li>
+            <li><a href="#implications">Implications for a PA-AKG Proposal</a></li>
+            <li><a href="#citations">Citation Guidance for the Abstract</a></li>
+        </ol>
+    </div>
+
+    <!-- ============================================================ -->
+    <h2 id="executive-summary">Executive Summary</h2>
+
+    <p>Between 2023 and early 2026, retrieval-augmented inference has shifted from &ldquo;vector-only RAG&rdquo; toward <strong>multi-stage, hybrid, and agent-mediated retrieval</strong>: combining lexical (sparse) matching, dense embeddings, reranking, query rewriting, structured queries (SQL/SPARQL), and increasingly <strong>graph-structured retrieval</strong> for global reasoning over corpora. Production systems now routinely expose retrieval as a <strong>tool</strong> (not just a pre-processing step), enabling LLMs/agents to decide <em>when</em> to retrieve, <em>what</em> to retrieve, and <em>how</em> to verify the result (e.g., evaluator-triggered fallback to web search or alternate retrieval actions).</p>
+
+    <p>For an org that operates its own models, the most persuasive &ldquo;state of the art&rdquo; framing is: <strong>modern inference is best modeled as orchestration</strong> across heterogeneous memory systems (files, vector stores, keyword indexes, structured DBs, knowledge graphs, web grounding), plus <strong>provenance and observability standards</strong> that make retrieval-and-generation auditable.</p>
+
+    <p>Practically, this is excellent positioning for a PA-AKG proposal because the dominant open gaps are not &ldquo;add retrieval,&rdquo; but: (i)&nbsp;<strong>robust hybrid retrieval routing</strong>, (ii)&nbsp;<strong>structured/graph grounding that supports multi-hop synthesis</strong>, (iii)&nbsp;<strong>fine-grained evidence linking</strong>, and (iv)&nbsp;<strong>agent validation loops</strong> that detect retrieval failure modes and enforce provenance constraints.</p>
+
+    <div class="note">
+        <strong>Administrative note:</strong> The Amazon&ndash;Virginia Tech CFP states the 1-page abstract is &ldquo;one-page maximum, excluding references,&rdquo; so adding a compact references section is typically safe from a page-limit perspective.
+    </div>
+
+    <!-- ============================================================ -->
+    <h2 id="retrieval-advances">Retrieval Advances Beyond Classic Vector-Only RAG</h2>
+
+    <p>A core 2023&ndash;2026 trend is the <strong>unbundling of &ldquo;retrieval&rdquo; into a pipeline</strong>: candidate generation (sparse/dense/hybrid), query rewriting, reranking, and retrieval control policies (retrieve/not retrieve, or switch retrievers mid-flight). This addresses a key limitation of naive RAG: retrieving a fixed top-k from a dense index regardless of query type can degrade factuality when retrieval is noisy, contradictory, or lexically specific.</p>
+
+    <h3>Sparse + Dense Hybrid Retrieval</h3>
+    <p><strong>Sparse + dense hybrid retrieval</strong> (BM25/keyword + embeddings) has become a default &ldquo;production-shaped&rdquo; baseline because it better handles entity names, IDs, and rare tokens (lexical precision) while still capturing semantic similarity (recall). AWS explicitly characterizes hybrid search as combining keyword and semantic search to &ldquo;bring the best of both approaches,&rdquo; and exposes it as a selectable query mode for knowledge-base RAG.</p>
+
+    <h3>Learned Sparse Retrieval</h3>
+    <p><strong>Learned sparse retrieval</strong> advanced materially in this period, with approaches that learn sparse lexical expansions (SPLADE-family) and more recent work that investigates training sparse retrievers using causal LMs as backbones, while still benchmarking against classical BM25 and strong sparse baselines. For a PA-AKG proposal, this matters because learned sparse retrieval is an &ldquo;in-between&rdquo; option: it preserves the inverted-index ergonomics and term-level explainability of sparse retrieval while improving semantic matching.</p>
+
+    <h3>Retrieval Control and Self-Correction</h3>
+    <p><strong>Retrieval control and self-correction</strong> became a major line of work. Self-RAG trains a model to <em>decide when to retrieve</em> and to critique its own generations via special &ldquo;reflection tokens,&rdquo; targeting factuality and citation quality improvements without always forcing retrieval.</p>
+    <p>Corrective RAG (CRAG) explicitly adds a lightweight retrieval evaluator that scores retrieval quality/confidence and triggers different retrieval actions when the initial retrieval is low-quality, emphasizing robustness when retrieval goes wrong.</p>
+
+    <h3>Hierarchical / Multi-Resolution Retrieval</h3>
+    <p><strong>Hierarchical / multi-resolution retrieval</strong> (retrieving over summaries as well as leaf chunks) emerged to address &ldquo;chunk myopia&rdquo; in long documents. RAPTOR constructs a tree of recursively summarized clusters and retrieves at different abstraction levels; this is directly relevant to PA-AKG because graphs and hierarchies are complementary strategies to expose global structure to an LLM without flooding context.</p>
+
+    <h3>Retrieval as Memory</h3>
+    <p><strong>Retrieval as memory</strong> moved from metaphor to systems architecture. MemGPT frames long-term context as a tiered memory system with OS-like &ldquo;paging&rdquo; of relevant context into the prompt, highlighting explicit memory tiers and control flow.</p>
+
+    <!-- ============================================================ -->
+    <h2 id="graph-structured">Graph and Structured Retrieval with Knowledge-Graph Integration</h2>
+
+    <p>The most visible &ldquo;beyond vector RAG&rdquo; development is <strong>graph-shaped retrieval</strong>: using extracted entities/relations to support multi-hop synthesis, community-level summaries, and global queries that baseline top-k chunk retrieval fails to answer.</p>
+
+    <p>Microsoft&rsquo;s <strong>GraphRAG</strong> formalizes this by constructing an LLM-derived &ldquo;knowledge graph&rdquo; over a private corpus and using it for prompt augmentation aimed at questions requiring cross-document connection (&ldquo;connect the dots&rdquo;) and holistic summarization over large collections. In parallel, <strong>G-Retriever</strong> treats graph QA as retrieval over a <em>textual graph</em> (nodes/edges have text), using an optimization objective to select relevant subgraphs (a structural analog to selecting passages) to mitigate hallucination and scale beyond context limits.</p>
+
+    <p>A second axis is <strong>structured query generation and execution</strong> (SQL/SPARQL/Cypher): rather than retrieving text chunks, the model/agent produces a structured query against a database or knowledge graph, executes it, and then grounds generation on the result. AWS explicitly describes converting natural language into structured queries (e.g., SQL) as a knowledge-base capability, and positions knowledge bases as components to be embedded into agent workflows. On the research side, 2025 work on SPARQL generation increasingly incorporates RAG modules and correction layers, reflecting a practical acknowledgement: high-precision structured retrieval often requires both schema grounding (symbolic) and contextual retrieval (neural).</p>
+
+    <p>For PA-AKG, the key synthesis is: <strong>graph/structured retrieval turns &ldquo;retrieval&rdquo; into a reasoning substrate</strong>. Dense retrieval returns evidence; graph/structured retrieval returns <em>executable structure</em> (paths, joins, constraints) that can be validated and traced.</p>
+
+    <!-- ============================================================ -->
+    <h2 id="provenance">Provenance and Evidence Tracking Methods and Emerging Standards</h2>
+
+    <p>Provenance has two layers in modern RAG systems: (i)&nbsp;<strong>content attribution</strong> (what evidence supports each claim) and (ii)&nbsp;<strong>system traceability</strong> (what retrieval/tool calls happened, in what order, with what parameters).</p>
+
+    <p>On content attribution, recent work aims to improve <strong>fine-grained citations</strong>, moving beyond linking to a whole document toward quoting or pinpointing supporting spans. A 2024 Findings of ACL paper emphasizes generating and citing extractive quotes to make verification easier and to improve citation quality metrics, reflecting a broader &ldquo;attributed LLM&rdquo; push. An important caution from 2025 evidence: even when RAG systems avoid &ldquo;URL hallucination&rdquo; by using search access, they can still produce references that do not actually support <em>all</em> statements&mdash;showing why PA-AKG should treat &ldquo;has citations&rdquo; as necessary but not sufficient.</p>
+
+    <p>On system traceability, <strong>OpenTelemetry</strong> has moved toward standardizing GenAI observability. The OpenTelemetry GenAI semantic conventions define structured signals (traces/metrics/events) and include conventions for <strong>agent spans</strong>, aiming to make tool use and model interactions observable in a vendor- and framework-agnostic way. This is a credible anchor for PA-AKG&rsquo;s &ldquo;provenance engine&rdquo; claims because it signals alignment with a real standardization trend rather than bespoke logging.</p>
+
+    <!-- ============================================================ -->
+    <h2 id="agent-orchestration">Agent Orchestration and Tool Use as Retrieval Control</h2>
+
+    <p>From 2023&ndash;2026, retrieval increasingly appears as an <strong>agent tool</strong> rather than a fixed pipeline stage. This matters because: (a) retrieval decisions become conditional (plan-dependent), and (b) provenance can be enforced via orchestrated checkpoints.</p>
+
+    <p>Model-provider APIs and docs reflect this tooling shift:</p>
+
+    <ul>
+        <li><strong>OpenAI</strong> describes a structured &ldquo;tool calling flow&rdquo; where the application exposes tools, the model requests calls, the application executes them, and the conversation iterates&mdash;i.e., an orchestration loop rather than one-shot prompting.</li>
+        <li><strong>OpenAI&rsquo;s file search tool</strong> explicitly supports <strong>semantic and keyword search</strong> over uploaded corpora, codifying hybrid retrieval as a first-class tool primitive in their API design.</li>
+        <li><strong>AWS Bedrock agents</strong> define &ldquo;action groups&rdquo; as the unit of capability, specifying parameters, execution logic, and OpenAPI schemas&mdash;essentially the contract layer for tool use and orchestration.</li>
+        <li><strong>Anthropic&rsquo;s</strong> engineering guidance highlights scaling pain points when agents connect to many tools: tool definitions and intermediate results can consume context and increase cost/latency, motivating <em>tool search</em> and programmatic tool calling patterns that reduce context load.</li>
+        <li><strong>Google&rsquo;s Vertex AI</strong> messaging similarly frames production agents as multi-agent systems requiring orchestration, enterprise data connections, and tool use, while also emphasizing open standards like MCP for tool/data connectivity.</li>
+    </ul>
+
+    <p>For PA-AKG, the important analytical point is: <strong>agents turn hybrid retrieval into a policy problem</strong> (routing, fallback, validation), and create a natural place to insert provenance constraints (e.g., &ldquo;no statement without an evidence link&rdquo;).</p>
+
+    <!-- ============================================================ -->
+    <h2 id="efficiency">Efficiency and System-Level Improvements Shaping Retrieval-Augmented Inference</h2>
+
+    <p>Efficiency advances in this period matter because retrieval competes with&mdash;and complements&mdash;long-context inference.</p>
+
+    <p><strong>Long context expanded dramatically</strong>, with Google&rsquo;s Gemini 1.5 report emphasizing evaluation of million-token-scale contexts and &ldquo;needle-in-a-haystack&rdquo; style retrieval within long inputs. This reduces the <em>need</em> for retrieval in some cases, but does not eliminate it because retrieval still offers freshness, smaller compute footprints, and structured access patterns. Anthropic&rsquo;s 2026 model release notes explicitly describe large-scale &ldquo;with tools&rdquo; runs featuring <strong>context compaction</strong> to reach multi-million-token total processing&mdash;suggesting the industry is betting on hybrid strategies: long context <em>plus</em> retrieval/tools.</p>
+
+    <p>On serving efficiency, the <strong>vLLM</strong> line of work is central: PagedAttention uses OS-inspired paging to reduce KV-cache fragmentation and enable higher-throughput serving; for retrieval-augmented systems, this translates into more economical multi-step agent loops and increased feasibility of reranking or multi-retriever cascades under latency budgets. More recent work explores dynamic KV-cache memory management via demand paging (vAttention), underscoring that &ldquo;memory disaggregation&rdquo; for LLM inference is increasingly about <strong>treating attention memory like managed virtual memory</strong>&mdash;a conceptual parallel to retrieval-as-memory architectures like MemGPT.</p>
+
+    <p>System-design patterns that gained traction in production include retrieval caching (query/result reuse), composable retrieval (chaining rerankers and structured retrievers), and reranking as a standard feature&mdash;AWS explicitly lists reranking models and citations as knowledge-base capabilities.</p>
+
+    <!-- ============================================================ -->
+    <h2 id="industry">Industry Systems and Provider Features Relevant to Hybrid Retrieval and Agents</h2>
+
+    <p>A concise cross-provider snapshot (publicly documented) illustrates where &ldquo;hybrid retrieval + agents&rdquo; is heading:</p>
+
+    <ul>
+        <li><strong>AWS:</strong> Bedrock Knowledge Bases expose hybrid search and describe citations, reranking, structured-query conversion, and integration into agents&mdash;strong evidence that enterprise RAG is already hybrid and workflow-integrated.</li>
+        <li><strong>Anthropic:</strong> Engineering posts emphasize scaling tool ecosystems (Tool Search Tool; programmatic tool calling) and MCP-based patterns to reduce token overhead and improve tool composition, framing agent efficiency as a first-class concern.</li>
+        <li><strong>OpenAI:</strong> API docs position file search (semantic + keyword) and tool calling as standard building blocks in the Responses API ecosystem, aligning retrieval with agent loops.</li>
+        <li><strong>Google:</strong> Vertex AI provides explicit &ldquo;grounding with Google Search&rdquo; and function calling docs, plus public positioning around multi-agent orchestration and open connectivity protocols.</li>
+        <li><strong>Meta:</strong> Llama&rsquo;s public API documentation describes tool calling as model-driven choice over available tools, supporting a pattern where retrieval/structured queries are implemented as external tools paired with open models.</li>
+    </ul>
+
+    <p>This landscape supports a reviewer-friendly claim: <strong>hybrid retrieval and tool-mediated retrieval are now mainstream primitives</strong>, but provenance-aware structured grounding and validation remain open.</p>
+
+    <!-- ============================================================ -->
+    <h2 id="implications">Implications for a PA-AKG Proposal</h2>
+
+    <h3>Comparison Table of Retrieval Approaches in 2026</h3>
+
+    <div style="overflow-x: auto;">
+    <table>
+        <thead>
+            <tr>
+                <th>Retrieval Approach</th>
+                <th>Accuracy</th>
+                <th>Provenance</th>
+                <th>Latency</th>
+                <th>Scalability</th>
+                <th>Agent Integration</th>
+                <th>Maturity</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Vector-only RAG</strong> (dense top-k)</td>
+                <td>Medium (sensitive to chunking/noise)</td>
+                <td>Low&ndash;Medium (document-level, often coarse)</td>
+                <td>Medium</td>
+                <td>High (ANN indices)</td>
+                <td>High</td>
+                <td>High</td>
+            </tr>
+            <tr>
+                <td><strong>Sparse</strong> (BM25 / learned sparse)</td>
+                <td>Medium&ndash;High for exact terms/entities</td>
+                <td>Medium (term matches can be explainable)</td>
+                <td>Low</td>
+                <td>Very High (inverted indexes)</td>
+                <td>High</td>
+                <td>High</td>
+            </tr>
+            <tr>
+                <td><strong>Hybrid</strong> (sparse + dense + rerank)</td>
+                <td>High (better recall + precision tradeoff)</td>
+                <td>Medium&ndash;High (rerank + span selection)</td>
+                <td>Medium&ndash;High</td>
+                <td>High</td>
+                <td>High</td>
+                <td>High</td>
+            </tr>
+            <tr>
+                <td><strong>KG / structured query</strong> (graph/SQL/SPARQL)</td>
+                <td>High for compositional queries</td>
+                <td>High (executable queries + traceable paths)</td>
+                <td>Variable</td>
+                <td>Medium&ndash;High</td>
+                <td>Medium (needs tooling)</td>
+                <td>Medium (rapidly rising)</td>
+            </tr>
+        </tbody>
+    </table>
+    </div>
+
+    <h3>Hybrid Pipeline Architecture</h3>
+
+    <div class="mermaid-placeholder">
+        <div class="flowchart">
+            <div class="flow-box">Data Sources<br><small>Docs &bull; DBs &bull; KGs &bull; Web</small></div>
+            <div class="flow-arrow">&rarr;</div>
+            <div class="flow-box">Hybrid Retrieval Router<br><small>Sparse &bull; Dense &bull; Structured &bull; Graph</small></div>
+            <div class="flow-arrow">&rarr;</div>
+            <div class="flow-box">Rerank / Fusion<br><small>Cross-encoder, score fusion</small></div>
+            <div class="flow-arrow">&rarr;</div>
+            <div class="flow-box">Agent Orchestration<br><small>Planner &bull; Retrieval &bull; Validation</small></div>
+            <div class="flow-arrow">&rarr;</div>
+            <div class="flow-box">Provenance Engine<br><small>Span links &bull; Traces &bull; Policies</small></div>
+            <div class="flow-arrow">&rarr;</div>
+            <div class="flow-box">Grounded Output<br><small>Answers + citations + audit trail</small></div>
+        </div>
+    </div>
+
+    <h3>Gaps, Risks, and Open Research Questions</h3>
+
+    <p>A PA-AKG proposal can credibly claim novelty by targeting <em>failure modes</em> that current systems expose:</p>
+
+    <ol>
+        <li><strong>Retrieval failure detection and recovery:</strong> CRAG-style evaluators exist, but robust policies that combine hybrid retrieval, structured retrieval, and graph retrieval under uncertainty remain underdeveloped&mdash;especially when corpora contain contradictions.</li>
+        <li><strong>Global reasoning over corpora:</strong> GraphRAG shows strong promise for &ldquo;connect the dots&rdquo; questions, but integrating graph-derived global structure with fine-grained citations and agent validation is still an open design space.</li>
+        <li><strong>Citation faithfulness:</strong> Evidence from medical citation auditing shows that even systems producing valid references may not fully support all claims&mdash;implying the need for statement-level verification, quote-level grounding, and automated audits.</li>
+        <li><strong>Tool ecosystem scaling and security:</strong> As tool counts grow, context overload and intermediate-result leakage become major efficiency and privacy concerns; MCP-style approaches and programmatic tool calling address this partially but introduce new governance needs (policy, sandboxing, access control).</li>
+        <li><strong>Evaluation and reproducibility:</strong> Many &ldquo;advanced RAG&rdquo; claims are sensitive to corpus, chunking, and reranking choices. Proposals that commit to open benchmarks, ablations, and instrumentation aligned with emerging standards (OpenTelemetry GenAI semconv) will read as more mature to industry reviewers.</li>
+    </ol>
+
+    <!-- ============================================================ -->
+    <h2 id="citations">Citation Guidance for the Abstract</h2>
+
+    <h3>Selecting Citations</h3>
+    <p>When choosing 4&ndash;6 citations for a 1-page abstract, prioritize: <strong>recency (2023&ndash;2026)</strong>; <strong>venue credibility</strong> (top conferences/journals, or official provider docs/whitepapers); <strong>industry vs. academic balance</strong> (shows relevance + rigor); <strong>reproducibility</strong> (public code/data or clear system docs); <strong>direct relevance</strong> to hybrid retrieval/graph retrieval/agents/provenance; and <strong>concept anchoring</strong> (one paper/doc per key claim rather than many overlapping citations).</p>
+
+    <h3>Framing Novelty</h3>
+    <p>A safe phrasing pattern is: acknowledge mainstream hybrid retrieval, then narrow novelty to <strong>provenance-aware orchestration + structured reasoning</strong>.</p>
+
+    <blockquote>&ldquo;Modern production RAG systems increasingly combine semantic and keyword retrieval and expose retrieval as a tool within agentic workflows; our novelty is a provenance-aware agentic knowledge-graph substrate that unifies heterogeneous retrieval, structured reasoning, and verifiable evidence chains.&rdquo;</blockquote>
+
+    <h3>Recommended 6 Citations</h3>
+    <ol>
+        <li><strong>AWS Bedrock Knowledge Bases hybrid search</strong> (official AWS blog, 2024)</li>
+        <li><strong>OpenAI &ldquo;File search&rdquo; tool doc</strong> (semantic + keyword, 2025)</li>
+        <li><strong>OpenAI &ldquo;Function calling&rdquo; tool orchestration doc</strong> (2025)</li>
+        <li><strong>Yan et al., 2024</strong> &mdash; Corrective RAG (retrieval evaluator + action triggering)</li>
+        <li><strong>Edge et al., 2024</strong> &mdash; GraphRAG (graph-based corpus reasoning)</li>
+        <li><strong>OpenTelemetry GenAI semantic conventions</strong> (observability/provenance scaffolding, 2024)</li>
+    </ol>
+
+    <h3>BibTeX</h3>
+    <pre><code>@misc{AWSBedrockHybridSearch2024,
+  author       = {{Amazon Web Services}},
+  title        = {Amazon Bedrock Knowledge Bases now supports hybrid search},
+  year         = {2024},
+  howpublished = {AWS Machine Learning Blog}
+}
+
+@misc{OpenAIFileSearchTool,
+  author       = {{OpenAI}},
+  title        = {File search (Responses API tool)},
+  year         = {2025},
+  howpublished = {OpenAI Developer Documentation}
+}
+
+@misc{OpenAIFunctionCallingGuide2025,
+  author       = {{OpenAI}},
+  title        = {Function calling guide (tool calling flow)},
+  year         = {2025},
+  howpublished = {OpenAI Developer Documentation}
+}
+
+@article{Yan2024CRAG,
+  author  = {Yan, Shiqi and others},
+  title   = {Corrective Retrieval Augmented Generation},
+  year    = {2024},
+  journal = {arXiv preprint arXiv:2401.15884}
+}
+
+@article{Edge2024GraphRAG,
+  author  = {Edge, Darren and others},
+  title   = {From Local to Global: A Graph RAG Approach
+             to Query-Focused Summarization},
+  year    = {2024},
+  journal = {arXiv preprint arXiv:2404.16130}
+}
+
+@misc{OpenTelemetryGenAISemConv,
+  author       = {{OpenTelemetry}},
+  title        = {Semantic conventions for generative AI systems},
+  year         = {2024},
+  howpublished = {OpenTelemetry Specification}
+}</code></pre>
+
+    <h3>Diagram Suggestions</h3>
+    <ol>
+        <li><strong>Hybrid retrieval routing diagram:</strong> show sparse/dense/structured/graph branches merging into rerank/fusion, then into agent orchestration, then provenance engine, then LLM (the flow above is a good blueprint).</li>
+        <li><strong>Failure-mode + validation loop figure:</strong> depict retrieval noise/contradiction, citation mismatch, and how validation agents/evaluators trigger fallback actions (e.g., CRAG-style retrieval evaluator, quote-level grounding).</li>
+    </ol>
+
+</div>
+
+</body>
+</html>
