@@ -24,7 +24,7 @@
 ### Phase 2: Abstract Development
 - **Objective**: Draft and submit 1-page abstract
 - **Deliverables**: 1-page abstract, reference list, portal submission
-- **Deadline**: March 13, 2026
+- **Deadline**: March 17, 2026
 - **Status**: Pending
 
 ### Phase 3: Full Proposal Development

@@ -23,7 +23,7 @@ This project uses a **memory-bank** documentation approach:
 
 | Date | Milestone |
 |------|-----------|
-| **March 13, 2026** | 1-page abstract submission due |
+| **March 17, 2026** | 1-page abstract submission due |
 | April 6, 2026 | Invitations to submit full proposals |
 | April 13-24, 2026 | Amazon research discussion/feedback sessions |
 | April 27, 2026 | Full proposal (3-4 pages + references) due |

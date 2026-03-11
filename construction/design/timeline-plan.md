@@ -5,7 +5,7 @@
 - **Qualifier presentation**: March 6 (slides due tonight Mar 5)
 - **Chime scoping**: A few hours post-qualifier (Mar 6-7)
 - **Earliest CFP start**: Saturday, March 7
-- **Abstract deadline**: Friday, March 13 (portal submission)
+- **Abstract deadline**: Tuesday, March 17 (portal submission)
 - **Working days available**: ~6 days (Mar 7-12, submit Mar 13)
 
 ---

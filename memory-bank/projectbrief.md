@@ -24,7 +24,7 @@ Proposers select primary and secondary categories:
 
 ## Deliverables
 
-### Phase 1: Abstract (Due March 13, 2026)
+### Phase 1: Abstract (Due March 17, 2026)
 - 1-page abstract (excluding references)
 - Research project idea overview
 - Primary and secondary topic categories

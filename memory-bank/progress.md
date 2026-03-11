@@ -22,7 +22,7 @@
 ## Upcoming
 
 - [ ] Phase 1: Research topic selection and design
-- [ ] Phase 2: Abstract drafting (due March 13, 2026)
+- [ ] Phase 2: Abstract drafting (due March 17, 2026)
 - [ ] Phase 3: Full proposal development (if invited, due April 27, 2026)
 
 ## Key Milestones

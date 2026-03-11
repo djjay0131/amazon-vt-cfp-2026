@@ -1,6 +1,6 @@
 # Submission Checklist
 
-## Abstract Phase (Due March 13, 2026)
+## Abstract Phase (Due March 17, 2026)
 
 ### Format Requirements
 - [ ] 1-page maximum (excluding references)

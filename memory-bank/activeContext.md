@@ -12,7 +12,7 @@ Initial analysis complete with 3 ranked candidate directions. Deeper analysis ne
 
 - Deeper analysis of 3 candidate research directions
 - Competitive landscape and novelty gap assessment
-- Topic selection for abstract (due March 13, 2026)
+- Topic selection for abstract (due March 17, 2026)
 
 ## Initial Analysis Summary
 
@@ -35,7 +35,7 @@ Strongest CFP alignment: Knowledge Grounding, Agentic AI, Agentic Evaluation, AI
 
 - [ ] Deeper analysis of candidate directions (literature, novelty, feasibility)
 - [ ] Select primary research topic
-- [ ] Begin abstract drafting (due March 13, 2026)
+- [ ] Begin abstract drafting (due March 17, 2026)
 
 ## Active Decisions
 
@@ -44,7 +44,7 @@ Strongest CFP alignment: Knowledge Grounding, Agentic AI, Agentic Evaluation, AI
 ## Blockers
 
 - **Research topic not yet finalized** — deeper analysis needed before committing
-- **8 days until abstract deadline** (March 13, 2026)
+- **8 days until abstract deadline** (March 17, 2026)
 
 ---
 
