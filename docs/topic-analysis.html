@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Topic Analysis &mdash; Amazon-VT CFP 2026-2027</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <style>
+        :root {
+            --amazon-orange: #FF9900;
+            --vt-maroon: #861F41;
+            --vt-orange: #E5751F;
+            --bg-dark: #0a0a0a;
+            --bg-card: #141414;
+            --text-primary: #e8e8e8;
+            --text-secondary: #a0a0a0;
+            --border: #2a2a2a;
+            --green: #4caf50;
+            --yellow: #ffc107;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.7;
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--vt-maroon), #4a1128);
+            border-bottom: 3px solid var(--amazon-orange);
+            padding: 2rem 1rem;
+            text-align: center;
+        }
+
+        .header h1 { font-size: 1.6rem; font-weight: 700; margin-bottom: 0.3rem; }
+        .header .subtitle { color: var(--amazon-orange); font-size: 0.95rem; }
+
+        .back-link {
+            display: inline-block;
+            margin: 1.5rem 0 0;
+            color: var(--amazon-orange);
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+        .back-link:hover { text-decoration: underline; }
+
+        .container { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem 4rem; }
+
+        h2 {
+            color: var(--amazon-orange);
+            font-size: 1.35rem;
+            margin: 2.5rem 0 0.8rem;
+            padding-bottom: 0.3rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        h3 {
+            color: var(--vt-orange);
+            font-size: 1.1rem;
+            margin: 1.8rem 0 0.6rem;
+        }
+
+        p { margin-bottom: 1rem; }
+        strong { color: #fff; }
+        em { color: var(--text-secondary); font-style: italic; }
+
+        ul, ol { margin: 0.5rem 0 1rem 1.5rem; }
+        li { margin-bottom: 0.4rem; }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0 1.5rem;
+            font-size: 0.85rem;
+        }
+
+        th {
+            background: var(--bg-card);
+            color: var(--amazon-orange);
+            padding: 0.6rem 0.5rem;
+            text-align: left;
+            border-bottom: 2px solid var(--border);
+            font-weight: 600;
+        }
+
+        td {
+            padding: 0.5rem;
+            border-bottom: 1px solid var(--border);
+            color: var(--text-secondary);
+        }
+
+        tr:hover td { background: rgba(255, 153, 0, 0.04); }
+
+        .fit-tag {
+            display: inline-block;
+            padding: 0.15rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.78rem;
+            font-weight: 600;
+        }
+
+        .fit-extreme { background: rgba(76, 175, 80, 0.2); color: var(--green); border: 1px solid var(--green); }
+        .fit-strong { background: rgba(255, 193, 7, 0.15); color: var(--yellow); border: 1px solid var(--yellow); }
+        .fit-moderate { background: rgba(255, 153, 0, 0.12); color: var(--amazon-orange); border: 1px solid var(--amazon-orange); }
+
+        .proposal-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            margin: 1.5rem 0;
+            overflow: hidden;
+        }
+
+        .proposal-card.selected {
+            border-color: var(--green);
+            box-shadow: 0 0 12px rgba(76, 175, 80, 0.15);
+        }
+
+        .proposal-header {
+            padding: 1rem 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            cursor: pointer;
+        }
+
+        .proposal-card.selected .proposal-header {
+            background: rgba(76, 175, 80, 0.08);
+        }
+
+        .proposal-rank {
+            font-size: 1.6rem;
+            line-height: 1;
+        }
+
+        .proposal-title { font-size: 1rem; font-weight: 600; color: #fff; flex: 1; }
+
+        .proposal-badge {
+            font-size: 0.72rem;
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .badge-selected { background: var(--green); color: #000; }
+        .badge-alt { background: var(--border); color: var(--text-secondary); }
+
+        .proposal-body {
+            padding: 0 1.2rem 1.2rem;
+            display: none;
+        }
+
+        .proposal-card.open .proposal-body { display: block; }
+
+        .proposal-categories {
+            display: flex;
+            gap: 0.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .cat-tag {
+            font-size: 0.8rem;
+            padding: 0.25rem 0.7rem;
+            border-radius: 4px;
+            background: rgba(255, 153, 0, 0.1);
+            color: var(--amazon-orange);
+            border: 1px solid rgba(255, 153, 0, 0.3);
+        }
+
+        .cat-tag.secondary {
+            background: rgba(134, 31, 65, 0.15);
+            color: var(--vt-orange);
+            border-color: rgba(229, 117, 31, 0.3);
+        }
+
+        .why-box {
+            background: rgba(255, 153, 0, 0.05);
+            border-left: 3px solid var(--amazon-orange);
+            padding: 0.6rem 1rem;
+            margin: 0.8rem 0;
+            border-radius: 0 6px 6px 0;
+            font-size: 0.9rem;
+        }
+
+        .rq-list { counter-reset: rq; list-style: none; margin-left: 0; }
+        .rq-list li { counter-increment: rq; padding-left: 0; margin-bottom: 0.5rem; }
+        .rq-list li::before {
+            content: "RQ" counter(rq) ": ";
+            color: var(--amazon-orange);
+            font-weight: 600;
+        }
+
+        .cfp-match {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1rem 0;
+        }
+
+        .cfp-match h4 {
+            color: var(--amazon-orange);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .match-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.8rem;
+            font-size: 0.85rem;
+        }
+
+        .match-col h5 {
+            color: var(--text-secondary);
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.4rem;
+        }
+
+        .match-col ul { margin: 0 0 0 1.2rem; }
+        .match-col li { margin-bottom: 0.2rem; color: var(--text-secondary); }
+
+        .toc {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1.2rem 1.5rem;
+            margin: 1.5rem 0 2rem;
+        }
+
+        .toc h3 { margin: 0 0 0.6rem; color: var(--amazon-orange); }
+        .toc ol { margin: 0 0 0 1.2rem; }
+        .toc li { margin-bottom: 0.3rem; }
+        .toc a { color: var(--text-primary); text-decoration: none; }
+        .toc a:hover { color: var(--amazon-orange); }
+
+        .open-questions {
+            background: rgba(134, 31, 65, 0.1);
+            border: 1px solid rgba(134, 31, 65, 0.3);
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1.5rem 0;
+        }
+
+        .open-questions h3 { color: var(--vt-orange); margin: 0 0 0.6rem; }
+
+        .chevron {
+            transition: transform 0.2s;
+            color: var(--text-secondary);
+        }
+
+        .proposal-card.open .chevron { transform: rotate(90deg); }
+
+        @media (max-width: 600px) {
+            .match-grid { grid-template-columns: 1fr; }
+            .proposal-categories { flex-direction: column; gap: 0.4rem; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <h1>Topic Analysis &amp; Selection</h1>
+    <div class="subtitle">CFP Alignment Matrix &amp; Ranked Proposal Directions</div>
+    <a href="index.html" class="back-link">&larr; Back to Dashboard</a>
+</div>
+
+<div class="container">
+
+    <div class="toc">
+        <h3>Contents</h3>
+        <ol>
+            <li><a href="#cfp-scope">CFP Scope &amp; Research Alignment</a></li>
+            <li><a href="#alignment-matrix">Full Alignment Matrix</a></li>
+            <li><a href="#proposals">Ranked Proposal Directions</a></li>
+            <li><a href="#open-questions">Open Questions for Due Diligence</a></li>
+            <li><a href="#recommendation">Strategic Recommendation</a></li>
+        </ol>
+    </div>
+
+    <!-- ============================================================ -->
+    <h2 id="cfp-scope">CFP Scope &amp; Research Alignment</h2>
+
+    <p>The Amazon-VT CFP 2026-2027 invites proposals across <strong>9 major AI topic areas</strong>. Our research capabilities overlap with <strong>multiple high-priority tracks</strong>&mdash;especially those referencing knowledge grounding, multi-agent systems, agent orchestration, memory-augmented systems, and AI-accelerated engineering.</p>
+
+    <p>This is not a marginal fit&mdash;this CFP is <strong>unusually aligned</strong> with our research direction. The strongest overlaps are in:</p>
+
+    <ul>
+        <li>Knowledge grounding &amp; multi-source fusion</li>
+        <li>Agentic AI &amp; multi-agent orchestration</li>
+        <li>Agent evaluation &amp; validation</li>
+        <li>AI-accelerated science &amp; engineering</li>
+        <li>Efficient retrieval over heterogeneous knowledge sources</li>
+    </ul>
+
+    <!-- ============================================================ -->
+    <h2 id="alignment-matrix">Full Alignment Matrix</h2>
+
+    <div style="overflow-x: auto;">
+    <table>
+        <thead>
+            <tr>
+                <th>CFP Topic Area</th>
+                <th>Fit Level</th>
+                <th>Key Overlaps</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Knowledge Grounding</strong></td>
+                <td><span class="fit-tag fit-extreme">Extremely Strong</span></td>
+                <td>Agentic KG-RAG, multi-source fusion, provenance chains, structured knowledge extraction</td>
+            </tr>
+            <tr>
+                <td><strong>Agentic AI</strong></td>
+                <td><span class="fit-tag fit-extreme">Extremely Strong</span></td>
+                <td>Multi-agent orchestration, validation agents, agent governance, research progression agents</td>
+            </tr>
+            <tr>
+                <td><strong>Agentic Evaluation</strong></td>
+                <td><span class="fit-tag fit-strong">Strong</span></td>
+                <td>Validation matrix frameworks, provenance-backed evaluation, agent reliability under uncertainty</td>
+            </tr>
+            <tr>
+                <td><strong>AI for Science/Engineering</strong></td>
+                <td><span class="fit-tag fit-extreme">Very Strong</span></td>
+                <td>Construction-AI, digital twins, PDE simulation, heat transfer modeling</td>
+            </tr>
+            <tr>
+                <td><strong>Reasoning</strong></td>
+                <td><span class="fit-tag fit-strong">Strong</span></td>
+                <td>Engineering reasoning, temporal/spatial, scientific graph constraints, multi-agent planning</td>
+            </tr>
+            <tr>
+                <td><strong>Efficient GenAI</strong></td>
+                <td><span class="fit-tag fit-moderate">Moderate&ndash;Strong</span></td>
+                <td>KG pruning reduces token overhead, structured retrieval efficiency, memory disaggregation</td>
+            </tr>
+            <tr>
+                <td><strong>Responsible AI</strong></td>
+                <td><span class="fit-tag fit-moderate">Moderate</span></td>
+                <td>Provenance + evidence chains, human-in-the-loop validation, guardrails</td>
+            </tr>
+            <tr>
+                <td><strong>Personalization</strong></td>
+                <td><span class="fit-tag" style="background:var(--bg-card);color:var(--text-secondary);border:1px solid var(--border)">Not analyzed</span></td>
+                <td>&mdash;</td>
+            </tr>
+            <tr>
+                <td><strong>Foundation Model Improvements</strong></td>
+                <td><span class="fit-tag" style="background:var(--bg-card);color:var(--text-secondary);border:1px solid var(--border)">Not analyzed</span></td>
+                <td>&mdash;</td>
+            </tr>
+        </tbody>
+    </table>
+    </div>
+
+    <!-- CFP topic detail sections -->
+    <h3>Knowledge Grounding &mdash; CFP Match Details</h3>
+    <div class="cfp-match">
+        <div class="match-grid">
+            <div class="match-col">
+                <h5>CFP Language</h5>
+                <ul>
+                    <li>Memory-augmented generative systems</li>
+                    <li>Efficient multimodal retrieval across heterogeneous sources (KGs, People Graphs, DBs, Web)</li>
+                    <li>Blending and fusion of multiple knowledge sources</li>
+                    <li>Improved interaction between LLMs and external knowledge sources</li>
+                </ul>
+            </div>
+            <div class="match-col">
+                <h5>Our Direct Matches</h5>
+                <ul>
+                    <li>Agentic KG-RAG systems</li>
+                    <li>Structured knowledge extraction</li>
+                    <li>Provenance chains &amp; evidence tracing</li>
+                    <li>Multi-source fusion (papers, graphs, experimental outputs)</li>
+                    <li>Construction-AI KG-BOM reasoning</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <h3>Agentic AI &mdash; CFP Match Details</h3>
+    <div class="cfp-match">
+        <div class="match-grid">
+            <div class="match-col">
+                <h5>CFP Language</h5>
+                <ul>
+                    <li>Multi-agent systems and orchestration improvements</li>
+                    <li>Customization and continual improvement of agents</li>
+                    <li>Agent-environment simulation &amp; world models</li>
+                    <li>Agentic coding &amp; research agents</li>
+                </ul>
+            </div>
+            <div class="match-col">
+                <h5>Our Direct Matches</h5>
+                <ul>
+                    <li>Agentic Knowledge Graph workflows</li>
+                    <li>Research progression agents</li>
+                    <li>Digital twin + PDE simulation + AI</li>
+                    <li>Validation agents + VVUQ loops</li>
+                    <li>Agent governance + provenance tracing</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <h3>Agentic Evaluation &mdash; CFP Match Details</h3>
+    <div class="cfp-match">
+        <div class="match-grid">
+            <div class="match-col">
+                <h5>CFP Language</h5>
+                <ul>
+                    <li>New benchmarks for assessing foundation model capabilities</li>
+                    <li>Robust evaluation of generative AI systems &amp; agents</li>
+                </ul>
+            </div>
+            <div class="match-col">
+                <h5>Our Direct Matches</h5>
+                <ul>
+                    <li>Validation matrix frameworks</li>
+                    <li>Provenance-backed reasoning evaluation</li>
+                    <li>Structured vs vector retrieval comparison</li>
+                    <li>Agent reliability under uncertainty</li>
+                    <li>Grounded reasoning verification</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <h3>AI for Science/Engineering &mdash; CFP Match Details</h3>
+    <div class="cfp-match">
+        <div class="match-grid">
+            <div class="match-col">
+                <h5>CFP Language</h5>
+                <ul>
+                    <li>Generative AI advancing physics, engineering, materials, etc.</li>
+                </ul>
+            </div>
+            <div class="match-col">
+                <h5>Our Direct Matches</h5>
+                <ul>
+                    <li>Construction-AI + BOM automation</li>
+                    <li>Heat transfer modeling</li>
+                    <li>Digital twins</li>
+                    <li>PDE + simulation reasoning agents</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <h2 id="proposals">Ranked Proposal Directions</h2>
+
+    <p>Three candidate directions ranked by funding probability, differentiation, Amazon relevance, and 1-year feasibility. <strong>Click each card to expand.</strong></p>
+
+    <!-- Proposal 1 -->
+    <div class="proposal-card selected open" onclick="toggleProposal(this)">
+        <div class="proposal-header">
+            <span class="proposal-rank">&#129351;</span>
+            <span class="proposal-title">Provenance-Aware Agentic Knowledge Graph Systems for Reliable Multi-Source Grounded AI</span>
+            <span class="proposal-badge badge-selected">Selected</span>
+            <span class="chevron">&#9654;</span>
+        </div>
+        <div class="proposal-body">
+            <div class="proposal-categories">
+                <span class="cat-tag">Primary: Knowledge Grounding</span>
+                <span class="cat-tag secondary">Secondary: Agentic AI</span>
+            </div>
+
+            <div class="why-box">
+                <strong>Why #1?</strong> Direct CFP language match. Differentiates from &ldquo;just another RAG proposal&rdquo;. Amazon relevance: Enterprise AI + Agents. Existing infrastructure and case studies.
+            </div>
+
+            <h4 style="color:var(--vt-orange);margin:1rem 0 0.4rem">Motivation</h4>
+            <p>Current RAG systems rely primarily on vector similarity matching, which provides relevance but lacks structured reasoning, provenance tracking, and verifiable evidence chains. As agentic systems become autonomous, the lack of grounded traceability increases risks of hallucination, misinformation, and unverifiable decision-making.</p>
+
+            <h4 style="color:var(--vt-orange);margin:1rem 0 0.4rem">Research Questions</h4>
+            <ol class="rq-list">
+                <li>How can heterogeneous knowledge sources (KGs, databases, streaming data, documents) be fused into a unified structured reasoning substrate?</li>
+                <li>How can agents dynamically select structured vs vector retrieval pathways?</li>
+                <li>How can provenance chains be automatically generated, verified, and audited?</li>
+                <li>How does structured grounding affect reasoning accuracy, robustness, and inference efficiency?</li>
+            </ol>
+
+            <h4 style="color:var(--vt-orange);margin:1rem 0 0.4rem">Technical Approach</h4>
+            <ul>
+                <li>Hybrid KG + vector retrieval architecture</li>
+                <li>Agent orchestration workflows with validation nodes</li>
+                <li>Provenance generation mechanisms</li>
+                <li>Evaluation benchmarks: vector-only RAG vs hybrid RAG vs fully structured KG agents</li>
+            </ul>
+
+            <h4 style="color:var(--vt-orange);margin:1rem 0 0.4rem">Expected Contributions</h4>
+            <ul>
+                <li>New architecture for agentic knowledge grounding</li>
+                <li>Provenance-aware reasoning benchmark</li>
+                <li>Evaluation metrics for grounded multi-agent systems</li>
+                <li>Open-source reference implementation</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Proposal 2 -->
+    <div class="proposal-card" onclick="toggleProposal(this)">
+        <div class="proposal-header">
+            <span class="proposal-rank">&#129352;</span>
+            <span class="proposal-title">A Structured Validation Framework for Knowledge-Grounded and Multi-Agent AI Systems</span>
+            <span class="proposal-badge badge-alt">Alternative</span>
+            <span class="chevron">&#9654;</span>
+        </div>
+        <div class="proposal-body">
+            <div class="proposal-categories">
+                <span class="cat-tag">Primary: Agentic Evaluation</span>
+                <span class="cat-tag secondary">Secondary: Responsible AI</span>
+            </div>
+
+            <div class="why-box">
+                <strong>Why #2?</strong> High strategic value. Amazon cares deeply about evaluation. Leverages validation matrix research. Safer and more focused than broad agent proposal.
+            </div>
+
+            <h4 style="color:var(--vt-orange);margin:1rem 0 0.4rem">Motivation</h4>
+            <p>While generative AI evaluation has focused on accuracy benchmarks and jailbreak robustness, there is limited infrastructure for evaluating structured reasoning correctness, multi-agent coordination reliability, knowledge grounding integrity, and provenance traceability.</p>
+
+            <h4 style="color:var(--vt-orange);margin:1rem 0 0.4rem">Research Questions</h4>
+            <ol class="rq-list">
+                <li>What dimensions define reliable grounded agent behavior?</li>
+                <li>How do structured grounding mechanisms impact agent robustness?</li>
+                <li>How can validation loops be embedded into agent execution pipelines?</li>
+                <li>How do we benchmark multi-agent failure modes?</li>
+            </ol>
+
+            <h4 style="color:var(--vt-orange);margin:1rem 0 0.4rem">Technical Approach</h4>
+            <ul>
+                <li>Validation matrix taxonomy</li>
+                <li>Benchmark tasks across reasoning domains</li>
+                <li>Agent failure scenario simulations</li>
+                <li>Structured logging and provenance scoring</li>
+                <li>Robustness evaluation under adversarial perturbations</li>
+            </ul>
+
+            <h4 style="color:var(--vt-orange);margin:1rem 0 0.4rem">Expected Contributions</h4>
+            <ul>
+                <li>First structured evaluation framework for KG-grounded agents</li>
+                <li>Metrics for agent traceability and reliability</li>
+                <li>Benchmarks for multi-agent coordination integrity</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Proposal 3 -->
+    <div class="proposal-card" onclick="toggleProposal(this)">
+        <div class="proposal-header">
+            <span class="proposal-rank">&#129353;</span>
+            <span class="proposal-title">Agentic Knowledge Graphs for AI-Accelerated Engineering and Digital Twin Systems</span>
+            <span class="proposal-badge badge-alt">Alternative</span>
+            <span class="chevron">&#9654;</span>
+        </div>
+        <div class="proposal-body">
+            <div class="proposal-categories">
+                <span class="cat-tag">Primary: AI for Science/Engineering</span>
+                <span class="cat-tag secondary">Secondary: Agentic AI</span>
+            </div>
+
+            <div class="why-box">
+                <strong>Why #3?</strong> Extremely compelling narrative. Aligns with Construction-AI + VTSI. Most visionary, highest impact. Slightly riskier&mdash;requires strong engineering framing.
+            </div>
+
+            <h4 style="color:var(--vt-orange);margin:1rem 0 0.4rem">Motivation</h4>
+            <p>Engineering workflows involve structured constraints, physical laws, and simulation models. Current generative systems struggle with physics-grounded reasoning and constraint validation.</p>
+
+            <h4 style="color:var(--vt-orange);margin:1rem 0 0.4rem">Research Questions</h4>
+            <ol class="rq-list">
+                <li>How can generative AI interact with physical simulation systems?</li>
+                <li>How can agents reason over engineering constraints?</li>
+                <li>How can digital twin feedback update agent knowledge graphs?</li>
+                <li>What are efficiency gains from structured reasoning vs unstructured LLM prompts?</li>
+            </ol>
+
+            <h4 style="color:var(--vt-orange);margin:1rem 0 0.4rem">Technical Approach</h4>
+            <ul>
+                <li>Structured engineering knowledge graphs</li>
+                <li>Simulation model integration (heat transfer, construction planning)</li>
+                <li>Multi-agent reasoning pipelines</li>
+                <li>Engineering decision accuracy evaluation</li>
+            </ul>
+
+            <h4 style="color:var(--vt-orange);margin:1rem 0 0.4rem">Expected Contributions</h4>
+            <ul>
+                <li>Framework for AI-accelerated engineering reasoning</li>
+                <li>Digital twin + agent integration architecture</li>
+                <li>Quantitative comparison vs prompt-only methods</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <h2 id="open-questions">Open Questions for Due Diligence</h2>
+
+    <div class="open-questions">
+        <h3>Questions to Revisit Before Submission</h3>
+        <ol>
+            <li><strong>Competitive landscape:</strong> What are other VT labs likely to propose? Overlap risk?</li>
+            <li><strong>Amazon strategic priorities:</strong> Which topics does Amazon care most about <em>this year</em>?</li>
+            <li><strong>Novelty depth:</strong> For PA-AKG, how does it differ from existing KG-RAG systems (e.g., GraphRAG, KGQA)? Need concrete differentiation beyond &ldquo;provenance.&rdquo;</li>
+            <li><strong>Feasibility:</strong> Can this produce meaningful results in 1 year with doctoral fellowship resources?</li>
+            <li><strong>Combinability:</strong> Can elements of Proposal 2 (evaluation) be folded into Proposal 1 as a deliverable?</li>
+            <li><strong>PI alignment:</strong> Which direction best matches the PI&rsquo;s existing publication record and funded work?</li>
+            <li><strong>Amazon-specific use cases:</strong> Which proposal best maps to Amazon product/service areas (Alexa, AWS, retail, logistics)?</li>
+        </ol>
+    </div>
+
+    <!-- ============================================================ -->
+    <h2 id="recommendation">Strategic Recommendation</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>If you want&hellip;</th>
+                <th>Choose</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Highest funding probability</strong></td>
+                <td>Proposal 1 &mdash; PA-AKG (Knowledge Grounding + Agentic AI)</td>
+            </tr>
+            <tr>
+                <td><strong>Safest + most publishable</strong></td>
+                <td>Proposal 2 &mdash; Validation Framework (Agentic Evaluation + Responsible AI)</td>
+            </tr>
+            <tr>
+                <td><strong>Most visionary + high impact</strong></td>
+                <td>Proposal 3 &mdash; AKG-DT (AI for Science + Agentic AI)</td>
+            </tr>
+            <tr>
+                <td><strong>Long-term trajectory</strong></td>
+                <td>Proposal 1 &mdash; builds the core &ldquo;Agentic KG&rdquo; research brand</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p><strong>Current selection: Proposal 1 (PA-AKG).</strong> With the extended deadline, now is a good time to pressure-test this choice against the open questions above&mdash;especially novelty differentiation vs. GraphRAG/CRAG and Amazon strategic alignment.</p>
+
+</div>
+
+<script>
+    function toggleProposal(card) {
+        card.classList.toggle('open');
+    }
+</script>
+
+</body>
+</html>
