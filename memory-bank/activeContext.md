@@ -1,50 +1,52 @@
 # Active Context
 
-_Last updated: 2026-03-05_
+_Last updated: 2026-03-10_
 
 ## Current Phase
 
-**Phase 1: Research Topic Analysis & Selection**
+**Phase 2: Abstract Refinement**
 
-Initial analysis complete with 3 ranked candidate directions. Deeper analysis needed before committing to a topic.
+Topic selected (PA-AKG). Abstract v1 and v2 drafts complete. Deep research on RAG & Graph Retrieval SOA completed. Now refining before submission.
 
 ## Current Focus
 
-- Deeper analysis of 3 candidate research directions
-- Competitive landscape and novelty gap assessment
-- Topic selection for abstract (due March 17, 2026)
+- Refine abstract v2 with sharper novelty claims and Amazon relevance
+- Get external feedback from collaborator
+- Final polish and portal submission by March 17, 2026
 
-## Initial Analysis Summary
+## Research Direction (Locked)
 
-Three candidate directions ranked (see `construction/design/initial-topic-analysis.md`):
+**Provenance-Aware Agentic Knowledge Graph Systems (PA-AKG)**
+- Primary Topic: Knowledge Grounding
+- Secondary Topic: Agentic AI
 
-1. **Provenance-Aware Agentic KG Systems** — Knowledge Grounding + Agentic AI (highest funding probability)
-2. **Structured Validation Framework** — Agentic Evaluation + Responsible AI (safest, most publishable)
-3. **AI-Accelerated Engineering Digital Twins** — AI for Science + Agentic AI (most visionary)
-
-Strongest CFP alignment: Knowledge Grounding, Agentic AI, Agentic Evaluation, AI for Science/Engineering
+Key framing (from SOA analysis): Hybrid retrieval (sparse+dense) is now mainstream. Our novelty is in provenance-aware KG grounding + validation loops — addressing gaps in multi-hop structured reasoning and fine-grained verifiable evidence chains.
 
 ## What's Working
 
 - Project infrastructure complete (memory-bank, construction, agents)
 - CFP requirements fully captured
-- Initial analysis provides strong starting point with 3 viable directions
-- GitHub repo and Pages site live
+- Abstract v1 complete (initial framing)
+- Abstract v2 complete (SOA-grounded, 2024-2026 citations)
+- Deep research report published on dashboard
+- GitHub repo, Pages site, and CI pipeline live
 
 ## What's Next
 
-- [ ] Deeper analysis of candidate directions (literature, novelty, feasibility)
-- [ ] Select primary research topic
-- [ ] Begin abstract drafting (due March 17, 2026)
+- [ ] Refine abstract — sharpen novelty vs. GraphRAG/CRAG, strengthen Amazon angle
+- [ ] Share with collaborator (chbrown13) for feedback
+- [ ] Final polish and page count check
+- [ ] Portal registration and submission (by March 17)
 
 ## Active Decisions
 
-- **Pending**: Research topic selection (3 candidates under evaluation)
+- **Decided**: PA-AKG as research direction
+- **Decided**: SOA-grounded framing for v2 (hybrid retrieval acknowledged as mainstream)
+- **Pending**: Which version (v1 or v2) to submit, or merge best of both
 
 ## Blockers
 
-- **Research topic not yet finalized** — deeper analysis needed before committing
-- **8 days until abstract deadline** (March 17, 2026)
+- None — 7 days until abstract deadline (March 17, 2026)
 
 ---
 
