@@ -1,0 +1,102 @@
+% ============================================================
+% Amazon-VT CFP 2026-2027 — 1-Page Abstract v4
+% Proposal 3: Agentic Engineering Framework
+% Primary: AI Accelerated Science & Engineering
+% Secondary: Agentic AI
+% Format: IEEE 2-column
+% ============================================================
+
+\documentclass[conference, 10pt]{IEEEtran}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{microtype}
+\usepackage{cite}
+\usepackage{enumitem}
+\setlist{nosep, leftmargin=1.5em, topsep=0.2em}
+\usepackage{tikz}
+\usetikzlibrary{positioning, arrows.meta, shapes.geometric, fit, calc}
+
+\title{Agentic Knowledge Graphs for AI-Accelerated\\Engineering Across Domains}
+\author{}
+\date{}
+
+% ============================================================
+\begin{document}
+
+\maketitle
+\thispagestyle{empty}
+
+\vspace{-1.5em}
+
+\noindent\textbf{Primary Topic:} AI Accelerated Science \& Engineering \hfill
+\textbf{Secondary:} Agentic AI
+
+\vspace{0.5em}
+
+Engineering disciplines---from construction and transportation to thermal systems and manufacturing---share a common computational structure: domain-specific constraints, governing physical laws, simulation models, and structured design artifacts that must be reasoned over jointly. Large language models (LLMs) have shown promise as reasoning assistants, but their application to engineering problems remains brittle: they hallucinate physical quantities~\cite{Ji2023HallucinationSurvey}, cannot enforce constraint satisfaction, and lack grounding in the structured ontologies and simulation feedback loops that define engineering practice. Meanwhile, physics-informed machine learning~\cite{Karniadakis2021PINN} and digital twin architectures~\cite{Tao2019DigitalTwin} have matured in isolation from generative AI, creating an integration gap between simulation-based engineering and the emerging agentic AI paradigm.
+
+This project proposes \textbf{Agentic Knowledge Graph Engineering (AKG-E)}, a domain-agnostic framework that enables LLM-powered agents to reason over structured engineering knowledge, interact with physics-based simulations, and validate outputs against domain constraints. Rather than building a point solution for a single engineering vertical, AKG-E provides a generalizable architecture: \textit{domain ontology layer} (engineering knowledge graphs encoding entities, constraints, physical laws, and design rules), \textit{simulation integration layer} (agent-callable interfaces to PDE solvers, finite element tools, and domain simulators), and \textit{constraint validation layer} (automated verification that agent-generated designs, analyses, and recommendations satisfy physical and regulatory constraints). Agents orchestrate across these layers, selecting between retrieval-augmented generation~\cite{Lewis2020RAG,AWSBedrockHybridSearch2024}, structured graph queries~\cite{Edge2024GraphRAG}, and simulation calls based on task requirements.
+
+\begin{figure}[t]
+    \centering
+    \resizebox{\columnwidth}{!}{%
+    \begin{tikzpicture}[
+        node distance=0.35cm and 0.25cm,
+        layerbox/.style={rectangle, rounded corners=3pt, draw=gray!60, fill=gray!8, minimum width=7.5cm, minimum height=0.7cm, align=center, font=\scriptsize},
+        dombox/.style={rectangle, rounded corners=3pt, draw=gray!50, fill=orange!6, minimum width=1.65cm, minimum height=1.1cm, align=center, font=\tiny},
+        agentbox/.style={rectangle, rounded corners=4pt, draw=black!70, fill=blue!8, minimum width=7.5cm, minimum height=0.7cm, align=center, font=\scriptsize\bfseries},
+        arr/.style={-{Stealth[length=4pt]}, thick, gray!50},
+    ]
+        % Domain applications (top)
+        \node[dombox] (con) {Construction\\[1pt]\tiny BOM, scheduling,\\safety constraints};
+        \node[dombox, right=0.15cm of con] (traf) {Transportation\\[1pt]\tiny Traffic flow,\\network optimization};
+        \node[dombox, right=0.15cm of traf] (therm) {Thermal/Energy\\[1pt]\tiny Heat transfer,\\HVAC design};
+        \node[dombox, right=0.15cm of therm] (mfg) {Manufacturing\\[1pt]\tiny Process planning,\\quality control};
+
+        % Domain ontology layer
+        \node[layerbox, below=0.4cm of $(con.south)!0.5!(mfg.south)$] (onto) {\textbf{Domain Ontology Layer} --- Engineering KGs: entities, constraints, physical laws, design rules};
+
+        % Simulation integration layer
+        \node[layerbox, below=0.25cm of onto] (sim) {\textbf{Simulation Integration Layer} --- PDE solvers, FEA tools, domain simulators (agent-callable)};
+
+        % Agent orchestration
+        \node[agentbox, below=0.25cm of sim] (agent) {Agent Orchestration --- RAG + Graph Queries + Simulation Calls + Constraint Validation};
+
+        % Constraint validation
+        \node[layerbox, below=0.25cm of agent] (val) {\textbf{Constraint Validation Layer} --- Physics checks, regulatory compliance, design rule verification};
+
+        % Output
+        \node[font=\scriptsize, below=0.3cm of val] (out) {\textit{Verified engineering outputs: designs, analyses, recommendations}};
+
+        % Arrows
+        \draw[arr] (con.south) -- (con.south |- onto.north);
+        \draw[arr] (traf.south) -- (traf.south |- onto.north);
+        \draw[arr] (therm.south) -- (therm.south |- onto.north);
+        \draw[arr] (mfg.south) -- (mfg.south |- onto.north);
+        \draw[arr] (onto) -- (sim);
+        \draw[arr] (sim) -- (agent);
+        \draw[arr] (agent) -- (val);
+        \draw[arr] (val) -- (out);
+
+        % Feedback loop
+        \draw[arr, dashed] (val.east) -- ++(0.4,0) |- (agent.east);
+    \end{tikzpicture}
+    }%
+    \caption{\textbf{AKG-E Framework.} A domain-agnostic architecture for AI-accelerated engineering. Domain applications plug into a shared ontology layer encoding engineering knowledge graphs. Agents orchestrate across structured retrieval, simulation interfaces, and constraint validation. A feedback loop ensures outputs satisfy physical and regulatory constraints before delivery.}
+    \label{fig:framework}
+    \vspace{-0.5em}
+\end{figure}
+
+The key insight is that engineering problems, despite domain differences, share structural commonalities that enable a \textit{general-purpose} agentic engineering framework. A construction scheduling agent reasoning over bill-of-materials constraints and a traffic optimization agent reasoning over network flow equations both require: (1)~structured knowledge representation that encodes domain entities and their relationships; (2)~interfaces to domain-specific simulation tools; (3)~constraint checking that prevents physically impossible or regulation-violating outputs; and (4)~provenance tracking that links agent recommendations to specific engineering knowledge and simulation results~\cite{OpenTelemetryGenAI2024}. AKG-E abstracts these shared requirements into reusable layers, while domain-specific engineering knowledge graphs and simulators are pluggable components.
+
+This research investigates: (1)~how engineering domain ontologies can be represented as knowledge graphs that enable both LLM-based reasoning and structured constraint queries; (2)~how agents should orchestrate across retrieval, graph reasoning, and simulation calls to solve multi-step engineering problems; (3)~what validation mechanisms ensure that agent-generated engineering outputs satisfy physical laws and domain constraints; and (4)~whether a domain-agnostic framework achieves competitive performance against domain-specific engineering AI systems.
+
+We will implement AKG-E with domain instantiations across \textbf{construction planning} (BOM reasoning, scheduling, safety compliance), \textbf{transportation systems} (traffic flow optimization, network design), and \textbf{thermal engineering} (heat transfer analysis, HVAC sizing). Experiments compare prompt-only LLM approaches, RAG-augmented methods, and the full AKG-E framework on engineering reasoning accuracy, constraint satisfaction rates, and simulation-grounded decision quality. Expected outcomes include the AKG-E open framework, domain-specific engineering knowledge graph templates, and reproducible benchmarks demonstrating that \textbf{structured, simulation-grounded agentic AI} substantially outperforms unstructured approaches for engineering problem-solving.
+
+\bibliographystyle{IEEEtran}
+\bibliography{references}
+
+\end{document}

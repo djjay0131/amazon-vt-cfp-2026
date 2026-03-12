@@ -32,7 +32,7 @@ jobs:
       - name: Build abstract PDFs
         run: |
           echo "## Abstract Builds" >> $GITHUB_STEP_SUMMARY
-          for dir in abstract abstract_v2 abstract_v3; do
+          for dir in abstract abstract_v2 abstract_v3 abstract_v4; do
             if [ -f "${dir}/main.tex" ]; then
               cd "${dir}"
               pdflatex -interaction=nonstopmode main.tex > /dev/null 2>&1
@@ -53,6 +53,7 @@ jobs:
           [ -f abstract/main.pdf ]    && cp abstract/main.pdf    docs/abstract.pdf
           [ -f abstract_v2/main.pdf ] && cp abstract_v2/main.pdf docs/abstract_v2.pdf
           [ -f abstract_v3/main.pdf ] && cp abstract_v3/main.pdf docs/abstract_v3.pdf
+          [ -f abstract_v4/main.pdf ] && cp abstract_v4/main.pdf docs/abstract_v4.pdf
           true
 
       - name: Setup Pages
