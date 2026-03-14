@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AKG-E Proposal &mdash; Amazon-VT CFP 2026-2027</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <style>
+        :root {
+            --amazon-orange: #FF9900;
+            --vt-maroon: #861F41;
+            --bg-dark: #0a0a0a;
+            --bg-card: #141414;
+            --text-primary: #e8e8e8;
+            --text-secondary: #a0a0a0;
+            --border: #2a2a2a;
+            --blue: #42a5f5;
+            --yellow: #ffc107;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.7;
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--vt-maroon), #4a1128);
+            border-bottom: 3px solid var(--amazon-orange);
+            padding: 2rem 1rem;
+            text-align: center;
+        }
+
+        .header h1 { font-size: 1.5rem; font-weight: 700; margin-bottom: 0.3rem; }
+        .header .subtitle { color: var(--amazon-orange); font-size: 0.95rem; }
+
+        .nav-bar {
+            background: var(--bg-card);
+            border-bottom: 1px solid var(--border);
+            padding: 0.6rem 1rem;
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .nav-bar a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.82rem;
+            padding: 0.3rem 0.7rem;
+            border-radius: 4px;
+            transition: all 0.2s;
+        }
+
+        .nav-bar a:hover { color: var(--amazon-orange); background: rgba(255,153,0,0.08); }
+        .nav-bar a.active { color: var(--amazon-orange); background: rgba(255,153,0,0.12); font-weight: 600; }
+
+        .container { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem 4rem; }
+
+        .rank-badge {
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            padding: 0.3rem 0.8rem;
+            border-radius: 4px;
+            background: rgba(66, 165, 245, 0.12);
+            color: var(--blue);
+            border: 1px solid rgba(66, 165, 245, 0.3);
+            margin-bottom: 1rem;
+        }
+
+        .topic-tags {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .topic-tag {
+            font-size: 0.78rem;
+            padding: 0.25rem 0.6rem;
+            border-radius: 4px;
+            display: inline-block;
+        }
+
+        .topic-tag.primary {
+            background: rgba(255, 153, 0, 0.15);
+            color: var(--amazon-orange);
+            border: 1px solid rgba(255, 153, 0, 0.3);
+        }
+
+        .topic-tag.secondary {
+            background: rgba(134, 31, 65, 0.2);
+            color: #d4758f;
+            border: 1px solid rgba(134, 31, 65, 0.4);
+        }
+
+        h2 {
+            color: var(--amazon-orange);
+            font-size: 1.2rem;
+            margin: 2rem 0 0.7rem;
+            padding-bottom: 0.3rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        p { margin: 0.5rem 0; color: var(--text-secondary); font-size: 0.92rem; }
+        strong { color: var(--text-primary); }
+
+        ul, ol { margin: 0.5rem 0 0.5rem 1.4rem; color: var(--text-secondary); font-size: 0.92rem; }
+        li { margin: 0.3rem 0; }
+
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1.2rem;
+            margin: 1rem 0;
+        }
+
+        .card h3 { margin-top: 0; color: var(--amazon-orange); font-size: 0.95rem; }
+
+        .reframe-box {
+            background: rgba(255, 193, 7, 0.06);
+            border: 1px solid rgba(255, 193, 7, 0.2);
+            border-left: 4px solid var(--yellow);
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1rem 0;
+        }
+
+        .reframe-box p { color: var(--text-primary); font-size: 0.9rem; }
+        .reframe-box strong { color: var(--yellow); }
+
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--amazon-orange);
+            text-decoration: none;
+            font-size: 0.9rem;
+            padding: 0.5rem 1rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            transition: all 0.2s;
+            margin-top: 0.5rem;
+        }
+
+        .download-btn:hover {
+            border-color: var(--amazon-orange);
+            background: rgba(255,153,0,0.05);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+            font-size: 0.88rem;
+        }
+
+        th, td {
+            padding: 0.5rem 0.7rem;
+            border: 1px solid var(--border);
+            text-align: left;
+        }
+
+        th {
+            background: var(--bg-card);
+            color: var(--amazon-orange);
+            font-weight: 600;
+            font-size: 0.78rem;
+            text-transform: uppercase;
+        }
+
+        td { color: var(--text-secondary); }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>AKG-E: Agentic Knowledge Graphs for Engineering</h1>
+        <div class="subtitle">Amazon Submission #2 &mdash; Most Distinctive Proposal</div>
+    </div>
+
+    <nav class="nav-bar">
+        <a href="index.html">Dashboard</a>
+        <a href="proposal-pakg.html">PA-AKG</a>
+        <a href="proposal-akge.html" class="active">AKG-E</a>
+        <a href="proposal-svf.html">SVF</a>
+        <a href="devils-advocate.html">Devil's Advocate</a>
+        <a href="topic-analysis.html">Topic Analysis</a>
+        <a href="deep-research-report.html">Deep Research</a>
+    </nav>
+
+    <div class="container">
+
+        <span class="rank-badge">#2 Ranked &mdash; Submitting to Amazon</span>
+
+        <div class="topic-tags">
+            <span class="topic-tag primary">Primary: AI for Science &amp; Engineering</span>
+            <span class="topic-tag secondary">Secondary: Agentic AI</span>
+        </div>
+
+        <h2>Title</h2>
+        <p style="font-size: 1rem; color: var(--text-primary); font-style: italic;">Agentic Knowledge Graphs for AI-Accelerated Engineering Across Domains</p>
+
+        <a href="abstract_v4.pdf" class="download-btn">&#128196; Download Abstract PDF (v4)</a>
+
+        <h2>Core Idea</h2>
+        <p>Domain-agnostic framework enabling LLM-powered agents to reason over structured engineering knowledge, interact with physics-based simulations, and validate outputs against domain constraints. Three generalizable layers: domain ontology, simulation integration, and constraint validation.</p>
+
+        <h2>Potential Reframing Under Consideration</h2>
+
+        <div class="reframe-box">
+            <p><strong>Under review:</strong> Narrowing from 3 generic domains to 2 concrete applications sharing a VVUQ (Verification, Validation, and Uncertainty Quantification) backbone. This addresses feasibility concerns and strengthens advisor alignment.</p>
+        </div>
+
+        <div class="card">
+            <h3>Application 1: Construction &mdash; Material Takeoff with Computer Vision</h3>
+            <p>Uses <strong>computer vision</strong> for automated material takeoff from construction plans/drawings. Feeds into BOM reasoning and cost estimation. Ties directly into the advisor's <strong>construction.ai</strong> initiative. KG layer encodes construction domain knowledge (materials, assemblies, building codes).</p>
+        </div>
+
+        <div class="card">
+            <h3>Application 2: Transportation &mdash; Digital Twin</h3>
+            <p>Builds a <strong>digital twin</strong> for traffic system modeling and optimization. Agent reasons over traffic flow models, network topology, and sensor data. KG layer encodes transportation domain knowledge (network constraints, flow equations).</p>
+        </div>
+
+        <div class="card">
+            <h3>Shared Component: VVUQ</h3>
+            <p>Both applications share <strong>VVUQ</strong> as the simulation/analysis backbone:</p>
+            <ul>
+                <li><strong>Construction:</strong> beam load analysis, structural integrity verification</li>
+                <li><strong>Transportation:</strong> traffic flow simulation, capacity analysis</li>
+                <li><strong>Thermal (cross-domain):</strong> heat transfer analysis, HVAC sizing</li>
+            </ul>
+            <p>VVUQ provides the rigorous validation layer that distinguishes this from pure LLM approaches and gives the framework a clear scientific identity.</p>
+        </div>
+
+        <h2>Three Layers (Current Abstract)</h2>
+        <ul>
+            <li><strong>Domain Ontology Layer</strong> &mdash; Engineering KGs encoding entities, constraints, physical laws, and design rules as pluggable, domain-specific components</li>
+            <li><strong>Simulation Integration Layer</strong> &mdash; PDE solvers, FEA tools, and domain simulators exposed as agent-callable tools for simulation-in-the-loop validation</li>
+            <li><strong>Constraint Validation Layer</strong> &mdash; Automatic verification of agent-generated designs against physical and regulatory constraints</li>
+        </ul>
+
+        <h2>Research Questions</h2>
+        <ol>
+            <li>How can engineering domain ontologies be represented as KGs enabling both LLM-based reasoning and structured constraint queries?</li>
+            <li>How should agents orchestrate across retrieval, graph reasoning, and simulation calls to solve multi-step engineering problems?</li>
+            <li>What simulation-in-the-loop validation mechanisms ensure agent outputs satisfy physical laws and domain constraints?</li>
+            <li>Does a domain-agnostic framework achieve competitive accuracy vs. domain-specific systems while reducing development cost?</li>
+        </ol>
+
+        <h2>Why #2</h2>
+
+        <div class="card">
+            <h3>Most Distinctive Narrative</h3>
+            <p>"AI agents that can do engineering" is a compelling, unique story. Nobody else is proposing agentic engineering frameworks with simulation-in-the-loop validation. Strong room to grow into a 3-4 page full proposal.</p>
+        </div>
+
+        <div class="card">
+            <h3>Advisor Alignment</h3>
+            <p>Advisor is in the Building &amp; Construction department. Directly aligns with the construction.ai initiative. Strong interest in thermal analysis and VVUQ components.</p>
+        </div>
+
+        <h2>Known Risks (from Devil's Advocate)</h2>
+        <ul>
+            <li><strong>Reviewer mismatch:</strong> AI for Science reviewers expect domain breakthroughs (AlphaFold), not tooling frameworks</li>
+            <li><strong>Feasibility:</strong> Original abstract promises 3 domains &mdash; reframing to 2 with VVUQ mitigates this</li>
+            <li><strong>Simulation integration:</strong> Exposing PDE solvers as agent-callable tools is a significant engineering challenge</li>
+        </ul>
+        <p style="font-size: 0.85rem; margin-top: 0.5rem;"><a href="devils-advocate.html" style="color: var(--amazon-orange);">Full risk analysis &rarr;</a></p>
+
+        <h2>Key Citations</h2>
+        <table>
+            <thead>
+                <tr><th>Citation</th><th>Paper</th><th>Year</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>Abramson2024AlphaFold3</td><td>Accurate structure prediction of biomolecular interactions with AlphaFold 3</td><td>2024</td></tr>
+                <tr><td>Merchant2023GNoME</td><td>Scaling deep learning for materials discovery (GNoME)</td><td>2023</td></tr>
+                <tr><td>Karniadakis2021PINN</td><td>Physics-informed machine learning</td><td>2021</td></tr>
+                <tr><td>Tao2019DigitalTwin</td><td>Digital Twin in Industry: State of the Art</td><td>2019</td></tr>
+                <tr><td>Edge2024GraphRAG</td><td>From Local to Global: A Graph RAG Approach</td><td>2024</td></tr>
+                <tr><td>Ji2023HallucinationSurvey</td><td>Survey of Hallucination in Natural Language Generation</td><td>2023</td></tr>
+            </tbody>
+        </table>
+
+        <h2>Remaining Work</h2>
+        <ul>
+            <li>Consider reframing around 2 applications + VVUQ</li>
+            <li>Advisor (Building &amp; Construction dept) review and feedback</li>
+            <li>Final language polish and prose tightening</li>
+            <li>Verify 1-page constraint with final formatting</li>
+        </ul>
+
+    </div>
+</body>
+</html>

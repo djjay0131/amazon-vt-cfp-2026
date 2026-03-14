@@ -44,6 +44,28 @@
             font-size: 0.95rem;
         }
 
+        .nav-bar {
+            background: var(--bg-card);
+            border-bottom: 1px solid var(--border);
+            padding: 0.6rem 1rem;
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .nav-bar a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.82rem;
+            padding: 0.3rem 0.7rem;
+            border-radius: 4px;
+            transition: all 0.2s;
+        }
+
+        .nav-bar a:hover { color: var(--amazon-orange); background: rgba(255,153,0,0.08); }
+        .nav-bar a.active { color: var(--amazon-orange); background: rgba(255,153,0,0.12); font-weight: 600; }
+
         .back-link {
             display: inline-block;
             margin: 1.5rem 0 0;
@@ -218,6 +240,15 @@
     <div class="subtitle">Deep Research Report &mdash; State of the Art Analysis</div>
     <a href="index.html" class="back-link">&larr; Back to Dashboard</a>
 </div>
+
+<nav class="nav-bar">
+    <a href="index.html">Dashboard</a>
+    <a href="submission-strategy.html">Original Strategy</a>
+    <a href="devils-advocate.html">Devil's Advocate</a>
+    <a href="topic-analysis.html">Topic Analysis</a>
+    <a href="deep-research-report.html" class="active">Deep Research</a>
+    <a href="pa-akg-archive.html">PA-AKG Details</a>
+</nav>
 
 <div class="container">
 

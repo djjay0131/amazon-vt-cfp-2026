@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PA-AKG (Archived) &mdash; Amazon-VT CFP 2026-2027</title>
+    <title>PA-AKG Proposal &mdash; Amazon-VT CFP 2026-2027</title>
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <style>
         :root {
@@ -14,7 +14,7 @@
             --text-primary: #e8e8e8;
             --text-secondary: #a0a0a0;
             --border: #2a2a2a;
-            --yellow: #ffc107;
+            --green: #4caf50;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -33,17 +33,8 @@
             text-align: center;
         }
 
-        .header h1 { font-size: 1.6rem; font-weight: 700; margin-bottom: 0.3rem; }
+        .header h1 { font-size: 1.5rem; font-weight: 700; margin-bottom: 0.3rem; }
         .header .subtitle { color: var(--amazon-orange); font-size: 0.95rem; }
-
-        .back-link {
-            display: inline-block;
-            margin: 1.5rem 0 0;
-            color: var(--amazon-orange);
-            text-decoration: none;
-            font-size: 0.9rem;
-        }
-        .back-link:hover { text-decoration: underline; }
 
         .nav-bar {
             background: var(--bg-card);
@@ -69,7 +60,7 @@
 
         .container { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem 4rem; }
 
-        .archive-badge {
+        .rank-badge {
             display: inline-block;
             font-size: 0.75rem;
             font-weight: 700;
@@ -77,43 +68,51 @@
             letter-spacing: 0.05em;
             padding: 0.3rem 0.8rem;
             border-radius: 4px;
-            background: rgba(255, 193, 7, 0.12);
-            color: var(--yellow);
-            border: 1px solid rgba(255, 193, 7, 0.3);
+            background: rgba(76, 175, 80, 0.12);
+            color: var(--green);
+            border: 1px solid rgba(76, 175, 80, 0.3);
             margin-bottom: 1rem;
         }
 
-        .archive-note {
-            background: rgba(255, 193, 7, 0.06);
-            border: 1px solid rgba(255, 193, 7, 0.2);
-            border-left: 4px solid var(--yellow);
-            border-radius: 8px;
-            padding: 1rem 1.2rem;
-            margin-bottom: 2rem;
+        .topic-tags {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
         }
 
-        .archive-note p { color: var(--text-primary); font-size: 0.9rem; margin: 0.3rem 0; }
-        .archive-note strong { color: var(--yellow); }
+        .topic-tag {
+            font-size: 0.78rem;
+            padding: 0.25rem 0.6rem;
+            border-radius: 4px;
+            display: inline-block;
+        }
+
+        .topic-tag.primary {
+            background: rgba(255, 153, 0, 0.15);
+            color: var(--amazon-orange);
+            border: 1px solid rgba(255, 153, 0, 0.3);
+        }
+
+        .topic-tag.secondary {
+            background: rgba(134, 31, 65, 0.2);
+            color: #d4758f;
+            border: 1px solid rgba(134, 31, 65, 0.4);
+        }
 
         h2 {
             color: var(--amazon-orange);
-            font-size: 1.25rem;
+            font-size: 1.2rem;
             margin: 2rem 0 0.7rem;
             padding-bottom: 0.3rem;
             border-bottom: 1px solid var(--border);
         }
 
-        h3 {
-            color: var(--text-primary);
-            font-size: 1.05rem;
-            margin: 1.2rem 0 0.4rem;
-        }
-
         p { margin: 0.5rem 0; color: var(--text-secondary); font-size: 0.92rem; }
+        strong { color: var(--text-primary); }
 
         ul, ol { margin: 0.5rem 0 0.5rem 1.4rem; color: var(--text-secondary); font-size: 0.92rem; }
         li { margin: 0.3rem 0; }
-        li strong { color: var(--text-primary); }
 
         .card {
             background: var(--bg-card);
@@ -124,6 +123,38 @@
         }
 
         .card h3 { margin-top: 0; color: var(--amazon-orange); font-size: 0.95rem; }
+
+        .strength-box {
+            background: rgba(76, 175, 80, 0.06);
+            border: 1px solid rgba(76, 175, 80, 0.2);
+            border-left: 4px solid var(--green);
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 1rem 0;
+        }
+
+        .strength-box p { color: var(--text-primary); font-size: 0.9rem; }
+        .strength-box strong { color: var(--green); }
+
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--amazon-orange);
+            text-decoration: none;
+            font-size: 0.9rem;
+            padding: 0.5rem 1rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            transition: all 0.2s;
+            margin-top: 0.5rem;
+        }
+
+        .download-btn:hover {
+            border-color: var(--amazon-orange);
+            background: rgba(255,153,0,0.05);
+        }
 
         table {
             width: 100%;
@@ -144,61 +175,22 @@
             font-weight: 600;
             font-size: 0.78rem;
             text-transform: uppercase;
-            letter-spacing: 0.03em;
         }
 
         td { color: var(--text-secondary); }
-
-        .downloads-list { list-style: none; margin-left: 0; padding-left: 0; }
-
-        .downloads-list li {
-            margin: 0.5rem 0;
-        }
-
-        .downloads-list a {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            color: var(--amazon-orange);
-            text-decoration: none;
-            font-size: 0.88rem;
-            padding: 0.4rem 0.7rem;
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 6px;
-            transition: all 0.2s;
-        }
-
-        .downloads-list a:hover {
-            border-color: var(--amazon-orange);
-            background: rgba(255,153,0,0.05);
-        }
-
-        .venue-card {
-            display: inline-block;
-            font-size: 0.82rem;
-            padding: 0.3rem 0.7rem;
-            border-radius: 20px;
-            border: 1px solid var(--border);
-            color: var(--text-secondary);
-            background: var(--bg-card);
-            margin: 0.2rem 0.3rem 0.2rem 0;
-        }
     </style>
 </head>
 <body>
     <div class="header">
         <h1>PA-AKG: Provenance-Aware Agentic Knowledge Graphs</h1>
-        <div class="subtitle">Archived Proposal &mdash; Reserved for Other Initiatives</div>
-        <a href="index.html" class="back-link">&larr; Back to Dashboard</a>
+        <div class="subtitle">Amazon Submission #1 &mdash; Highest Ranked Proposal</div>
     </div>
 
     <nav class="nav-bar">
         <a href="index.html">Dashboard</a>
-        <a href="proposal-pakg.html">PA-AKG</a>
+        <a href="proposal-pakg.html" class="active">PA-AKG</a>
         <a href="proposal-akge.html">AKG-E</a>
         <a href="proposal-svf.html">SVF</a>
-        <a href="downloads.html">Downloads</a>
         <a href="devils-advocate.html">Devil's Advocate</a>
         <a href="topic-analysis.html">Topic Analysis</a>
         <a href="deep-research-report.html">Deep Research</a>
@@ -206,20 +198,17 @@
 
     <div class="container">
 
-        <span class="archive-badge">Archived &mdash; Not Submitted to Amazon</span>
+        <span class="rank-badge">#1 Ranked &mdash; Submitting to Amazon</span>
 
-        <div class="archive-note">
-            <p><strong>Why archived?</strong> PA-AKG shares "Agentic AI" as a secondary topic with our AKG-E submission, creating reviewer overlap risk. Its core idea (hybrid retrieval, KG-RAG) is increasingly productized at Amazon (Bedrock Knowledge Bases). Knowledge Grounding is broadly funded &mdash; PA-AKG is a stronger fit for other venues.</p>
-            <p>See the <a href="submission-strategy.html" style="color: var(--amazon-orange);">full submission strategy analysis</a> for details.</p>
+        <div class="topic-tags">
+            <span class="topic-tag primary">Primary: Knowledge Grounding</span>
+            <span class="topic-tag secondary">Secondary: Agentic AI</span>
         </div>
 
-        <h2>Proposal Overview</h2>
+        <h2>Title</h2>
+        <p style="font-size: 1rem; color: var(--text-primary); font-style: italic;">Provenance-Aware Agentic Knowledge Graph Systems for Reliable Multi-Source Grounded AI</p>
 
-        <div class="card">
-            <h3>Title</h3>
-            <p style="font-size: 1rem; color: var(--text-primary); font-style: italic;">Provenance-Aware Agentic Knowledge Graph Systems for Reliable Multi-Source Grounded AI</p>
-            <p style="margin-top: 0.5rem;"><strong>Primary:</strong> Knowledge Grounding &nbsp;&middot;&nbsp; <strong>Secondary:</strong> Agentic AI</p>
-        </div>
+        <a href="abstract_v2.pdf" class="download-btn">&#128196; Download Abstract PDF (v2)</a>
 
         <h2>Core Idea</h2>
         <p>Hybrid architecture integrating structured knowledge graphs, multi-source retrieval, and agent orchestration for reliable grounded reasoning with verifiable provenance. Agents dynamically select among retrieval pathways (dense, sparse, structured graph queries, hybrid) based on task context and confidence.</p>
@@ -249,25 +238,26 @@
             <li>Case studies: scientific research discovery + engineering decision-support</li>
         </ul>
 
-        <h2>Target Venues</h2>
-        <p>PA-AKG is well-suited for venues where Knowledge Grounding is a primary focus:</p>
-        <div style="margin: 0.8rem 0;">
-            <span class="venue-card">NSF &mdash; Knowledge-Intensive AI</span>
-            <span class="venue-card">DARPA &mdash; AI Reasoning</span>
-            <span class="venue-card">Google Research Programs</span>
-            <span class="venue-card">Microsoft Research</span>
-            <span class="venue-card">Meta Research</span>
-            <span class="venue-card">ACL / EMNLP / NAACL Workshops</span>
+        <h2>Why #1</h2>
+
+        <div class="strength-box">
+            <p><strong>Highest scores across all four evaluation dimensions:</strong> reviewer alignment (High), novelty headroom (High), feasibility (High), Amazon relevance (High). No other proposal achieved High on all four.</p>
+        </div>
+
+        <div class="card">
+            <h3>Feasibility Advantage</h3>
+            <p>Most deliverable in 1 year. Clearly scoped system with natural ablation points: one hybrid retrieval+KG system, provenance generation layer, validation agents, and ablation benchmarks (vector RAG vs. hybrid vs. GraphRAG vs. PA-AKG).</p>
+        </div>
+
+        <div class="card">
+            <h3>Amazon Alignment</h3>
+            <p>Amazon knows retrieval deeply (Bedrock KB). Their reviewers understand the remaining hard problems: cross-source entity-level fusion, fine-grained provenance, validation agents for retrieval failure recovery. PA-AKG targets exactly these gaps.</p>
         </div>
 
         <h2>Key Citations</h2>
         <table>
             <thead>
-                <tr>
-                    <th>Citation</th>
-                    <th>Paper</th>
-                    <th>Year</th>
-                </tr>
+                <tr><th>Citation</th><th>Paper</th><th>Year</th></tr>
             </thead>
             <tbody>
                 <tr><td>Lewis2020RAG</td><td>Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks</td><td>2020</td></tr>
@@ -275,17 +265,15 @@
                 <tr><td>Edge2024GraphRAG</td><td>From Local to Global: A Graph RAG Approach</td><td>2024</td></tr>
                 <tr><td>Yan2024CRAG</td><td>Corrective Retrieval Augmented Generation</td><td>2024</td></tr>
                 <tr><td>Ji2023HallucinationSurvey</td><td>Survey of Hallucination in Natural Language Generation</td><td>2023</td></tr>
-                <tr><td>OpenAIFunctionCalling2025</td><td>Function Calling Guide</td><td>2025</td></tr>
                 <tr><td>OpenTelemetryGenAI2024</td><td>Semantic Conventions for Generative AI Systems</td><td>2024</td></tr>
             </tbody>
         </table>
 
-        <h2>Related Downloads</h2>
-        <ul class="downloads-list">
-            <li><a href="abstract_v2.pdf">&#128196; Abstract v2 (PDF) &mdash; PA-AKG SOA-grounded</a></li>
-            <li><a href="abstract.pdf">&#128196; Abstract v1 (PDF) &mdash; PA-AKG original</a></li>
-            <li><a href="deep-research-report.html">&#128218; Deep Research Report &mdash; RAG &amp; Graph Retrieval SOA</a></li>
-            <li><a href="topic-analysis.html">&#128269; Topic Analysis &mdash; CFP Alignment &amp; Ranked Proposals</a></li>
+        <h2>Remaining Work</h2>
+        <ul>
+            <li>Final language polish and prose tightening</li>
+            <li>Dr. Brown review and feedback incorporation</li>
+            <li>Verify 1-page constraint with final formatting</li>
         </ul>
 
     </div>

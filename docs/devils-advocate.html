@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Devil's Advocate Analysis &mdash; Amazon-VT CFP 2026-2027</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <style>
+        :root {
+            --amazon-orange: #FF9900;
+            --vt-maroon: #861F41;
+            --bg-dark: #0a0a0a;
+            --bg-card: #141414;
+            --text-primary: #e8e8e8;
+            --text-secondary: #a0a0a0;
+            --border: #2a2a2a;
+            --green: #4caf50;
+            --yellow: #ffc107;
+            --red: #ef5350;
+            --blue: #42a5f5;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.7;
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--vt-maroon), #4a1128);
+            border-bottom: 3px solid var(--amazon-orange);
+            padding: 2rem 1rem;
+            text-align: center;
+        }
+
+        .header h1 { font-size: 1.6rem; font-weight: 700; margin-bottom: 0.3rem; }
+        .header .subtitle { color: var(--amazon-orange); font-size: 0.95rem; }
+
+        /* Navigation */
+        .nav-bar {
+            background: var(--bg-card);
+            border-bottom: 1px solid var(--border);
+            padding: 0.6rem 1rem;
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .nav-bar a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.82rem;
+            padding: 0.3rem 0.7rem;
+            border-radius: 4px;
+            transition: all 0.2s;
+        }
+
+        .nav-bar a:hover { color: var(--amazon-orange); background: rgba(255,153,0,0.08); }
+        .nav-bar a.active { color: var(--amazon-orange); background: rgba(255,153,0,0.12); font-weight: 600; }
+
+        .container { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem 4rem; }
+
+        h2 {
+            color: var(--amazon-orange);
+            font-size: 1.3rem;
+            margin: 2.5rem 0 0.8rem;
+            padding-bottom: 0.3rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        h3 {
+            color: var(--text-primary);
+            font-size: 1.05rem;
+            margin: 1.5rem 0 0.5rem;
+        }
+
+        p { margin: 0.6rem 0; color: var(--text-secondary); font-size: 0.92rem; }
+
+        strong { color: var(--text-primary); }
+        em { color: var(--text-secondary); }
+
+        ul, ol { margin: 0.5rem 0 0.5rem 1.4rem; color: var(--text-secondary); font-size: 0.92rem; }
+        li { margin: 0.3rem 0; }
+
+        /* Verdict box */
+        .verdict-box {
+            background: linear-gradient(135deg, rgba(255,153,0,0.08), var(--bg-card));
+            border: 1px solid var(--amazon-orange);
+            border-left: 4px solid var(--amazon-orange);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .verdict-box h3 {
+            color: var(--amazon-orange);
+            margin: 0 0 0.8rem;
+            font-size: 1.1rem;
+        }
+
+        .verdict-box p { color: var(--text-primary); }
+
+        /* Outcome box */
+        .outcome-box {
+            background: linear-gradient(135deg, rgba(76,175,80,0.08), var(--bg-card));
+            border: 1px solid var(--green);
+            border-left: 4px solid var(--green);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .outcome-box h3 {
+            color: var(--green);
+            margin: 0 0 0.8rem;
+            font-size: 1.1rem;
+        }
+
+        .outcome-box p { color: var(--text-primary); font-size: 0.92rem; }
+
+        /* Cards */
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1.2rem;
+            margin: 1rem 0;
+        }
+
+        .card h4 {
+            color: var(--amazon-orange);
+            font-size: 0.95rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .card p { margin: 0.4rem 0; font-size: 0.9rem; }
+        .card ul { margin: 0.5rem 0 0 1.2rem; font-size: 0.9rem; }
+        .card li { margin: 0.3rem 0; }
+
+        .card.weakness {
+            border-left: 3px solid var(--red);
+        }
+
+        .card.strength {
+            border-left: 3px solid var(--green);
+        }
+
+        .card.neutral {
+            border-left: 3px solid var(--yellow);
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+            font-size: 0.88rem;
+        }
+
+        th, td {
+            padding: 0.55rem 0.7rem;
+            border: 1px solid var(--border);
+            text-align: left;
+        }
+
+        th {
+            background: var(--bg-card);
+            color: var(--amazon-orange);
+            font-weight: 600;
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+        }
+
+        td { color: var(--text-secondary); }
+
+        .highlight-row { background: rgba(76, 175, 80, 0.08) !important; }
+        .highlight-row td { color: var(--text-primary); font-weight: 500; }
+
+        /* Section numbering */
+        .section-num {
+            display: inline-block;
+            width: 1.8rem;
+            height: 1.8rem;
+            line-height: 1.8rem;
+            text-align: center;
+            border-radius: 50%;
+            background: rgba(255,153,0,0.15);
+            color: var(--amazon-orange);
+            font-weight: 700;
+            font-size: 0.85rem;
+            margin-right: 0.5rem;
+            vertical-align: middle;
+        }
+
+        /* Ranking */
+        .ranking {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+            margin: 1rem 0;
+        }
+
+        .rank-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 0.8rem 1rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+        }
+
+        .rank-num {
+            font-size: 1.5rem;
+            font-weight: 800;
+            min-width: 2rem;
+            text-align: center;
+        }
+
+        .rank-1 .rank-num { color: var(--green); }
+        .rank-2 .rank-num { color: var(--yellow); }
+        .rank-3 .rank-num { color: var(--red); }
+
+        .rank-info { flex: 1; }
+        .rank-name { font-weight: 600; font-size: 0.95rem; }
+        .rank-reason { font-size: 0.82rem; color: var(--text-secondary); margin-top: 0.1rem; }
+
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+
+        @media (max-width: 768px) {
+            .comparison-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Devil's Advocate Analysis</h1>
+        <div class="subtitle">Stress-Testing the Submission Strategy &mdash; March 14, 2026</div>
+    </div>
+
+    <nav class="nav-bar">
+        <a href="index.html">Dashboard</a>
+        <a href="proposal-pakg.html">PA-AKG</a>
+        <a href="proposal-akge.html">AKG-E</a>
+        <a href="proposal-svf.html">SVF</a>
+        <a href="downloads.html">Downloads</a>
+        <a href="devils-advocate.html" class="active">Devil's Advocate</a>
+        <a href="topic-analysis.html">Topic Analysis</a>
+        <a href="deep-research-report.html">Deep Research</a>
+    </nav>
+
+    <div class="container">
+
+        <p style="font-size: 0.95rem; color: var(--text-primary); margin-bottom: 1rem;">The original submission strategy recommended <strong>SVF + AKG-E</strong> for Amazon, reserving PA-AKG for other initiatives. This page challenges that decision by advocating honestly for PA-AKG.</p>
+
+        <div class="verdict-box">
+            <h3>Verdict: PA-AKG Is Our Strongest Proposal</h3>
+            <p>Our own data ranks PA-AKG #1 across every evaluation dimension. The arguments for excluding it were strategically reasonable but masked genuine weaknesses in SVF and AKG-E that this analysis surfaces.</p>
+        </div>
+
+        <div class="outcome-box">
+            <h3>Outcome: Strategy Revised to PA-AKG + AKG-E</h3>
+            <p>Based on this analysis, the submission plan has been updated: <strong>PA-AKG</strong> (Knowledge Grounding) as the primary Amazon submission, <strong>AKG-E</strong> (AI for Science &amp; Engineering) as the second. SVF is reserved for other evaluation-focused venues.</p>
+        </div>
+
+        <!-- Section 1 -->
+        <h2><span class="section-num">1</span> Our Own Data Says PA-AKG Is Best</h2>
+
+        <p>The deep-research-topics due diligence rated Knowledge Grounding as <strong>#1 across all four dimensions</strong>:</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Knowledge Grounding (PA-AKG)</th>
+                    <th>Agentic Eval (SVF)</th>
+                    <th>AI for Sci/Eng (AKG-E)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="highlight-row">
+                    <td><strong>Reviewer Alignment</strong></td>
+                    <td><strong>High</strong></td>
+                    <td>Med&ndash;High</td>
+                    <td>Medium</td>
+                </tr>
+                <tr class="highlight-row">
+                    <td><strong>Novelty Headroom</strong></td>
+                    <td><strong>High</strong></td>
+                    <td>High</td>
+                    <td>High</td>
+                </tr>
+                <tr class="highlight-row">
+                    <td><strong>Feasibility (1yr)</strong></td>
+                    <td><strong>High</strong></td>
+                    <td>Med</td>
+                    <td>Med</td>
+                </tr>
+                <tr class="highlight-row">
+                    <td><strong>Amazon Relevance</strong></td>
+                    <td><strong>High</strong></td>
+                    <td>High</td>
+                    <td>Med&ndash;High</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p>We ranked it #1 and then decided not to submit it. The strategic reasoning made sense on paper (topic overlap, portability), but the core fact remains: <strong>we chose not to submit our strongest-fit proposal</strong>.</p>
+
+        <!-- Section 2 -->
+        <h2><span class="section-num">2</span> "Already Productized" Actually Helps PA-AKG</h2>
+
+        <p>The original strategy argued that Bedrock KB having hybrid search makes PA-AKG feel incremental. But flip it: <strong>Amazon knows retrieval deeply, which means their reviewers understand the remaining hard problems.</strong> They know Bedrock KB can't do:</p>
+
+        <ul>
+            <li>Cross-source entity-level fusion (KG + DB + documents)</li>
+            <li>Fine-grained provenance (span-level, not document-level)</li>
+            <li>Validation agents that detect and recover from retrieval failures</li>
+            <li>Auditable evidence chains across multi-step agent workflows</li>
+        </ul>
+
+        <p>PA-AKG targets exactly these gaps. It's easier to pitch an improvement to something Amazon uses daily than a brand-new engineering framework they don't have context for.</p>
+
+        <!-- Section 3 -->
+        <h2><span class="section-num">3</span> Feasibility: PA-AKG Is Most Deliverable in 1 Year</h2>
+
+        <p>This is the strongest argument for PA-AKG and the most honest weakness of the other two.</p>
+
+        <div class="card weakness">
+            <h4>AKG-E Requires in 1 Year:</h4>
+            <ul>
+                <li>Domain KGs for construction, transportation, AND thermal engineering</li>
+                <li>Simulator integrations (PDE solvers, FEA tools exposed as agent tools)</li>
+                <li>Constraint validation systems for each domain</li>
+                <li>Evaluation benchmarks across all three domains</li>
+            </ul>
+            <p>That's extremely ambitious. Even getting ONE domain working well would be impressive. The abstract promises three.</p>
+        </div>
+
+        <div class="card weakness">
+            <h4>SVF Requires in 1 Year:</h4>
+            <ul>
+                <li>A full evaluation toolkit</li>
+                <li>Benchmark tasks spanning scientific reasoning + enterprise decision-support</li>
+                <li>Agent failure scenario simulations</li>
+                <li>Structured provenance scoring metrics</li>
+                <li>"The first structured evaluation framework" &mdash; a very high bar</li>
+            </ul>
+            <p>Good benchmarks are notoriously hard to build. GAIA and AgentBench took large teams.</p>
+        </div>
+
+        <div class="card strength">
+            <h4>PA-AKG Requires in 1 Year:</h4>
+            <ul>
+                <li>One hybrid retrieval+KG system with dynamic pathway selection</li>
+                <li>Provenance generation layer</li>
+                <li>Validation agents</li>
+                <li>Ablation benchmarks (vector RAG vs. hybrid vs. GraphRAG vs. PA-AKG)</li>
+            </ul>
+            <p>This is a clearly scoped system with natural ablation points. <strong>Most deliverable of the three.</strong></p>
+        </div>
+
+        <!-- Section 4 -->
+        <h2><span class="section-num">4</span> Honest Weaknesses of SVF</h2>
+
+        <div class="card weakness">
+            <h4>The "Meta" Problem</h4>
+            <p>SVF evaluates systems but doesn't build one. Reviewers who want to see systems being built &mdash; not just measured &mdash; may find this less compelling. "We'll create an evaluation framework" doesn't have the same impact as "we'll build a system that does X."</p>
+        </div>
+
+        <div class="card weakness">
+            <h4>Evaluation Dimensions Feel Obvious</h4>
+            <p>"Grounding integrity, provenance traceability, reasoning robustness, coordination reliability" &mdash; a tough reviewer could say: <em>"Obviously these matter. What's the research insight? What surprised you? What's the hypothesis being tested?"</em> SVF describes what to measure but the <strong>why these four specifically</strong> is asserted, not derived.</p>
+        </div>
+
+        <div class="card weakness">
+            <h4>"First Structured Evaluation Framework" Is an Overclaim</h4>
+            <p>There are existing evaluation frameworks for RAG (RAGAS, ARES, TruLens). SVF's claim to novelty needs to be sharper &mdash; it's more like "first framework that evaluates grounding + provenance + coordination together for multi-agent systems." But that's a mouthful.</p>
+        </div>
+
+        <div class="card weakness">
+            <h4>Coordination Reliability Is Underdeveloped</h4>
+            <p>The fourth dimension is the weakest in the abstract. How do you actually benchmark "cascade prevention" or "failure recovery"? The approach is vague compared to the other three dimensions which have clearer metrics.</p>
+        </div>
+
+        <!-- Section 5 -->
+        <h2><span class="section-num">5</span> Honest Weaknesses of AKG-E</h2>
+
+        <div class="card weakness">
+            <h4>Our Own Report Warned About Reviewer Mismatch</h4>
+            <p>The deep-research-topics.md says: <em>"risk is reviewer mismatch if the proposal reads as 'general agent/KG' without a crisp scientific objective."</em> AKG-E is a general framework. AI for Science reviewers expect domain breakthroughs like AlphaFold &mdash; systems that advance science, not tooling frameworks.</p>
+        </div>
+
+        <div class="card weakness">
+            <h4>AlphaFold3/GNoME Anchoring Is a Stretch</h4>
+            <p>Those are domain-specific scientific breakthroughs (protein folding, materials stability prediction). AKG-E is a general agent framework applied to engineering. The comparison actually highlights the gap: AlphaFold3 <em>is</em> the science; AKG-E is infrastructure <em>for</em> science. A reviewer could see this as apples to oranges.</p>
+        </div>
+
+        <div class="card weakness">
+            <h4>"Constraint Violation Reduction Rates" Is Vague</h4>
+            <p>Against what baseline? What specific engineering tasks? What constraints? The abstract names categories (BOM reasoning, schedule risk) but no concrete problem instances.</p>
+        </div>
+
+        <div class="card weakness">
+            <h4>Simulation Integration Layer Is Hand-Waved</h4>
+            <p>Exposing PDE solvers as "agent-callable tools" is a massive impedance mismatch problem. How does a natural language agent formulate inputs for a finite element solver? This is arguably a research project unto itself.</p>
+        </div>
+
+        <!-- Section 6 -->
+        <h2><span class="section-num">6</span> The Overlap Argument Is Overstated</h2>
+
+        <p>The original strategy argued that PA-AKG + AKG-E sharing "Agentic AI" as secondary creates overlap risk. But honestly:</p>
+
+        <ul>
+            <li><strong>Different primary topics go to different reviewer pools.</strong> Knowledge Grounding reviewers are not the same as AI for Science reviewers.</li>
+            <li><strong>"Agentic AI" as secondary is extremely common</strong> &mdash; it's the hottest category. Plenty of submissions will use it as secondary.</li>
+            <li>PA-AKG and AKG-E are <strong>genuinely different proposals</strong> &mdash; one about retrieval/provenance, one about simulation/engineering.</li>
+        </ul>
+
+        <p>The overlap is cosmetic, not conceptual.</p>
+
+        <!-- Section 7 -->
+        <h2><span class="section-num">7</span> Alternative Combinations Considered</h2>
+
+        <table>
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>PA-AKG + AKG-E (revised)</th>
+                    <th>SVF + AKG-E (original)</th>
+                    <th>PA-AKG + SVF</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Topic coverage</strong></td>
+                    <td>3/9</td>
+                    <td>4/9</td>
+                    <td>4/9</td>
+                </tr>
+                <tr>
+                    <td><strong>Topic overlap</strong></td>
+                    <td>Agentic AI (cosmetic)</td>
+                    <td>None</td>
+                    <td>None</td>
+                </tr>
+                <tr>
+                    <td><strong>Combined feasibility</strong></td>
+                    <td><strong>High + Med</strong></td>
+                    <td>Med + Med</td>
+                    <td>High + Med</td>
+                </tr>
+                <tr>
+                    <td><strong>Amazon alignment</strong></td>
+                    <td><strong>Both strong</strong></td>
+                    <td>SVF strong, AKG-E uncertain</td>
+                    <td>Both hit Bedrock pain points</td>
+                </tr>
+                <tr>
+                    <td><strong>Reviewer mismatch risk</strong></td>
+                    <td>Low for PA-AKG, Med for AKG-E</td>
+                    <td>Medium for AKG-E</td>
+                    <td><strong>Low for both</strong></td>
+                </tr>
+                <tr>
+                    <td><strong>Narrative distinctiveness</strong></td>
+                    <td><strong>Very different proposals</strong></td>
+                    <td>Different proposals</td>
+                    <td>Thematically close</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- Section 8 -->
+        <h2><span class="section-num">8</span> Honest Limitations of This Analysis</h2>
+
+        <div class="card neutral">
+            <h4>PA-AKG's Real Weakness: Crowded Space</h4>
+            <p>"Better RAG with knowledge graphs" proposals are common. Even with the provenance angle, a reviewer who's seen 20 KG-RAG proposals might struggle to see PA-AKG as distinct. AKG-E, for all its risks, is <em>distinctive</em> &mdash; nobody else is proposing agentic engineering frameworks with simulation-in-the-loop.</p>
+        </div>
+
+        <div class="card neutral">
+            <h4>The "Other Initiatives" Argument Was Valid</h4>
+            <p>Knowledge Grounding IS broadly fundable. AKG-E and SVF are more niche and harder to place elsewhere. The Amazon CFP may genuinely be the best home for them.</p>
+        </div>
+
+        <div class="card neutral">
+            <h4>AKG-E Has the Better Story</h4>
+            <p>Even if AKG-E is riskier, "AI agents that can do engineering" is a more exciting narrative than "better provenance tracking for RAG." If one proposal gets invited to the full proposal stage, AKG-E has more room to grow into a compelling 3-4 page proposal.</p>
+        </div>
+
+        <!-- Bottom Line -->
+        <h2>Bottom Line: Honest Ranking</h2>
+
+        <p>Ranking the three proposals purely on <strong>likelihood of funding from this specific CFP</strong>:</p>
+
+        <div class="ranking">
+            <div class="rank-item rank-1">
+                <div class="rank-num">#1</div>
+                <div class="rank-info">
+                    <div class="rank-name">PA-AKG &mdash; Knowledge Grounding</div>
+                    <div class="rank-reason">Strongest topic fit, most feasible, best abstract writing, Amazon knows the space</div>
+                </div>
+            </div>
+            <div class="rank-item rank-2">
+                <div class="rank-num">#2</div>
+                <div class="rank-info">
+                    <div class="rank-name">AKG-E &mdash; AI for Science &amp; Engineering</div>
+                    <div class="rank-reason">Most distinctive but highest risk (reviewer mismatch, feasibility). Advisor alignment is strong.</div>
+                </div>
+            </div>
+            <div class="rank-item rank-3">
+                <div class="rank-num">#3</div>
+                <div class="rank-info">
+                    <div class="rank-name">SVF &mdash; Agentic Evaluation</div>
+                    <div class="rank-reason">Solid but "meta" nature and overclaims weaken it. Better fit for evaluation-focused venues.</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="outcome-box" style="margin-top: 2rem;">
+            <h3>Decision: Submit PA-AKG + AKG-E</h3>
+            <p><strong>PA-AKG</strong> is the safest, highest-ranked submission. <strong>AKG-E</strong> provides the distinctive, ambitious second slot with strong advisor alignment. <strong>SVF</strong> is reserved for evaluation-focused venues where its "meta" nature is a feature, not a weakness.</p>
+            <p style="margin-top: 0.5rem; font-size: 0.85rem; color: var(--text-secondary);">Next step: Refine both abstracts before the March 17 deadline. AKG-E may be reframed around 2 concrete applications (construction + transportation) with VVUQ as the shared simulation backbone.</p>
+        </div>
+
+    </div>
+</body>
+</html>

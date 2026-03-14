@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Downloads &mdash; Amazon-VT CFP 2026-2027</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <style>
+        :root {
+            --amazon-orange: #FF9900;
+            --vt-maroon: #861F41;
+            --bg-dark: #0a0a0a;
+            --bg-card: #141414;
+            --text-primary: #e8e8e8;
+            --text-secondary: #a0a0a0;
+            --border: #2a2a2a;
+            --green: #4caf50;
+            --blue: #42a5f5;
+            --yellow: #ffc107;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.7;
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--vt-maroon), #4a1128);
+            border-bottom: 3px solid var(--amazon-orange);
+            padding: 2rem 1rem;
+            text-align: center;
+        }
+
+        .header h1 { font-size: 1.6rem; font-weight: 700; margin-bottom: 0.3rem; }
+        .header .subtitle { color: var(--amazon-orange); font-size: 0.95rem; }
+
+        .nav-bar {
+            background: var(--bg-card);
+            border-bottom: 1px solid var(--border);
+            padding: 0.6rem 1rem;
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .nav-bar a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.82rem;
+            padding: 0.3rem 0.7rem;
+            border-radius: 4px;
+            transition: all 0.2s;
+        }
+
+        .nav-bar a:hover { color: var(--amazon-orange); background: rgba(255,153,0,0.08); }
+        .nav-bar a.active { color: var(--amazon-orange); background: rgba(255,153,0,0.12); font-weight: 600; }
+
+        .container { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem 4rem; }
+
+        h2 {
+            color: var(--amazon-orange);
+            font-size: 1.2rem;
+            margin: 2rem 0 0.8rem;
+            padding-bottom: 0.3rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        h2:first-of-type { margin-top: 0; }
+
+        p { margin: 0.5rem 0; color: var(--text-secondary); font-size: 0.92rem; }
+
+        .downloads {
+            list-style: none;
+            margin: 0.5rem 0;
+        }
+
+        .downloads li {
+            margin-bottom: 0.6rem;
+        }
+
+        .downloads a {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            color: var(--amazon-orange);
+            text-decoration: none;
+            font-size: 0.9rem;
+            padding: 0.6rem 1rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            transition: all 0.2s;
+            width: 100%;
+        }
+
+        .downloads a:hover {
+            border-color: var(--amazon-orange);
+            background: rgba(255,153,0,0.05);
+        }
+
+        .dl-icon { font-size: 1.1rem; }
+
+        .dl-desc {
+            flex: 1;
+        }
+
+        .dl-title { font-weight: 500; }
+
+        .dl-sub {
+            font-size: 0.78rem;
+            color: var(--text-secondary);
+            margin-top: 0.1rem;
+        }
+
+        .badge {
+            display: inline-block;
+            font-size: 0.65rem;
+            padding: 0.1rem 0.4rem;
+            border-radius: 3px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            flex-shrink: 0;
+        }
+
+        .badge-pdf {
+            background: rgba(33,150,243,0.15);
+            color: #2196f3;
+            border: 1px solid rgba(33,150,243,0.3);
+        }
+
+        .badge-html {
+            background: rgba(76,175,80,0.15);
+            color: #4caf50;
+            border: 1px solid rgba(76,175,80,0.3);
+        }
+
+        .badge-pending {
+            background: rgba(255,153,0,0.15);
+            color: var(--amazon-orange);
+            border: 1px solid rgba(255,153,0,0.3);
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Downloads &amp; Resources</h1>
+        <div class="subtitle">Amazon-VT CFP 2026-2027</div>
+    </div>
+
+    <nav class="nav-bar">
+        <a href="index.html">Dashboard</a>
+        <a href="proposal-pakg.html">PA-AKG</a>
+        <a href="proposal-akge.html">AKG-E</a>
+        <a href="proposal-svf.html">SVF</a>
+        <a href="downloads.html" class="active">Downloads</a>
+        <a href="devils-advocate.html">Devil's Advocate</a>
+        <a href="topic-analysis.html">Topic Analysis</a>
+        <a href="deep-research-report.html">Deep Research</a>
+    </nav>
+
+    <div class="container">
+
+        <h2>Abstract PDFs</h2>
+        <ul class="downloads">
+            <li>
+                <a href="abstract_v4.pdf">
+                    <span class="dl-icon">&#128196;</span>
+                    <div class="dl-desc">
+                        <div class="dl-title">Abstract v4 &mdash; AKG-E (Engineering Framework)</div>
+                        <div class="dl-sub">AI for Science &amp; Engineering + Agentic AI</div>
+                    </div>
+                    <span class="badge badge-pdf">PDF</span>
+                </a>
+            </li>
+            <li>
+                <a href="abstract_v3.pdf">
+                    <span class="dl-icon">&#128196;</span>
+                    <div class="dl-desc">
+                        <div class="dl-title">Abstract v3 &mdash; SVF (Evaluation Framework)</div>
+                        <div class="dl-sub">Agentic Evaluation + Responsible AI</div>
+                    </div>
+                    <span class="badge badge-pdf">PDF</span>
+                </a>
+            </li>
+            <li>
+                <a href="abstract_v2.pdf">
+                    <span class="dl-icon">&#128196;</span>
+                    <div class="dl-desc">
+                        <div class="dl-title">Abstract v2 &mdash; PA-AKG (Knowledge Grounding)</div>
+                        <div class="dl-sub">Knowledge Grounding + Agentic AI &middot; SOA-grounded framing</div>
+                    </div>
+                    <span class="badge badge-pdf">PDF</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <span class="dl-icon">&#128209;</span>
+                    <div class="dl-desc">
+                        <div class="dl-title">Full Proposal (3-4 pages)</div>
+                        <div class="dl-sub">Due April 27, 2026 if invited</div>
+                    </div>
+                    <span class="badge badge-pending">Coming Soon</span>
+                </a>
+            </li>
+        </ul>
+
+        <h2>Strategy &amp; Analysis</h2>
+        <ul class="downloads">
+            <li>
+                <a href="devils-advocate.html">
+                    <span class="dl-icon">&#9878;</span>
+                    <div class="dl-desc">
+                        <div class="dl-title">Devil's Advocate Analysis</div>
+                        <div class="dl-sub">Stress-testing the submission strategy &mdash; honest proposal ranking</div>
+                    </div>
+                    <span class="badge badge-html">HTML</span>
+                </a>
+            </li>
+            <li>
+                <a href="submission-strategy.html">
+                    <span class="dl-icon">&#127919;</span>
+                    <div class="dl-desc">
+                        <div class="dl-title">Original Submission Strategy (Superseded)</div>
+                        <div class="dl-sub">Initial SVF + AKG-E plan &mdash; revised after devil's advocate</div>
+                    </div>
+                    <span class="badge badge-html">HTML</span>
+                </a>
+            </li>
+            <li>
+                <a href="topic-analysis.html">
+                    <span class="dl-icon">&#128269;</span>
+                    <div class="dl-desc">
+                        <div class="dl-title">Topic Analysis</div>
+                        <div class="dl-sub">CFP alignment matrix &amp; ranked proposal directions</div>
+                    </div>
+                    <span class="badge badge-html">HTML</span>
+                </a>
+            </li>
+        </ul>
+
+        <h2>Research</h2>
+        <ul class="downloads">
+            <li>
+                <a href="deep-research-report.html">
+                    <span class="dl-icon">&#128218;</span>
+                    <div class="dl-desc">
+                        <div class="dl-title">Deep Research Report</div>
+                        <div class="dl-sub">RAG &amp; Graph Retrieval state of the art (2023-2026)</div>
+                    </div>
+                    <span class="badge badge-html">HTML</span>
+                </a>
+            </li>
+            <li>
+                <a href="pa-akg-archive.html">
+                    <span class="dl-icon">&#128230;</span>
+                    <div class="dl-desc">
+                        <div class="dl-title">PA-AKG Full Details (Archive Page)</div>
+                        <div class="dl-sub">Complete proposal overview, citations, target venues</div>
+                    </div>
+                    <span class="badge badge-html">HTML</span>
+                </a>
+            </li>
+        </ul>
+
+        <h2>Reference</h2>
+        <ul class="downloads">
+            <li>
+                <a href="cfp-instructions.pdf">
+                    <span class="dl-icon">&#128203;</span>
+                    <div class="dl-desc">
+                        <div class="dl-title">CFP Instructions</div>
+                        <div class="dl-sub">Amazon-VT 2026-2027 Call for Proposals</div>
+                    </div>
+                    <span class="badge badge-pdf">PDF</span>
+                </a>
+            </li>
+            <li>
+                <a href="strategy-notes.md">
+                    <span class="dl-icon">&#128221;</span>
+                    <div class="dl-desc">
+                        <div class="dl-title">Strategy Notes (Markdown)</div>
+                        <div class="dl-sub">Direction pivot, advisor context, VVUQ framing, AKG-E reframe notes</div>
+                    </div>
+                    <span class="badge badge-html">MD</span>
+                </a>
+            </li>
+        </ul>
+
+    </div>
+</body>
+</html>

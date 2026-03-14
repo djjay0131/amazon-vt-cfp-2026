@@ -47,6 +47,28 @@
         }
         .back-link:hover { text-decoration: underline; }
 
+        .nav-bar {
+            background: var(--bg-card);
+            border-bottom: 1px solid var(--border);
+            padding: 0.6rem 1rem;
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .nav-bar a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.82rem;
+            padding: 0.3rem 0.7rem;
+            border-radius: 4px;
+            transition: all 0.2s;
+        }
+
+        .nav-bar a:hover { color: var(--amazon-orange); background: rgba(255,153,0,0.08); }
+        .nav-bar a.active { color: var(--amazon-orange); background: rgba(255,153,0,0.12); font-weight: 600; }
+
         .container { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem 4rem; }
 
         h2 {
@@ -270,6 +292,17 @@
     <div class="subtitle">CFP Alignment Matrix &amp; Ranked Proposal Directions</div>
     <a href="index.html" class="back-link">&larr; Back to Dashboard</a>
 </div>
+
+<nav class="nav-bar">
+    <a href="index.html">Dashboard</a>
+    <a href="proposal-pakg.html">PA-AKG</a>
+    <a href="proposal-akge.html">AKG-E</a>
+    <a href="proposal-svf.html">SVF</a>
+    <a href="downloads.html">Downloads</a>
+    <a href="devils-advocate.html">Devil's Advocate</a>
+    <a href="topic-analysis.html" class="active">Topic Analysis</a>
+    <a href="deep-research-report.html">Deep Research</a>
+</nav>
 
 <div class="container">
 

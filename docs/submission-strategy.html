@@ -48,6 +48,40 @@
         }
         .back-link:hover { text-decoration: underline; }
 
+        .nav-bar {
+            background: var(--bg-card);
+            border-bottom: 1px solid var(--border);
+            padding: 0.6rem 1rem;
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .nav-bar a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.82rem;
+            padding: 0.3rem 0.7rem;
+            border-radius: 4px;
+            transition: all 0.2s;
+        }
+
+        .nav-bar a:hover { color: var(--amazon-orange); background: rgba(255,153,0,0.08); }
+        .nav-bar a.active { color: var(--amazon-orange); background: rgba(255,153,0,0.12); font-weight: 600; }
+
+        .superseded-banner {
+            background: rgba(255, 193, 7, 0.08);
+            border: 1px solid rgba(255, 193, 7, 0.3);
+            border-left: 4px solid var(--yellow);
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .superseded-banner p { color: var(--text-primary); font-size: 0.9rem; margin: 0.2rem 0; }
+        .superseded-banner strong { color: var(--yellow); }
+
         .container { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem 4rem; }
 
         h2 {
@@ -281,7 +315,22 @@
         <a href="index.html" class="back-link">&larr; Back to Dashboard</a>
     </div>
 
+    <nav class="nav-bar">
+        <a href="index.html">Dashboard</a>
+        <a href="proposal-pakg.html">PA-AKG</a>
+        <a href="proposal-akge.html">AKG-E</a>
+        <a href="proposal-svf.html">SVF</a>
+        <a href="downloads.html">Downloads</a>
+        <a href="devils-advocate.html">Devil's Advocate</a>
+        <a href="topic-analysis.html">Topic Analysis</a>
+        <a href="deep-research-report.html">Deep Research</a>
+    </nav>
+
     <div class="container">
+
+        <div class="superseded-banner">
+            <p><strong>Note:</strong> This was the original strategy analysis recommending SVF + AKG-E. After a <a href="devils-advocate.html" style="color: var(--yellow);">devil's advocate review</a>, the strategy was revised to <strong>PA-AKG + AKG-E</strong>.</p>
+        </div>
 
         <h2>Decision: Which Two Proposals to Submit?</h2>
 

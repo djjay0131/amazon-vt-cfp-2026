@@ -611,6 +611,28 @@
             background: rgba(255,255,255,0.02);
         }
 
+        .nav-bar {
+            background: var(--bg-card);
+            border-bottom: 1px solid var(--border);
+            padding: 0.6rem 1rem;
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .nav-bar a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.82rem;
+            padding: 0.3rem 0.7rem;
+            border-radius: 4px;
+            transition: all 0.2s;
+        }
+
+        .nav-bar a:hover { color: var(--amazon-orange); background: rgba(255,153,0,0.08); }
+        .nav-bar a.active { color: var(--amazon-orange); background: rgba(255,153,0,0.12); font-weight: 600; }
+
         .fit-fire { color: #ff6b35; font-weight: 600; }
         .fit-strong { color: var(--amazon-orange); font-weight: 500; }
         .fit-moderate { color: var(--text-secondary); }
@@ -642,235 +664,111 @@
         <div class="partners">Amazon-Virginia Tech Initiative</div>
     </div>
 
+    <nav class="nav-bar">
+        <a href="index.html" class="active">Dashboard</a>
+        <a href="proposal-pakg.html">PA-AKG</a>
+        <a href="proposal-akge.html">AKG-E</a>
+        <a href="proposal-svf.html">SVF</a>
+        <a href="downloads.html">Downloads</a>
+        <a href="devils-advocate.html">Devil's Advocate</a>
+        <a href="topic-analysis.html">Topic Analysis</a>
+        <a href="deep-research-report.html">Deep Research</a>
+    </nav>
+
     <div class="container">
         <div class="status-banner">
-            <div class="phase">Current Phase: Abstract Refinement &amp; Submission</div>
-            <div class="detail">Submitting 2 abstracts: AKG-E (AI for Science &amp; Engineering) + SVF (Agentic Evaluation). Due March 17, 2026.</div>
+            <div class="phase">Current Phase: Polish All 3 Abstracts &rarr; Review &rarr; Select &rarr; Submit</div>
+            <div class="detail">Polishing all three proposals. Each will go through a reviewer process before final selection. Due March 17, 2026.</div>
         </div>
 
-        <!-- Downloads Section -->
+        <!-- Downloads link -->
         <div class="section">
-            <h2>Downloads</h2>
-            <ul class="downloads">
-                <li>
-                    <a href="abstract_v4.pdf">
-                        <span class="dl-icon">&#128196;</span>
-                        <span>Abstract v4 (1-page) &mdash; AKG-E &mdash; Engineering Framework</span>
-                        <span class="badge badge-active">PDF</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="abstract_v3.pdf">
-                        <span class="dl-icon">&#128196;</span>
-                        <span>Abstract v3 (1-page) &mdash; SVF &mdash; Evaluation Framework</span>
-                        <span class="badge badge-active">PDF</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="pa-akg-archive.html">
-                        <span class="dl-icon">&#128230;</span>
-                        <span>PA-AKG (Archived) &mdash; Knowledge Grounding Proposal</span>
-                        <span class="badge badge-pending">Archive</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="submission-strategy.html">
-                        <span class="dl-icon">&#127919;</span>
-                        <span>Submission Strategy &mdash; 2-Abstract Plan &amp; Analysis</span>
-                        <span class="badge badge-active">HTML</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="topic-analysis.html">
-                        <span class="dl-icon">&#128269;</span>
-                        <span>Topic Analysis &mdash; CFP Alignment &amp; Ranked Proposals</span>
-                        <span class="badge badge-active">HTML</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="deep-research-report.html">
-                        <span class="dl-icon">&#128218;</span>
-                        <span>Deep Research Report &mdash; RAG &amp; Graph Retrieval SOA</span>
-                        <span class="badge badge-active">HTML</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="cfp-instructions.pdf">
-                        <span class="dl-icon">&#128203;</span>
-                        <span>CFP Instructions &mdash; Amazon-VT 2026-2027</span>
-                        <span class="badge badge-active">PDF</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <span class="dl-icon">&#128209;</span>
-                        <span>Full Proposal (3-4 pages)</span>
-                        <span class="badge badge-pending">Coming Soon</span>
-                    </a>
-                </li>
-            </ul>
+            <p style="font-size:0.9rem;"><a href="downloads.html" style="color:var(--amazon-orange); font-weight:500;">All Downloads &amp; Resources &rarr;</a> &nbsp; Abstract PDFs, analysis pages, CFP instructions, strategy notes</p>
         </div>
 
-        <!-- Submission #1: AKG-E -->
-        <div class="section" id="proposal-akge">
-            <h2>Submission #1: AKG-E &mdash; AI-Accelerated Engineering</h2>
-            <p style="font-size:0.9rem; color:var(--text-secondary); margin-bottom:1.25rem;">Primary: AI for Science &amp; Engineering &middot; Secondary: Agentic AI &middot; <a href="abstract_v4.pdf" style="color:var(--amazon-orange);">Download Abstract PDF</a></p>
+        <!-- Proposals: Ranked Cards -->
+        <div class="section">
+            <h2>Proposals</h2>
+            <p style="font-size:0.9rem; color:var(--text-secondary); margin-bottom:1rem;">All three proposals will be polished to submission quality, then reviewed before final selection.</p>
 
-            <div class="proposal-block open" onclick="toggleProposal(this)">
-                <div class="proposal-header">
-                    <div class="proposal-header-left">
-                        <span class="proposal-rank">&#128640;</span>
-                        <div class="proposal-title-group">
-                            <div class="proposal-title">Agentic Knowledge Graphs for AI-Accelerated Engineering Across Domains</div>
-                            <div class="proposal-categories">Abstract v4 &middot; Status: Draft Complete</div>
+            <a href="proposal-pakg.html" style="text-decoration:none; display:block;">
+                <div class="proposal-block recommended" style="cursor:pointer;">
+                    <div class="proposal-header">
+                        <div class="proposal-header-left">
+                            <span class="proposal-rank" style="font-size:1.4rem; color:#4caf50;">#1</span>
+                            <div class="proposal-title-group">
+                                <div class="proposal-title">PA-AKG &mdash; Provenance-Aware Agentic Knowledge Graphs</div>
+                                <div class="proposal-categories">Knowledge Grounding + Agentic AI &middot; Highest ranked &middot; Most feasible</div>
+                            </div>
                         </div>
-                    </div>
-                    <div style="display:flex; align-items:center; gap:0.75rem;">
-                        <span class="badge badge-active">Submitting</span>
-                        <span class="chevron">&#9654;</span>
+                        <span class="badge badge-active">Polishing</span>
                     </div>
                 </div>
-                <div class="proposal-body">
-                    <div class="proposal-section-title">Core Idea</div>
-                    <p>Domain-agnostic framework enabling LLM agents to reason over structured engineering knowledge, interact with physics-based simulations, and validate outputs against domain constraints.</p>
+            </a>
 
-                    <div class="proposal-section-title">Three Layers</div>
-                    <ul>
-                        <li><strong>Domain Ontology Layer</strong> &mdash; Engineering KGs encoding entities, constraints, physical laws, and design rules as pluggable components</li>
-                        <li><strong>Simulation Integration Layer</strong> &mdash; PDE solvers, FEA tools, and domain simulators exposed as agent-callable tools</li>
-                        <li><strong>Constraint Validation Layer</strong> &mdash; Automatic verification of agent outputs against physical and regulatory constraints</li>
-                    </ul>
-
-                    <div class="proposal-section-title">Domain Applications</div>
-                    <ul>
-                        <li><strong>Construction Planning</strong> &mdash; BOM reasoning, schedule risk prediction, safety compliance</li>
-                        <li><strong>Transportation Systems</strong> &mdash; Traffic flow optimization, network design</li>
-                        <li><strong>Thermal Engineering</strong> &mdash; Heat transfer analysis, HVAC sizing</li>
-                    </ul>
-
-                    <div class="proposal-section-title">Research Questions</div>
-                    <ol>
-                        <li>How can engineering domain ontologies be represented as KGs enabling both LLM reasoning and structured constraint queries?</li>
-                        <li>How should agents orchestrate across retrieval, graph reasoning, and simulation calls?</li>
-                        <li>What simulation-in-the-loop validation mechanisms ensure outputs satisfy physical laws?</li>
-                        <li>Does a domain-agnostic framework achieve competitive accuracy vs. domain-specific systems?</li>
-                    </ol>
-
-                    <div class="proposal-section-title">Key Differentiator</div>
-                    <p>Generalizable method &mdash; constraint-grounded agentic reasoning with simulation-in-the-loop validation &mdash; anchored by AlphaFold3/GNoME as precedents for AI-accelerated science.</p>
-
-                    <div class="proposal-section-title">Measurable Targets</div>
-                    <ul>
-                        <li>Constraint violation reduction rates vs. unstructured approaches</li>
-                        <li>Engineering decision accuracy vs. expert baselines</li>
-                        <li>Ablations: prompt-only LLM vs. RAG-augmented vs. full AKG-E</li>
-                    </ul>
-
-                    <div class="proposal-section-title">Remaining Work</div>
-                    <ul>
-                        <li>Final language polish and prose tightening</li>
-                        <li>Advisor review and feedback incorporation</li>
-                        <li>Verify 1-page constraint with final formatting</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-        <!-- Submission #2: SVF -->
-        <div class="section" id="proposal-svf">
-            <h2>Submission #2: SVF &mdash; Evaluation Framework</h2>
-            <p style="font-size:0.9rem; color:var(--text-secondary); margin-bottom:1.25rem;">Primary: Agentic Evaluation &middot; Secondary: Responsible AI &middot; <a href="abstract_v3.pdf" style="color:var(--amazon-orange);">Download Abstract PDF</a></p>
-
-            <div class="proposal-block open" onclick="toggleProposal(this)">
-                <div class="proposal-header">
-                    <div class="proposal-header-left">
-                        <span class="proposal-rank">&#128737;</span>
-                        <div class="proposal-title-group">
-                            <div class="proposal-title">A Structured Validation Framework for Knowledge-Grounded and Multi-Agent AI Systems</div>
-                            <div class="proposal-categories">Abstract v3 &middot; Status: Draft Complete</div>
+            <a href="proposal-akge.html" style="text-decoration:none; display:block;">
+                <div class="proposal-block" style="cursor:pointer; margin-top:0.75rem;">
+                    <div class="proposal-header">
+                        <div class="proposal-header-left">
+                            <span class="proposal-rank" style="font-size:1.4rem; color:#42a5f5;">#2</span>
+                            <div class="proposal-title-group">
+                                <div class="proposal-title">AKG-E &mdash; Agentic Knowledge Graphs for Engineering</div>
+                                <div class="proposal-categories">AI for Science &amp; Engineering + Agentic AI &middot; Most distinctive &middot; Advisor-aligned</div>
+                            </div>
                         </div>
-                    </div>
-                    <div style="display:flex; align-items:center; gap:0.75rem;">
-                        <span class="badge badge-active">Submitting</span>
-                        <span class="chevron">&#9654;</span>
+                        <span class="badge badge-active">Polishing</span>
                     </div>
                 </div>
-                <div class="proposal-body">
-                    <div class="proposal-section-title">Core Idea</div>
-                    <p>Systematic evaluation infrastructure for knowledge-grounded and multi-agent AI systems, measuring properties that determine real-world reliability beyond point accuracy.</p>
+            </a>
 
-                    <div class="proposal-section-title">Four Evaluation Dimensions</div>
-                    <ul>
-                        <li><strong>Grounding Integrity</strong> &mdash; Retrieval relevance, evidence sufficiency, attribution accuracy</li>
-                        <li><strong>Provenance Traceability</strong> &mdash; Span-level citation, audit trail depth, source verification</li>
-                        <li><strong>Reasoning Robustness</strong> &mdash; Resilience under retrieval noise, contradictory sources, adversarial inputs</li>
-                        <li><strong>Coordination Reliability</strong> &mdash; Agent consistency, failure recovery, cascade prevention</li>
-                    </ul>
-
-                    <div class="proposal-section-title">Systems Evaluated</div>
-                    <ul>
-                        <li>Vector-only RAG baselines</li>
-                        <li>Hybrid retrieval (sparse + dense)</li>
-                        <li>Graph-augmented agent systems (GraphRAG)</li>
-                    </ul>
-
-                    <div class="proposal-section-title">Research Questions</div>
-                    <ol>
-                        <li>What evaluation dimensions define reliable knowledge-grounded agent behavior beyond accuracy?</li>
-                        <li>How do structured grounding mechanisms impact measurable robustness vs. vector-only RAG?</li>
-                        <li>How can validation loops be embedded within agent orchestration for real-time failure recovery?</li>
-                        <li>How do multi-agent coordination failures propagate and how can they be systematically benchmarked?</li>
-                    </ol>
-
-                    <div class="proposal-section-title">Key Differentiator</div>
-                    <p>First structured evaluation framework for agentic AI &mdash; embeds validation as a first-class component of agent pipelines, with signals aligned to OpenTelemetry GenAI observability standards.</p>
-
-                    <div class="proposal-section-title">Expected Deliverables</div>
-                    <ul>
-                        <li>SVF evaluation toolkit and open framework</li>
-                        <li>Benchmark tasks: scientific reasoning + enterprise decision-support</li>
-                        <li>Agent failure scenario simulations</li>
-                        <li>Reproducible metrics for grounding integrity, provenance, and multi-agent reliability</li>
-                    </ul>
-
-                    <div class="proposal-section-title">Remaining Work</div>
-                    <ul>
-                        <li>Final language polish and prose tightening</li>
-                        <li>Advisor review and feedback incorporation</li>
-                        <li>Verify 1-page constraint with final formatting</li>
-                    </ul>
+            <a href="proposal-svf.html" style="text-decoration:none; display:block;">
+                <div class="proposal-block" style="cursor:pointer; margin-top:0.75rem;">
+                    <div class="proposal-header">
+                        <div class="proposal-header-left">
+                            <span class="proposal-rank" style="font-size:1.4rem; color:#ffc107;">#3</span>
+                            <div class="proposal-title-group">
+                                <div class="proposal-title">SVF &mdash; Structured Validation Framework</div>
+                                <div class="proposal-categories">Agentic Evaluation + Responsible AI &middot; Evaluation-focused</div>
+                            </div>
+                        </div>
+                        <span class="badge badge-active">Polishing</span>
+                    </div>
                 </div>
-            </div>
+            </a>
         </div>
 
         <!-- Submission Strategy Link -->
         <div class="section">
             <div class="strategy-box">
-                <h3>Submission Strategy</h3>
-                <p style="font-size:0.9rem; color:var(--text-secondary); margin-bottom:0.75rem;">Two abstracts to Amazon-VT covering 4 of 9 CFP topics with zero overlap. PA-AKG (Knowledge Grounding) reserved for other initiatives.</p>
+                <h3>Workflow: Polish &rarr; Review &rarr; Select &rarr; Submit</h3>
+                <p style="font-size:0.9rem; color:var(--text-secondary); margin-bottom:0.75rem;">All three proposals will be polished to submission-ready quality. Each goes through a reviewer process for feedback. Final selection based on review outcomes.</p>
                 <table class="alignment-table">
                     <tr>
-                        <th>Submission</th>
+                        <th>Rank</th>
                         <th>Proposal</th>
                         <th>CFP Topics</th>
+                        <th>Status</th>
                     </tr>
                     <tr>
-                        <td class="fit-fire">Amazon #1</td>
-                        <td>AKG-E (v4)</td>
-                        <td>AI for Science &amp; Engineering + Agentic AI</td>
-                    </tr>
-                    <tr>
-                        <td class="fit-fire">Amazon #2</td>
-                        <td>SVF (v3)</td>
-                        <td>Agentic Evaluation + Responsible AI</td>
-                    </tr>
-                    <tr>
-                        <td class="fit-moderate">Other</td>
+                        <td class="fit-fire">#1</td>
                         <td>PA-AKG (v2)</td>
                         <td>Knowledge Grounding + Agentic AI</td>
+                        <td>Polishing</td>
+                    </tr>
+                    <tr>
+                        <td class="fit-strong">#2</td>
+                        <td>AKG-E (v4)</td>
+                        <td>AI for Science &amp; Engineering + Agentic AI</td>
+                        <td>Polishing</td>
+                    </tr>
+                    <tr>
+                        <td class="fit-moderate">#3</td>
+                        <td>SVF (v3)</td>
+                        <td>Agentic Evaluation + Responsible AI</td>
+                        <td>Polishing</td>
                     </tr>
                 </table>
-                <p style="margin-top:0.75rem; font-size:0.85rem;"><a href="submission-strategy.html" style="color:var(--amazon-orange);">View full analysis &rarr;</a></p>
+                <p style="margin-top:0.75rem; font-size:0.85rem;"><a href="devils-advocate.html" style="color:var(--amazon-orange);">View devil's advocate analysis &rarr;</a> &nbsp;|&nbsp; <a href="submission-strategy.html" style="color:var(--text-secondary);">Original strategy analysis</a></p>
             </div>
         </div>
 
@@ -1093,19 +991,20 @@
                     <div class="day-header-left">
                         <span class="day-name">SAT</span>
                         <span class="day-date">Mar 14</span>
-                        <span class="day-focus">Submission Strategy</span>
+                        <span class="day-focus">Strategy Pivot &amp; Analysis</span>
                     </div>
                     <div class="day-header-right">
-                        <span class="day-progress">2/3</span>
-                        <div class="progress-bar"><div class="progress-fill" style="width:67%"></div></div>
+                        <span class="day-progress">4/4</span>
+                        <div class="progress-bar"><div class="progress-fill complete" style="width:100%"></div></div>
                         <span class="chevron">&#9654;</span>
                     </div>
                 </div>
                 <div class="day-tasks">
-                    <div class="task-item done"><span class="task-check">&#9745;</span><span class="task-text">Analyze best-fit proposals for Amazon CFP vs. other initiatives</span></div>
-                    <div class="task-item done"><span class="task-check">&#9745;</span><span class="task-text">Decision: submit AKG-E + SVF to Amazon, PA-AKG to other initiatives</span></div>
-                    <div class="task-item"><span class="task-check">&#9744;</span><span class="task-text">Update dashboard with 2-submission plan and proposal sections</span></div>
-                    <div class="day-milestone">Milestone: Submission strategy locked</div>
+                    <div class="task-item done"><span class="task-check done">&#9745;</span><span class="task-text done">Analyze best-fit proposals for Amazon CFP vs. other initiatives</span></div>
+                    <div class="task-item done"><span class="task-check done">&#9745;</span><span class="task-text done">Devil's advocate analysis &mdash; stress-test SVF + AKG-E strategy</span></div>
+                    <div class="task-item done"><span class="task-check done">&#9745;</span><span class="task-text done">Strategy pivot: PA-AKG + AKG-E to Amazon, SVF to other venues</span></div>
+                    <div class="task-item done"><span class="task-check done">&#9745;</span><span class="task-text done">Update dashboard, publish analysis pages, create strategy notes</span></div>
+                    <div class="day-milestone">Milestone: Strategy revised to PA-AKG + AKG-E &#10003;</div>
                 </div>
             </div>
 
@@ -1114,7 +1013,7 @@
                     <div class="day-header-left">
                         <span class="day-name">SUN</span>
                         <span class="day-date">Mar 15</span>
-                        <span class="day-focus">Final Polish &mdash; Both Abstracts</span>
+                        <span class="day-focus">Polish All 3 Abstracts</span>
                     </div>
                     <div class="day-header-right">
                         <span class="day-progress">0/4</span>
@@ -1123,11 +1022,11 @@
                     </div>
                 </div>
                 <div class="day-tasks">
-                    <div class="task-item"><span class="task-check">&#9744;</span><span class="task-text">Final language polish on AKG-E (v4) &mdash; tighten prose, sharpen novelty</span></div>
-                    <div class="task-item"><span class="task-check">&#9744;</span><span class="task-text">Final language polish on SVF (v3) &mdash; tighten prose, sharpen novelty</span></div>
-                    <div class="task-item"><span class="task-check">&#9744;</span><span class="task-text">Verify both abstracts fit 1 page excluding references</span></div>
-                    <div class="task-item"><span class="task-check">&#9744;</span><span class="task-text">Share drafts with advisor for review</span></div>
-                    <div class="day-milestone">Milestone: Both abstracts submission-ready</div>
+                    <div class="task-item"><span class="task-check">&#9744;</span><span class="task-text">Polish PA-AKG (v2) &mdash; tighten prose, sharpen novelty claims</span></div>
+                    <div class="task-item"><span class="task-check">&#9744;</span><span class="task-text">Polish AKG-E (v4) &mdash; consider VVUQ reframing, tighten prose</span></div>
+                    <div class="task-item"><span class="task-check">&#9744;</span><span class="task-text">Polish SVF (v3) &mdash; address identified weaknesses, tighten prose</span></div>
+                    <div class="task-item"><span class="task-check">&#9744;</span><span class="task-text">Verify all three abstracts fit 1 page excluding references</span></div>
+                    <div class="day-milestone">Milestone: All 3 abstracts polished and submission-ready</div>
                 </div>
             </div>
 
@@ -1136,20 +1035,21 @@
                     <div class="day-header-left">
                         <span class="day-name">MON</span>
                         <span class="day-date">Mar 16</span>
-                        <span class="day-focus">Portal Prep &amp; Upload</span>
+                        <span class="day-focus">Reviewer Process &amp; Final Selection</span>
                     </div>
                     <div class="day-header-right">
-                        <span class="day-progress">0/4</span>
+                        <span class="day-progress">0/5</span>
                         <div class="progress-bar"><div class="progress-fill" style="width:0%"></div></div>
                         <span class="chevron">&#9654;</span>
                     </div>
                 </div>
                 <div class="day-tasks">
+                    <div class="task-item"><span class="task-check">&#9744;</span><span class="task-text">Run reviewer process on all 3 polished abstracts</span></div>
+                    <div class="task-item"><span class="task-check">&#9744;</span><span class="task-text">Incorporate reviewer feedback into each abstract</span></div>
+                    <div class="task-item"><span class="task-check">&#9744;</span><span class="task-text">Final round: decide which 2 to submit to Amazon</span></div>
                     <div class="task-item"><span class="task-check">&#9744;</span><span class="task-text">Register on Amazon Academic Research Portal (if not done)</span></div>
-                    <div class="task-item"><span class="task-check">&#9744;</span><span class="task-text">Incorporate any advisor feedback on both abstracts</span></div>
-                    <div class="task-item"><span class="task-check">&#9744;</span><span class="task-text">Upload AKG-E abstract (Primary: AI for Science &amp; Engineering)</span></div>
-                    <div class="task-item"><span class="task-check">&#9744;</span><span class="task-text">Upload SVF abstract (Primary: Agentic Evaluation)</span></div>
-                    <div class="day-milestone">Milestone: Both abstracts uploaded to portal</div>
+                    <div class="task-item"><span class="task-check">&#9744;</span><span class="task-text">Upload selected abstracts to portal</span></div>
+                    <div class="day-milestone">Milestone: Abstracts selected and uploaded</div>
                 </div>
             </div>
 
@@ -1159,7 +1059,7 @@
                         <span class="day-name">TUE</span>
                         <span class="day-date">Mar 17</span>
                         <span class="deadline-label">Deadline</span>
-                        <span class="day-focus">Submit Both Abstracts</span>
+                        <span class="day-focus">Submit Abstracts</span>
                     </div>
                     <div class="day-header-right">
                         <span class="day-progress">0/3</span>
@@ -1168,15 +1068,15 @@
                     </div>
                 </div>
                 <div class="day-tasks">
-                    <div class="task-item"><span class="task-check">&#9744;</span><span class="task-text">Final review of both submissions on portal</span></div>
-                    <div class="task-item"><span class="task-check">&#9744;</span><span class="task-text">Submit AKG-E + SVF via Amazon research portal</span></div>
-                    <div class="task-item"><span class="task-check">&#9744;</span><span class="task-text">Confirm submission receipts for both</span></div>
-                    <div class="day-milestone">Milestone: Both abstracts submitted</div>
+                    <div class="task-item"><span class="task-check">&#9744;</span><span class="task-text">Final review of submissions on portal</span></div>
+                    <div class="task-item"><span class="task-check">&#9744;</span><span class="task-text">Submit selected abstracts via Amazon research portal</span></div>
+                    <div class="task-item"><span class="task-check">&#9744;</span><span class="task-text">Confirm submission receipts</span></div>
+                    <div class="day-milestone">Milestone: Abstracts submitted</div>
                 </div>
             </div>
 
             <div class="critical-path">
-                Critical path: Mar 14 (strategy lock) &#8594; Mar 15 (polish both) &#8594; Mar 16 (portal upload) &#8594; Mar 17 (submit 2 abstracts)
+                Critical path: Mar 14 (strategy &#10003;) &#8594; Mar 15 (polish all 3) &#8594; Mar 16 (review + select + upload) &#8594; Mar 17 (submit)
             </div>
         </div>
 
