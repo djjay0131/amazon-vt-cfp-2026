@@ -48,12 +48,19 @@
 - [x] Navigation bar added across all pages
 - [x] Strategy notes documented (docs/strategy-notes.md)
 
+### Phase 2d: Abstract Polish (2026-03-14)
+
+- [x] Polish PA-AKG (v2) — sharpened novelty (unified substrate vs isolated), added Self-RAG citation, concrete eval tasks
+- [x] Polish SVF (v3) — toned down overclaims, developed coordination reliability, narrowed scope
+- [x] Polish AKG-E (v4) — concrete simulation tools (OpenSeesPy, SUMO), tightened prose, narrowed to 2+1 domains
+- [x] Create AKG-E (v4b) — new variant: reframed with 2 focused applications + VVUQ backbone
+
 ## In Progress
 
-### Phase 2d: Abstract Polish & Selection (2026-03-15 – 2026-03-17)
-- [ ] Polish all 3 abstracts to submission quality (Mar 15)
-- [ ] Run reviewer process on each abstract (Mar 16)
-- [ ] Incorporate reviewer feedback
+### Phase 2e: Reviewer Process & Submission (2026-03-15 – 2026-03-17)
+
+- [ ] Run reviewer process on all polished abstracts (Mar 15)
+- [ ] Incorporate reviewer feedback (Mar 16)
 - [ ] Final selection of which 2 to submit (Mar 16)
 - [ ] Portal registration and submission (Mar 17)
 
@@ -74,8 +81,10 @@
 | Abstract v4 (AKG-E) complete | 2026-03-11 | Done |
 | Devil's advocate analysis | 2026-03-14 | Done |
 | Strategy pivot & website restructure | 2026-03-14 | Done |
-| Polish all 3 abstracts | 2026-03-15 | Next |
-| Reviewer process + final selection | 2026-03-16 | Pending |
+| Polish all 3 abstracts | 2026-03-14 | Done |
+| AKG-E v4b variant created | 2026-03-14 | Done |
+| Reviewer process on polished abstracts | 2026-03-15 | Next |
+| Incorporate feedback + final selection | 2026-03-16 | Pending |
 | Abstract(s) submitted | 2026-03-17 | Pending |
 | Full proposal invitation | 2026-04-06 | Pending |
 | Full proposal submitted | 2026-04-27 | Pending |
