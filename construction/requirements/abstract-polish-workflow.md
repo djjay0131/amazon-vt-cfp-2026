@@ -37,7 +37,7 @@ After the reviewer process, the final 2 will be selected based on:
 | Primary Topic | Knowledge Grounding |
 | Secondary Topic | Agentic AI |
 | Abstract Version | v2 (abstract_v2.pdf) |
-| Current Status | Polishing — highest ranked, safest bet |
+| Current Status | **POLISHED** — novelty sharpened, Self-RAG citation added, concrete eval tasks |
 
 ### Known Strengths
 
@@ -56,10 +56,10 @@ After the reviewer process, the final 2 will be selected based on:
 
 ### Remaining Work
 
-- [ ] Sharpen novelty claims: what exactly is new beyond GraphRAG + CRAG?
-- [ ] Tighten Amazon/Bedrock relevance language
-- [ ] Verify 1-page fit with references excluded
-- [ ] Final language polish
+- [x] Sharpen novelty claims: unified substrate vs isolated capabilities (GraphRAG/CRAG/Self-RAG)
+- [x] Tighten Amazon/Bedrock relevance language
+- [x] Verify 1-page fit with references excluded
+- [x] Final language polish
 
 ---
 
@@ -72,7 +72,7 @@ After the reviewer process, the final 2 will be selected based on:
 | Primary Topic | AI Accelerated Science & Engineering |
 | Secondary Topic | Agentic AI |
 | Abstract Version | v4 (abstract_v4.pdf) |
-| Current Status | Polishing — advisor-aligned, distinctive; needs reframing |
+| Current Status | **POLISHED** — concrete sim tools, tightened scope; v4b reframed variant created |
 
 ### Known Strengths
 
@@ -92,12 +92,12 @@ After the reviewer process, the final 2 will be selected based on:
 
 ### Remaining Work
 
-- [ ] Reframe around 2 concrete applications (construction CV + transportation digital twin)
-- [ ] Integrate VVUQ as the unifying validation backbone
-- [ ] Reduce scope to be clearly feasible in 1 year
-- [ ] Strengthen connection to advisor's construction.ai work
-- [ ] Polish writing quality to match PA-AKG v2 level
-- [ ] Confirm reframing direction with advisor before modifying LaTeX
+- [x] Reframe around 2 concrete applications (construction CV + transportation digital twin) — done in v4b
+- [x] Integrate VVUQ as the unifying validation backbone — done in v4b
+- [x] Reduce scope to be clearly feasible in 1 year (2 primary + 1 extension domain)
+- [x] Strengthen connection to advisor's construction.ai work
+- [x] Polish writing quality — concrete sim tools, tightened prose
+- [ ] Confirm reframing direction with advisor (v4 vs v4b) before submission
 
 ---
 
@@ -110,7 +110,7 @@ After the reviewer process, the final 2 will be selected based on:
 | Primary Topic | Foundation Model/Agentic Evaluation |
 | Secondary Topic | Responsible Generative AI |
 | Abstract Version | v3 (abstract_v3.pdf) |
-| Current Status | Polishing — may go to other venues instead |
+| Current Status | **POLISHED** — overclaims toned down, coordination developed, scope narrowed |
 
 ### Known Strengths
 
@@ -129,11 +129,11 @@ After the reviewer process, the final 2 will be selected based on:
 
 ### Remaining Work
 
-- [ ] Tone down "first framework" claims — position as advancing existing evaluation approaches
-- [ ] Develop coordination reliability dimension more concretely
-- [ ] Clarify what benchmark suite is feasible in 1 year (reduce scope)
-- [ ] Strengthen Amazon angle (Bedrock agent evaluation? Multi-agent testing?)
-- [ ] Final language polish
+- [x] Tone down "first framework" → "systematic evaluation framework addressing critical gaps"
+- [x] Develop coordination reliability: fault injection, cascading error propagation, recovery latency
+- [x] Narrow scope to 3 concrete task types (retrieval QA, agent workflows, coordination scenarios)
+- [x] Strengthen Amazon angle: production agent platform reference added
+- [x] Final language polish: "unlike post-hoc benchmarks" framing
 
 ---
 

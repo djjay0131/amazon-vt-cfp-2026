@@ -4,26 +4,27 @@ _Last updated: 2026-03-14_
 
 ## Current Phase
 
-**Phase 2c: Abstract Polish & Selection**
+**Phase 2d: Reviewer Process & Final Selection**
 
-Three proposals developed (PA-AKG, AKG-E, SVF). Strategy pivot completed after devil's advocate analysis. Now polishing all 3 to submission quality, then running reviewer process to decide which 2 to submit.
+All 3 abstracts (plus a v4b variant) have been polished to submission quality. Next step is running the reviewer process on all polished abstracts, incorporating feedback, selecting which 2 to submit, and submitting by March 17.
 
 ## Current Workflow
 
-**Polish All 3 → Review → Select → Submit**
+**~~Polish All 3~~ → Run Reviewer Process → Incorporate Feedback → Select 2 → Submit**
 
 | Rank | Proposal | CFP Topics | Status |
 |---|---|---|---|
-| **#1** | **PA-AKG** (v2) | Knowledge Grounding + Agentic AI | Polishing — highest ranked, safest bet |
-| **#2** | **AKG-E** (v4) | AI for Science & Engineering + Agentic AI | Polishing — advisor-aligned, distinctive |
-| **#3** | **SVF** (v3) | Agentic Evaluation + Responsible AI | Polishing — may go to other venues |
+| **#1** | **PA-AKG** (v2) | Knowledge Grounding + Agentic AI | POLISHED — sharpened novelty (unified substrate vs isolated), added Self-RAG citation, concrete eval tasks |
+| **#2** | **AKG-E** (v4) | AI for Science & Engineering + Agentic AI | POLISHED — concrete simulation tools, tightened prose, narrowed to 2+1 domains |
+| **#2b** | **AKG-E** (v4b) | AI for Science & Engineering + Agentic AI | POLISHED — new variant: 2 focused applications + VVUQ backbone |
+| **#3** | **SVF** (v3) | Agentic Evaluation + Responsible AI | POLISHED — toned down overclaims, developed coordination reliability, narrowed scope |
 
 ## Current Focus
 
-- Polish all 3 abstracts to submission-ready quality (Mar 15)
-- Run reviewer process on each abstract (Mar 16)
-- Incorporate feedback, final selection of which 2 to submit
-- Portal submission by March 17, 2026
+- Run reviewer process on all polished abstracts (Mar 15)
+- Incorporate reviewer feedback (Mar 16)
+- Final selection of which 2 to submit (Mar 16)
+- Portal registration and submission by March 17, 2026
 
 ## Strategy Pivot (Mar 14)
 
@@ -38,6 +39,15 @@ As a result, PA-AKG is ranked #1, AKG-E is #2, and SVF is #3 (reserved for other
 
 See `memory-bank/strategy-pivot.md` for full analysis and AKG-E reframing notes.
 
+## Polish Summary (Completed Mar 14)
+
+All abstracts have been polished to submission quality with the following changes:
+
+- **PA-AKG (v2)**: Sharpened novelty framing (unified substrate vs isolated components), added Self-RAG citation, added concrete evaluation tasks
+- **SVF (v3)**: Toned down overclaims (removed "first framework" language), developed coordination reliability dimension, narrowed scope to feasible 1-year plan
+- **AKG-E (v4)**: Added concrete simulation tools (OpenSeesPy, SUMO), tightened prose throughout, narrowed focus to 2+1 domains
+- **AKG-E (v4b)**: New file created as reframed variant with 2 focused application domains + VVUQ as unifying validation backbone
+
 ## Research Directions
 
 ### PA-AKG — Provenance-Aware Agentic Knowledge Graph Systems (Rank #1)
@@ -49,6 +59,7 @@ See `memory-bank/strategy-pivot.md` for full analysis and AKG-E reframing notes.
 - Primary Topic: AI Accelerated Science & Engineering
 - Secondary Topic: Agentic AI
 - Key framing: Reframed around 2 concrete applications (construction material takeoff with CV, transportation digital twin) with VVUQ as unifying validation backbone. Aligns with advisor's construction.ai initiative.
+- **v4b variant**: Further reframed with 2 focused domains and VVUQ as the backbone rather than a component.
 
 ### SVF — Structured Validation Framework (Rank #3)
 - Primary Topic: Foundation Model/Agentic Evaluation
@@ -59,7 +70,8 @@ See `memory-bank/strategy-pivot.md` for full analysis and AKG-E reframing notes.
 
 - Project infrastructure complete (memory-bank, construction, agents)
 - CFP requirements fully captured
-- Abstracts v1-v4 complete across 3 proposals
+- Abstracts v1-v4 (+ v4b) complete across 3 proposals
+- All abstracts polished to submission quality
 - Deep research report published on dashboard
 - Devil's advocate analysis completed
 - Submission strategy analysis completed
@@ -68,9 +80,10 @@ See `memory-bank/strategy-pivot.md` for full analysis and AKG-E reframing notes.
 
 ## What's Next
 
-- [ ] Polish all 3 abstracts to submission quality (Mar 15)
-- [ ] Run reviewer process on each (Mar 16)
-- [ ] Incorporate feedback, select final 2 for submission
+- [x] Polish all 3 abstracts to submission quality (completed Mar 14)
+- [x] Create AKG-E v4b variant (completed Mar 14)
+- [ ] Run reviewer process on all polished abstracts (Mar 15)
+- [ ] Incorporate feedback, select final 2 for submission (Mar 16)
 - [ ] Portal registration and submission (by March 17)
 
 ## Active Decisions
@@ -78,7 +91,9 @@ See `memory-bank/strategy-pivot.md` for full analysis and AKG-E reframing notes.
 - **Decided**: PA-AKG ranked #1, AKG-E #2, SVF #3
 - **Decided**: Polish all 3 → review → select → submit workflow
 - **Decided**: AKG-E reframing: 2 applications (construction CV + transportation digital twin) + VVUQ
+- **Decided**: Created AKG-E v4b as alternative submission option alongside v4
 - **Pending**: Which 2 proposals to submit (decision after reviewer process, Mar 16)
+- **Pending**: Whether to submit AKG-E v4 or v4b (decision after reviewer process)
 
 ## Blockers
 
