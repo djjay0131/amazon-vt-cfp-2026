@@ -1,6 +1,6 @@
 % ============================================================
 % Amazon-VT CFP 2026-2027 — 1-Page Abstract v4c
-% AKG-E Reframed: Construction-only + VVUQ as core contribution
+% AKG-E: Construction-Only Variant with VVUQ Backbone
 % Primary: AI Accelerated Science & Engineering
 % Secondary: Agentic AI
 % Format: IEEE 2-column
@@ -19,7 +19,7 @@
 \usepackage{tikz}
 \usetikzlibrary{positioning, arrows.meta, shapes.geometric, fit, calc}
 
-\title{Agentic Knowledge Graphs with Simulation-in-the-Loop\\VVUQ for Construction Engineering}
+\title{Agentic Knowledge Graphs with Simulation-in-the-Loop Validation\\for Construction Engineering}
 \author{}
 \date{}
 
@@ -32,13 +32,13 @@
 \vspace{-1.5em}
 
 \noindent\textbf{Primary Topic:} AI Accelerated Science \& Engineering \hfill
-\textbf{Secondary:} Agentic AI
+\textbf{Secondary Topic:} Agentic AI
 
 \vspace{0.5em}
 
-AI-driven scientific breakthroughs---from biomolecular structure prediction~\cite{Abramson2024AlphaFold3} to materials discovery~\cite{Merchant2023GNoME}---demonstrate that domain-specific AI can dramatically accelerate discovery when tightly coupled to structured domain knowledge and simulation. Engineering disciplines face an analogous opportunity, yet large language models remain poorly suited to engineering practice: they hallucinate physical quantities~\cite{Ji2023HallucinationSurvey}, cannot enforce constraint satisfaction, and lack grounding in the structured ontologies and simulation feedback loops that define engineering workflows. Meanwhile, physics-informed machine learning~\cite{Karniadakis2021PINN} and digital twin architectures~\cite{Tao2019DigitalTwin} have matured in isolation from generative AI, creating an integration gap between simulation-based engineering and the emerging agentic paradigm.
+AI-driven breakthroughs---from biomolecular structure prediction~\cite{Abramson2024AlphaFold3} to materials discovery~\cite{Merchant2023GNoME}---show that domain-specific AI dramatically accelerates discovery when tightly coupled to structured knowledge and simulation. Construction engineering faces an analogous opportunity: large language models (LLMs) hallucinate physical quantities~\cite{Ji2023HallucinationSurvey}, cannot enforce constraint satisfaction, and lack grounding in the structured ontologies and simulation feedback loops that define engineering workflows. Physics-informed machine learning~\cite{Karniadakis2021PINN} has matured in isolation from generative AI, creating an integration gap between simulation-based engineering and the emerging agentic paradigm.
 
-This project proposes \textbf{Agentic Knowledge Graph Engineering (AKG-E)}, a framework that enables LLM-powered agents to reason over structured engineering knowledge, interact with physics-based simulations, and validate outputs through \textbf{Verification, Validation, and Uncertainty Quantification (VVUQ)}~\cite{Oberkampf2010VVUQ}. While VVUQ is well-established for computational simulation models, no methodology exists for systematically validating AI agent-generated engineering outputs---creating a critical trust gap that blocks deployment. AKG-E addresses this through three layers: (1)~a \textit{domain ontology layer} encoding engineering knowledge graphs (KGs) with entities, constraints, physical laws, and design rules; (2)~a \textit{simulation integration layer} exposing domain tools (finite element analysis solvers) as agent-callable interfaces; and (3)~a \textit{VVUQ validation layer} that verifies agent-generated designs against physical laws, quantifies prediction uncertainty via Monte Carlo propagation through agent pipelines, and enforces regulatory constraints. Agents orchestrate across retrieval-augmented generation~\cite{Lewis2020RAG}, structured graph queries~\cite{Edge2024GraphRAG}, and simulation calls based on task requirements.
+This project proposes \textbf{Agentic Knowledge Graph Engineering (AKG-E)}, a framework enabling LLM-powered agents to reason over structured construction knowledge, interact with physics-based simulations, and validate outputs through \textbf{Verification, Validation, and Uncertainty Quantification (VVUQ)}~\cite{Oberkampf2010VVUQ}. While VVUQ is well-established for computational simulation, no methodology exists for systematically validating AI agent-generated engineering outputs---a critical trust gap blocking deployment. AKG-E closes this through three layers: (1)~a \textit{domain ontology layer} encoding construction knowledge graphs (KGs) with entities, constraints, building codes, and Building Information Modeling/Industry Foundation Classes (BIM/IFC)~\cite{Eastman2011BIM} design rules; (2)~a \textit{simulation integration layer} exposing finite element analysis (FEA) solvers~\cite{Logg2012FEniCS} as agent-callable interfaces; and (3)~a \textit{VVUQ validation layer} that verifies agent-generated designs against physical laws, quantifies prediction uncertainty via Monte Carlo propagation through agent pipelines, and enforces regulatory constraints. Agents orchestrate across retrieval-augmented generation~\cite{Lewis2020RAG}, structured graph queries~\cite{Edge2024GraphRAG}, and simulation calls.
 
 \begin{figure}[t]
     \centering
@@ -46,18 +46,18 @@ This project proposes \textbf{Agentic Knowledge Graph Engineering (AKG-E)}, a fr
     \begin{tikzpicture}[
         node distance=0.35cm and 0.25cm,
         layerbox/.style={rectangle, rounded corners=3pt, draw=gray!60, fill=gray!8, minimum width=7.5cm, minimum height=0.7cm, align=center, font=\scriptsize},
-        dombox/.style={rectangle, rounded corners=3pt, draw=gray!50, fill=orange!6, minimum width=5.5cm, minimum height=1.1cm, align=center, font=\tiny},
+        dombox/.style={rectangle, rounded corners=3pt, draw=gray!50, fill=orange!6, minimum width=7.5cm, minimum height=1.0cm, align=center, font=\tiny},
         agentbox/.style={rectangle, rounded corners=4pt, draw=black!70, fill=blue!8, minimum width=7.5cm, minimum height=0.7cm, align=center, font=\scriptsize\bfseries},
         arr/.style={-{Stealth[length=4pt]}, thick, gray!50},
     ]
-        % Domain application (top) - single centered construction domain
-        \node[dombox] (con) {Construction Engineering\\[1pt]\tiny CV material takeoff, BOM reasoning,\\structural verification via FEA};
+        % Domain application (top) - single construction domain
+        \node[dombox] (con) {\textbf{Construction Engineering}\\[2pt]\tiny Material takeoff from BIM/IFC,\;\; structural verification via FEA,\;\; schedule constraint reasoning};
 
         % Domain ontology layer
-        \node[layerbox, below=0.4cm of con] (onto) {\textbf{Domain Ontology Layer} --- Engineering KGs: entities, constraints, physical laws, design rules};
+        \node[layerbox, below=0.4cm of con] (onto) {\textbf{Domain Ontology Layer} --- Construction KG: entities, constraints, building codes, BIM/IFC design rules};
 
         % Simulation integration layer
-        \node[layerbox, below=0.25cm of onto] (sim) {\textbf{Simulation Integration Layer} --- FEA solvers (agent-callable)};
+        \node[layerbox, below=0.25cm of onto] (sim) {\textbf{Simulation Integration Layer} --- FEA solvers (agent-callable, standardized tool interfaces)};
 
         % Agent orchestration
         \node[agentbox, below=0.25cm of sim] (agent) {Agent Orchestration --- RAG + Graph Queries + Simulation Calls};
@@ -69,7 +69,7 @@ This project proposes \textbf{Agentic Knowledge Graph Engineering (AKG-E)}, a fr
         \node[font=\scriptsize, below=0.3cm of val] (out) {\textit{Verified engineering outputs with quantified uncertainty}};
 
         % Arrows
-        \draw[arr] (con.south) -- (onto.north);
+        \draw[arr] (con) -- (onto);
         \draw[arr] (onto) -- (sim);
         \draw[arr] (sim) -- (agent);
         \draw[arr] (agent) -- (val);
@@ -79,16 +79,16 @@ This project proposes \textbf{Agentic Knowledge Graph Engineering (AKG-E)}, a fr
         \draw[arr, dashed] (val.east) -- ++(0.4,0) |- (agent.east);
     \end{tikzpicture}
     }%
-    \caption{\textbf{AKG-E Framework with VVUQ.} Construction engineering plugs into shared ontology, simulation, and validation layers. Agents orchestrate retrieval, graph reasoning, and FEA simulation calls. The VVUQ layer verifies outputs, quantifies uncertainty, and enforces building code constraints. A feedback loop ensures iterative refinement until validation criteria are met.}
+    \caption{\textbf{AKG-E Framework (Construction).} The construction domain plugs into shared ontology, simulation, and VVUQ layers. Agents orchestrate retrieval, graph reasoning, and FEA calls; the VVUQ layer verifies outputs, quantifies uncertainty, and enforces building codes, with a feedback loop for iterative refinement.}
     \label{fig:framework}
     \vspace{-0.5em}
 \end{figure}
 
-We demonstrate AKG-E in \textbf{construction engineering}, where agents parse IFC/BIM drawings to extract structural elements (columns, beams, connections) and populate a construction knowledge graph encoding materials, load specifications, and code requirements. Agents then perform automated material takeoff using computer vision, reason over bill-of-materials KGs grounded in BIM/IFC standards, call FEA solvers for structural analysis, and build and query a construction digital twin for real-time project state tracking and schedule-aware design iteration. VVUQ ensures load calculations satisfy building codes, quantifies safety margins under material property uncertainty via Monte Carlo propagation, and flags outputs exceeding uncertainty thresholds for human review before deployment. Construction is an ideal testbed because it combines structured ontological knowledge (BIM/IFC), physics-based simulation (FEA), and multi-level regulatory constraint satisfaction---exercising all three AKG-E layers on a single, high-stakes domain.
+In \textbf{construction engineering}, agents parse BIM/IFC~\cite{Eastman2011BIM} models to extract structural elements and populate a construction KG encoding materials, loads, and code requirements. Three core tasks drive the evaluation: (i)~\textit{material takeoff}---automated extraction of bill-of-materials from IFC files, validated against code-compliant quantities; (ii)~\textit{structural verification}---FEA~\cite{Logg2012FEniCS} calls for load analysis, with VVUQ ensuring safety margins and quantifying material-property uncertainty via Monte Carlo propagation; and (iii)~\textit{schedule constraint reasoning}---agents flag sequencing conflicts before construction begins, with constraint violations logged for human review. The framework targets deployment on Amazon Bedrock~\cite{AWSBedrockHybridSearch2024}, enabling integration with existing AWS data pipelines and document repositories without specialized on-premises infrastructure.
 
-This research tests two hypotheses: \textbf{H1:}~Agents grounded in engineering KGs with simulation-in-the-loop VVUQ produce significantly fewer physically infeasible outputs than RAG-only or prompt-only LLM baselines on construction tasks (material takeoff accuracy, BOM validation, structural verification; target: $>$50\% constraint violation reduction). \textbf{H2:}~VVUQ-aware agent pipelines yield calibrated uncertainty estimates for engineering quantities (coverage within 10\% of nominal), enabling principled confidence thresholds for autonomous versus human-reviewed decisions.
+We test one falsifiable hypothesis: \textbf{VVUQ-gated agents will reduce constraint violation rates versus unconstrained LLM baselines by measurable margins} on construction benchmarks (target: $>$50\% reduction). A secondary hypothesis holds that VVUQ-aware pipelines yield calibrated uncertainty estimates for structural quantities (coverage within 10\% of nominal), enabling principled thresholds for autonomous versus human-reviewed decisions.
 
-Experiments compare prompt-only LLMs, RAG-augmented methods, and full AKG-E on construction material takeoff, BOM validation, structural verification, and construction planning tasks, with expert-annotated ground truth from BIM models. Expected outcomes include the open AKG-E framework, VVUQ-integrated KG templates, and benchmarks demonstrating that \textbf{simulation-grounded agentic AI} outperforms unstructured approaches for engineering decision-support.
+Experiments compare prompt-only LLMs, RAG-augmented baselines~\cite{Lewis2020RAG}, and full AKG-E across all three task types using expert-annotated ground truth from BIM models. Deliverables include the open AKG-E framework, VVUQ-integrated KG templates for BIM/IFC workflows, and benchmarks demonstrating that \textbf{simulation-grounded agentic AI} outperforms unstructured approaches for construction decision-support.
 
 \bibliographystyle{IEEEtran}
 \bibliography{references}
