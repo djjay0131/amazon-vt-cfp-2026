@@ -1,7 +1,7 @@
 # Abstract Polish Workflow
 
 _Created: 2026-03-14_
-_Updated: 2026-03-14_
+_Updated: 2026-03-15_
 
 ## Workflow Overview
 
@@ -15,6 +15,7 @@ _Updated: 2026-03-14_
 |------|------|--------|
 | Mar 14 | Polish all 3 abstracts to submission quality | DONE |
 | Mar 14 | Create AKG-E v4b variant (2 domains + VVUQ) | DONE |
+| Mar 15 | Create AKG-E v4c variant (construction-only + VVUQ) | DONE |
 | Mar 15 | Run reviewer process on all polished abstracts | Next |
 | Mar 16 | Incorporate feedback; decide which 2 to submit | Pending |
 | Mar 17 | Portal registration and submission (deadline) | Pending |
@@ -76,8 +77,8 @@ After the reviewer process, the final 2 will be selected based on:
 |-------|-------|
 | Primary Topic | AI Accelerated Science & Engineering |
 | Secondary Topic | Agentic AI |
-| Abstract Versions | v4 (abstract_v4.pdf), v4b (abstract_v4b.pdf) |
-| Current Status | **POLISHED** — concrete sim tools, tightened scope; v4b reframed variant created |
+| Abstract Versions | v4 (abstract_v4.pdf), v4b (abstract_v4b.pdf), v4c (abstract_v4c.pdf) |
+| Current Status | **POLISHED** — concrete sim tools, tightened scope; v4b reframed variant created; v4c construction-only variant created |
 
 ### Known Strengths
 
@@ -90,7 +91,7 @@ After the reviewer process, the final 2 will be selected based on:
 ### AKG-E Known Weaknesses (Post-Polish)
 
 - Even 2 domains + VVUQ is ambitious for 1 year
-- Need to decide between v4 (2+1 domains) and v4b (2 domains + VVUQ backbone) before submission
+- Need to decide between v4 (2+1 domains), v4b (2 domains + VVUQ backbone), and v4c (construction-only + VVUQ backbone) before submission
 
 ### AKG-E Polish Changes (Completed)
 
@@ -98,9 +99,10 @@ After the reviewer process, the final 2 will be selected based on:
 - [x] v4: Tightened prose throughout
 - [x] v4: Narrowed focus to 2+1 domains (from 3-4 generic)
 - [x] v4b: Created new variant — reframed with 2 focused applications + VVUQ as unifying backbone
+- [x] v4c: Created construction-only variant of v4b — narrows to single domain (construction material takeoff with CV) + VVUQ backbone
 - [x] Strengthened connection to advisor's construction.ai work
 - [x] Polished writing quality to match PA-AKG v2 level
-- [ ] Confirm reframing direction with advisor (v4 vs v4b) before submission
+- [ ] Confirm reframing direction with advisor (v4 vs v4b vs v4c) before submission
 
 ---
 
@@ -162,6 +164,6 @@ For each proposal, the reviewer process should produce:
 
 After reviews are complete:
 
-- If all 3 are strong: submit PA-AKG (#1) + AKG-E (#2, choosing between v4 and v4b)
+- If all 3 are strong: submit PA-AKG (#1) + AKG-E (#2, choosing between v4, v4b, and v4c)
 - If AKG-E reviews poorly: consider PA-AKG + SVF
 - If only 1 is strong enough: submit just that one (quality over quantity)

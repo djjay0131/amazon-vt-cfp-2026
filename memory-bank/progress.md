@@ -53,15 +53,19 @@
 - [x] Polish PA-AKG (v2) — sharpened novelty (unified substrate vs isolated), added Self-RAG citation, concrete eval tasks
 - [x] Polish SVF (v3) — toned down overclaims, developed coordination reliability, narrowed scope
 - [x] Polish AKG-E (v4) — concrete simulation tools (OpenSeesPy, SUMO), tightened prose, narrowed to 2+1 domains
-- [x] Create AKG-E (v4b) — new variant: reframed with 2 focused applications + VVUQ backbone
+- [x] Create AKG-E (v4b) — new variant: reframed with 2 focused applications (construction + transportation) + VVUQ backbone
+
+### Phase 2e (partial): v4c Creation (2026-03-15)
+
+- [x] Create AKG-E (v4c) — construction-only variant: drops transportation domain, tightens focus to construction material takeoff with VVUQ backbone (based on v4b)
 
 ## In Progress
 
 ### Phase 2e: Reviewer Process & Submission (2026-03-15 – 2026-03-17)
 
-- [ ] Run reviewer process on all polished abstracts (Mar 15)
+- [ ] Run reviewer process on all polished abstracts — v2, v3, v4, v4b, v4c (Mar 15)
 - [ ] Incorporate reviewer feedback (Mar 16)
-- [ ] Final selection of which 2 to submit (Mar 16)
+- [ ] Final selection of which 2 to submit — choose from 5 variants (Mar 16)
 - [ ] Portal registration and submission (Mar 17)
 
 ## Upcoming
@@ -83,6 +87,7 @@
 | Strategy pivot & website restructure | 2026-03-14 | Done |
 | Polish all 3 abstracts | 2026-03-14 | Done |
 | AKG-E v4b variant created | 2026-03-14 | Done |
+| AKG-E v4c variant created (construction-only) | 2026-03-15 | Done |
 | Reviewer process on polished abstracts | 2026-03-15 | Next |
 | Incorporate feedback + final selection | 2026-03-16 | Pending |
 | Abstract(s) submitted | 2026-03-17 | Pending |
