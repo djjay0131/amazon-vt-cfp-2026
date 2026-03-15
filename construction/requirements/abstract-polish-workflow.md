@@ -1,20 +1,23 @@
 # Abstract Polish Workflow
 
 _Created: 2026-03-14_
+_Updated: 2026-03-14_
 
 ## Workflow Overview
 
 ```
-Polish All 3 Abstracts → Run Reviewer Process → Incorporate Feedback → Select 2 → Submit
+~~Polish All 3 Abstracts~~ → Run Reviewer Process → Incorporate Feedback → Select 2 → Submit
 ```
 
 ### Timeline
 
-| Date | Task |
-|------|------|
-| Mar 15 | Polish all 3 abstracts to submission quality |
-| Mar 16 | Run reviewer process on each; incorporate feedback; decide which 2 to submit |
-| Mar 17 | Portal registration and submission (deadline) |
+| Date | Task | Status |
+|------|------|--------|
+| Mar 14 | Polish all 3 abstracts to submission quality | DONE |
+| Mar 14 | Create AKG-E v4b variant (2 domains + VVUQ) | DONE |
+| Mar 15 | Run reviewer process on all polished abstracts | Next |
+| Mar 16 | Incorporate feedback; decide which 2 to submit | Pending |
+| Mar 17 | Portal registration and submission (deadline) | Pending |
 
 ### Selection Criteria
 
@@ -54,11 +57,13 @@ After the reviewer process, the final 2 will be selected based on:
 - "Provenance-aware" framing needs to be clearly differentiated from standard attribution/citation work
 - Architecture diagram may be too complex for 1-page abstract
 
-### Remaining Work
+### PA-AKG Polish Changes (Completed)
 
-- [x] Sharpen novelty claims: unified substrate vs isolated capabilities (GraphRAG/CRAG/Self-RAG)
-- [x] Tighten Amazon/Bedrock relevance language
-- [x] Verify 1-page fit with references excluded
+- [x] Sharpened novelty claims: unified substrate vs isolated capabilities (GraphRAG/CRAG/Self-RAG)
+- [x] Added Self-RAG citation to strengthen SOA grounding
+- [x] Added concrete evaluation tasks
+- [x] Tightened Amazon/Bedrock relevance language
+- [x] Verified 1-page fit with references excluded
 - [x] Final language polish
 
 ---
@@ -71,7 +76,7 @@ After the reviewer process, the final 2 will be selected based on:
 |-------|-------|
 | Primary Topic | AI Accelerated Science & Engineering |
 | Secondary Topic | Agentic AI |
-| Abstract Version | v4 (abstract_v4.pdf) |
+| Abstract Versions | v4 (abstract_v4.pdf), v4b (abstract_v4b.pdf) |
 | Current Status | **POLISHED** — concrete sim tools, tightened scope; v4b reframed variant created |
 
 ### Known Strengths
@@ -82,21 +87,19 @@ After the reviewer process, the final 2 will be selected based on:
 - Two concrete applications: construction material takeoff with CV, transportation digital twin
 - Different reviewer pool from PA-AKG (different primary topic)
 
-### Known Weaknesses
+### AKG-E Known Weaknesses (Post-Polish)
 
-- Original framing too ambitious (3-4 generic domains)
-- Needs reframing around 2 applications + VVUQ (per strategy-pivot.md)
-- Simulation integration layer was hand-waved in earlier versions
-- Feasibility concern: even 2 domains + VVUQ is ambitious for 1 year
-- Abstract writing quality lags behind PA-AKG v2
+- Even 2 domains + VVUQ is ambitious for 1 year
+- Need to decide between v4 (2+1 domains) and v4b (2 domains + VVUQ backbone) before submission
 
-### Remaining Work
+### AKG-E Polish Changes (Completed)
 
-- [x] Reframe around 2 concrete applications (construction CV + transportation digital twin) — done in v4b
-- [x] Integrate VVUQ as the unifying validation backbone — done in v4b
-- [x] Reduce scope to be clearly feasible in 1 year (2 primary + 1 extension domain)
-- [x] Strengthen connection to advisor's construction.ai work
-- [x] Polish writing quality — concrete sim tools, tightened prose
+- [x] v4: Added concrete simulation tools (OpenSeesPy, SUMO)
+- [x] v4: Tightened prose throughout
+- [x] v4: Narrowed focus to 2+1 domains (from 3-4 generic)
+- [x] v4b: Created new variant — reframed with 2 focused applications + VVUQ as unifying backbone
+- [x] Strengthened connection to advisor's construction.ai work
+- [x] Polished writing quality to match PA-AKG v2 level
 - [ ] Confirm reframing direction with advisor (v4 vs v4b) before submission
 
 ---
@@ -119,25 +122,22 @@ After the reviewer process, the final 2 will be selected based on:
 - Responsible AI is high priority for Amazon
 - Could have broad impact if benchmark suite is adopted
 
-### Known Weaknesses
+### SVF Known Weaknesses (Post-Polish)
 
 - "Meta" nature — evaluates systems but doesn't build one (less exciting for funders)
-- Overclaimed novelty — "first framework" claim is too strong given existing work
-- Coordination reliability dimension underdeveloped
-- Needs full benchmark suite — feasibility concern for 1 year
 - Weaker Amazon-specific relevance compared to PA-AKG
 
-### Remaining Work
+### SVF Polish Changes (Completed)
 
-- [x] Tone down "first framework" → "systematic evaluation framework addressing critical gaps"
-- [x] Develop coordination reliability: fault injection, cascading error propagation, recovery latency
-- [x] Narrow scope to 3 concrete task types (retrieval QA, agent workflows, coordination scenarios)
-- [x] Strengthen Amazon angle: production agent platform reference added
+- [x] Toned down "first framework" claims — positioned as "systematic evaluation framework addressing critical gaps"
+- [x] Developed coordination reliability: fault injection, cascading error propagation, recovery latency
+- [x] Narrowed scope to 3 concrete task types (retrieval QA, agent workflows, coordination scenarios)
+- [x] Strengthened Amazon angle: production agent platform reference added
 - [x] Final language polish: "unlike post-hoc benchmarks" framing
 
 ---
 
-## Reviewer Process (Mar 16)
+## Reviewer Process (Mar 15)
 
 Each abstract will be reviewed with the following evaluation criteria:
 
@@ -162,6 +162,6 @@ For each proposal, the reviewer process should produce:
 
 After reviews are complete:
 
-- If all 3 are strong: submit PA-AKG (#1) + AKG-E (#2)
-- If AKG-E reviews poorly after reframing: consider PA-AKG + SVF
+- If all 3 are strong: submit PA-AKG (#1) + AKG-E (#2, choosing between v4 and v4b)
+- If AKG-E reviews poorly: consider PA-AKG + SVF
 - If only 1 is strong enough: submit just that one (quality over quantity)
