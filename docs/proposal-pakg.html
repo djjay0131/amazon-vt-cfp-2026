@@ -178,6 +178,35 @@
         }
 
         td { color: var(--text-secondary); }
+
+        /* Citation tooltip styles */
+        .cite-link {
+            color: var(--amazon-orange);
+            text-decoration: none;
+            font-weight: 600;
+            cursor: pointer;
+            position: relative;
+        }
+        .cite-link:hover { text-decoration: underline; }
+
+        .cite-tooltip {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            background: #1e1e1e;
+            border: 1px solid var(--amazon-orange);
+            border-radius: 8px;
+            padding: 0.9rem 1.1rem;
+            max-width: 360px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.6);
+            font-size: 0.82rem;
+            line-height: 1.5;
+            color: var(--text-primary);
+            pointer-events: none;
+        }
+        .cite-tooltip .tt-title { font-weight: 700; color: #fff; margin-bottom: 0.3rem; }
+        .cite-tooltip .tt-meta { color: var(--text-secondary); font-size: 0.78rem; margin-bottom: 0.4rem; }
+        .cite-tooltip .tt-summary { color: var(--text-primary); }
     </style>
 </head>
 <body>
@@ -195,6 +224,7 @@
         <a href="topic-analysis.html">Topic Analysis</a>
         <a href="deep-research-report.html">Deep Research</a>
         <a href="deep-research-akge.html">AKG-E Research</a>
+        <a href="svf-deep-research.html">SVF Deep Research</a>
     </nav>
 
     <div class="container">
@@ -261,12 +291,36 @@
                 <tr><th>Citation</th><th>Paper</th><th>Year</th></tr>
             </thead>
             <tbody>
-                <tr><td>Lewis2020RAG</td><td>Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks</td><td>2020</td></tr>
-                <tr><td>AWSBedrockHybridSearch2024</td><td>Amazon Bedrock Knowledge Bases Hybrid Search</td><td>2024</td></tr>
-                <tr><td>Edge2024GraphRAG</td><td>From Local to Global: A Graph RAG Approach</td><td>2024</td></tr>
-                <tr><td>Yan2024CRAG</td><td>Corrective Retrieval Augmented Generation</td><td>2024</td></tr>
-                <tr><td>Ji2023HallucinationSurvey</td><td>Survey of Hallucination in Natural Language Generation</td><td>2023</td></tr>
-                <tr><td>OpenTelemetryGenAI2024</td><td>Semantic Conventions for Generative AI Systems</td><td>2024</td></tr>
+                <tr>
+                    <td><a href="https://arxiv.org/abs/2005.11401" target="_blank" class="cite-link" data-tooltip="&lt;div class='tt-title'&gt;Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks&lt;/div&gt;&lt;div class='tt-meta'&gt;Lewis et al. &middot; NeurIPS 2020&lt;/div&gt;&lt;div class='tt-summary'&gt;Introduced retrieval-augmented generation combining dense passage retrieval with sequence-to-sequence generation. The canonical RAG baseline that all subsequent work builds on.&lt;/div&gt;">Lewis2020RAG</a></td>
+                    <td><a href="https://arxiv.org/abs/2005.11401" target="_blank" class="cite-link" data-tooltip="&lt;div class='tt-title'&gt;Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks&lt;/div&gt;&lt;div class='tt-meta'&gt;Lewis et al. &middot; NeurIPS 2020&lt;/div&gt;&lt;div class='tt-summary'&gt;Introduced retrieval-augmented generation combining dense passage retrieval with sequence-to-sequence generation. The canonical RAG baseline that all subsequent work builds on.&lt;/div&gt;">Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks</a></td>
+                    <td>2020</td>
+                </tr>
+                <tr>
+                    <td><a href="https://aws.amazon.com/blogs/machine-learning/amazon-bedrock-knowledge-bases-now-supports-hybrid-search/" target="_blank" class="cite-link" data-tooltip="&lt;div class='tt-title'&gt;Amazon Bedrock Knowledge Bases Now Supports Hybrid Search&lt;/div&gt;&lt;div class='tt-meta'&gt;Amazon Web Services &middot; AWS ML Blog 2024&lt;/div&gt;&lt;div class='tt-summary'&gt;AWS documentation on hybrid search in Amazon Bedrock Knowledge Bases &mdash; combines semantic (vector) and keyword (BM25) retrieval with configurable weighting. Industry baseline for hybrid retrieval experiments.&lt;/div&gt;">AWSBedrockHybridSearch2024</a></td>
+                    <td><a href="https://aws.amazon.com/blogs/machine-learning/amazon-bedrock-knowledge-bases-now-supports-hybrid-search/" target="_blank" class="cite-link" data-tooltip="&lt;div class='tt-title'&gt;Amazon Bedrock Knowledge Bases Now Supports Hybrid Search&lt;/div&gt;&lt;div class='tt-meta'&gt;Amazon Web Services &middot; AWS ML Blog 2024&lt;/div&gt;&lt;div class='tt-summary'&gt;AWS documentation on hybrid search in Amazon Bedrock Knowledge Bases &mdash; combines semantic (vector) and keyword (BM25) retrieval with configurable weighting. Industry baseline for hybrid retrieval experiments.&lt;/div&gt;">Amazon Bedrock Knowledge Bases Hybrid Search</a></td>
+                    <td>2024</td>
+                </tr>
+                <tr>
+                    <td><a href="https://arxiv.org/abs/2404.16130" target="_blank" class="cite-link" data-tooltip="&lt;div class='tt-title'&gt;From Local to Global: A Graph RAG Approach to Query-Focused Summarization&lt;/div&gt;&lt;div class='tt-meta'&gt;Edge et al. &middot; arXiv 2024&lt;/div&gt;&lt;div class='tt-summary'&gt;Microsoft&rsquo;s graph-based RAG that builds a community-summarized knowledge graph over a corpus to answer global, sensemaking queries that plain RAG fails on. Motivates KG-grounded retrieval in PA-AKG.&lt;/div&gt;">Edge2024GraphRAG</a></td>
+                    <td><a href="https://arxiv.org/abs/2404.16130" target="_blank" class="cite-link" data-tooltip="&lt;div class='tt-title'&gt;From Local to Global: A Graph RAG Approach to Query-Focused Summarization&lt;/div&gt;&lt;div class='tt-meta'&gt;Edge et al. &middot; arXiv 2024&lt;/div&gt;&lt;div class='tt-summary'&gt;Microsoft&rsquo;s graph-based RAG that builds a community-summarized knowledge graph over a corpus to answer global, sensemaking queries that plain RAG fails on. Motivates KG-grounded retrieval in PA-AKG.&lt;/div&gt;">From Local to Global: A Graph RAG Approach</a></td>
+                    <td>2024</td>
+                </tr>
+                <tr>
+                    <td><a href="https://arxiv.org/abs/2401.15884" target="_blank" class="cite-link" data-tooltip="&lt;div class='tt-title'&gt;Corrective Retrieval Augmented Generation&lt;/div&gt;&lt;div class='tt-meta'&gt;Yan et al. &middot; arXiv 2024&lt;/div&gt;&lt;div class='tt-summary'&gt;Proposes a corrective retrieval mechanism that evaluates retrieval quality and triggers web search fallback when retrieved documents are irrelevant or contradictory. Directly motivates PA-AKG&rsquo;s validation agents.&lt;/div&gt;">Yan2024CRAG</a></td>
+                    <td><a href="https://arxiv.org/abs/2401.15884" target="_blank" class="cite-link" data-tooltip="&lt;div class='tt-title'&gt;Corrective Retrieval Augmented Generation&lt;/div&gt;&lt;div class='tt-meta'&gt;Yan et al. &middot; arXiv 2024&lt;/div&gt;&lt;div class='tt-summary'&gt;Proposes a corrective retrieval mechanism that evaluates retrieval quality and triggers web search fallback when retrieved documents are irrelevant or contradictory. Directly motivates PA-AKG&rsquo;s validation agents.&lt;/div&gt;">Corrective Retrieval Augmented Generation</a></td>
+                    <td>2024</td>
+                </tr>
+                <tr>
+                    <td><a href="https://doi.org/10.1145/3571730" target="_blank" class="cite-link" data-tooltip="&lt;div class='tt-title'&gt;Survey of Hallucination in Natural Language Generation&lt;/div&gt;&lt;div class='tt-meta'&gt;Ji et al. &middot; ACM Computing Surveys 2023&lt;/div&gt;&lt;div class='tt-summary'&gt;Comprehensive survey of hallucination in large language models &mdash; defines types, causes, and evaluation methods. Foundational motivation for why grounding and provenance matter in knowledge-grounded systems.&lt;/div&gt;">Ji2023HallucinationSurvey</a></td>
+                    <td><a href="https://doi.org/10.1145/3571730" target="_blank" class="cite-link" data-tooltip="&lt;div class='tt-title'&gt;Survey of Hallucination in Natural Language Generation&lt;/div&gt;&lt;div class='tt-meta'&gt;Ji et al. &middot; ACM Computing Surveys 2023&lt;/div&gt;&lt;div class='tt-summary'&gt;Comprehensive survey of hallucination in large language models &mdash; defines types, causes, and evaluation methods. Foundational motivation for why grounding and provenance matter in knowledge-grounded systems.&lt;/div&gt;">Survey of Hallucination in Natural Language Generation</a></td>
+                    <td>2023</td>
+                </tr>
+                <tr>
+                    <td><a href="https://opentelemetry.io/docs/specs/semconv/gen-ai/" target="_blank" class="cite-link" data-tooltip="&lt;div class='tt-title'&gt;Semantic Conventions for Generative AI Systems&lt;/div&gt;&lt;div class='tt-meta'&gt;OpenTelemetry &middot; OTel Specification 2024&lt;/div&gt;&lt;div class='tt-summary'&gt;OpenTelemetry semantic conventions for GenAI &mdash; standardizes span attributes for LLM calls, retrieval operations, and agent tool use. PA-AKG&rsquo;s provenance outputs target this standard for auditability.&lt;/div&gt;">OpenTelemetryGenAI2024</a></td>
+                    <td><a href="https://opentelemetry.io/docs/specs/semconv/gen-ai/" target="_blank" class="cite-link" data-tooltip="&lt;div class='tt-title'&gt;Semantic Conventions for Generative AI Systems&lt;/div&gt;&lt;div class='tt-meta'&gt;OpenTelemetry &middot; OTel Specification 2024&lt;/div&gt;&lt;div class='tt-summary'&gt;OpenTelemetry semantic conventions for GenAI &mdash; standardizes span attributes for LLM calls, retrieval operations, and agent tool use. PA-AKG&rsquo;s provenance outputs target this standard for auditability.&lt;/div&gt;">Semantic Conventions for Generative AI Systems</a></td>
+                    <td>2024</td>
+                </tr>
             </tbody>
         </table>
 
@@ -278,5 +332,30 @@
         </ul>
 
     </div>
+
+    <script>
+    (function() {
+        const tooltip = document.createElement('div');
+        tooltip.className = 'cite-tooltip';
+        document.body.appendChild(tooltip);
+
+        document.querySelectorAll('.cite-link').forEach(el => {
+            el.addEventListener('mouseenter', e => {
+                tooltip.innerHTML = el.dataset.tooltip;
+                tooltip.style.display = 'block';
+                positionTooltip(e);
+            });
+            el.addEventListener('mousemove', positionTooltip);
+            el.addEventListener('mouseleave', () => { tooltip.style.display = 'none'; });
+        });
+
+        function positionTooltip(e) {
+            const x = e.clientX + 15;
+            const y = e.clientY + 15;
+            tooltip.style.left = Math.min(x, window.innerWidth - 380) + 'px';
+            tooltip.style.top = Math.min(y, window.innerHeight - 200) + 'px';
+        }
+    })();
+    </script>
 </body>
 </html>

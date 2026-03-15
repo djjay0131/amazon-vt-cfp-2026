@@ -179,6 +179,35 @@
         }
 
         td { color: var(--text-secondary); }
+
+        /* Citation tooltip styles */
+        .cite-link {
+            color: var(--amazon-orange);
+            text-decoration: none;
+            font-weight: 600;
+            cursor: pointer;
+            position: relative;
+        }
+        .cite-link:hover { text-decoration: underline; }
+
+        .cite-tooltip {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            background: #1e1e1e;
+            border: 1px solid var(--amazon-orange);
+            border-radius: 8px;
+            padding: 0.9rem 1.1rem;
+            max-width: 360px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.6);
+            font-size: 0.82rem;
+            line-height: 1.5;
+            color: var(--text-primary);
+            pointer-events: none;
+        }
+        .cite-tooltip .tt-title { font-weight: 700; color: #fff; margin-bottom: 0.3rem; }
+        .cite-tooltip .tt-meta { color: var(--text-secondary); font-size: 0.78rem; margin-bottom: 0.4rem; }
+        .cite-tooltip .tt-summary { color: var(--text-primary); }
     </style>
 </head>
 <body>
@@ -196,6 +225,7 @@
         <a href="topic-analysis.html">Topic Analysis</a>
         <a href="deep-research-report.html">Deep Research</a>
         <a href="deep-research-akge.html">AKG-E Research</a>
+        <a href="svf-deep-research.html">SVF Deep Research</a>
     </nav>
 
     <div class="container">
@@ -283,12 +313,36 @@
                 <tr><th>Citation</th><th>Paper</th><th>Year</th></tr>
             </thead>
             <tbody>
-                <tr><td>Abramson2024AlphaFold3</td><td>Accurate structure prediction of biomolecular interactions with AlphaFold 3</td><td>2024</td></tr>
-                <tr><td>Merchant2023GNoME</td><td>Scaling deep learning for materials discovery (GNoME)</td><td>2023</td></tr>
-                <tr><td>Karniadakis2021PINN</td><td>Physics-informed machine learning</td><td>2021</td></tr>
-                <tr><td>Tao2019DigitalTwin</td><td>Digital Twin in Industry: State of the Art</td><td>2019</td></tr>
-                <tr><td>Edge2024GraphRAG</td><td>From Local to Global: A Graph RAG Approach</td><td>2024</td></tr>
-                <tr><td>Ji2023HallucinationSurvey</td><td>Survey of Hallucination in Natural Language Generation</td><td>2023</td></tr>
+                <tr>
+                    <td><a href="https://doi.org/10.1038/s41586-024-07487-w" target="_blank" class="cite-link" data-tooltip="&lt;div class='tt-title'&gt;Accurate Structure Prediction of Biomolecular Interactions with AlphaFold 3&lt;/div&gt;&lt;div class='tt-meta'&gt;Abramson et al. &middot; Nature 2024&lt;/div&gt;&lt;div class='tt-summary'&gt;DeepMind&rsquo;s AlphaFold 3 extends structure prediction to all biomolecular interactions including DNA, RNA, and small molecules. Exemplar of AI-accelerated science that AKG-E situates itself alongside.&lt;/div&gt;">Abramson2024AlphaFold3</a></td>
+                    <td><a href="https://doi.org/10.1038/s41586-024-07487-w" target="_blank" class="cite-link" data-tooltip="&lt;div class='tt-title'&gt;Accurate Structure Prediction of Biomolecular Interactions with AlphaFold 3&lt;/div&gt;&lt;div class='tt-meta'&gt;Abramson et al. &middot; Nature 2024&lt;/div&gt;&lt;div class='tt-summary'&gt;DeepMind&rsquo;s AlphaFold 3 extends structure prediction to all biomolecular interactions including DNA, RNA, and small molecules. Exemplar of AI-accelerated science that AKG-E situates itself alongside.&lt;/div&gt;">Accurate structure prediction of biomolecular interactions with AlphaFold 3</a></td>
+                    <td>2024</td>
+                </tr>
+                <tr>
+                    <td><a href="https://doi.org/10.1038/s41586-023-06735-9" target="_blank" class="cite-link" data-tooltip="&lt;div class='tt-title'&gt;Scaling Deep Learning for Materials Discovery&lt;/div&gt;&lt;div class='tt-meta'&gt;Merchant et al. &middot; Nature 2023&lt;/div&gt;&lt;div class='tt-summary'&gt;GNoME uses graph neural networks to discover 2.2 million new stable crystal structures, demonstrating deep learning&rsquo;s power for materials science. Motivates AI-for-engineering framing in AKG-E.&lt;/div&gt;">Merchant2023GNoME</a></td>
+                    <td><a href="https://doi.org/10.1038/s41586-023-06735-9" target="_blank" class="cite-link" data-tooltip="&lt;div class='tt-title'&gt;Scaling Deep Learning for Materials Discovery&lt;/div&gt;&lt;div class='tt-meta'&gt;Merchant et al. &middot; Nature 2023&lt;/div&gt;&lt;div class='tt-summary'&gt;GNoME uses graph neural networks to discover 2.2 million new stable crystal structures, demonstrating deep learning&rsquo;s power for materials science. Motivates AI-for-engineering framing in AKG-E.&lt;/div&gt;">Scaling deep learning for materials discovery (GNoME)</a></td>
+                    <td>2023</td>
+                </tr>
+                <tr>
+                    <td><a href="https://doi.org/10.1038/s42254-021-00314-5" target="_blank" class="cite-link" data-tooltip="&lt;div class='tt-title'&gt;Physics-Informed Machine Learning&lt;/div&gt;&lt;div class='tt-meta'&gt;Karniadakis et al. &middot; Nature Reviews Physics 2021&lt;/div&gt;&lt;div class='tt-summary'&gt;Reviews physics-informed neural networks (PINNs) that embed physical laws as constraints during training. Foundational methodology for AKG-E&rsquo;s simulation-in-the-loop validation layer.&lt;/div&gt;">Karniadakis2021PINN</a></td>
+                    <td><a href="https://doi.org/10.1038/s42254-021-00314-5" target="_blank" class="cite-link" data-tooltip="&lt;div class='tt-title'&gt;Physics-Informed Machine Learning&lt;/div&gt;&lt;div class='tt-meta'&gt;Karniadakis et al. &middot; Nature Reviews Physics 2021&lt;/div&gt;&lt;div class='tt-summary'&gt;Reviews physics-informed neural networks (PINNs) that embed physical laws as constraints during training. Foundational methodology for AKG-E&rsquo;s simulation-in-the-loop validation layer.&lt;/div&gt;">Physics-informed machine learning</a></td>
+                    <td>2021</td>
+                </tr>
+                <tr>
+                    <td><a href="https://doi.org/10.1109/TII.2018.2873186" target="_blank" class="cite-link" data-tooltip="&lt;div class='tt-title'&gt;Digital Twin in Industry: State-of-the-Art&lt;/div&gt;&lt;div class='tt-meta'&gt;Tao et al. &middot; IEEE Transactions on Industrial Informatics 2019&lt;/div&gt;&lt;div class='tt-summary'&gt;Surveys digital twin concepts and industrial applications across manufacturing, aerospace, and energy. Provides the digital twin framing underpinning AKG-E&rsquo;s transportation domain pilot.&lt;/div&gt;">Tao2019DigitalTwin</a></td>
+                    <td><a href="https://doi.org/10.1109/TII.2018.2873186" target="_blank" class="cite-link" data-tooltip="&lt;div class='tt-title'&gt;Digital Twin in Industry: State-of-the-Art&lt;/div&gt;&lt;div class='tt-meta'&gt;Tao et al. &middot; IEEE Transactions on Industrial Informatics 2019&lt;/div&gt;&lt;div class='tt-summary'&gt;Surveys digital twin concepts and industrial applications across manufacturing, aerospace, and energy. Provides the digital twin framing underpinning AKG-E&rsquo;s transportation domain pilot.&lt;/div&gt;">Digital Twin in Industry: State of the Art</a></td>
+                    <td>2019</td>
+                </tr>
+                <tr>
+                    <td><a href="https://arxiv.org/abs/2404.16130" target="_blank" class="cite-link" data-tooltip="&lt;div class='tt-title'&gt;From Local to Global: A Graph RAG Approach to Query-Focused Summarization&lt;/div&gt;&lt;div class='tt-meta'&gt;Edge et al. &middot; arXiv 2024&lt;/div&gt;&lt;div class='tt-summary'&gt;Microsoft&rsquo;s graph-based RAG that builds a community-summarized knowledge graph over a corpus to answer global, sensemaking queries that plain RAG fails on. Motivates KG-grounded retrieval in AKG-E.&lt;/div&gt;">Edge2024GraphRAG</a></td>
+                    <td><a href="https://arxiv.org/abs/2404.16130" target="_blank" class="cite-link" data-tooltip="&lt;div class='tt-title'&gt;From Local to Global: A Graph RAG Approach to Query-Focused Summarization&lt;/div&gt;&lt;div class='tt-meta'&gt;Edge et al. &middot; arXiv 2024&lt;/div&gt;&lt;div class='tt-summary'&gt;Microsoft&rsquo;s graph-based RAG that builds a community-summarized knowledge graph over a corpus to answer global, sensemaking queries that plain RAG fails on. Motivates KG-grounded retrieval in AKG-E.&lt;/div&gt;">From Local to Global: A Graph RAG Approach</a></td>
+                    <td>2024</td>
+                </tr>
+                <tr>
+                    <td><a href="https://doi.org/10.1145/3571730" target="_blank" class="cite-link" data-tooltip="&lt;div class='tt-title'&gt;Survey of Hallucination in Natural Language Generation&lt;/div&gt;&lt;div class='tt-meta'&gt;Ji et al. &middot; ACM Computing Surveys 2023&lt;/div&gt;&lt;div class='tt-summary'&gt;Comprehensive survey of hallucination in large language models &mdash; defines types, causes, and evaluation methods. Foundational motivation for why grounding and provenance matter in knowledge-grounded systems.&lt;/div&gt;">Ji2023HallucinationSurvey</a></td>
+                    <td><a href="https://doi.org/10.1145/3571730" target="_blank" class="cite-link" data-tooltip="&lt;div class='tt-title'&gt;Survey of Hallucination in Natural Language Generation&lt;/div&gt;&lt;div class='tt-meta'&gt;Ji et al. &middot; ACM Computing Surveys 2023&lt;/div&gt;&lt;div class='tt-summary'&gt;Comprehensive survey of hallucination in large language models &mdash; defines types, causes, and evaluation methods. Foundational motivation for why grounding and provenance matter in knowledge-grounded systems.&lt;/div&gt;">Survey of Hallucination in Natural Language Generation</a></td>
+                    <td>2023</td>
+                </tr>
             </tbody>
         </table>
 
@@ -301,5 +355,30 @@
         </ul>
 
     </div>
+
+    <script>
+    (function() {
+        const tooltip = document.createElement('div');
+        tooltip.className = 'cite-tooltip';
+        document.body.appendChild(tooltip);
+
+        document.querySelectorAll('.cite-link').forEach(el => {
+            el.addEventListener('mouseenter', e => {
+                tooltip.innerHTML = el.dataset.tooltip;
+                tooltip.style.display = 'block';
+                positionTooltip(e);
+            });
+            el.addEventListener('mousemove', positionTooltip);
+            el.addEventListener('mouseleave', () => { tooltip.style.display = 'none'; });
+        });
+
+        function positionTooltip(e) {
+            const x = e.clientX + 15;
+            const y = e.clientY + 15;
+            tooltip.style.left = Math.min(x, window.innerWidth - 380) + 'px';
+            tooltip.style.top = Math.min(y, window.innerHeight - 200) + 'px';
+        }
+    })();
+    </script>
 </body>
 </html>

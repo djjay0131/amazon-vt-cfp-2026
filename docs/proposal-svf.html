@@ -177,6 +177,35 @@
             background: var(--bg-card);
             margin: 0.2rem 0.3rem 0.2rem 0;
         }
+
+        /* Citation tooltip styles */
+        .cite-link {
+            color: var(--amazon-orange);
+            text-decoration: none;
+            font-weight: 600;
+            cursor: pointer;
+            position: relative;
+        }
+        .cite-link:hover { text-decoration: underline; }
+
+        .cite-tooltip {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            background: #1e1e1e;
+            border: 1px solid var(--amazon-orange);
+            border-radius: 8px;
+            padding: 0.9rem 1.1rem;
+            max-width: 360px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.6);
+            font-size: 0.82rem;
+            line-height: 1.5;
+            color: var(--text-primary);
+            pointer-events: none;
+        }
+        .cite-tooltip .tt-title { font-weight: 700; color: #fff; margin-bottom: 0.3rem; }
+        .cite-tooltip .tt-meta { color: var(--text-secondary); font-size: 0.78rem; margin-bottom: 0.4rem; }
+        .cite-tooltip .tt-summary { color: var(--text-primary); }
     </style>
 </head>
 <body>
@@ -194,6 +223,7 @@
         <a href="topic-analysis.html">Topic Analysis</a>
         <a href="deep-research-report.html">Deep Research</a>
         <a href="deep-research-akge.html">AKG-E Research</a>
+        <a href="svf-deep-research.html">SVF Deep Research</a>
     </nav>
 
     <div class="container">
@@ -255,7 +285,7 @@
 
         <div class="weakness-card">
             <h3>Novelty Overclaim</h3>
-            <p>"First structured evaluation framework" is overreaching. RAGAS, ARES, TruLens exist. The actual novelty is more specific: evaluating grounding + provenance + coordination together for multi-agent systems.</p>
+            <p>"First structured evaluation framework" is overreaching. <a href="https://arxiv.org/abs/2309.15217" target="_blank" class="cite-link" data-tooltip="&lt;div class='tt-title'&gt;RAGAS: Automated Evaluation of Retrieval Augmented Generation&lt;/div&gt;&lt;div class='tt-meta'&gt;Es et al. &middot; arXiv 2023&lt;/div&gt;&lt;div class='tt-summary'&gt;RAGAS introduces reference-free metrics for RAG pipelines &mdash; context relevance, faithfulness, and answer relevance &mdash; computed without ground-truth labels. Named baseline that SVF improves upon for multi-agent scenarios.&lt;/div&gt;">RAGAS</a>, <a href="https://arxiv.org/abs/2311.09476" target="_blank" class="cite-link" data-tooltip="&lt;div class='tt-title'&gt;ARES: An Automated Evaluation Framework for Retrieval-Augmented Generation Systems&lt;/div&gt;&lt;div class='tt-meta'&gt;Saad-Falcon et al. &middot; NAACL 2024&lt;/div&gt;&lt;div class='tt-summary'&gt;ARES trains lightweight LLM judges on synthetic data to evaluate RAG system components automatically. Named baseline showing SVF&rsquo;s coordination reliability and fault injection are beyond ARES&rsquo;s scope.&lt;/div&gt;">ARES</a>, <a href="https://github.com/truera/trulens" target="_blank" class="cite-link" data-tooltip="&lt;div class='tt-title'&gt;TruLens: Evaluation and Tracking for LLM Experiments&lt;/div&gt;&lt;div class='tt-meta'&gt;Truera &middot; GitHub 2024&lt;/div&gt;&lt;div class='tt-summary'&gt;TruLens is an open-source toolkit for tracing and evaluating LLM application execution flows &mdash; retrieval quality, tool calls, plans. Named baseline; SVF adds cascade analysis and OTel-aligned outputs beyond TruLens.&lt;/div&gt;">TruLens</a> exist. The actual novelty is more specific: evaluating grounding + provenance + coordination together for multi-agent systems.</p>
         </div>
 
         <div class="weakness-card">
@@ -276,5 +306,30 @@
         </div>
 
     </div>
+
+    <script>
+    (function() {
+        const tooltip = document.createElement('div');
+        tooltip.className = 'cite-tooltip';
+        document.body.appendChild(tooltip);
+
+        document.querySelectorAll('.cite-link').forEach(el => {
+            el.addEventListener('mouseenter', e => {
+                tooltip.innerHTML = el.dataset.tooltip;
+                tooltip.style.display = 'block';
+                positionTooltip(e);
+            });
+            el.addEventListener('mousemove', positionTooltip);
+            el.addEventListener('mouseleave', () => { tooltip.style.display = 'none'; });
+        });
+
+        function positionTooltip(e) {
+            const x = e.clientX + 15;
+            const y = e.clientY + 15;
+            tooltip.style.left = Math.min(x, window.innerWidth - 380) + 'px';
+            tooltip.style.top = Math.min(y, window.innerHeight - 200) + 'px';
+        }
+    })();
+    </script>
 </body>
 </html>
