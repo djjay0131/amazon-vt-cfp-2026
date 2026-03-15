@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SVF CFP Topic Due Diligence &mdash; Deep Research</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <style>
+        :root {
+            --amazon-orange: #FF9900;
+            --vt-maroon: #861F41;
+            --vt-orange: #E5751F;
+            --bg-dark: #0a0a0a;
+            --bg-card: #141414;
+            --text-primary: #e8e8e8;
+            --text-secondary: #a0a0a0;
+            --border: #2a2a2a;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.7;
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--vt-maroon), #4a1128);
+            border-bottom: 3px solid var(--amazon-orange);
+            padding: 2rem 1rem;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: 0.3rem;
+        }
+
+        .header .subtitle {
+            color: var(--amazon-orange);
+            font-size: 0.95rem;
+        }
+
+        .nav-bar {
+            background: var(--bg-card);
+            border-bottom: 1px solid var(--border);
+            padding: 0.6rem 1rem;
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .nav-bar a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.82rem;
+            padding: 0.3rem 0.7rem;
+            border-radius: 4px;
+            transition: all 0.2s;
+        }
+
+        .nav-bar a:hover { color: var(--amazon-orange); background: rgba(255,153,0,0.08); }
+        .nav-bar a.active { color: var(--amazon-orange); background: rgba(255,153,0,0.12); font-weight: 600; }
+
+        .back-link {
+            display: inline-block;
+            margin: 1.5rem 0 0;
+            color: var(--amazon-orange);
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+        .back-link:hover { text-decoration: underline; }
+
+        .container {
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem 4rem;
+        }
+
+        h2 {
+            color: var(--amazon-orange);
+            font-size: 1.35rem;
+            margin: 2.5rem 0 0.8rem;
+            padding-bottom: 0.3rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        h3 {
+            color: var(--vt-orange);
+            font-size: 1.1rem;
+            margin: 1.8rem 0 0.6rem;
+        }
+
+        p {
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        strong { color: #fff; }
+
+        em { color: var(--text-secondary); font-style: italic; }
+
+        ul, ol {
+            margin: 0.5rem 0 1rem 1.5rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        blockquote {
+            border-left: 3px solid var(--amazon-orange);
+            padding: 0.8rem 1.2rem;
+            margin: 1rem 0;
+            background: var(--bg-card);
+            border-radius: 0 6px 6px 0;
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+
+        .mermaid {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            overflow-x: auto;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0 1.5rem;
+            font-size: 0.88rem;
+        }
+        th {
+            background: var(--bg-card);
+            color: var(--amazon-orange);
+            padding: 0.6rem 0.8rem;
+            text-align: left;
+            border: 1px solid var(--border);
+        }
+        td {
+            padding: 0.5rem 0.8rem;
+            border: 1px solid var(--border);
+            vertical-align: top;
+        }
+        tr:nth-child(even) td { background: rgba(255,255,255,0.02); }
+        .table-wrap { overflow-x: auto; margin: 1rem 0; }
+        code {
+            background: var(--bg-card);
+            padding: 0.15em 0.4em;
+            border-radius: 3px;
+            font-family: 'SF Mono', Consolas, monospace;
+            font-size: 0.88em;
+            color: var(--amazon-orange);
+        }
+        pre {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 1rem;
+            overflow-x: auto;
+            margin: 1rem 0;
+        }
+        pre code { background: none; padding: 0; color: var(--text-primary); font-size: 0.83rem; }
+        .toc {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1.2rem 1.5rem;
+            margin: 1.5rem 0 2rem;
+        }
+        .toc h4 { color: var(--text-secondary); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.6rem; }
+        .toc ul { margin: 0; list-style: none; padding: 0; }
+        .toc li { margin-bottom: 0.3rem; }
+        .toc a { color: var(--text-secondary); text-decoration: none; font-size: 0.88rem; }
+        .toc a:hover { color: var(--amazon-orange); }
+        .badge {
+            display: inline-block;
+            background: rgba(255,153,0,0.15);
+            color: var(--amazon-orange);
+            font-size: 0.75rem;
+            padding: 0.1em 0.5em;
+            border-radius: 3px;
+            font-weight: 600;
+            margin-left: 0.4em;
+        }
+        hr {
+            border: none;
+            border-top: 1px solid var(--border);
+            margin: 2rem 0;
+        }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <h1>SVF CFP Topic Due Diligence</h1>
+    <div class="subtitle">Topic selection matrices, novelty sharpening, and citation guidance for SVF</div>
+    <a href="index.html" class="back-link">&larr; Back to Dashboard</a>
+</div>
+
+<nav class="nav-bar">
+    <a href="index.html">Dashboard</a>
+    <a href="submission-strategy.html">Original Strategy</a>
+    <a href="devils-advocate.html">Devil's Advocate</a>
+    <a href="topic-analysis.html">Topic Analysis</a>
+    <a href="deep-research-report.html">Deep Research</a>
+    <a href="deep-research-akge.html">AKG-E Deep Research</a>
+    <a href="pa-akg-archive.html">PA-AKG Details</a>
+    <a href="svf-deep-research.html" class="active">SVF Deep Research</a>
+</nav>
+
+<div class="container">
+
+    <div class="toc">
+        <h4>Table of Contents</h4>
+        <ul>
+            <li><a href="#executive-summary">Executive Summary</a></li>
+            <li><a href="#topic-selection-matrices">Topic Selection Matrices for SVF</a></li>
+            <li><a href="#state-of-the-art">SVF State of the Art and Novelty Sharpening</a></li>
+            <li><a href="#agentic-evaluation">Agentic Evaluation</a></li>
+            <li><a href="#responsible-ai">Responsible AI</a></li>
+            <li><a href="#hybrid-retrieval">Retrieval-Augmented Inference / Hybrid Retrieval</a></li>
+            <li><a href="#knowledge-grounding">Knowledge Grounding</a></li>
+            <li><a href="#agentic-ai">Agentic AI</a></li>
+            <li><a href="#ai-science-engineering">AI for Science &amp; Engineering</a></li>
+            <li><a href="#practical-edits">Practical Edits to Strengthen SVF</a></li>
+            <li><a href="#diagram-suggestions">Image and Diagram Suggestions</a></li>
+            <li><a href="#bibtex">Ready-to-Paste BibTeX Block</a></li>
+        </ul>
+    </div>
+
+    <!-- ============================================================ -->
+    <h2 id="executive-summary">Executive Summary</h2>
+
+    <p><strong>Assumptions (explicit):</strong> (i) You are submitting a <strong>1&#8209;page abstract (references excluded)</strong> and may be invited to a <strong>3&ndash;4 page proposal</strong>; (ii) this report is <strong>strictly for Abstract #3 (SVF: Structured Validation Framework)</strong> and not for AKG&#8209;E; any mention of simulation&#8209;in&#8209;the&#8209;loop below is treated only as a <em>possible evaluation environment</em>, not an AKG&#8209;E mapping; (iii) you want SVF positioned for the Amazon&ndash;Virginia Tech CFP review process.</p>
+
+    <p><strong>Workflow (including synthesis):</strong> collect CFP subtopic lists &rarr; extract SVF claims/dimensions from your abstract and site write-up &rarr; survey 2023&ndash;2026 primary sources (papers + official docs/standards) &rarr; map advances and &ldquo;known baselines&rdquo; to SVF&rsquo;s four dimensions &rarr; compare six CFP topics for SVF reviewer&#8209;fit &rarr; <strong>synthesize</strong>: (a) best primary/secondary topics, (b) specific strengthening edits, (c) lean citation set + BibTeX, (d) website-update prompt.</p>
+
+    <p><strong>SVF in one line (from your material):</strong> SVF evaluates knowledge-grounded and multi-agent systems along <strong>grounding integrity</strong>, <strong>provenance traceability</strong>, <strong>reasoning robustness</strong>, and <strong>coordination reliability</strong>, producing structured signals aligned with GenAI observability conventions.</p>
+
+    <p><strong>Recommended CFP categories for SVF (top two):</strong></p>
+    <ul>
+        <li><strong>Primary: Agentic Evaluation</strong> <span class="badge">RECOMMENDED</span> &mdash; SVF is an evaluation toolkit/benchmarking contribution and directly matches the abstract&rsquo;s framing and the CFP&rsquo;s evaluation bullet (&ldquo;robust evaluation &hellip; including agents&rdquo;).</li>
+        <li><strong>Secondary: Responsible AI</strong> &mdash; you explicitly evaluate robustness under adversarial inputs, cascading failures, and auditability; SVF&rsquo;s provenance/governance focus supports &ldquo;responsible deployment of compound systems.&rdquo;</li>
+    </ul>
+
+    <p><strong>Key &ldquo;keep it straight&rdquo; correction (important):</strong> treat simulation&#8209;in&#8209;the&#8209;loop as an <em>optional evaluation workload</em> (a kind of tool-using agent environment), not as an SVF core dependency. SVF&rsquo;s novelty should remain &ldquo;system-level measurement + validation loops + observability-aligned signals,&rdquo; independent of any one domain.</p>
+
+    <div class="mermaid">
+flowchart LR
+  S[System under test\nRAG • hybrid • graph • agents] --> I[Instrumentation\nspans • traces • logs]
+  I --> T[Task suites\nQA • multi-step • multi-agent]
+  T --> D[SVF dimension metrics\nGrounding • Provenance • Robustness • Coordination]
+  D --> O[Outputs\nscores • failure taxonomies • dashboards]
+    </div>
+
+    <!-- ============================================================ -->
+    <h2 id="topic-selection-matrices">Topic Selection Matrices for SVF</h2>
+
+    <h3>Comparison Matrix for the Six CFP Topics</h3>
+
+    <div class="table-wrap">
+    <table>
+        <thead>
+            <tr>
+                <th>Topic</th>
+                <th>SVF reviewer fit</th>
+                <th>Novelty leverage for SVF</th>
+                <th>Feasibility (1 year)</th>
+                <th>Amazon relevance</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Agentic Evaluation</td>
+                <td><strong>High</strong></td>
+                <td><strong>High</strong></td>
+                <td>Med&ndash;High</td>
+                <td><strong>High</strong></td>
+            </tr>
+            <tr>
+                <td>Responsible AI</td>
+                <td>High</td>
+                <td>Med</td>
+                <td>Medium</td>
+                <td><strong>High</strong></td>
+            </tr>
+            <tr>
+                <td>Retrieval&#8209;Augmented Inference / Hybrid Retrieval</td>
+                <td>Med</td>
+                <td>Med</td>
+                <td>High</td>
+                <td>High</td>
+            </tr>
+            <tr>
+                <td>Knowledge Grounding</td>
+                <td>Med</td>
+                <td>Med</td>
+                <td>High</td>
+                <td>High</td>
+            </tr>
+            <tr>
+                <td>Agentic AI</td>
+                <td>Med</td>
+                <td>Low&ndash;Med</td>
+                <td>Med</td>
+                <td>High</td>
+            </tr>
+            <tr>
+                <td>AI for Science &amp; Engineering</td>
+                <td>Low&ndash;Med</td>
+                <td>Low</td>
+                <td>Medium</td>
+                <td>Medium</td>
+            </tr>
+        </tbody>
+    </table>
+    </div>
+
+    <p>This aligns with your own &ldquo;SVF is evaluation-first; better fit venues&rdquo; note, but reframes it as &ldquo;best-fit CFP category&rdquo; rather than &ldquo;don&rsquo;t submit.&rdquo;</p>
+
+    <h3>Cross-Reference Matrix (How Each Topic Supports SVF&rsquo;s Four Dimensions)</h3>
+
+    <p>Score: 0 weak signal for SVF, 1 partial, 2 strong, 3 best.</p>
+
+    <div class="table-wrap">
+    <table>
+        <thead>
+            <tr>
+                <th>CFP topic &rarr; / SVF dimension &darr;</th>
+                <th style="text-align:right">Grounding integrity</th>
+                <th style="text-align:right">Provenance traceability</th>
+                <th style="text-align:right">Reasoning robustness</th>
+                <th style="text-align:right">Coordination reliability</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Agentic Evaluation</td>
+                <td style="text-align:right">3</td>
+                <td style="text-align:right">3</td>
+                <td style="text-align:right">3</td>
+                <td style="text-align:right">3</td>
+            </tr>
+            <tr>
+                <td>Responsible AI</td>
+                <td style="text-align:right">2</td>
+                <td style="text-align:right">3</td>
+                <td style="text-align:right">3</td>
+                <td style="text-align:right">2</td>
+            </tr>
+            <tr>
+                <td>Hybrid Retrieval</td>
+                <td style="text-align:right">3</td>
+                <td style="text-align:right">1</td>
+                <td style="text-align:right">2</td>
+                <td style="text-align:right">1</td>
+            </tr>
+            <tr>
+                <td>Knowledge Grounding</td>
+                <td style="text-align:right">3</td>
+                <td style="text-align:right">2</td>
+                <td style="text-align:right">2</td>
+                <td style="text-align:right">1</td>
+            </tr>
+            <tr>
+                <td>Agentic AI</td>
+                <td style="text-align:right">1</td>
+                <td style="text-align:right">1</td>
+                <td style="text-align:right">2</td>
+                <td style="text-align:right">3</td>
+            </tr>
+            <tr>
+                <td>AI for Science &amp; Engineering</td>
+                <td style="text-align:right">1</td>
+                <td style="text-align:right">1</td>
+                <td style="text-align:right">2</td>
+                <td style="text-align:right">1</td>
+            </tr>
+        </tbody>
+    </table>
+    </div>
+
+    <!-- ============================================================ -->
+    <h2 id="state-of-the-art">SVF State of the Art and Novelty Sharpening</h2>
+
+    <p>SVF&rsquo;s strongest &ldquo;research-shaped&rdquo; claim is <strong>integration</strong>: most existing eval work focuses on <em>one slice</em> (RAG component metrics, citation/faithfulness, or agent benchmarks). Your differentiator should be &ldquo;evaluate and debug compound systems end-to-end&rdquo; through (i) unified metrics, (ii) <strong>fault injection / cascade analysis</strong>, and (iii) observability-aligned outputs suitable for production reliability engineering.</p>
+
+    <p>To ground that claim, it helps to explicitly name and position against three widely cited baselines that your own website notes a reviewer may bring up:</p>
+    <ul>
+        <li><strong>RAGAS</strong>: reference-free component metrics for RAG pipelines (retrieval + generation). (<a href="https://arxiv.org/abs/2309.15217" style="color:var(--amazon-orange)">arxiv.org</a>)</li>
+        <li><strong>ARES</strong>: trains lightweight judges on synthetic data to evaluate RAG components (context relevance, faithfulness, answer relevance). (<a href="https://arxiv.org/abs/2311.09476" style="color:var(--amazon-orange)">arxiv.org</a>)</li>
+        <li><strong>TruLens</strong>: tracing + evaluation of app execution flows (retrieval, tool calls, plans), emphasizing instrumentation. (<a href="https://github.com/truera/trulens" style="color:var(--amazon-orange)">github.com</a>)</li>
+    </ul>
+
+    <p>Your &ldquo;devil&rsquo;s advocate&rdquo; page is right: claiming &ldquo;first evaluation framework&rdquo; is brittle. A safer, stronger novelty statement is: <strong>SVF unifies grounding + provenance + robustness + multi-agent fault injection into a single reproducible harness</strong>, and it outputs <strong>standard-structured telemetry</strong> so evaluation is operationalizable, not just a benchmark score. (<a href="https://opentelemetry.io/docs/specs/semconv/gen-ai/" style="color:var(--amazon-orange)">opentelemetry.io</a>)</p>
+
+    <!-- ============================================================ -->
+    <h2 id="agentic-evaluation">Agentic Evaluation</h2>
+
+    <p><strong>Executive summary:</strong> This is SVF&rsquo;s home category. Anchor SVF as &ldquo;benchmarking + methodology + tooling&rdquo; for compound agentic systems, not as a generic evaluation wish list.</p>
+
+    <p><strong>Key subtopics (6&ndash;10):</strong> component-level RAG eval; end-to-end task suites; judge models and judge robustness; interactive environment eval; fault injection; reproducibility harnesses; cost/latency-aware eval; trace-based debugging; multi-agent coordination metrics.</p>
+
+    <p><strong>Recent advances (2023&ndash;2026):</strong> RAGAS and ARES formalize RAG component metrics and automated judging; AgentBench and GAIA show interactive agent evaluation patterns; observability standards are emerging for GenAI spans/traces. (<a href="https://arxiv.org/abs/2309.15217" style="color:var(--amazon-orange)">arxiv.org</a>) (<a href="https://arxiv.org/abs/2311.09476" style="color:var(--amazon-orange)">arxiv.org</a>) (<a href="https://opentelemetry.io/docs/specs/semconv/gen-ai/" style="color:var(--amazon-orange)">opentelemetry.io</a>)</p>
+
+    <p><strong>Representative systems / provider features:</strong> instrumentation-first evaluation (TruLens); standards-based tracing (OpenTelemetry GenAI spans). (<a href="https://github.com/truera/trulens" style="color:var(--amazon-orange)">github.com</a>) (<a href="https://opentelemetry.io/docs/specs/semconv/gen-ai/gen-ai-spans/" style="color:var(--amazon-orange)">opentelemetry.io</a>)</p>
+
+    <p><strong>Open gaps/risks:</strong> judge hacking/bias; weak grounding metrics for contradictory corpora; sparse evaluation of cascade failures; lack of shared &ldquo;fault models&rdquo; for multi-agent workflows. (<a href="https://arxiv.org/abs/2309.15217" style="color:var(--amazon-orange)">arxiv.org</a>)</p>
+
+    <p><strong>Fundable SVF directions (3&ndash;5):</strong></p>
+    <ul>
+        <li>A <strong>fault-injection benchmark</strong> for multi-agent systems (drop tool, corrupt retrieval, delay responses) + cascade metrics.</li>
+        <li><strong>Statement-level grounding tests</strong>: relevance/sufficiency/attribution per claim, not only per answer.</li>
+        <li><strong>Eval-to-telemetry pipeline</strong>: emit OpenTelemetry-conformant spans + metrics so evaluation plugs into dashboards.</li>
+        <li><strong>Judge robustness suite</strong>: measure and mitigate judge sensitivity to ordering/prompting.</li>
+    </ul>
+
+    <p><strong>Likely reviewer questions + pre-answers:</strong></p>
+    <ul>
+        <li><em>What&rsquo;s the hypothesis?</em> &rarr; compound failures are predictable and measurable; integrated metrics + fault models reduce incidents.</li>
+        <li><em>How is this different from RAGAS/ARES/TruLens?</em> &rarr; SVF adds multi-agent cascade analysis + observability-aligned outputs.</li>
+        <li><em>What do you ship in 12 months?</em> &rarr; toolkit + benchmark tasks + reproducible metrics + baselines.</li>
+    </ul>
+
+    <p><strong>Title variants:</strong> &ldquo;SVF: Fault-Injection and Observability-Aligned Evaluation for Grounded Agents&rdquo;; &ldquo;From Answers to Audit Trails: System-Level Evaluation of Multi-Agent AI.&rdquo;</p>
+
+    <p><strong>Recommended citations (3&ndash;5):</strong> RAGAS; ARES; TruLens; OpenTelemetry GenAI. (<a href="https://arxiv.org/abs/2309.15217" style="color:var(--amazon-orange)">arxiv.org</a>)</p>
+
+    <hr>
+
+    <!-- ============================================================ -->
+    <h2 id="responsible-ai">Responsible AI</h2>
+
+    <p><strong>Executive summary:</strong> SVF supports Responsible AI by measuring <em>whether</em> systems stay grounded, auditable, and robust under adversarial and failure conditions&mdash;turning &ldquo;responsible&rdquo; into measurable properties.</p>
+
+    <p><strong>Key subtopics:</strong> red teaming as evaluation; adversarial retrieval/prompt injection; auditability requirements; overrefusal vs safety; governance metrics; privacy leakage in traces; safe tool execution; policy compliance scoring.</p>
+
+    <p><strong>Recent advances / industry practice:</strong> centralized policy controls for agent-tool interactions are becoming productized, suggesting governance is an evaluation surface, not just an app feature. (<a href="https://aws.amazon.com/about-aws/whats-new/2026/03/policy-amazon-bedrock-agentcore-generally-available/" style="color:var(--amazon-orange)">aws.amazon.com</a>)<br>
+    Production-focused jailbreak defenses (e.g., Constitutional Classifiers) quantify robustness vs overrefusal tradeoffs, which can inspire SVF-style metrics. (<a href="https://www.anthropic.com/research/next-generation-constitutional-classifiers" style="color:var(--amazon-orange)">anthropic.com</a>)</p>
+
+    <p><strong>Gaps/risks:</strong> safety evaluations can be gamed; policy changes can silently shift behavior; traces can leak sensitive data if not designed carefully.</p>
+
+    <p><strong>Fundable SVF directions:</strong></p>
+    <ul>
+        <li><strong>Prompt-injection and retrieval-poisoning eval pack</strong> tied to grounding/provenance metrics.</li>
+        <li><strong>Policy-compliance evaluation</strong>: score adherence of tool calls to declared policies and input-validation rules.</li>
+        <li><strong>Privacy-aware tracing</strong>: evaluate what must/need-not be logged to preserve auditability without leaking.</li>
+    </ul>
+
+    <p><strong>Reviewer Qs:</strong> <em>Is this a safety proposal or eval proposal?</em> &rarr; evaluation proposal that operationalizes safety; <em>How do you avoid &ldquo;just policies&rdquo;?</em> &rarr; measure compliance + failure modes.</p>
+
+    <p><strong>Recommended citations:</strong> AgentCore Policy GA; next-gen Constitutional Classifiers; OpenTelemetry GenAI. (<a href="https://aws.amazon.com/about-aws/whats-new/2026/03/policy-amazon-bedrock-agentcore-generally-available/" style="color:var(--amazon-orange)">aws.amazon.com</a>)</p>
+
+    <hr>
+
+    <!-- ============================================================ -->
+    <h2 id="hybrid-retrieval">Retrieval-Augmented Inference / Hybrid Retrieval</h2>
+
+    <p><strong>Executive summary:</strong> Hybrid retrieval is a known driver of grounding quality variation; SVF should treat retrieval as a <em>factor</em> with explicit stress tests (noise, contradictions, query-type shifts).</p>
+
+    <p><strong>Key subtopics:</strong> sparse+dense hybrid; reranking; query decomposition; retrieval evaluation; corrective retrieval actions; evidence sufficiency scoring.</p>
+
+    <p><strong>Recent advances:</strong> CRAG formalizes retrieval-quality evaluation and corrective actions when retrieval &ldquo;goes wrong,&rdquo; aligning directly with SVF&rsquo;s robustness dimension. (<a href="https://arxiv.org/abs/2401.15884" style="color:var(--amazon-orange)">arxiv.org</a>)</p>
+
+    <p><strong>Gaps:</strong> retrieval improvements often lack standardized evaluation across system dimensions (grounding, provenance, robustness).</p>
+
+    <p><strong>Fundable SVF directions:</strong> retrieval stress harness; retrieval-quality classifiers; cross-retriever comparisons with cascade metrics.</p>
+
+    <p><strong>Recommended citations:</strong> CRAG; ARES; RAGAS. (<a href="https://arxiv.org/abs/2401.15884" style="color:var(--amazon-orange)">arxiv.org</a>)</p>
+
+    <hr>
+
+    <!-- ============================================================ -->
+    <h2 id="knowledge-grounding">Knowledge Grounding</h2>
+
+    <p><strong>Executive summary:</strong> Knowledge grounding overlaps with hybrid retrieval but adds multi-source fusion and attribution; SVF can provide &ldquo;grounding integrity + provenance traceability&rdquo; metrics that quantify grounding quality beyond answer accuracy.</p>
+
+    <p><strong>Key subtopics:</strong> evidence sufficiency; attribution accuracy; span-level citations; contradiction handling; graph-based grounding.</p>
+
+    <p><strong>Recent advances:</strong> GraphRAG targets &ldquo;global&rdquo; questions and shows that plain RAG fails for whole-corpus sensemaking&mdash;useful as a system-under-test class in SVF. (<a href="https://arxiv.org/abs/2404.16130" style="color:var(--amazon-orange)">arxiv.org</a>)</p>
+
+    <p><strong>Gaps:</strong> &ldquo;valid-looking citations&rdquo; that don&rsquo;t fully support claims (your abstract cites this risk); SVF should operationalize that into measurable tests.</p>
+
+    <p><strong>Fundable directions:</strong> statement-level citation checks; contradiction tests; provenance depth scoring.</p>
+
+    <p><strong>Recommended citations:</strong> GraphRAG; RAGAS; TruLens. (<a href="https://arxiv.org/abs/2404.16130" style="color:var(--amazon-orange)">arxiv.org</a>)</p>
+
+    <hr>
+
+    <!-- ============================================================ -->
+    <h2 id="agentic-ai">Agentic AI</h2>
+
+    <p><strong>Executive summary:</strong> SVF depends on agentic execution traces: plans, tool calls, retries, and failure recovery. SVF can position &ldquo;coordination reliability&rdquo; as missing from most RAG-only eval suites.</p>
+
+    <p><strong>Key subtopics:</strong> multi-step tool orchestration; tool routing errors; parameter errors; recovery latency; multi-agent communication.</p>
+
+    <p><strong>Industry practice:</strong> tool integration ecosystems are scaling, and standardized tool protocols like MCP are supported across platforms&mdash;this increases the importance of measuring tool selection/parameterization errors and recovery. (<a href="https://docs.aws.amazon.com/bedrock-agentcore/latest/devguide/gateway.html" style="color:var(--amazon-orange)">docs.aws.amazon.com</a>) (<a href="https://learn.microsoft.com/en-us/agent-framework/agents/tools/local-mcp-tools" style="color:var(--amazon-orange)">learn.microsoft.com</a>)</p>
+
+    <p><strong>Fundable directions:</strong> tool-call fault injection; coordination metrics; run replayability via trace logs.</p>
+
+    <p><strong>Recommended citations:</strong> OpenAI function calling; AgentCore Gateway; Microsoft MCP tools guide. (<a href="https://developers.openai.com/api/docs/guides/function-calling/" style="color:var(--amazon-orange)">developers.openai.com</a>)</p>
+
+    <hr>
+
+    <!-- ============================================================ -->
+    <h2 id="ai-science-engineering">AI for Science &amp; Engineering</h2>
+
+    <p><strong>Executive summary:</strong> This is the weakest &ldquo;home&rdquo; for SVF, but science/engineering can serve as a demanding <em>evaluation workload class</em> (tool-using systems, simulation tools, interpretability constraints). Keep it as an example, not the primary topic.</p>
+
+    <p><strong>Key subtopics:</strong> tool-based simulation tasks; correctness under physical constraints; interpretability checks; uncertainty reporting.</p>
+
+    <p><strong>Recent advances:</strong> MCP-SIM&#8209;style work indicates a trend toward language-driven simulation with multi-agent correction; SVF can borrow the idea of convergence criteria and interpretability checks as robustness tests for tool workflows. (<a href="https://www.nature.com/articles/s44387-025-00057-z" style="color:var(--amazon-orange)">nature.com</a>)</p>
+
+    <p><strong>Recommended citations:</strong> MCP-SIM; OpenTelemetry GenAI; TruLens tracing. (<a href="https://www.nature.com/articles/s44387-025-00057-z" style="color:var(--amazon-orange)">nature.com</a>)</p>
+
+    <hr>
+
+    <!-- ============================================================ -->
+    <h2 id="practical-edits">Practical Edits to Strengthen SVF</h2>
+
+    <p>Your site notes four weaknesses: &ldquo;meta problem,&rdquo; &ldquo;dimensions feel obvious,&rdquo; &ldquo;novelty overclaim,&rdquo; and &ldquo;coordination reliability underdeveloped.&rdquo; Convert these into fixes:</p>
+
+    <ul>
+        <li>Add <strong>one crisp hypothesis</strong> per dimension and connect to measurable metrics (e.g., &ldquo;fault injection predicts cascade risk&rdquo;).</li>
+        <li>Narrow novelty claim: &ldquo;SVF <strong>integrates</strong> grounding+provenance+robustness+coordination and outputs observability-aligned signals,&rdquo; rather than &ldquo;first framework.&rdquo;</li>
+        <li>Strengthen coordination: specify concrete benchmarks (tool-selection confusion, parameter error rates, recovery latency) and fault models.</li>
+    </ul>
+
+    <!-- ============================================================ -->
+    <h2 id="diagram-suggestions">Image and Diagram Suggestions</h2>
+
+    <ul>
+        <li>A single &ldquo;SVF dashboard&rdquo; figure: four dimension scores + trace snippet linking claim&rarr;evidence span.</li>
+        <li>A &ldquo;fault injection&rdquo; figure: break retriever / corrupt evidence / drop agent &rarr; measure cascade + recovery latency.</li>
+        <li>An &ldquo;observability mapping&rdquo; figure: SVF metrics &rarr; OpenTelemetry spans/attributes. (<a href="https://opentelemetry.io/docs/specs/semconv/gen-ai/" style="color:var(--amazon-orange)">opentelemetry.io</a>)</li>
+    </ul>
+
+    <!-- ============================================================ -->
+    <h2 id="bibtex">Ready-to-Paste BibTeX Block</h2>
+
+<pre><code>@article{Es2023RAGAS,
+  author  = {Es, Shahul and James, Jithin and Espinosa-Anke, Luis and Schockaert, Steven},
+  title   = {RAGAS: Automated Evaluation of Retrieval Augmented Generation},
+  year    = {2023},
+  journal = {arXiv},
+  url     = {https://arxiv.org/abs/2309.15217},
+  note    = {Accessed 2026-03-15}
+}
+
+@article{SaadFalcon2024ARES,
+  author  = {Saad-Falcon, Jonah and others},
+  title   = {ARES: An Automated Evaluation Framework for Retrieval-Augmented Generation Systems},
+  year    = {2024},
+  journal = {NAACL},
+  url     = {https://arxiv.org/abs/2311.09476},
+  note    = {Accessed 2026-03-15}
+}
+
+@misc{TruLensGitHub,
+  author       = {{Truera}},
+  title        = {TruLens: Evaluation and tracking for LLM experiments (open source)},
+  year         = {2024},
+  howpublished = {GitHub repository},
+  url          = {https://github.com/truera/trulens},
+  note         = {Accessed 2026-03-15}
+}
+
+@misc{OpenTelemetryGenAI2024,
+  author       = {{OpenTelemetry}},
+  title        = {Semantic conventions for generative AI systems},
+  year         = {2024},
+  howpublished = {OpenTelemetry Specification},
+  url          = {https://opentelemetry.io/docs/specs/semconv/gen-ai/},
+  note         = {Accessed 2026-03-15}
+}
+
+@article{Yan2024CRAG,
+  author  = {Yan, Shi-Qi and Gu, Jia-Chen and Zhu, Yun and Ling, Zhen-Hua},
+  title   = {Corrective Retrieval Augmented Generation},
+  year    = {2024},
+  journal = {arXiv},
+  url     = {https://arxiv.org/abs/2401.15884},
+  note    = {Accessed 2026-03-15}
+}
+
+@article{Edge2024GraphRAG,
+  author  = {Edge, Darren and others},
+  title   = {From Local to Global: A Graph RAG Approach to Query-Focused Summarization},
+  year    = {2024},
+  journal = {arXiv},
+  url     = {https://arxiv.org/abs/2404.16130},
+  note    = {Accessed 2026-03-15}
+}
+
+@misc{OpenAIFunctionCalling2025,
+  author       = {{OpenAI}},
+  title        = {Function calling (tool calling flow)},
+  year         = {2025},
+  month        = aug,
+  howpublished = {OpenAI Developer Documentation},
+  url          = {https://developers.openai.com/api/docs/guides/function-calling/},
+  note         = {Accessed 2026-03-15}
+}
+
+@misc{AWSAgentCoreGatewayMCP,
+  author       = {{Amazon Web Services}},
+  title        = {Amazon Bedrock AgentCore Gateway (convert APIs to MCP-compatible tools)},
+  year         = {2025},
+  howpublished = {AWS Documentation},
+  url          = {https://docs.aws.amazon.com/bedrock-agentcore/latest/devguide/gateway.html},
+  note         = {Accessed 2026-03-15}
+}
+
+@misc{MicrosoftAgentFrameworkMCP2026,
+  author       = {{Microsoft}},
+  title        = {Agent Framework: Using MCP tools with Agents},
+  year         = {2026},
+  month        = feb,
+  howpublished = {Microsoft Learn},
+  url          = {https://learn.microsoft.com/en-us/agent-framework/agents/tools/local-mcp-tools},
+  note         = {Accessed 2026-03-15}
+}
+
+@article{Park2026MCPSIM,
+  author  = {Park, D. and others},
+  title   = {A self-correcting multi-agent LLM framework for language-based physics simulation and explanation},
+  year    = {2026},
+  journal = {npj Artificial Intelligence},
+  url     = {https://www.nature.com/articles/s44387-025-00057-z},
+  note    = {Accessed 2026-03-15}
+}
+
+@misc{AWSAgentCorePolicyGA2026,
+  author       = {{Amazon Web Services}},
+  title        = {Policy in Amazon Bedrock AgentCore is now generally available},
+  year         = {2026},
+  month        = mar,
+  howpublished = {AWS What's New},
+  url          = {https://aws.amazon.com/about-aws/whats-new/2026/03/policy-amazon-bedrock-agentcore-generally-available/},
+  note         = {Accessed 2026-03-15}
+}
+
+@misc{AnthropicNextGenCC2026,
+  author       = {{Anthropic}},
+  title        = {Next-generation Constitutional Classifiers: More efficient protection against universal jailbreaks},
+  year         = {2026},
+  month        = jan,
+  howpublished = {Anthropic Research},
+  url          = {https://www.anthropic.com/research/next-generation-constitutional-classifiers},
+  note         = {Accessed 2026-03-15}
+}
+
+@misc{AWSBedrockGuardrailsDocs2025,
+  author       = {{Amazon Web Services}},
+  title        = {Amazon Bedrock Guardrails documentation},
+  year         = {2025},
+  howpublished = {AWS Documentation},
+  url          = {https://docs.aws.amazon.com/bedrock/latest/userguide/guardrails.html},
+  note         = {Accessed 2026-03-15}
+}</code></pre>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+<script>mermaid.initialize({startOnLoad:true,theme:'dark'});</script>
+</body>
+</html>
