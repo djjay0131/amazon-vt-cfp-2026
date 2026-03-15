@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AKG-E CFP Topic Due Diligence &mdash; Deep Research</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <style>
+        :root {
+            --amazon-orange: #FF9900;
+            --vt-maroon: #861F41;
+            --vt-orange: #E5751F;
+            --bg-dark: #0a0a0a;
+            --bg-card: #141414;
+            --text-primary: #e8e8e8;
+            --text-secondary: #a0a0a0;
+            --border: #2a2a2a;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.7;
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--vt-maroon), #4a1128);
+            border-bottom: 3px solid var(--amazon-orange);
+            padding: 2rem 1rem;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: 0.3rem;
+        }
+
+        .header .subtitle {
+            color: var(--amazon-orange);
+            font-size: 0.95rem;
+        }
+
+        .nav-bar {
+            background: var(--bg-card);
+            border-bottom: 1px solid var(--border);
+            padding: 0.6rem 1rem;
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .nav-bar a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.82rem;
+            padding: 0.3rem 0.7rem;
+            border-radius: 4px;
+            transition: all 0.2s;
+        }
+
+        .nav-bar a:hover { color: var(--amazon-orange); background: rgba(255,153,0,0.08); }
+        .nav-bar a.active { color: var(--amazon-orange); background: rgba(255,153,0,0.12); font-weight: 600; }
+
+        .back-link {
+            display: inline-block;
+            margin: 1.5rem 0 0;
+            color: var(--amazon-orange);
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+        .back-link:hover { text-decoration: underline; }
+
+        .container {
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem 4rem;
+        }
+
+        h2 {
+            color: var(--amazon-orange);
+            font-size: 1.35rem;
+            margin: 2.5rem 0 0.8rem;
+            padding-bottom: 0.3rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        h3 {
+            color: var(--vt-orange);
+            font-size: 1.1rem;
+            margin: 1.8rem 0 0.6rem;
+        }
+
+        p {
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        strong { color: #fff; }
+
+        em { color: var(--text-secondary); font-style: italic; }
+
+        ul, ol {
+            margin: 0.5rem 0 1rem 1.5rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        blockquote {
+            border-left: 3px solid var(--amazon-orange);
+            padding: 0.8rem 1.2rem;
+            margin: 1rem 0;
+            background: var(--bg-card);
+            border-radius: 0 6px 6px 0;
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+
+        .mermaid {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            overflow-x: auto;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0 1.5rem;
+            font-size: 0.88rem;
+        }
+        th {
+            background: var(--bg-card);
+            color: var(--amazon-orange);
+            padding: 0.6rem 0.8rem;
+            text-align: left;
+            border: 1px solid var(--border);
+        }
+        td {
+            padding: 0.5rem 0.8rem;
+            border: 1px solid var(--border);
+            vertical-align: top;
+        }
+        tr:nth-child(even) td { background: rgba(255,255,255,0.02); }
+        .table-wrap { overflow-x: auto; margin: 1rem 0; }
+        code {
+            background: var(--bg-card);
+            padding: 0.15em 0.4em;
+            border-radius: 3px;
+            font-family: 'SF Mono', Consolas, monospace;
+            font-size: 0.88em;
+            color: var(--amazon-orange);
+        }
+        pre {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 1rem;
+            overflow-x: auto;
+            margin: 1rem 0;
+        }
+        pre code { background: none; padding: 0; }
+        .toc {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1.2rem 1.5rem;
+            margin: 1.5rem 0 2rem;
+        }
+        .toc h4 { color: var(--text-secondary); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.6rem; }
+        .toc ul { margin: 0; list-style: none; padding: 0; }
+        .toc li { margin-bottom: 0.3rem; }
+        .toc a { color: var(--text-secondary); text-decoration: none; font-size: 0.88rem; }
+        .toc a:hover { color: var(--amazon-orange); }
+        .badge {
+            display: inline-block;
+            background: rgba(255,153,0,0.15);
+            color: var(--amazon-orange);
+            font-size: 0.75rem;
+            padding: 0.1em 0.5em;
+            border-radius: 3px;
+            font-weight: 600;
+            margin-left: 0.4em;
+        }
+        hr {
+            border: none;
+            border-top: 1px solid var(--border);
+            margin: 2rem 0;
+        }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <h1>AKG&#8209;E CFP Topic Due Diligence</h1>
+    <div class="subtitle">Industry Practice Review &amp; Topic Selection Analysis</div>
+    <a href="index.html" class="back-link">&larr; Back to Dashboard</a>
+</div>
+
+<nav class="nav-bar">
+    <a href="index.html">Dashboard</a>
+    <a href="submission-strategy.html">Original Strategy</a>
+    <a href="devils-advocate.html">Devil's Advocate</a>
+    <a href="topic-analysis.html">Topic Analysis</a>
+    <a href="deep-research-report.html">Deep Research</a>
+    <a href="deep-research-akge.html" class="active">AKG-E Due Diligence</a>
+    <a href="pa-akg-archive.html">PA-AKG Details</a>
+</nav>
+
+<div class="container">
+
+    <div class="toc">
+        <h4>Table of Contents</h4>
+        <ul>
+            <li><a href="#executive-summary">Executive Summary</a></li>
+            <li><a href="#cross-topic-matrices">Cross-Topic Matrices and Ranking</a></li>
+            <li><a href="#ai-science-engineering">AI for Science and Engineering</a></li>
+            <li><a href="#agentic-ai">Agentic AI</a></li>
+            <li><a href="#hybrid-retrieval">Retrieval-Augmented Inference and Hybrid Retrieval</a></li>
+            <li><a href="#knowledge-grounding">Knowledge Grounding</a></li>
+            <li><a href="#agentic-evaluation">Agentic Evaluation</a></li>
+            <li><a href="#responsible-ai">Responsible AI</a></li>
+            <li><a href="#abstract-recommendations">Recommendations on the Three AKG-E Abstracts</a></li>
+            <li><a href="#diagrams">Image and Diagram Suggestions</a></li>
+            <li><a href="#bibtex">Ready-to-Paste BibTeX Block</a></li>
+        </ul>
+    </div>
+
+    <!-- ============================================================ -->
+    <h2 id="executive-summary">Executive Summary</h2>
+
+    <p><strong>Assumptions (explicit):</strong> You are preparing an abstract for the Amazon&ndash;Virginia Tech CFP, with a <strong>1&#8209;page abstract (references excluded)</strong> and possible <strong>3&ndash;4 page proposal</strong>; your AKG&#8209;E research emphasizes <strong>agentic knowledge graphs</strong>, <strong>simulation&#8209;in&#8209;the&#8209;loop / VVUQ</strong>, <strong>KG&#8209;RAG &amp; hybrid retrieval</strong>, <strong>provenance/evidence</strong>, <strong>serving/memory efficiency</strong>, and <strong>construction&#8209;AI / digital twins</strong>.</p>
+
+    <p><strong>Workflow (including synthesis):</strong> collect CFP subtopic lists &rarr; review 2023&ndash;2026 primary sources (official docs/whitepapers/industry blogs + original papers) &rarr; extract advances/systems/gaps per topic &rarr; compare topics by reviewer alignment/novelty/feasibility/Amazon relevance &rarr; <strong>synthesize</strong> ranking + topic&rarr;research&#8209;area matrix + guidance for the <strong>three AKG&#8209;E abstracts</strong> + citation/BibTeX set + website-update prompt.</p>
+
+    <p><strong>Recommendation for AKG&#8209;E topic selection (top two):</strong></p>
+    <ul>
+        <li><strong>Primary: AI for Science &amp; Engineering</strong> <span class="badge">RECOMMENDED</span> &mdash; best reviewer alignment to &ldquo;engineering + simulation + domain constraints,&rdquo; matching your AKG&#8209;E ontology/simulation/constraint validation layers.</li>
+        <li><strong>Secondary: Agentic AI</strong> &mdash; best alignment to multi-agent orchestration, tool calling, simulation tools as agent-callable interfaces, and emerging <strong>industry tool connectivity standards (MCP)</strong> that make &ldquo;simulation-as-a-tool&rdquo; a mainstream pattern.</li>
+    </ul>
+
+    <p><strong>Why MCP is justified to reference (industry practice):</strong><br>
+    MCP is no longer &ldquo;just an Anthropic idea&rdquo;; it is explicitly supported as an integration target by <strong>Amazon Bedrock AgentCore Gateway</strong>, which can convert APIs/Lambda/services into <strong>MCP-compatible tools</strong>, and it is supported by the <strong>Microsoft Agent Framework</strong> with security/auditing guidance. That industry uptake makes MCP a legitimate citation for &ldquo;standardized tool connectivity&rdquo; in an engineering-agent proposal.</p>
+
+    <div class="mermaid">
+flowchart LR
+  A[AKG-E] --> B[Ontology layer: engineering KG]
+  A --> C[Simulation tools: FEA/PDE/traffic/BIM parsers]
+  A --> D[VVUQ + constraint validation]
+  C --> E[Tool standards + gateways e.g. MCP]
+  D --> F[Trustworthy outputs: verified + auditable]
+    </div>
+
+    <!-- ============================================================ -->
+    <h2 id="cross-topic-matrices">Cross-Topic Matrices and Ranking</h2>
+
+    <h3>Topic Comparison Matrix</h3>
+
+    <div class="table-wrap">
+    <table>
+        <thead>
+            <tr>
+                <th>Topic</th>
+                <th>Reviewer alignment to AKG&#8209;E</th>
+                <th>Novelty headroom</th>
+                <th>Feasibility (1 year)</th>
+                <th>Amazon relevance</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>AI for Science &amp; Engineering</td>
+                <td><strong>High</strong></td>
+                <td>High</td>
+                <td>Med</td>
+                <td>High</td>
+            </tr>
+            <tr>
+                <td>Agentic AI</td>
+                <td><strong>High</strong></td>
+                <td>Med&ndash;High</td>
+                <td><strong>High</strong></td>
+                <td><strong>High</strong></td>
+            </tr>
+            <tr>
+                <td>Retrieval&#8209;Augmented Inference / Hybrid Retrieval</td>
+                <td>Med&ndash;High</td>
+                <td>Med&ndash;High</td>
+                <td><strong>High</strong></td>
+                <td>High</td>
+            </tr>
+            <tr>
+                <td>Knowledge Grounding</td>
+                <td>Medium</td>
+                <td>Med&ndash;High</td>
+                <td><strong>High</strong></td>
+                <td>High</td>
+            </tr>
+            <tr>
+                <td>Agentic Evaluation</td>
+                <td>Medium</td>
+                <td>High</td>
+                <td>Med</td>
+                <td>High</td>
+            </tr>
+            <tr>
+                <td>Responsible AI</td>
+                <td>Medium</td>
+                <td>Med</td>
+                <td>Med</td>
+                <td>High</td>
+            </tr>
+        </tbody>
+    </table>
+    </div>
+
+    <p>This reflects the CFP&rsquo;s stated topic areas and where AKG&#8209;E&rsquo;s <em>core</em> contributions land (simulation&#8209;in&#8209;loop with constraints and cross-domain engineering).</p>
+
+    <h3>Cross-Reference Matrix to AKG&#8209;E Research Areas</h3>
+
+    <p>Score: 0 weak, 1 partial, 2 strong, 3 best fit.</p>
+
+    <div class="table-wrap">
+    <table>
+        <thead>
+            <tr>
+                <th>Topic &rarr; / AKG&#8209;E areas &darr;</th>
+                <th style="text-align:right">Agentic KGs</th>
+                <th style="text-align:right">KG&#8209;RAG / hybrid retrieval</th>
+                <th style="text-align:right">Provenance / evidence</th>
+                <th style="text-align:right">Memory disaggregation / serving</th>
+                <th style="text-align:right">Construction&#8209;AI / digital twins</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>AI for Science &amp; Engineering</td>
+                <td style="text-align:right">3</td>
+                <td style="text-align:right">1</td>
+                <td style="text-align:right">2</td>
+                <td style="text-align:right">2</td>
+                <td style="text-align:right">3</td>
+            </tr>
+            <tr>
+                <td>Agentic AI</td>
+                <td style="text-align:right">2</td>
+                <td style="text-align:right">1</td>
+                <td style="text-align:right">2</td>
+                <td style="text-align:right">2</td>
+                <td style="text-align:right">2</td>
+            </tr>
+            <tr>
+                <td>Hybrid Retrieval</td>
+                <td style="text-align:right">1</td>
+                <td style="text-align:right">3</td>
+                <td style="text-align:right">1</td>
+                <td style="text-align:right">2</td>
+                <td style="text-align:right">2</td>
+            </tr>
+            <tr>
+                <td>Knowledge Grounding</td>
+                <td style="text-align:right">2</td>
+                <td style="text-align:right">3</td>
+                <td style="text-align:right">2</td>
+                <td style="text-align:right">1</td>
+                <td style="text-align:right">2</td>
+            </tr>
+            <tr>
+                <td>Agentic Evaluation</td>
+                <td style="text-align:right">1</td>
+                <td style="text-align:right">1</td>
+                <td style="text-align:right">3</td>
+                <td style="text-align:right">2</td>
+                <td style="text-align:right">1</td>
+            </tr>
+            <tr>
+                <td>Responsible AI</td>
+                <td style="text-align:right">1</td>
+                <td style="text-align:right">1</td>
+                <td style="text-align:right">3</td>
+                <td style="text-align:right">2</td>
+                <td style="text-align:right">1</td>
+            </tr>
+        </tbody>
+    </table>
+    </div>
+
+    <p><strong>Synthesis:</strong> For AKG&#8209;E, pick the bucket that naturally routes you to the right reviewers: <strong>AI for Science &amp; Engineering (primary)</strong> + <strong>Agentic AI (secondary)</strong>. Use the other topics as <em>supporting claims</em> and optional proposal sections (evaluation plan, hybrid retrieval, tool governance).</p>
+
+    <!-- ============================================================ -->
+    <h2 id="ai-science-engineering">AI for Science and Engineering</h2>
+
+    <p><strong>Executive summary:</strong> AKG&#8209;E is fundamentally a science/engineering acceleration framework: it couples <strong>structured domain knowledge + simulation + validation (VVUQ)</strong>. This aligns cleanly with the CFP&rsquo;s &ldquo;AI&#8209;accelerated science and engineering&rdquo; intent.</p>
+
+    <p><strong>Key subtopics (6&ndash;10):</strong> simulation&#8209;in&#8209;the&#8209;loop agents; FEA/PDE tool integration; constraint satisfaction (physics + regulatory); VVUQ for agent outputs; digital twins + closed-loop control; uncertainty propagation; cross-domain ontology modularity; reproducibility + benchmarks; human-in-the-loop verification.</p>
+
+    <h3>Recent Advances (2023&ndash;2026; Primary Sources)</h3>
+    <ul>
+        <li><strong>LLM&rarr;simulation automation</strong> is emerging as a concrete research direction: MCP&#8209;SIM is a memory&#8209;coordinated multi&#8209;agent framework that constructs/executes finite element simulations from natural language and evaluates physical convergence and interpretability across tasks.</li>
+        <li>Construction digital twins are increasingly studied as decision-support systems, with identified needs around human interfaces and workflow integration&mdash;useful motivation for AKG&#8209;E&rsquo;s &ldquo;trust + validation&rdquo; thesis.</li>
+        <li>LLM multi-agent tooling is being applied to structural engineering workflows like finite element modeling, indicating a growing body of &ldquo;engineering agent&rdquo; baselines to compare against.</li>
+    </ul>
+
+    <h3>Representative Systems / Provider Features (Industry Practice)</h3>
+    <ul>
+        <li>Agent platforms are converging on &ldquo;tools + memory + governance + observability&rdquo; primitives (useful for deploying simulation tools safely at scale), e.g., AgentCore concepts of tool gateways and memory observability signals.</li>
+    </ul>
+
+    <p><strong>Open gaps / risks:</strong> validation standards for AI-generated engineering artifacts are immature; unsafe tool invocation and overconfident outputs remain key hazards; cross-domain generalization requires careful ontology modularity rather than &ldquo;one giant schema.&rdquo;</p>
+
+    <h3>Fundable Research Directions Aligned to AKG&#8209;E (3&ndash;5)</h3>
+    <ul>
+        <li><strong>AKG&#8209;E VVUQ harness:</strong> formalize verification + validation for agent-generated designs; report uncertainty and safety margins.</li>
+        <li><strong>Simulation tool adapters:</strong> wrap FEA/PDE/traffic/BIM parsers into callable tools with typed I/O and constraints.</li>
+        <li><strong>Constraint-aware planners:</strong> planners that must satisfy domain constraints (codes/physics) before emitting outputs.</li>
+        <li><strong>Construction digital twin pilot:</strong> material takeoff + schedule reasoning + simulation validation loop in one workflow.</li>
+    </ul>
+
+    <h3>Likely Reviewer Questions + Concise Pre-Answers</h3>
+    <ul>
+        <li><em>What engineering proof point will you deliver?</em> &rarr; pick 1&ndash;2 domains (construction + transportation) with measurable metrics (constraint violations, accuracy, latency).</li>
+        <li><em>How do you prevent &ldquo;LLM hallucinated physics&rdquo;?</em> &rarr; enforce simulation&#8209;in&#8209;loop + constraints + VVUQ gates.</li>
+        <li><em>Is this too broad?</em> &rarr; emphasize domain&#8209;agnostic architecture + two carefully scoped pilots.</li>
+    </ul>
+
+    <h3>Title Variants</h3>
+    <ul>
+        <li>&ldquo;AKG&#8209;E: Simulation&#8209;Validated Agentic Knowledge Graphs for Engineering&rdquo;</li>
+        <li>&ldquo;VVUQ&#8209;Grounded Agents for Construction and Transportation Digital Twins&rdquo;</li>
+        <li>&ldquo;Constraint&#8209;Verified LLM Agents for Engineering Decision Support&rdquo;</li>
+    </ul>
+
+    <p><strong>Recommended citations (3&ndash;5 keys):</strong> MCP&#8209;SIM (2026), construction digital twins (2025), multi&#8209;agent FEA automation (2025).</p>
+
+    <hr>
+
+    <!-- ============================================================ -->
+    <h2 id="agentic-ai">Agentic AI</h2>
+
+    <p><strong>Executive summary:</strong> Agentic AI is the best secondary because AKG&#8209;E depends on robust orchestration across retrieval, tool calls, simulation, and validation. Industry is standardizing the &ldquo;tools layer&rdquo; via gateways and protocols (notably MCP), which strengthens AKG&#8209;E&rsquo;s feasibility argument.</p>
+
+    <p><strong>CFP anchor subtopics (examples):</strong> multi-agent systems/orchestration; agent-environment interaction; post-deploy improvement; deep research/coding/cybersecurity applications.</p>
+
+    <p><strong>Key subtopics (6&ndash;10):</strong> orchestration patterns (planner&ndash;executor&ndash;validator); tool discovery/routing; multi-agent communication; long-running sessions; memory &amp; state; simulation as a tool; governance/policies around tools; observability and traceability.</p>
+
+    <h3>Recent Advances / Industry Practice (2023&ndash;2026)</h3>
+    <ul>
+        <li><strong>Tool calling</strong> is explicitly defined as a multi-step application &harr; model loop in official API guidance (critical for describing simulation calls).</li>
+        <li><strong>MCP</strong> is documented as an open standard for secure two-way tool/data connections, and is treated as a practical interoperability layer.</li>
+        <li><strong>AgentCore Gateway</strong> can convert APIs/Lambda/services into MCP-compatible tools and supports tool discovery (semantic search), plus managed auth&mdash;directly relevant to &ldquo;simulation tool registries&rdquo; for AKG&#8209;E.</li>
+    </ul>
+
+    <h3>Representative Systems / Provider Features</h3>
+    <ul>
+        <li>Agent platforms emphasized by AWS: build/deploy/operate agents with tools, memory, monitoring; gateway + policy + observability exist as distinct services.</li>
+    </ul>
+
+    <p><strong>Open gaps / risks:</strong> tool misuse and prompt injection; wrong tool selection/parameters; need for principled fallback and validation; ensuring simulation results don&rsquo;t leak sensitive data into prompts.</p>
+
+    <h3>Fundable Directions (3&ndash;5)</h3>
+    <ul>
+        <li><strong>Simulation-tool registry via MCP:</strong> publish engineering tools (FEniCS, BIM parsers, microsims) as MCP tools.</li>
+        <li><strong>Validator agents:</strong> automated checks on simulation convergence + constraint compliance before response emission.</li>
+        <li><strong>Tool governance:</strong> define tool policies outside agent code (who can call what, with what bounds).</li>
+        <li><strong>Observability-first agents:</strong> structured spans linking tool calls &harr; memory &harr; outputs for auditability.</li>
+    </ul>
+
+    <h3>Reviewer Qs + Pre-Answers</h3>
+    <ul>
+        <li><em>Is MCP necessary?</em> &rarr; it&rsquo;s a pragmatic interoperability choice; both AWS gateways and Microsoft agents support it.</li>
+        <li><em>How do you prevent tool abuse?</em> &rarr; policy enforcement + least-privilege + bounded input validation.</li>
+        <li><em>How do you evaluate agent quality?</em> &rarr; domain metrics + VVUQ + reproducible benchmarks.</li>
+    </ul>
+
+    <h3>Title Variants</h3>
+    <ul>
+        <li>&ldquo;Tool&#8209;Standardized Engineering Agents with Simulation&#8209;in&#8209;the&#8209;Loop Validation&rdquo;</li>
+        <li>&ldquo;MCP&#8209;Connected Engineering Toolchains for Multi&#8209;Agent LLM Systems&rdquo;</li>
+        <li>&ldquo;Agentic Orchestration for Verified Simulation and Constraint Reasoning&rdquo;</li>
+    </ul>
+
+    <p><strong>Recommended citations (3&ndash;5 keys):</strong> MCP intro, AgentCore Gateway (MCP tools), Microsoft MCP integration, OpenAI function calling.</p>
+
+    <hr>
+
+    <!-- ============================================================ -->
+    <h2 id="hybrid-retrieval">Retrieval&#8209;Augmented Inference and Hybrid Retrieval</h2>
+
+    <p><strong>Executive summary:</strong> Even for simulation-heavy AKG&#8209;E, retrieval is a practical necessity: engineering workflows require grounding in <strong>codes, specs, BIM artifacts, sensor logs, past project data</strong>, and simulation outputs. Industry practice strongly favors <strong>hybrid lexical + semantic retrieval</strong> and retrieval as a callable tool.</p>
+
+    <p><strong>Key subtopics (6&ndash;10):</strong> sparse+dense hybrid retrieval; metadata filtering; doc-to-graph indexing; tool-exposed retrieval; reranking; retrieval quality evaluation; structured retrieval (SQL/graph); multimodal retrieval for drawings; caching and cost control.</p>
+
+    <h3>Recent Advances / Industry Practice (2023&ndash;2026)</h3>
+    <ul>
+        <li><strong>Hybrid search</strong> is productized in Bedrock Knowledge Bases and explicitly described as combining semantic + text search to improve relevance for keyword-heavy queries.</li>
+        <li><strong>File search tools</strong> now explicitly implement semantic + keyword search over uploaded corpora (tool-exposed retrieval).</li>
+        <li>Robustness research like <strong>CRAG</strong> formalizes retrieval evaluation and corrective actions when retrieval goes wrong (useful for &ldquo;engineering spec mismatch&rdquo; scenarios).</li>
+    </ul>
+
+    <h3>Representative Systems / Provider Features</h3>
+    <ul>
+        <li>Bedrock Knowledge Bases hybrid retrieval; tool-based file search.</li>
+    </ul>
+
+    <p><strong>Open gaps / risks:</strong> retrieval failures can silently degrade correctness; engineering documents have dense tables/figures; provenance granularity remains hard; prompt injection via retrieved tool context.</p>
+
+    <h3>Fundable Directions (3&ndash;5)</h3>
+    <ul>
+        <li><strong>Engineering hybrid retrieval baselines:</strong> sparse+dense+rerank for specs/codes/BIM metadata.</li>
+        <li><strong>Retrieval evaluator for engineering:</strong> detect stale/irrelevant specs; trigger alternative retrieval or simulation checks.</li>
+        <li><strong>Graph retrieval for design artifacts:</strong> build entity graphs over BOMs, components, constraints.</li>
+        <li><strong>Multimodal retrieval:</strong> drawings + IFC/BIM parsing with retrieval across text+vision.</li>
+    </ul>
+
+    <h3>Reviewer Qs + Pre-Answers</h3>
+    <ul>
+        <li><em>Why not rely on long context?</em> &rarr; retrieval provides freshness, precision, and cost control; engineering demands exactness.</li>
+        <li><em>How do you evaluate retrieval?</em> &rarr; gold-labeled evidence sets + retrieval recall/precision + downstream constraint violation rate.</li>
+        <li><em>How does retrieval connect to simulation?</em> &rarr; retrieved params/constraints seed simulation tools; results re-ingested as evidence.</li>
+    </ul>
+
+    <h3>Title Variants</h3>
+    <ul>
+        <li>&ldquo;Hybrid Retrieval for Engineering Agents: From Specs to Simulation&rdquo;</li>
+        <li>&ldquo;Corrective Hybrid Retrieval Pipelines for Safety&#8209;Critical Engineering Workflows&rdquo;</li>
+        <li>&ldquo;Tool&#8209;Exposed Retrieval for Digital Twin Decision Support&rdquo;</li>
+    </ul>
+
+    <p><strong>Recommended citations (3&ndash;5 keys):</strong> Bedrock hybrid search, OpenAI file search, CRAG.</p>
+
+    <hr>
+
+    <!-- ============================================================ -->
+    <h2 id="knowledge-grounding">Knowledge Grounding</h2>
+
+    <p><strong>Executive summary:</strong> This topic overlaps heavily with hybrid retrieval, but is broader (fusion across heterogeneous sources). For AKG&#8209;E, ground truth comes not only from documents but from <strong>simulation outputs</strong> and <strong>structured design artifacts</strong>, so grounding should be framed as &ldquo;evidence from tools + sources,&rdquo; not only RAG.</p>
+
+    <p><strong>CFP anchor examples:</strong> memory-augmented systems; multimodal retrieval across heterogeneous sources; fusion of knowledge sources; improved LLM&harr;external knowledge interaction.</p>
+
+    <p><strong>Key subtopics (6&ndash;10):</strong> heterogeneous source fusion; grounding via structured artifacts (BIM/BOM); tool outputs as evidence; multimodal grounding; provenance/citations; conflict detection; domain ontologies; grounding-aware planning.</p>
+
+    <h3>Recent Advances / Practice</h3>
+    <ul>
+        <li>Tool-grounding (Search grounding; file search tools) indicates providers are pushing &ldquo;grounding as a first-class capability,&rdquo; which can be analogized to grounding on simulation evidence.</li>
+        <li>&ldquo;Grounding with search&rdquo; patterns plus enterprise grounding tools; in AKG&#8209;E, replace &ldquo;search&rdquo; with &ldquo;simulation and structured engineering data.&rdquo;</li>
+    </ul>
+
+    <p><strong>Open gaps / risks:</strong> fusion under contradictions; multimodal artifacts; proof obligations for engineering claims; provenance for tool-generated evidence.</p>
+
+    <h3>Fundable Directions (3&ndash;5)</h3>
+    <ul>
+        <li><strong>Evidence graph unifying docs + simulation artifacts</strong> (structured provenance linking inputs&rarr;sim&rarr;outputs).</li>
+        <li><strong>Grounding-aware constraint checks</strong> that require evidence for every parameter/value used.</li>
+        <li><strong>Ontology plugins</strong> for construction/transportation/thermal domains (shared interface, domain-specific rules).</li>
+    </ul>
+
+    <h3>Reviewer Qs + Pre-Answers</h3>
+    <ul>
+        <li><em>Is this just knowledge grounding rebranded?</em> &rarr; no: engineering grounding includes simulation truth + constraints + VVUQ.</li>
+        <li><em>How will grounding be verified?</em> &rarr; simulation convergence + constraint satisfaction + evidence links.</li>
+        <li><em>What&rsquo;s the minimum viable scope?</em> &rarr; 2 domains, shared ontology interface, shared validation harness.</li>
+    </ul>
+
+    <h3>Title Variants</h3>
+    <ul>
+        <li>&ldquo;Grounding Engineering Agents in Simulation Evidence and Structured Design Artifacts&rdquo;</li>
+        <li>&ldquo;From RAG to RAV: Retrieval&#8209;and&#8209;Validation for Engineering Digital Twins&rdquo;</li>
+        <li>&ldquo;Multi&#8209;Source Grounding with Ontologies, Tools, and Verification&rdquo;</li>
+    </ul>
+
+    <p><strong>Recommended citations (3&ndash;5 keys):</strong> file search (hybrid), Bedrock hybrid search, MCP-SIM (simulation evidence).</p>
+
+    <hr>
+
+    <!-- ============================================================ -->
+    <h2 id="agentic-evaluation">Agentic Evaluation</h2>
+
+    <p><strong>Executive summary:</strong> For AKG&#8209;E, evaluation is not &ldquo;answer accuracy&rdquo; but <strong>engineering validity</strong>. The strongest move is to position VVUQ and constraint validation as the evaluation core, while borrowing agent benchmarks for tool-use reliability.</p>
+
+    <p><strong>CFP anchor examples:</strong> new benchmarks; robust evaluation methodologies for generative systems including agents.</p>
+
+    <p><strong>Key subtopics (6&ndash;10):</strong> tool-use benchmarks; simulation validity metrics; constraint violation scoring; uncertainty quantification; reproducibility harness; multi-agent coordination reliability; cost/latency metrics; audit logs.</p>
+
+    <h3>Recent Advances / Practice</h3>
+    <ul>
+        <li>AgentBench and GAIA exemplify interactive agent evaluation; they can serve as scaffolding patterns, but AKG&#8209;E needs domain-specific &ldquo;validity&rdquo; metrics.</li>
+        <li>A key additional signal for AKG&#8209;E is <strong>tool + memory observability</strong>: AgentCore provides structured spans linking memory operations and events, supporting rigorous evaluation and debugging.</li>
+    </ul>
+
+    <p><strong>Representative systems/provider features:</strong> agent benchmarks (AgentBench/GAIA); observability and memory spans (AgentCore).</p>
+
+    <p><strong>Open gaps / risks:</strong> mismatch between offline eval and deployment; measuring &ldquo;engineering correctness&rdquo; requires domain truth; uncertainty reporting can be gamed without proper harnessing.</p>
+
+    <h3>Fundable Directions (3&ndash;5)</h3>
+    <ul>
+        <li><strong>AKG&#8209;E VVUQ benchmark suite:</strong> standardized tasks (frame FEA, heat diffusion, traffic flow) with ground-truth checks.</li>
+        <li><strong>Failure mode taxonomy:</strong> wrong boundary conditions, non-convergent sims, constraint contradictions.</li>
+        <li><strong>Observability-first evaluation:</strong> spans/traces that allow replay and comparison across agent versions.</li>
+    </ul>
+
+    <h3>Reviewer Qs + Pre-Answers</h3>
+    <ul>
+        <li><em>How is this evaluated rigorously?</em> &rarr; simulation convergence + constraint metrics + uncertainty bounds (VVUQ framing).</li>
+        <li><em>How will you compare to baselines?</em> &rarr; prompt-only vs RAG vs tool+validation pipeline on identical tasks.</li>
+        <li><em>Is the evaluation reusable?</em> &rarr; yes: domain-agnostic harness with domain plug-ins.</li>
+    </ul>
+
+    <h3>Title Variants</h3>
+    <ul>
+        <li>&ldquo;VVUQ as Agent Evaluation: Measuring Validity in Tool&#8209;Using Engineering Agents&rdquo;</li>
+        <li>&ldquo;Benchmarks for Simulation&#8209;Integrated Agent Reliability&rdquo;</li>
+        <li>&ldquo;Evaluating Engineering Agents via Constraints, Convergence, and Uncertainty&rdquo;</li>
+    </ul>
+
+    <p><strong>Recommended citations (3&ndash;5 keys):</strong> AgentBench, GAIA, AgentCore memory spans/observability.</p>
+
+    <hr>
+
+    <!-- ============================================================ -->
+    <h2 id="responsible-ai">Responsible AI</h2>
+
+    <p><strong>Executive summary:</strong> Responsible AI is not the primary &ldquo;home&rdquo; topic for AKG&#8209;E, but it is critical operationally: simulation tools and data can be sensitive; tool misuse is a real risk; and governance is increasingly part of agent platforms.</p>
+
+    <p><strong>CFP anchor examples:</strong> red teaming; robustness to jailbreaks; responsible agentic AI; frontier risks; cultural alignment.</p>
+
+    <p><strong>Key subtopics (6&ndash;10):</strong> tool governance and least-privilege; prompt injection defenses; policy-as-code; overrefusal vs safety; secure sandboxing; audit logging; data retention; safety evaluation; compliance.</p>
+
+    <h3>Recent Advances / Practice</h3>
+    <ul>
+        <li>Bedrock Guardrails provides configurable safeguards and privacy controls for genAI apps (baseline safety layer).</li>
+        <li>Agent tool governance is moving &ldquo;outside agent code&rdquo;: AgentCore <strong>Policy</strong> converts natural language to <strong>Cedar</strong> and intercepts agent-tool traffic for centralized controls. That is directly relevant to &ldquo;safe simulation tool invocation.&rdquo;</li>
+        <li>Constitutional Classifiers (and next-generation variants) represent production-focused jailbreak robustness research and quantify deployment tradeoffs.</li>
+    </ul>
+
+    <p><strong>Representative systems/provider features:</strong> Guardrails + centralized tool policies + MCP security considerations.</p>
+
+    <p><strong>Open gaps / risks:</strong> tool supply-chain issues; injection via retrieved code/specs; ensuring simulation environments are sandboxed; balancing safety with usability/latency.</p>
+
+    <h3>Fundable Directions (3&ndash;5)</h3>
+    <ul>
+        <li><strong>Policy-bound simulation tools:</strong> enforce parameter bounds, prohibitions, and approvals for high-risk actions.</li>
+        <li><strong>Prompt-injection testbed</strong> for engineering-spec retrieval and BIM documents.</li>
+        <li><strong>Audit-grade traces:</strong> link every output to tool calls and evidence for accountability.</li>
+    </ul>
+
+    <h3>Reviewer Qs + Pre-Answers</h3>
+    <ul>
+        <li><em>Why include safety if not the primary topic?</em> &rarr; because engineering tools are sensitive; governance is required for deployment.</li>
+        <li><em>How do you prevent destructive tool actions?</em> &rarr; central policy + bounded tool APIs + sandboxing.</li>
+        <li><em>How do you handle data privacy?</em> &rarr; minimize context exposure; store sensitive artifacts outside prompts.</li>
+    </ul>
+
+    <h3>Title Variants</h3>
+    <ul>
+        <li>&ldquo;Governed Engineering Agents: Policy&#8209;Bound Simulation Tools with Audit Trails&rdquo;</li>
+        <li>&ldquo;Safe Tool&#8209;Using Engineering Agents via Centralized Policy and Validation&rdquo;</li>
+        <li>&ldquo;Responsible Simulation&#8209;Integrated Agents for Digital Twins&rdquo;</li>
+    </ul>
+
+    <p><strong>Recommended citations (3&ndash;5 keys):</strong> Bedrock Guardrails, AgentCore Policy, MCP security/auditing guidance via Microsoft MCP article, Constitutional Classifiers.</p>
+
+    <!-- ============================================================ -->
+    <h2 id="abstract-recommendations">Recommendations on the Three AKG&#8209;E Abstracts</h2>
+
+    <p>You provided three AKG&#8209;E variants:</p>
+    <ul>
+        <li><strong>Across domains</strong> (broad, domain-agnostic)</li>
+        <li><strong>Construction + transportation with VVUQ framing</strong></li>
+        <li><strong>Construction-only with VVUQ</strong></li>
+    </ul>
+
+    <h3>Which One to Prioritize for Submission</h3>
+
+    <p><strong>Best default to submit:</strong> the <strong>Construction + Transportation (VVUQ)</strong> version. It balances (i) cross-domain generality (AKG&#8209;E as a framework) with (ii) concrete evaluation and two pilots (mitigates &ldquo;too broad&rdquo; reviewer concerns), while staying aligned to the primary topic <strong>AI for Science &amp; Engineering</strong>.</p>
+
+    <p><strong>When to submit Across&#8209;Domains instead:</strong> only if you can credibly commit to (and concisely state) a <em>shared evaluation harness</em> that makes cross-domain claims falsifiable; otherwise it risks reading as &ldquo;vision-only.&rdquo;</p>
+
+    <p><strong>When to submit Construction&#8209;only instead:</strong> if you anticipate domain reviewers who prefer depth over breadth (e.g., construction faculty), or if schedule/time makes a two-domain validation implausible.</p>
+
+    <h3>High&#8209;Leverage Edits (Industry Practice + Citations)</h3>
+
+    <ol>
+        <li><strong>Add a 1&ndash;2 sentence &ldquo;industry integration&rdquo; justification:</strong> cite that modern agent platforms convert APIs into MCP tools and provide tool discovery + auth + observability, which you&rsquo;ll leverage for simulation tools (FEniCS/FEM/BIM parsers).</li>
+        <li><strong>Replace (or augment) bio/materials &ldquo;motivation&rdquo; with engineering-agent evidence:</strong> cite MCP&#8209;SIM (simulation from prompts) and one structural engineering agent automation paper to show this is an emerging engineering practice, not only an analogy to biology/materials.</li>
+        <li><strong>Make evaluation feel non-negotiable:</strong> state that outputs are only released after passing convergence + constraint checks, and uncertainty is reported (VVUQ). Pair with a citation that digital twins in construction emphasize decision support needs (human trust + workflow integration).</li>
+    </ol>
+
+    <!-- ============================================================ -->
+    <h2 id="diagrams">Image and Diagram Suggestions</h2>
+
+    <ul>
+        <li><strong>AKG&#8209;E layered architecture</strong> (ontology &rarr; tools/sim &rarr; VVUQ/constraints) with domain plug-in boxes for construction/transportation/thermal.</li>
+        <li><strong>Tool connectivity diagram:</strong> simulation tools registered as MCP tools via a gateway; include policy intercept + traces/spans.</li>
+        <li><strong>Evaluation &ldquo;gate&rdquo; diagram:</strong> generation &rarr; retrieve/plan &rarr; simulate &rarr; verify &rarr; only then &ldquo;deliver.&rdquo;</li>
+    </ul>
+
+    <!-- ============================================================ -->
+    <h2 id="bibtex">Ready-to-Paste BibTeX Block</h2>
+
+    <pre><code>@misc{AnthropicMCP2024,
+  author       = {{Anthropic}},
+  title        = {Introducing the Model Context Protocol},
+  year         = {2024},
+  month        = nov,
+  howpublished = {Anthropic News},
+  url          = {https://www.anthropic.com/news/model-context-protocol},
+  note         = {Accessed 2026-03-15}
+}
+
+@misc{AWSAgentCoreGatewayMCP,
+  author       = {{Amazon Web Services}},
+  title        = {Amazon Bedrock AgentCore Gateway: Securely connect tools and other resources to your Gateway},
+  year         = {2025},
+  howpublished = {AWS Documentation},
+  url          = {https://docs.aws.amazon.com/bedrock-agentcore/latest/devguide/gateway.html},
+  note         = {Accessed 2026-03-15}
+}
+
+@misc{MicrosoftAgentFrameworkMCP2026,
+  author       = {{Microsoft}},
+  title        = {Microsoft Agent Framework: Using MCP tools with Agents},
+  year         = {2026},
+  month        = feb,
+  howpublished = {Microsoft Learn},
+  url          = {https://learn.microsoft.com/en-us/agent-framework/agents/tools/local-mcp-tools},
+  note         = {Accessed 2026-03-15}
+}
+
+@misc{OpenAIFunctionCalling2025,
+  author       = {{OpenAI}},
+  title        = {Function calling (tool calling flow)},
+  year         = {2025},
+  month        = aug,
+  howpublished = {OpenAI Developer Documentation},
+  url          = {https://developers.openai.com/api/docs/guides/function-calling/},
+  note         = {Accessed 2026-03-15}
+}
+
+@misc{AWSKBHybridSearchWhatsNew2024,
+  author       = {{Amazon Web Services}},
+  title        = {Knowledge Bases for Amazon Bedrock now supports hybrid search},
+  year         = {2024},
+  month        = mar,
+  howpublished = {AWS What's New},
+  url          = {https://aws.amazon.com/about-aws/whats-new/2024/03/knowledge-bases-amazon-bedrock-hybrid-search/},
+  note         = {Accessed 2026-03-15}
+}
+
+@misc{OpenAIFileSearchTool2025,
+  author       = {{OpenAI}},
+  title        = {File search (Responses API tool): semantic and keyword search over uploaded corpora},
+  year         = {2025},
+  howpublished = {OpenAI Developer Documentation},
+  url          = {https://developers.openai.com/api/docs/guides/tools-file-search/},
+  note         = {Accessed 2026-03-15}
+}
+
+@article{Yan2024CRAG,
+  author  = {Yan, Shi-Qi and Gu, Jia-Chen and Zhu, Yun and Ling, Zhen-Hua},
+  title   = {Corrective Retrieval Augmented Generation},
+  year    = {2024},
+  journal = {arXiv},
+  url     = {https://arxiv.org/abs/2401.15884},
+  note    = {Accessed 2026-03-15}
+}
+
+@article{Edge2024GraphRAG,
+  author  = {Edge, Darren and others},
+  title   = {From Local to Global: A Graph RAG Approach to Query-Focused Summarization},
+  year    = {2024},
+  journal = {arXiv},
+  url     = {https://arxiv.org/abs/2404.16130},
+  note    = {Accessed 2026-03-15}
+}
+
+@article{Park2026MCPSIM,
+  author  = {Park, D. and others},
+  title   = {A self-correcting multi-agent LLM framework for language-based physics simulation and explanation},
+  year    = {2026},
+  journal = {npj Artificial Intelligence},
+  url     = {https://www.nature.com/articles/s44387-025-00057-z},
+  note    = {Accessed 2026-03-15}
+}
+
+@article{LLMAgentsFEM2025,
+  author  = {Xia, C. S. and others},
+  title   = {A Lightweight Large Language Model-Based Multi-Agent System to Automate Finite Element Modeling of 2D Frames},
+  year    = {2025},
+  journal = {arXiv},
+  url     = {https://arxiv.org/html/2510.05414v1},
+  note    = {Accessed 2026-03-15}
+}
+
+@article{Soman2025ConstructionDT,
+  author  = {Soman, R. K. and others},
+  title   = {Digital twin construction with a focus on human interaction and decision-making},
+  year    = {2025},
+  journal = {Automation in Construction},
+  url     = {https://www.sciencedirect.com/science/article/pii/S0926580524006605},
+  note    = {Accessed 2026-03-15}
+}
+
+@misc{AWSBedrockGuardrailsDocs,
+  author       = {{Amazon Web Services}},
+  title        = {Detect and filter harmful content by using Amazon Bedrock Guardrails},
+  year         = {2025},
+  howpublished = {AWS Documentation},
+  url          = {https://docs.aws.amazon.com/bedrock/latest/userguide/guardrails.html},
+  note         = {Accessed 2026-03-15}
+}
+
+@misc{AWSAgentCorePolicyGA2026,
+  author       = {{Amazon Web Services}},
+  title        = {Policy in Amazon Bedrock AgentCore is now generally available},
+  year         = {2026},
+  month        = mar,
+  howpublished = {AWS What's New},
+  url          = {https://aws.amazon.com/about-aws/whats-new/2026/03/policy-amazon-bedrock-agentcore-generally-available/},
+  note         = {Accessed 2026-03-15}
+}
+
+@misc{AnthropicConstitutionalClassifiers2025,
+  author       = {{Anthropic}},
+  title        = {Constitutional Classifiers: Defending against universal jailbreaks},
+  year         = {2025},
+  month        = feb,
+  howpublished = {Anthropic Research},
+  url          = {https://www.anthropic.com/research/constitutional-classifiers},
+  note         = {Accessed 2026-03-15}
+}</code></pre>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+<script>mermaid.initialize({startOnLoad:true,theme:'dark'});</script>
+</body>
+</html>

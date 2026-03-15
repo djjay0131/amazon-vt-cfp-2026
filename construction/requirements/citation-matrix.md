@@ -1,58 +1,55 @@
 # Citation Matrix
 
-Living reference tracking document. Every citation in the proposal must appear here with verification status.
+**Last verified:** 2026-03-15
 
-**Last verified**: 2026-03-15
-**Total citations**: 14
-**Verified**: 14
-**Pending verification**: 0
+## Cross-proposal map
 
-## Matrix
+| Key | v2 | v3 | v4 | v4b | v4c |
+| --- | -- | -- | -- | --- | --- |
+| Lewis2020RAG | Y | Y | Y | Y | Y |
+| AWSBedrockHybridSearch2024 | Y | Y | — | — | — |
+| OpenAIFunctionCalling2025 | Y | — | — | — | — |
+| Edge2024GraphRAG | Y | Y | Y | Y | Y |
+| Yan2024CRAG | Y | Y | — | — | — |
+| Ji2023HallucinationSurvey | Y | Y | Y | Y | Y |
+| OpenTelemetryGenAI2024 | Y | Y | Y | — | — |
+| Asai2024SelfRAG | Y | Y | — | — | — |
+| Tao2019DigitalTwin | — | — | Y | Y | Y |
+| Karniadakis2021PINN | — | — | Y | Y | Y |
+| Abramson2024AlphaFold3 | — | — | Y | Y | Y |
+| Merchant2023GNoME | — | — | Y | Y | Y |
+| Oberkampf2010VVUQ | — | — | — | Y | Y |
 
-| # | Key | Authors | Title | Year | Venue | DOI/URL | Verified | Cited In | Notes |
-|---|-----|---------|-------|------|-------|---------|----------|----------|-------|
-| 1 | Lewis2020RAG | Lewis et al. | Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks | 2020 | NeurIPS | — | Y | v2, v3, v4 | Foundational RAG paper |
-| 2 | AWSBedrockHybridSearch2024 | AWS | Amazon Bedrock Knowledge Bases Now Supports Hybrid Search | 2024 | AWS ML Blog | URL | Y | v2, v3 | Industry reference |
-| 3 | OpenAIFunctionCalling2025 | OpenAI | Function Calling Guide | 2025 | OpenAI Docs | URL | Y | v2 | Industry reference |
-| 4 | Edge2024GraphRAG | Edge et al. | From Local to Global: A Graph RAG Approach | 2024 | arXiv | arXiv:2404.16130 | P | v2, v3, v4 | Preprint |
-| 5 | Yan2024CRAG | Yan et al. | Corrective Retrieval Augmented Generation | 2024 | arXiv | arXiv:2401.15884 | P | v2, v3 | Preprint |
-| 6 | Ji2023HallucinationSurvey | Ji et al. | Survey of Hallucination in Natural Language Generation | 2023 | ACM Comp. Surveys | 10.1145/3571730 | Y | v2, v3, v4, v4b, v4c | |
-| 7 | OpenTelemetryGenAI2024 | OpenTelemetry | Semantic Conventions for Generative AI Systems | 2024 | OTel Spec | URL | Y | v2, v3, v4 | Industry standard |
-| 8 | Asai2024SelfRAG | Asai et al. | Self-RAG: Learning to Retrieve, Generate, and Critique | 2024 | ICLR | arXiv:2310.11511 | Y | v2, v3 | Updated to ICLR venue |
-| 9 | Abramson2024AlphaFold3 | Abramson et al. | Accurate Structure Prediction with AlphaFold 3 | 2024 | Nature | 10.1038/s41586-024-07487-w | Y | v4, v4b, v4c | |
-| 10 | Merchant2023GNoME | Merchant et al. | Scaling Deep Learning for Materials Discovery | 2023 | Nature | 10.1038/s41586-023-06735-9 | Y | v4, v4b, v4c | |
-| 11 | Karniadakis2021PINN | Karniadakis et al. | Physics-Informed Machine Learning | 2021 | Nature Rev. Phys. | 10.1038/s42254-021-00314-5 | Y | v4, v4b, v4c | |
-| 12 | Tao2019DigitalTwin | Tao et al. | Digital Twin in Industry: State-of-the-Art | 2019 | IEEE TII | 10.1109/TII.2018.2873186 | Y | v4, v4b | Transportation domain; TBD for v4c (construction-only variant) |
-| 13 | Oberkampf2010VVUQ | Oberkampf & Roy | Verification and Validation in Scientific Computing | 2010 | Cambridge UP | 10.1017/CBO9780511760396 | Y | v4b, v4c | Book |
-| 14 | Lewis2020RAG | Lewis et al. | (same as #1) | — | — | — | — | v4 | Duplicate key, same ref |
+## Full reference list
 
-## Verification Legend
+| Key | Authors | Title | Year | Venue | DOI/URL | Status |
+| --- | ------- | ----- | ---- | ----- | ------- | ------ |
+| Lewis2020RAG | Lewis et al. | Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks | 2020 | NeurIPS | — | Y |
+| AWSBedrockHybridSearch2024 | Amazon Web Services | Amazon Bedrock Knowledge Bases Now Supports Hybrid Search | 2024 | AWS ML Blog | [URL](https://aws.amazon.com/blogs/machine-learning/amazon-bedrock-knowledge-bases-now-supports-hybrid-search/) | Y |
+| OpenAIFunctionCalling2025 | OpenAI | Function Calling Guide | 2025 | OpenAI Docs | [URL](https://platform.openai.com/docs/guides/function-calling) | Y |
+| Edge2024GraphRAG | Edge et al. | From Local to Global: A Graph RAG Approach to Query-Focused Summarization | 2024 | arXiv | arXiv:2404.16130 | P |
+| Yan2024CRAG | Yan et al. | Corrective Retrieval Augmented Generation | 2024 | arXiv | arXiv:2401.15884 | P |
+| Ji2023HallucinationSurvey | Ji et al. | Survey of Hallucination in Natural Language Generation | 2023 | ACM Comp. Surveys | 10.1145/3571730 | Y |
+| OpenTelemetryGenAI2024 | OpenTelemetry | Semantic Conventions for Generative AI Systems | 2024 | OTel Spec | [URL](https://opentelemetry.io/docs/specs/semconv/gen-ai/) | Y |
+| Asai2024SelfRAG | Asai et al. | Self-RAG: Learning to Retrieve, Generate, and Critique | 2024 | ICLR | arXiv:2310.11511 | Y |
+| Tao2019DigitalTwin | Tao et al. | Digital Twin in Industry: State-of-the-Art | 2019 | IEEE TII | 10.1109/TII.2018.2873186 | Y |
+| Karniadakis2021PINN | Karniadakis et al. | Physics-Informed Machine Learning | 2021 | Nature Rev. Phys. | 10.1038/s42254-021-00314-5 | Y |
+| Abramson2024AlphaFold3 | Abramson et al. | Accurate Structure Prediction with AlphaFold 3 | 2024 | Nature | 10.1038/s41586-024-07487-w | Y |
+| Merchant2023GNoME | Merchant et al. | Scaling Deep Learning for Materials Discovery | 2023 | Nature | 10.1038/s41586-023-06735-9 | Y |
+| Oberkampf2010VVUQ | Oberkampf & Roy | Verification and Validation in Scientific Computing | 2010 | Cambridge UP (book) | 10.1017/CBO9780511760396 | Y |
 
-| Status | Meaning |
-|--------|---------|
-| Y | Verified — metadata confirmed accurate, DOI/URL resolves |
-| N | Not verified — needs manual check |
-| P | Preprint — noted as such |
-| X | Failed — cannot verify, metadata incorrect, or not findable |
-| R | Retracted — paper has been retracted |
+**Status:** Y = verified · P = preprint · N = unverified · X = failed
 
 ## Rules
 
-1. **Every new citation** must be added to this matrix before the PR can merge
-2. **Verification** requires confirming: authors, title, year, venue, and DOI/URL
-3. **Orphan references** (in bib but not cited) must be removed or justified
-4. **Missing references** (cited but not in bib) are blocking issues
-5. **Self-citations** must be flagged and disclosed
-6. **Preprints** must be noted — prefer published versions where available
+1. Every new citation must be added here before a PR can merge
+2. Orphan references (in bib but not cited) must be removed
+3. Preprints must be noted — prefer published versions where available
 
 ## Change Log
 
-| Date | Action | By |
-|------|--------|----|
-| 2026-03-05 | Matrix created | Initial setup |
-| 2026-03-14 | Populated with all 14 citations across v2, v3, v4, v4b | Code review agent |
-| 2026-03-15 | Added v4c column — construction-only variant of v4b; Tao2019DigitalTwin marked TBD for v4c | Agent |
-
----
-
-**Note:** Update this matrix every time citations are added or modified.
+| Date | Action |
+| ---- | ------ |
+| 2026-03-05 | Matrix created |
+| 2026-03-14 | Populated with all citations across v2, v3, v4, v4b |
+| 2026-03-15 | Added v4c; restructured into single file with cross-proposal map + full reference list |
