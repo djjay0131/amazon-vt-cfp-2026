@@ -1,6 +1,6 @@
 # Citation Matrix
 
-**Last verified:** 2026-03-15
+**Last verified:** 2026-03-16
 
 ## Cross-proposal map
 
@@ -53,3 +53,4 @@
 | 2026-03-05 | Matrix created |
 | 2026-03-14 | Populated with all citations across v2, v3, v4, v4b |
 | 2026-03-15 | Added v4c; restructured into single file with cross-proposal map + full reference list |
+| 2026-03-16 | Verified all v2 citations tracked; OpenAIFunctionCalling2025 confirmed present; last-verified date updated |

@@ -1,32 +1,39 @@
 # Active Context
 
-_Last updated: 2026-03-15_
+_Last updated: 2026-03-16_
 
 ## Current Phase
 
-**Phase 2d: Reviewer Process & Final Selection**
+**Phase 2e: Final Review & Submission Prep**
 
-All abstracts (v2, v3, v4, v4b, and new v4c) have been polished to submission quality. Next step is running the reviewer process on all polished abstracts, incorporating feedback, selecting which 2 to submit, and submitting by March 17.
+**CRITICAL: Abstract submission deadline is TOMORROW — March 17, 2026.**
+
+PA-AKG (abstract_v2) is confirmed as submission #1, pending final citation review (running now). AKG-E variant selection (v4b vs v4c) is pending advisor review. SVF (abstract_v5) is the fallback third option if AKG-E is dropped. All three abstracts have been significantly updated today with advisor edits, deep research synthesis, and site enhancements.
 
 ## Current Workflow
 
-**~~Polish All 3~~ → Run Reviewer Process → Incorporate Feedback → Select 2 → Submit**
+**~~Polish All 3~~ → ~~Run Reviewer Process~~ → ~~Incorporate Feedback~~ → Finalize Citations → Select AKG-E Variant → Submit by Mar 17**
 
 | Rank | Proposal | CFP Topics | Status |
 |---|---|---|---|
-| **#1** | **PA-AKG** (v2) | Knowledge Grounding + Agentic AI | POLISHED — sharpened novelty (unified substrate vs isolated), added Self-RAG citation, concrete eval tasks |
-| **#2** | **AKG-E** (v4) | AI for Science & Engineering + Agentic AI | POLISHED — concrete simulation tools, tightened prose, narrowed to 2+1 domains |
-| **#2b** | **AKG-E** (v4b) | AI for Science & Engineering + Agentic AI | POLISHED — 2 focused domains (construction + transportation) + VVUQ backbone |
-| **#2c** | **AKG-E** (v4c) | AI for Science & Engineering + Agentic AI | CREATED (Mar 15) — construction-only variant, drops transportation domain, VVUQ backbone |
-| **#3** | **SVF** (v3) | Agentic Evaluation + Responsible AI | POLISHED — toned down overclaims, developed coordination reliability, narrowed scope |
+| **#1** | **PA-AKG** (v2) | Knowledge Grounding + Agentic AI | SUBMISSION-READY — advisor edits applied (motivating example, Amazon KG context, CFP alignment, eval rationale, title fix); PR #12 merged; citation review in progress |
+| **#2** | **AKG-E** (v4c) | AI for Science & Engineering + Agentic AI | SUBMISSION-READY — construction-only, VVUQ backbone, BIM/IFC, FEA, falsifiable hypothesis, Bedrock hook; PR #6 merged |
+| **#2b** | **AKG-E** (v4b) | AI for Science & Engineering + Agentic AI | SUBMISSION-READY — 2 focused domains (construction + transportation) + VVUQ backbone; advisor comparing vs v4c |
+| **#3** | **SVF** (v5) | Agentic Evaluation + Responsible AI | SUBMISSION-READY — new synthesis from deep-research-svf.md, RAGAS/ARES/TruLens baselines, falsifiable hypotheses; PR #5 merged |
 
 ## Current Focus
 
-- [x] Create AKG-E v4c (construction-only variant) — completed Mar 15
-- Run reviewer process on all polished abstracts (Mar 15)
-- Incorporate reviewer feedback (Mar 16)
-- Final selection of which 2 to submit (Mar 16) — now choosing from: v2 (PA-AKG), v3 (SVF), v4 (AKG-E 4-domain), v4b (AKG-E 2-domain), v4c (AKG-E construction-only)
-- Portal registration and submission by March 17, 2026
+- [x] Apply advisor edits to PA-AKG (v2) — completed Mar 16 (PR #12)
+- [x] Create AKG-E v4c (construction-only) — completed Mar 15/16 (PR #6)
+- [x] Create SVF v5 from deep research synthesis — completed Mar 16 (PR #5)
+- [x] Deploy SVF deep research HTML page (docs/svf-deep-research.html)
+- [x] Deploy AKG-E deep research HTML page (docs/deep-research-akge.html)
+- [x] Add citation tooltips to all 3 proposal pages
+- [x] Add keywords section to AKG-E proposal page
+- [x] Link all AKG-E variants (v4, v4b, v4c) on downloads and proposal-akge.html
+- [ ] **[IN PROGRESS]** Code review of abstract_v2 citations
+- [ ] **[DECISION NEEDED]** Select AKG-E variant to submit: v4b vs v4c (advisor reviewing)
+- [ ] **[CRITICAL — TOMORROW]** Portal submission by March 17, 2026
 
 ## Strategy Pivot (Mar 14)
 
@@ -85,24 +92,29 @@ All abstracts have been polished to submission quality with the following change
 
 - [x] Polish all 3 abstracts to submission quality (completed Mar 14)
 - [x] Create AKG-E v4b variant (completed Mar 14)
-- [x] Create AKG-E v4c variant (construction-only) (completed Mar 15)
-- [ ] Run reviewer process on all polished abstracts (Mar 15)
-- [ ] Incorporate feedback, select final 2 for submission (Mar 16)
-- [ ] Portal registration and submission (by March 17)
+- [x] Create AKG-E v4c variant (construction-only) (completed Mar 15/16)
+- [x] Apply advisor edits to PA-AKG v2 (completed Mar 16)
+- [x] Create SVF v5 from deep research synthesis (completed Mar 16)
+- [x] Deploy deep research HTML pages for SVF and AKG-E (completed Mar 16)
+- [x] Add citation tooltips and keywords to proposal pages (completed Mar 16)
+- [ ] Complete citation review for abstract_v2 (in progress)
+- [ ] Select AKG-E variant to submit: v4b vs v4c (advisor decision, Mar 16)
+- [ ] Portal submission (CRITICAL — March 17, 2026)
 
 ## Active Decisions
 
+- **Decided**: PA-AKG (v2) is submission #1 — confirmed; citation review in progress
 - **Decided**: PA-AKG ranked #1, AKG-E #2, SVF #3
-- **Decided**: Polish all 3 → review → select → submit workflow
-- **Decided**: AKG-E reframing: 2 applications (construction CV + transportation digital twin) + VVUQ
 - **Decided**: Created AKG-E v4b as alternative submission option alongside v4
-- **Decided**: Created AKG-E v4c (construction-only) as third AKG-E variant (Mar 15)
-- **Pending**: Which 2 proposals to submit (decision after reviewer process, Mar 16)
-- **Pending**: Which AKG-E variant to submit — v4 (4-domain), v4b (2-domain), or v4c (construction-only)
+- **Decided**: Created AKG-E v4c (construction-only) as third AKG-E variant (Mar 15/16)
+- **Decided**: SVF v5 created as new synthesis from deep-research-svf.md (Mar 16)
+- **Pending**: Which AKG-E variant to submit — v4b (2-domain) or v4c (construction-only); advisor reviewing
+- **Pending**: SVF as third option only if AKG-E dropped entirely
 
 ## Blockers
 
-- None — 3 days until abstract deadline (March 17, 2026)
+- Citation review for abstract_v2 must complete before portal submission
+- AKG-E variant decision (v4b vs v4c) needed today — deadline is tomorrow
 
 ---
 
