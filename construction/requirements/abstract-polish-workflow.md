@@ -1,7 +1,7 @@
 # Abstract Polish Workflow
 
 _Created: 2026-03-14_
-_Updated: 2026-03-15_
+_Updated: 2026-03-16_
 
 ## Workflow Overview
 
@@ -16,8 +16,9 @@ _Updated: 2026-03-15_
 | Mar 14 | Polish all 3 abstracts to submission quality | DONE |
 | Mar 14 | Create AKG-E v4b variant (2 domains + VVUQ) | DONE |
 | Mar 15 | Create AKG-E v4c variant (construction-only + VVUQ) | DONE |
-| Mar 15 | Run reviewer process on all polished abstracts | Next |
-| Mar 16 | Incorporate feedback; decide which 2 to submit | Pending |
+| Mar 15 | Run reviewer process on all polished abstracts | DONE |
+| Mar 16 | PA-AKG advisor revision rounds (multiple) | DONE |
+| Mar 16 | Incorporate feedback; decide which 2 to submit | IN PROGRESS — PA-AKG confirmed #1; AKG-E variant TBD |
 | Mar 17 | Portal registration and submission (deadline) | Pending |
 
 ### Selection Criteria
@@ -41,7 +42,7 @@ After the reviewer process, the final 2 will be selected based on:
 | Primary Topic | Knowledge Grounding |
 | Secondary Topic | Agentic AI |
 | Abstract Version | v2 (abstract_v2.pdf) |
-| Current Status | **POLISHED** — novelty sharpened, Self-RAG citation added, concrete eval tasks |
+| Current Status | **COMPLETE** — multiple advisor revision rounds on 2026-03-16; PR #12 merged |
 
 ### Known Strengths
 
@@ -66,6 +67,15 @@ After the reviewer process, the final 2 will be selected based on:
 - [x] Tightened Amazon/Bedrock relevance language
 - [x] Verified 1-page fit with references excluded
 - [x] Final language polish
+
+### PA-AKG Advisor Revision Rounds (2026-03-16, COMPLETE)
+
+- [x] Added student motivating example (AI research assistant synthesizing literature)
+- [x] Added Amazon KG context sentence (Amazon commonsense KG for recommendations)
+- [x] Added CFP Knowledge Grounding alignment sentence (explicit topic callout in proposal body)
+- [x] Added evaluation rationale sentence (explaining what experiments will reveal)
+- [x] Fixed title line break to render correctly in 2 lines
+- [x] All changes compiled, deployed, and PR #12 merged
 
 ---
 

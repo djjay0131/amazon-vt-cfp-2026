@@ -59,14 +59,24 @@
 
 - [x] Create AKG-E (v4c) — construction-only variant: drops transportation domain, tightens focus to construction material takeoff with VVUQ backbone (based on v4b)
 
+### Phase 2e (continued): Advisor Edits, Deep Research Synthesis & Site Updates (2026-03-16)
+
+- [x] Apply advisor edits to PA-AKG (v2): motivating example, Amazon KG context, CFP alignment sentence, evaluation rationale, title fix — PR #12 merged
+- [x] Create AKG-E v4c with VVUQ backbone, BIM/IFC, FEA, falsifiable hypothesis, Bedrock hook — PR #6 merged
+- [x] Create SVF v5: new synthesis from deep-research-svf.md with RAGAS/ARES/TruLens baselines and falsifiable hypotheses — PR #5 merged
+- [x] Deploy SVF deep research HTML page (docs/svf-deep-research.html)
+- [x] Deploy AKG-E deep research HTML page (docs/deep-research-akge.html)
+- [x] Add citation tooltips to all 3 proposal pages
+- [x] Add keywords section to AKG-E proposal page
+- [x] Link all AKG-E variants (v4, v4b, v4c) on downloads page and proposal-akge.html
+
 ## In Progress
 
-### Phase 2e: Reviewer Process & Submission (2026-03-15 – 2026-03-17)
+### Phase 2e: Final Review & Submission (2026-03-16 – 2026-03-17) — CRITICAL DEADLINE TOMORROW
 
-- [ ] Run reviewer process on all polished abstracts — v2, v3, v4, v4b, v4c (Mar 15)
-- [ ] Incorporate reviewer feedback (Mar 16)
-- [ ] Final selection of which 2 to submit — choose from 5 variants (Mar 16)
-- [ ] Portal registration and submission (Mar 17)
+- [ ] Code review of abstract_v2 citations (running now)
+- [ ] Final selection of AKG-E variant to submit — v4b vs v4c (advisor reviewing, due Mar 16)
+- [ ] **[CRITICAL]** Portal submission by March 17, 2026 — PA-AKG confirmed as #1; AKG-E variant TBD
 
 ## Upcoming
 
@@ -88,9 +98,13 @@
 | Polish all 3 abstracts | 2026-03-14 | Done |
 | AKG-E v4b variant created | 2026-03-14 | Done |
 | AKG-E v4c variant created (construction-only) | 2026-03-15 | Done |
-| Reviewer process on polished abstracts | 2026-03-15 | Next |
-| Incorporate feedback + final selection | 2026-03-16 | Pending |
-| Abstract(s) submitted | 2026-03-17 | Pending |
+| Advisor edits applied to PA-AKG v2 (PR #12) | 2026-03-16 | Done |
+| SVF v5 synthesis from deep research (PR #5) | 2026-03-16 | Done |
+| Deep research HTML pages deployed (SVF + AKG-E) | 2026-03-16 | Done |
+| Citation tooltips + keywords added to site | 2026-03-16 | Done |
+| Citation review for abstract_v2 | 2026-03-16 | In Progress |
+| AKG-E variant selection (v4b vs v4c) | 2026-03-16 | Pending |
+| **Abstract(s) submitted — CRITICAL DEADLINE** | **2026-03-17** | **Pending** |
 | Full proposal invitation | 2026-04-06 | Pending |
 | Full proposal submitted | 2026-04-27 | Pending |
 | Acceptance notification | 2026-06-30 | Pending |
