@@ -19,7 +19,7 @@
 \usepackage{tikz}
 \usetikzlibrary{positioning, arrows.meta, shapes.geometric, fit, calc}
 
-\title{Agentic Knowledge Graphs for AI-Accelerated Engineering\\with Simulation-Grounded Validation}
+\title{Agentic Knowledge Graphs for AI-Accelerated Engineering with Simulation-Grounded Validation}
 \author{Jason Cusati \and Kereshmeh Afsari}
 \date{}
 
@@ -82,7 +82,7 @@ This project proposes \textbf{Agentic Knowledge Graph Engineering (AKG-E)}, a do
     \vspace{-0.5em}
 \end{figure}
 
-In construction engineering~\cite{Eastman2011BIM}, for example, an agent generates a structural design from a BIM model using knowledge-grounded retrieval; AKG-E then invokes finite element simulation to verify load constraints, propagates uncertainty through material assumptions, and either certifies the design or iteratively refines it under constraint violations. This simulation-grounded loop transforms generative outputs into validated, decision-ready artifacts.
+In \textbf{construction engineering}~\cite{Eastman2011BIM}, an agent generates a structural design from a BIM model using knowledge-grounded retrieval; AKG-E invokes finite element simulation~\cite{Logg2012FEniCS} to verify load constraints, propagates uncertainty through material assumptions, and certifies or iteratively refines the design. In \textbf{transportation engineering}, agents build and query digital twin models~\cite{Tao2019DigitalTwin} of traffic networks, optimize signal timing, and validate proposals through microsimulation---with VVUQ verifying flow capacity constraints and quantifying prediction uncertainty under varying demand. Both domains exercise the same architecture; only the domain knowledge graph and simulation interface differ.
 
 We evaluate AKG-E across construction (primary), transportation, and energy domains, measuring (i)~constraint violation reduction relative to LLM-only and RAG baselines, (ii)~calibration of uncertainty estimates, and (iii)~cross-domain generalization under a shared architecture. We hypothesize $>$50\% reduction in constraint violations and well-calibrated uncertainty bounds (within 10\% of nominal coverage). Expected outcomes include a reusable AKG-E framework, domain-adaptable knowledge graph templates, and VVUQ benchmarks for agentic systems.
 
