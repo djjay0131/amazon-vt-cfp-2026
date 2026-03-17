@@ -1,7 +1,7 @@
 # Abstract Polish Workflow
 
 _Created: 2026-03-14_
-_Updated: 2026-03-16_
+_Updated: 2026-03-17_
 
 ## Workflow Overview
 
@@ -18,8 +18,10 @@ _Updated: 2026-03-16_
 | Mar 15 | Create AKG-E v4c variant (construction-only + VVUQ) | DONE |
 | Mar 15 | Run reviewer process on all polished abstracts | DONE |
 | Mar 16 | PA-AKG advisor revision rounds (multiple) | DONE |
-| Mar 16 | Incorporate feedback; decide which 2 to submit | IN PROGRESS — PA-AKG confirmed #1; AKG-E variant TBD |
-| Mar 17 | Portal registration and submission (deadline) | Pending |
+| Mar 16 | Incorporate feedback; decide which 2 to submit | DONE — PA-AKG confirmed #1; AKG-E v4e confirmed #2 |
+| Mar 17 | Create AKG-E v4d (domain-agnostic + VVUQ backbone) | DONE |
+| Mar 17 | Create AKG-E v4e (full professor-guided structure, primary candidate) | DONE |
+| Mar 17 | Portal registration and submission (deadline) | **TODAY** |
 
 ### Selection Criteria
 
@@ -87,8 +89,8 @@ After the reviewer process, the final 2 will be selected based on:
 |-------|-------|
 | Primary Topic | AI Accelerated Science & Engineering |
 | Secondary Topic | Agentic AI |
-| Abstract Versions | v4 (abstract_v4.pdf), v4b (abstract_v4b.pdf), v4c (abstract_v4c.pdf) |
-| Current Status | **POLISHED** — concrete sim tools, tightened scope; v4b reframed variant created; v4c construction-only variant created |
+| Abstract Versions | v4e (abstract_v4e.pdf) — PRIMARY; v4b/v4c/v4d superseded |
+| Current Status | **COMPLETE** — v4e is final submission candidate; authors: Jason Cusati & Kereshmeh Afsari |
 
 ### Known Strengths
 
@@ -100,8 +102,8 @@ After the reviewer process, the final 2 will be selected based on:
 
 ### AKG-E Known Weaknesses (Post-Polish)
 
-- Even 2 domains + VVUQ is ambitious for 1 year
-- Need to decide between v4 (2+1 domains), v4b (2 domains + VVUQ backbone), and v4c (construction-only + VVUQ backbone) before submission
+- Engineering-agent problem framing required multiple iteration rounds (v4 → v4b → v4c → v4d → v4e) to reach final structure
+- Domain-agnostic framing in v4e must avoid appearing too broad; VVUQ backbone provides the necessary grounding
 
 ### AKG-E Polish Changes (Completed)
 
@@ -110,9 +112,13 @@ After the reviewer process, the final 2 will be selected based on:
 - [x] v4: Narrowed focus to 2+1 domains (from 3-4 generic)
 - [x] v4b: Created new variant — reframed with 2 focused applications + VVUQ as unifying backbone
 - [x] v4c: Created construction-only variant of v4b — narrows to single domain (construction material takeoff with CV) + VVUQ backbone
+- [x] v4d: Domain-agnostic framing with VVUQ backbone; added engineering-agent citations (Park2026MCPSIM, LLMAgentsFEM2025, Soman2025ConstructionDT)
+- [x] v4e: Full professor-guided structure — application challenge, RQ1/RQ2 with explicit evaluation criteria (benchmark suite, constraint violation rate + task success rate), intellectual merit, contributions, practice impact, expandability, Amazon fit; hypothesis reframed as benchmark success criterion
+- [x] Citation matrix updated — v4d/v4e columns added; 7 new citation keys registered
+- [x] Authors confirmed: Jason Cusati & Kereshmeh Afsari
 - [x] Strengthened connection to advisor's construction.ai work
 - [x] Polished writing quality to match PA-AKG v2 level
-- [ ] Confirm reframing direction with advisor (v4 vs v4b vs v4c) before submission
+- [x] v4e confirmed as PRIMARY submission variant; v4b/v4c/v4d superseded
 
 ---
 
@@ -174,6 +180,6 @@ For each proposal, the reviewer process should produce:
 
 After reviews are complete:
 
-- If all 3 are strong: submit PA-AKG (#1) + AKG-E (#2, choosing between v4, v4b, and v4c)
-- If AKG-E reviews poorly: consider PA-AKG + SVF
-- If only 1 is strong enough: submit just that one (quality over quantity)
+- **DECIDED (2026-03-17)**: Submit PA-AKG v2 (#1) + AKG-E v4e (#2)
+- SVF (#3) reserved for other venues
+- Decision process complete; submission is the remaining action

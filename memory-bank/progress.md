@@ -70,13 +70,25 @@
 - [x] Add keywords section to AKG-E proposal page
 - [x] Link all AKG-E variants (v4, v4b, v4c) on downloads page and proposal-akge.html
 
+### Phase 2e (final): Citation Fixes, v4e Creation & Submission Prep (2026-03-17)
+
+- [x] Fix abstract_v2 citation issues: Yan2024CRAG and Yu2024COSMO corrected
+- [x] Add provenance definition sentence to abstract_v2
+- [x] Add authors to abstract_v2: Jason Cusati + Chris Brown
+- [x] Add authors to all AKG-E variants (v3/v4/v4b/v4c/v4d/v4e): Jason Cusati + Kereshmeh Afsari
+- [x] Add authors to SVF (v3/v5): Jason Cusati + Chris Brown
+- [x] Create AKG-E v4d: domain-agnostic synthesis + VVUQ + engineering-agent citations (Park2026MCPSIM, LLMAgentsFEM2025, Soman2025ConstructionDT). Title: "Agentic Knowledge Graphs for AI-Accelerated Engineering with Generalizable Simulation-in-the-Loop Validation"
+- [x] Create AKG-E v4e (PRIMARY): full professor structure — application challenge (VVUQ gap), RQ1/RQ2 with evaluation criteria, intellectual merit, contributions, practice impact, extensible domain design (construction primary + transportation + energy), Amazon Bedrock fit. Hypothesis reframed as evaluation design target. Title: "Agentic Knowledge Graphs for AI-Accelerated Engineering with Simulation-Grounded Validation"
+- [x] Update citation matrix: v4d and v4e columns added; 7 new citation keys registered (Eastman2011BIM, Logg2012FEniCS, Yu2024COSMO, LLMAgentsFEM2025, Park2026MCPSIM, Soman2025ConstructionDT); matrix covers v2–v4e
+- [x] Update docs/proposal-akge.html with full v4e professor structure (Problem Statement, Application Challenge, RQ1/RQ2, Three Layers, Construction + Transportation cards, Expandability, Intellectual Merit, Practice Impact, Amazon Fit, Expected Output, updated citations table)
+- [x] Update docs/downloads.html: v4e PDF entry added at top
+- [x] Merge all changes to main — no open PRs
+
 ## In Progress
 
-### Phase 2e: Final Review & Submission (2026-03-16 – 2026-03-17) — CRITICAL DEADLINE TOMORROW
+### Phase 2e: Portal Submission (2026-03-17) — CRITICAL DEADLINE TODAY
 
-- [ ] Code review of abstract_v2 citations (running now)
-- [ ] Final selection of AKG-E variant to submit — v4b vs v4c (advisor reviewing, due Mar 16)
-- [ ] **[CRITICAL]** Portal submission by March 17, 2026 — PA-AKG confirmed as #1; AKG-E variant TBD
+- [ ] **[CRITICAL]** Portal submission by March 17, 2026 — PA-AKG (v2) as #1; AKG-E (v4e) as #2
 
 ## Upcoming
 
@@ -102,8 +114,12 @@
 | SVF v5 synthesis from deep research (PR #5) | 2026-03-16 | Done |
 | Deep research HTML pages deployed (SVF + AKG-E) | 2026-03-16 | Done |
 | Citation tooltips + keywords added to site | 2026-03-16 | Done |
-| Citation review for abstract_v2 | 2026-03-16 | In Progress |
-| AKG-E variant selection (v4b vs v4c) | 2026-03-16 | Pending |
+| abstract_v2 citation fixes + authors added | 2026-03-17 | Done |
+| AKG-E v4d created (domain-agnostic + VVUQ) | 2026-03-17 | Done |
+| AKG-E v4e created (professor structure, PRIMARY) | 2026-03-17 | Done |
+| Citation matrix updated (v4d/v4e; 7 new keys) | 2026-03-17 | Done |
+| proposal-akge.html + downloads.html updated (v4e) | 2026-03-17 | Done |
+| All changes merged to main (no open PRs) | 2026-03-17 | Done |
 | **Abstract(s) submitted — CRITICAL DEADLINE** | **2026-03-17** | **Pending** |
 | Full proposal invitation | 2026-04-06 | Pending |
 | Full proposal submitted | 2026-04-27 | Pending |
