@@ -238,16 +238,72 @@
         </div>
 
         <h2>Title</h2>
-        <p style="font-size: 1rem; color: var(--text-primary); font-style: italic;">Agentic Knowledge Graphs for AI-Accelerated Engineering with Generalizable Simulation-in-the-Loop Validation</p>
+        <p style="font-size: 1rem; color: var(--text-primary); font-style: italic;">Agentic Knowledge Graphs for AI-Accelerated Engineering with Simulation-Grounded Validation</p>
 
-        <a href="abstract_v4e.pdf" class="download-btn">&#128196; Download v4e — Simulation-Grounded Validation (latest)</a>
-        <a href="abstract_v4d.pdf" class="download-btn" style="margin-left:0.5rem; opacity:0.7;">&#128196; Download v4d — Synthesis (domain-agnostic + VVUQ + engineering-agent citations)</a>
-        <a href="abstract_v4c.pdf" class="download-btn" style="margin-left:0.5rem; opacity:0.7;">&#128196; Download v4c — Construction-Only + VVUQ</a>
-        <a href="abstract_v4b.pdf" class="download-btn" style="margin-left:0.5rem; opacity:0.7;">&#128196; Download v4b — Construction + Transportation</a>
-        <a href="abstract_v4.pdf" class="download-btn" style="margin-left:0.5rem; opacity:0.7;">&#128196; Download v4 — 4-Domain Original</a>
+        <a href="abstract_v4e.pdf" class="download-btn">&#128196; Download v4e &mdash; Simulation-Grounded Validation (current)</a>
+        <a href="abstract_v4d.pdf" class="download-btn" style="margin-left:0.5rem; opacity:0.7;">&#128196; Download v4d</a>
+        <a href="abstract_v4c.pdf" class="download-btn" style="margin-left:0.5rem; opacity:0.7;">&#128196; Download v4c</a>
+        <a href="abstract_v4b.pdf" class="download-btn" style="margin-left:0.5rem; opacity:0.7;">&#128196; Download v4b</a>
+        <a href="abstract_v4.pdf" class="download-btn" style="margin-left:0.5rem; opacity:0.7;">&#128196; Download v4</a>
 
-        <h2>Core Idea</h2>
-        <p>Domain-agnostic framework enabling LLM-powered agents to reason over structured engineering knowledge, interact with physics-based simulations, and validate outputs against domain constraints. Three generalizable layers: domain ontology, simulation integration, and constraint validation.</p>
+        <h2>Problem Statement</h2>
+        <p>AI-driven scientific breakthroughs increasingly rely on tightly coupling learned models with structured knowledge and simulation. Engineering disciplines face an analogous opportunity, yet <strong>large language models remain fundamentally misaligned with engineering practice</strong>: they hallucinate physical quantities, fail to enforce constraints, and lack grounding in the structured ontologies and simulation feedback loops that govern real-world systems.</p>
+
+        <h2>Application Challenge</h2>
+        <div class="reframe-box">
+            <p><strong>Critical gap:</strong> While knowledge-grounded generation &mdash; combining retrieval, knowledge graphs, and multi-source integration &mdash; improves factual consistency, <strong>no established methodology exists for validating AI-generated engineering outputs against physical laws and regulatory constraints.</strong> This trust gap blocks deployment in any safety-critical engineering context.</p>
+        </div>
+
+        <h2>Research Questions</h2>
+        <ol>
+            <li><strong>RQ1:</strong> How can VVUQ (Verification, Validation, and Uncertainty Quantification) methodology be adapted to validate AI agent-generated engineering outputs, providing quantified uncertainty bounds and enforceable physical and regulatory constraints?</li>
+            <li><strong>RQ2:</strong> Does a domain-agnostic AKG-E architecture yield measurable constraint violation reductions across engineering domains relative to LLM-only and RAG-only baselines?</li>
+        </ol>
+
+        <h2>Proposed Approach &mdash; Three Layers</h2>
+        <p>AKG-E applies three shared layers uniformly across engineering domains. Only the domain knowledge graph and simulator are swapped per domain; agent orchestration and VVUQ validation are reused unchanged.</p>
+        <ul>
+            <li><strong>Domain Ontology Layer</strong> &mdash; Engineering KGs encoding entities, constraints, and physical laws (pluggable per domain)</li>
+            <li><strong>Simulation Integration Layer</strong> &mdash; FEA solvers, digital twin microsimulators, PDE solvers exposed as typed agent-callable interfaces</li>
+            <li><strong>VVUQ Validation Layer</strong> &mdash; Verifies outputs against governing equations, quantifies uncertainty via Monte Carlo propagation, enforces regulatory constraints</li>
+        </ul>
+
+        <h2>Applications</h2>
+        <div class="card">
+            <h3>Primary Pilot: Construction Engineering</h3>
+            <p>Agents parse <strong>BIM/IFC</strong> models, perform automated material takeoff, invoke <strong>FEA</strong> for structural verification, and flag schedule conflicts &mdash; all gated through VVUQ until load constraints and building codes are satisfied.</p>
+        </div>
+        <div class="card">
+            <h3>Extension: Transportation Engineering</h3>
+            <p>Agents build and query <strong>digital twin models</strong> of traffic networks, optimize signal timing, and validate through microsimulation &mdash; with VVUQ verifying flow capacity constraints and quantifying demand uncertainty.</p>
+        </div>
+
+        <h2>Expandability</h2>
+        <p>Construction is the primary pilot, but the architecture is explicitly domain-agnostic. The same three layers apply to <strong>transportation, energy, and further domains</strong> by swapping only the domain KG and simulation interface &mdash; orchestration and VVUQ layers are reused unchanged. This design directly addresses reviewer concerns about narrowness.</p>
+
+        <h2>Intellectual Merit &amp; Contributions</h2>
+        <ul>
+            <li><strong>First principled VVUQ methodology for agentic AI outputs</strong> &mdash; a generalizable contribution separating domain-specific knowledge from shared reasoning and validation logic</li>
+            <li>Domain-agnostic pluggable architecture enabling cross-domain reuse</li>
+            <li>Reproducible VVUQ benchmarks for simulation-grounded agentic systems</li>
+        </ul>
+
+        <h2>Practice Impact</h2>
+        <p>AKG-E transforms generative outputs into <strong>certified, decision-ready engineering artifacts</strong> &mdash; reducing hallucinated designs, enforcing code compliance, and enabling principled human-in-the-loop thresholds for autonomous versus reviewed decisions. We hypothesize &gt;50% constraint violation reduction versus unconstrained LLM baselines.</p>
+
+        <h2>Amazon Fit</h2>
+        <div class="card">
+            <h3>Bedrock + AWS Pipelines</h3>
+            <p>The framework targets deployment via <strong>Amazon Bedrock Knowledge Bases</strong>, connecting AKG-E directly to AWS-scale engineering data pipelines. The VVUQ methodology and domain-agnostic architecture are directly relevant to Amazon's applied AI workflows in construction, logistics, and supply chain engineering.</p>
+        </div>
+
+        <h2>Expected Output</h2>
+        <ul>
+            <li>Open AKG-E framework with pluggable domain KG templates</li>
+            <li>VVUQ benchmarks for agentic systems</li>
+            <li>Construction and transportation evaluation datasets</li>
+            <li>Empirical evidence quantifying improvement over RAG and LLM-only baselines</li>
+        </ul>
 
         <h2>Keywords</h2>
         <div class="topic-tags">
@@ -255,75 +311,30 @@
             <span class="topic-tag primary">Simulation-in-the-loop validation</span>
             <span class="topic-tag primary">VVUQ</span>
             <span class="topic-tag primary">Retrieval-augmented generation</span>
-            <span class="topic-tag primary">Physics-informed machine learning</span>
             <span class="topic-tag primary">Construction AI</span>
+            <span class="topic-tag primary">Digital twin</span>
             <span class="topic-tag secondary">Building Information Modeling (BIM)</span>
             <span class="topic-tag secondary">Finite element analysis</span>
-            <span class="topic-tag secondary">Constraint-aware planning</span>
             <span class="topic-tag secondary">Uncertainty quantification</span>
             <span class="topic-tag secondary">Multi-agent orchestration</span>
             <span class="topic-tag secondary">Knowledge graph engineering</span>
+            <span class="topic-tag secondary">Constraint-aware planning</span>
         </div>
-
-        <h2>Potential Reframing Under Consideration</h2>
-
-        <div class="reframe-box">
-            <p><strong>Under review:</strong> Narrowing from 3 generic domains to 2 concrete applications sharing a VVUQ (Verification, Validation, and Uncertainty Quantification) backbone. This addresses feasibility concerns and strengthens advisor alignment.</p>
-        </div>
-
-        <div class="card">
-            <h3>Application 1: Construction &mdash; Material Takeoff with Computer Vision</h3>
-            <p>Uses <strong>computer vision</strong> for automated material takeoff from construction plans/drawings. Feeds into BOM reasoning and cost estimation. Ties directly into the advisor's <strong>construction.ai</strong> initiative. KG layer encodes construction domain knowledge (materials, assemblies, building codes).</p>
-        </div>
-
-        <div class="card">
-            <h3>Application 2: Transportation &mdash; Digital Twin</h3>
-            <p>Builds a <strong>digital twin</strong> for traffic system modeling and optimization. Agent reasons over traffic flow models, network topology, and sensor data. KG layer encodes transportation domain knowledge (network constraints, flow equations).</p>
-        </div>
-
-        <div class="card">
-            <h3>Shared Component: VVUQ</h3>
-            <p>Both applications share <strong>VVUQ</strong> as the simulation/analysis backbone:</p>
-            <ul>
-                <li><strong>Construction:</strong> beam load analysis, structural integrity verification</li>
-                <li><strong>Transportation:</strong> traffic flow simulation, capacity analysis</li>
-                <li><strong>Thermal (cross-domain):</strong> heat transfer analysis, HVAC sizing</li>
-            </ul>
-            <p>VVUQ provides the rigorous validation layer that distinguishes this from pure LLM approaches and gives the framework a clear scientific identity.</p>
-        </div>
-
-        <h2>Three Layers (Current Abstract)</h2>
-        <ul>
-            <li><strong>Domain Ontology Layer</strong> &mdash; Engineering KGs encoding entities, constraints, physical laws, and design rules as pluggable, domain-specific components</li>
-            <li><strong>Simulation Integration Layer</strong> &mdash; PDE solvers, FEA tools, and domain simulators exposed as agent-callable tools for simulation-in-the-loop validation</li>
-            <li><strong>Constraint Validation Layer</strong> &mdash; Automatic verification of agent-generated designs against physical and regulatory constraints</li>
-        </ul>
-
-        <h2>Research Questions</h2>
-        <ol>
-            <li>How can engineering domain ontologies be represented as KGs enabling both LLM-based reasoning and structured constraint queries?</li>
-            <li>How should agents orchestrate across retrieval, graph reasoning, and simulation calls to solve multi-step engineering problems?</li>
-            <li>What simulation-in-the-loop validation mechanisms ensure agent outputs satisfy physical laws and domain constraints?</li>
-            <li>Does a domain-agnostic framework achieve competitive accuracy vs. domain-specific systems while reducing development cost?</li>
-        </ol>
 
         <h2>Why #2</h2>
-
         <div class="card">
             <h3>Most Distinctive Narrative</h3>
-            <p>"AI agents that can do engineering" is a compelling, unique story. Nobody else is proposing agentic engineering frameworks with simulation-in-the-loop validation. Strong room to grow into a 3-4 page full proposal.</p>
+            <p>"AI agents that can do engineering" is a compelling, unique story. Nobody else is proposing agentic engineering frameworks with simulation-in-the-loop VVUQ validation. Strong room to grow into a 3&ndash;4 page full proposal.</p>
         </div>
-
         <div class="card">
             <h3>Advisor Alignment</h3>
-            <p>Advisor is in the Building &amp; Construction department. Directly aligns with the construction.ai initiative. Strong interest in thermal analysis and VVUQ components.</p>
+            <p>Advisor is in the Building &amp; Construction department. Directly aligns with the construction.ai initiative and VVUQ research interests.</p>
         </div>
 
-        <h2>Known Risks (from Devil's Advocate)</h2>
+        <h2>Known Risks</h2>
         <ul>
-            <li><strong>Reviewer mismatch:</strong> AI for Science reviewers expect domain breakthroughs (AlphaFold), not tooling frameworks</li>
-            <li><strong>Feasibility:</strong> Original abstract promises 3 domains &mdash; reframing to 2 with VVUQ mitigates this</li>
-            <li><strong>Simulation integration:</strong> Exposing PDE solvers as agent-callable tools is a significant engineering challenge</li>
+            <li><strong>Reviewer mismatch:</strong> AI for Science reviewers expect domain breakthroughs (AlphaFold), not tooling frameworks &mdash; mitigated by explicit RQs and VVUQ framing</li>
+            <li><strong>Simulation integration:</strong> Exposing FEA/PDE solvers as agent-callable tools is a significant engineering challenge</li>
         </ul>
         <p style="font-size: 0.85rem; margin-top: 0.5rem;"><a href="devils-advocate.html" style="color: var(--amazon-orange);">Full risk analysis &rarr;</a></p>
 
@@ -334,45 +345,52 @@
             </thead>
             <tbody>
                 <tr>
-                    <td><a href="https://doi.org/10.1038/s41586-024-07487-w" target="_blank" class="cite-link" data-tooltip="&lt;div class='tt-title'&gt;Accurate Structure Prediction of Biomolecular Interactions with AlphaFold 3&lt;/div&gt;&lt;div class='tt-meta'&gt;Abramson et al. &middot; Nature 2024&lt;/div&gt;&lt;div class='tt-summary'&gt;DeepMind&rsquo;s AlphaFold 3 extends structure prediction to all biomolecular interactions including DNA, RNA, and small molecules. Exemplar of AI-accelerated science that AKG-E situates itself alongside.&lt;/div&gt;">Abramson2024AlphaFold3</a></td>
-                    <td><a href="https://doi.org/10.1038/s41586-024-07487-w" target="_blank" class="cite-link" data-tooltip="&lt;div class='tt-title'&gt;Accurate Structure Prediction of Biomolecular Interactions with AlphaFold 3&lt;/div&gt;&lt;div class='tt-meta'&gt;Abramson et al. &middot; Nature 2024&lt;/div&gt;&lt;div class='tt-summary'&gt;DeepMind&rsquo;s AlphaFold 3 extends structure prediction to all biomolecular interactions including DNA, RNA, and small molecules. Exemplar of AI-accelerated science that AKG-E situates itself alongside.&lt;/div&gt;">Accurate structure prediction of biomolecular interactions with AlphaFold 3</a></td>
+                    <td><a href="https://doi.org/10.1038/s41586-024-07487-w" target="_blank" class="cite-link" data-tooltip="&lt;div class='tt-title'&gt;Accurate Structure Prediction of Biomolecular Interactions with AlphaFold 3&lt;/div&gt;&lt;div class='tt-meta'&gt;Abramson et al. &middot; Nature 2024&lt;/div&gt;&lt;div class='tt-summary'&gt;DeepMind&rsquo;s AlphaFold 3 extends structure prediction to all biomolecular interactions. Exemplar of AI-accelerated science that AKG-E situates itself alongside.&lt;/div&gt;">Abramson2024AlphaFold3</a></td>
+                    <td>Accurate structure prediction of biomolecular interactions with AlphaFold 3</td>
                     <td>2024</td>
                 </tr>
                 <tr>
-                    <td><a href="https://doi.org/10.1038/s41586-023-06735-9" target="_blank" class="cite-link" data-tooltip="&lt;div class='tt-title'&gt;Scaling Deep Learning for Materials Discovery&lt;/div&gt;&lt;div class='tt-meta'&gt;Merchant et al. &middot; Nature 2023&lt;/div&gt;&lt;div class='tt-summary'&gt;GNoME uses graph neural networks to discover 2.2 million new stable crystal structures, demonstrating deep learning&rsquo;s power for materials science. Motivates AI-for-engineering framing in AKG-E.&lt;/div&gt;">Merchant2023GNoME</a></td>
-                    <td><a href="https://doi.org/10.1038/s41586-023-06735-9" target="_blank" class="cite-link" data-tooltip="&lt;div class='tt-title'&gt;Scaling Deep Learning for Materials Discovery&lt;/div&gt;&lt;div class='tt-meta'&gt;Merchant et al. &middot; Nature 2023&lt;/div&gt;&lt;div class='tt-summary'&gt;GNoME uses graph neural networks to discover 2.2 million new stable crystal structures, demonstrating deep learning&rsquo;s power for materials science. Motivates AI-for-engineering framing in AKG-E.&lt;/div&gt;">Scaling deep learning for materials discovery (GNoME)</a></td>
+                    <td><a href="https://doi.org/10.1038/s41586-023-06735-9" target="_blank" class="cite-link" data-tooltip="&lt;div class='tt-title'&gt;Scaling Deep Learning for Materials Discovery&lt;/div&gt;&lt;div class='tt-meta'&gt;Merchant et al. &middot; Nature 2023&lt;/div&gt;&lt;div class='tt-summary'&gt;GNoME discovers 2.2M new crystal structures via deep learning. Motivates AI-for-engineering framing in AKG-E.&lt;/div&gt;">Merchant2023GNoME</a></td>
+                    <td>Scaling deep learning for materials discovery (GNoME)</td>
                     <td>2023</td>
                 </tr>
                 <tr>
-                    <td><a href="https://doi.org/10.1038/s42254-021-00314-5" target="_blank" class="cite-link" data-tooltip="&lt;div class='tt-title'&gt;Physics-Informed Machine Learning&lt;/div&gt;&lt;div class='tt-meta'&gt;Karniadakis et al. &middot; Nature Reviews Physics 2021&lt;/div&gt;&lt;div class='tt-summary'&gt;Reviews physics-informed neural networks (PINNs) that embed physical laws as constraints during training. Foundational methodology for AKG-E&rsquo;s simulation-in-the-loop validation layer.&lt;/div&gt;">Karniadakis2021PINN</a></td>
-                    <td><a href="https://doi.org/10.1038/s42254-021-00314-5" target="_blank" class="cite-link" data-tooltip="&lt;div class='tt-title'&gt;Physics-Informed Machine Learning&lt;/div&gt;&lt;div class='tt-meta'&gt;Karniadakis et al. &middot; Nature Reviews Physics 2021&lt;/div&gt;&lt;div class='tt-summary'&gt;Reviews physics-informed neural networks (PINNs) that embed physical laws as constraints during training. Foundational methodology for AKG-E&rsquo;s simulation-in-the-loop validation layer.&lt;/div&gt;">Physics-informed machine learning</a></td>
-                    <td>2021</td>
+                    <td><a href="https://doi.org/10.1017/CBO9780511760396" target="_blank" class="cite-link" data-tooltip="&lt;div class='tt-title'&gt;Verification and Validation in Scientific Computing&lt;/div&gt;&lt;div class='tt-meta'&gt;Oberkampf &amp; Roy &middot; Cambridge University Press 2010&lt;/div&gt;&lt;div class='tt-summary'&gt;Foundational VVUQ textbook establishing methodology for validating computational simulation models. AKG-E extends this to AI agent-generated outputs.&lt;/div&gt;">Oberkampf2010VVUQ</a></td>
+                    <td>Verification and Validation in Scientific Computing</td>
+                    <td>2010</td>
                 </tr>
                 <tr>
-                    <td><a href="https://doi.org/10.1109/TII.2018.2873186" target="_blank" class="cite-link" data-tooltip="&lt;div class='tt-title'&gt;Digital Twin in Industry: State-of-the-Art&lt;/div&gt;&lt;div class='tt-meta'&gt;Tao et al. &middot; IEEE Transactions on Industrial Informatics 2019&lt;/div&gt;&lt;div class='tt-summary'&gt;Surveys digital twin concepts and industrial applications across manufacturing, aerospace, and energy. Provides the digital twin framing underpinning AKG-E&rsquo;s transportation domain pilot.&lt;/div&gt;">Tao2019DigitalTwin</a></td>
-                    <td><a href="https://doi.org/10.1109/TII.2018.2873186" target="_blank" class="cite-link" data-tooltip="&lt;div class='tt-title'&gt;Digital Twin in Industry: State-of-the-Art&lt;/div&gt;&lt;div class='tt-meta'&gt;Tao et al. &middot; IEEE Transactions on Industrial Informatics 2019&lt;/div&gt;&lt;div class='tt-summary'&gt;Surveys digital twin concepts and industrial applications across manufacturing, aerospace, and energy. Provides the digital twin framing underpinning AKG-E&rsquo;s transportation domain pilot.&lt;/div&gt;">Digital Twin in Industry: State of the Art</a></td>
+                    <td><a href="https://doi.org/10.1002/9780470261309" target="_blank" class="cite-link" data-tooltip="&lt;div class='tt-title'&gt;BIM Handbook (2nd ed.)&lt;/div&gt;&lt;div class='tt-meta'&gt;Eastman et al. &middot; Wiley 2011&lt;/div&gt;&lt;div class='tt-summary'&gt;Definitive reference on Building Information Modeling and IFC standards. Underpins the construction pilot&rsquo;s BIM/IFC ontology layer.&lt;/div&gt;">Eastman2011BIM</a></td>
+                    <td>BIM Handbook: A Guide to Building Information Modeling</td>
+                    <td>2011</td>
+                </tr>
+                <tr>
+                    <td><a href="https://doi.org/10.1007/978-3-642-23099-8" target="_blank" class="cite-link" data-tooltip="&lt;div class='tt-title'&gt;The FEniCS Book&lt;/div&gt;&lt;div class='tt-meta'&gt;Logg, Mardal &amp; Wells (eds.) &middot; Springer 2012&lt;/div&gt;&lt;div class='tt-summary'&gt;Automated finite element solver framework used as the FEA engine in AKG-E&rsquo;s simulation integration layer for structural verification.&lt;/div&gt;">Logg2012FEniCS</a></td>
+                    <td>Automated Solution of Differential Equations by FEM: The FEniCS Book</td>
+                    <td>2012</td>
+                </tr>
+                <tr>
+                    <td><a href="https://doi.org/10.1109/TII.2018.2873186" target="_blank" class="cite-link" data-tooltip="&lt;div class='tt-title'&gt;Digital Twin in Industry: State-of-the-Art&lt;/div&gt;&lt;div class='tt-meta'&gt;Tao et al. &middot; IEEE Transactions on Industrial Informatics 2019&lt;/div&gt;&lt;div class='tt-summary'&gt;Surveys digital twin concepts and industrial applications. Underpins AKG-E&rsquo;s transportation domain pilot.&lt;/div&gt;">Tao2019DigitalTwin</a></td>
+                    <td>Digital Twin in Industry: State of the Art</td>
                     <td>2019</td>
                 </tr>
                 <tr>
-                    <td><a href="https://arxiv.org/abs/2404.16130" target="_blank" class="cite-link" data-tooltip="&lt;div class='tt-title'&gt;From Local to Global: A Graph RAG Approach to Query-Focused Summarization&lt;/div&gt;&lt;div class='tt-meta'&gt;Edge et al. &middot; arXiv 2024&lt;/div&gt;&lt;div class='tt-summary'&gt;Microsoft&rsquo;s graph-based RAG that builds a community-summarized knowledge graph over a corpus to answer global, sensemaking queries that plain RAG fails on. Motivates KG-grounded retrieval in AKG-E.&lt;/div&gt;">Edge2024GraphRAG</a></td>
-                    <td><a href="https://arxiv.org/abs/2404.16130" target="_blank" class="cite-link" data-tooltip="&lt;div class='tt-title'&gt;From Local to Global: A Graph RAG Approach to Query-Focused Summarization&lt;/div&gt;&lt;div class='tt-meta'&gt;Edge et al. &middot; arXiv 2024&lt;/div&gt;&lt;div class='tt-summary'&gt;Microsoft&rsquo;s graph-based RAG that builds a community-summarized knowledge graph over a corpus to answer global, sensemaking queries that plain RAG fails on. Motivates KG-grounded retrieval in AKG-E.&lt;/div&gt;">From Local to Global: A Graph RAG Approach</a></td>
+                    <td><a href="https://doi.org/10.1145/3626246.3653398" target="_blank" class="cite-link" data-tooltip="&lt;div class='tt-title'&gt;COSMO: A Large-Scale E-commerce Common Sense KG System at Amazon&lt;/div&gt;&lt;div class='tt-meta'&gt;Yu et al. &middot; SIGMOD-Companion 2024&lt;/div&gt;&lt;div class='tt-summary'&gt;Amazon&rsquo;s production knowledge graph system for commonsense reasoning in e-commerce. Motivates Amazon-scale KG grounding in AKG-E.&lt;/div&gt;">Yu2024COSMO</a></td>
+                    <td>COSMO: A Large-Scale E-commerce Common Sense KG System at Amazon</td>
                     <td>2024</td>
                 </tr>
                 <tr>
-                    <td><a href="https://doi.org/10.1145/3571730" target="_blank" class="cite-link" data-tooltip="&lt;div class='tt-title'&gt;Survey of Hallucination in Natural Language Generation&lt;/div&gt;&lt;div class='tt-meta'&gt;Ji et al. &middot; ACM Computing Surveys 2023&lt;/div&gt;&lt;div class='tt-summary'&gt;Comprehensive survey of hallucination in large language models &mdash; defines types, causes, and evaluation methods. Foundational motivation for why grounding and provenance matter in knowledge-grounded systems.&lt;/div&gt;">Ji2023HallucinationSurvey</a></td>
-                    <td><a href="https://doi.org/10.1145/3571730" target="_blank" class="cite-link" data-tooltip="&lt;div class='tt-title'&gt;Survey of Hallucination in Natural Language Generation&lt;/div&gt;&lt;div class='tt-meta'&gt;Ji et al. &middot; ACM Computing Surveys 2023&lt;/div&gt;&lt;div class='tt-summary'&gt;Comprehensive survey of hallucination in large language models &mdash; defines types, causes, and evaluation methods. Foundational motivation for why grounding and provenance matter in knowledge-grounded systems.&lt;/div&gt;">Survey of Hallucination in Natural Language Generation</a></td>
+                    <td><a href="https://arxiv.org/abs/2404.16130" target="_blank" class="cite-link" data-tooltip="&lt;div class='tt-title'&gt;From Local to Global: A Graph RAG Approach&lt;/div&gt;&lt;div class='tt-meta'&gt;Edge et al. &middot; arXiv 2024&lt;/div&gt;&lt;div class='tt-summary'&gt;Microsoft&rsquo;s graph-based RAG using community-summarized KGs for global sensemaking queries. Motivates KG-grounded retrieval in AKG-E.&lt;/div&gt;">Edge2024GraphRAG</a></td>
+                    <td>From Local to Global: A Graph RAG Approach to Query-Focused Summarization</td>
+                    <td>2024</td>
+                </tr>
+                <tr>
+                    <td><a href="https://doi.org/10.1145/3571730" target="_blank" class="cite-link" data-tooltip="&lt;div class='tt-title'&gt;Survey of Hallucination in Natural Language Generation&lt;/div&gt;&lt;div class='tt-meta'&gt;Ji et al. &middot; ACM Computing Surveys 2023&lt;/div&gt;&lt;div class='tt-summary'&gt;Comprehensive survey of LLM hallucination &mdash; defines types, causes, and evaluation. Core motivation for VVUQ-gated validation in AKG-E.&lt;/div&gt;">Ji2023HallucinationSurvey</a></td>
+                    <td>Survey of Hallucination in Natural Language Generation</td>
                     <td>2023</td>
                 </tr>
             </tbody>
         </table>
-
-        <h2>Remaining Work</h2>
-        <ul>
-            <li>Consider reframing around 2 applications + VVUQ</li>
-            <li>Advisor (Building &amp; Construction dept) review and feedback</li>
-            <li>Final language polish and prose tightening</li>
-            <li>Verify 1-page constraint with final formatting</li>
-        </ul>
 
     </div>
 
