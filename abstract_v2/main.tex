@@ -16,7 +16,9 @@
 \usepackage{enumitem}
 \setlist{nosep, leftmargin=1.5em, topsep=0.2em}
 
-\title{Provenance-Aware Agentic Knowledge Graph\\Systems for Reliable Multi-Source Grounded AI}
+\title{Provenance-Aware Agentic Knowledge Graph\\Systems for Reliable Multi-Source Grounded AI \\ \vspace{0pt}
+{\normalsize PI: Chris Brown, Computer Science, Virginia Tech\\\vspace{-0.65cm}
+GRA: Jason Cusati, Computer Science, Virginia Tech}\vspace{-0.3cm}}
 \author{}
 \date{}
 
@@ -47,9 +49,9 @@ This project proposes \textbf{Provenance-Aware Agentic Knowledge Graph Systems (
     \vspace{-0.5em}
 \end{figure}
 
-The methodology combines automated claim extraction, provenance-linked knowledge graph construction, and agentic orchestration for retrieval and validation. To evaluate the approach, we will prototype PA-AKG using Amazon Bedrock Knowledge Bases~\cite{AWSBedrockHybridSearch2024} and compare it against vector-based RAG, hybrid retrieval, and GraphRAG-style reasoning across \textbf{multi-hop question answering over heterogeneous knowledge sources} and \textbf{claim verification with evidence-chain reconstruction}. Evaluation metrics include answer accuracy, provenance completeness, reasoning consistency, and failure recovery under incomplete or conflicting retrieval conditions. These experiments will reveal when provenance-aware knowledge graphs provide measurable improvements in reliability and traceability relative to existing retrieval-based grounding approaches.
+The methodology combines automated claim extraction, provenance-linked knowledge graph construction, and agentic orchestration for retrieval and validation. To evaluate the approach, we will prototype PA-AKG using Amazon Bedrock Knowledge Bases~\cite{AWSBedrockHybridSearch2024} and compare it against vector-based RAG, hybrid retrieval, and GraphRAG-style reasoning across \textbf{multi-hop question answering over heterogeneous knowledge sources} and \textbf{claim verification with evidence-chain reconstruction}. Evaluation metrics include answer accuracy, provenance completeness, reasoning consistency, and failure recovery under incomplete or conflicting retrieval conditions. These experiments will reveal when provenance-aware knowledge graphs provide measurable improvements in reliability and traceability relative to existing retrieval-based grounding approaches. 
 
-Expected outcomes include an open PA-AKG prototype, provenance-aware evaluation benchmarks, and empirical evidence demonstrating that \textbf{structured provenance-aware grounding} improves reasoning reliability, traceability, and robustness for agentic AI systems operating over heterogeneous knowledge environments.
+This effort will extend our prior work, which investigates how LLMs propagate evidence in software development contexts~\cite{brown2025esem} and demonstrates software engineering researchers desire knowledge synthesis and tracking across research outcomes---proposing a novel framework~\cite{cusati2026fose}. Expected outcomes include an open PA-AKG prototype, provenance-aware evaluation benchmarks, and empirical evidence demonstrating that \textbf{structured provenance-aware grounding} improves reasoning reliability, traceability, and robustness for agentic AI systems operating over heterogeneous knowledge environments.
 
 \bibliographystyle{IEEEtran}
 \bibliography{references}
