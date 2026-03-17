@@ -1,39 +1,37 @@
 # Active Context
 
-_Last updated: 2026-03-16_
+_Last updated: 2026-03-17_
 
 ## Current Phase
 
-**Phase 2e: Final Review & Submission Prep**
+**Phase 2e: Submission Day — March 17, 2026 (DEADLINE TODAY)**
 
-**CRITICAL: Abstract submission deadline is TOMORROW — March 17, 2026.**
-
-PA-AKG (abstract_v2) is confirmed as submission #1, pending final citation review (running now). AKG-E variant selection (v4b vs v4c) is pending advisor review. SVF (abstract_v5) is the fallback third option if AKG-E is dropped. All three abstracts have been significantly updated today with advisor edits, deep research synthesis, and site enhancements.
+PA-AKG (abstract_v2) is confirmed as submission #1 — citation issues fixed, authors added, provenance definition sentence added. AKG-E (v4e) is the selected primary AKG-E submission — professor-guided structure with full VVUQ framing, RQ1/RQ2 with evaluation criteria, and extensible domain design. SVF (v5) remains available as a third option but is not the current focus. All changes have been merged to main; no open PRs.
 
 ## Current Workflow
 
-**~~Polish All 3~~ → ~~Run Reviewer Process~~ → ~~Incorporate Feedback~~ → Finalize Citations → Select AKG-E Variant → Submit by Mar 17**
+**~~Polish All 3~~ → ~~Run Reviewer Process~~ → ~~Incorporate Feedback~~ → ~~Finalize Citations~~ → ~~Select AKG-E Variant~~ → Submit by Mar 17**
 
 | Rank | Proposal | CFP Topics | Status |
 |---|---|---|---|
-| **#1** | **PA-AKG** (v2) | Knowledge Grounding + Agentic AI | SUBMISSION-READY — advisor edits applied (motivating example, Amazon KG context, CFP alignment, eval rationale, title fix); PR #12 merged; citation review in progress |
-| **#2** | **AKG-E** (v4c) | AI for Science & Engineering + Agentic AI | SUBMISSION-READY — construction-only, VVUQ backbone, BIM/IFC, FEA, falsifiable hypothesis, Bedrock hook; PR #6 merged |
-| **#2b** | **AKG-E** (v4b) | AI for Science & Engineering + Agentic AI | SUBMISSION-READY — 2 focused domains (construction + transportation) + VVUQ backbone; advisor comparing vs v4c |
-| **#3** | **SVF** (v5) | Agentic Evaluation + Responsible AI | SUBMISSION-READY — new synthesis from deep-research-svf.md, RAGAS/ARES/TruLens baselines, falsifiable hypotheses; PR #5 merged |
+| **#1** | **PA-AKG** (v2) | Knowledge Grounding + Agentic AI | SUBMISSION-READY — citation issues fixed (Yan2024CRAG, Yu2024COSMO), provenance definition sentence added, authors added (Jason Cusati, Chris Brown); all changes on main |
+| **#2** | **AKG-E** (v4e) | AI for Science & Engineering + Agentic AI | SUBMISSION-READY — professor structure, VVUQ backbone, RQ1/RQ2 with evaluation criteria, extensible 3-domain design (construction primary + transportation + energy), Bedrock hook; site fully updated; on main |
+| **#3** | **SVF** (v5) | Agentic Evaluation + Responsible AI | SUBMISSION-READY — reserved for other venues if AKG-E submitted |
 
 ## Current Focus
 
 - [x] Apply advisor edits to PA-AKG (v2) — completed Mar 16 (PR #12)
-- [x] Create AKG-E v4c (construction-only) — completed Mar 15/16 (PR #6)
-- [x] Create SVF v5 from deep research synthesis — completed Mar 16 (PR #5)
-- [x] Deploy SVF deep research HTML page (docs/svf-deep-research.html)
-- [x] Deploy AKG-E deep research HTML page (docs/deep-research-akge.html)
-- [x] Add citation tooltips to all 3 proposal pages
-- [x] Add keywords section to AKG-E proposal page
-- [x] Link all AKG-E variants (v4, v4b, v4c) on downloads and proposal-akge.html
-- [ ] **[IN PROGRESS]** Code review of abstract_v2 citations
-- [ ] **[DECISION NEEDED]** Select AKG-E variant to submit: v4b vs v4c (advisor reviewing)
-- [ ] **[CRITICAL — TOMORROW]** Portal submission by March 17, 2026
+- [x] Fix citation issues in abstract_v2 (Yan2024CRAG, Yu2024COSMO) — completed Mar 17
+- [x] Add provenance definition sentence to abstract_v2 — completed Mar 17
+- [x] Add authors to abstract_v2 (Jason Cusati, Chris Brown) — completed Mar 17
+- [x] Add authors to all AKG-E variants (v3/v4/v4b/v4c/v4d/v4e: Jason Cusati + Kereshmeh Afsari) — completed Mar 17
+- [x] Create AKG-E v4d — domain-agnostic synthesis with VVUQ + engineering-agent citations — completed Mar 17
+- [x] Create AKG-E v4e — full professor structure, application challenge, RQ1/RQ2 with evaluation criteria, extensible domain design — completed Mar 17
+- [x] Update citation matrix — v4d and v4e columns; 7 new citation keys registered — completed Mar 17
+- [x] Update docs/proposal-akge.html — full v4e professor structure posted — completed Mar 17
+- [x] Update docs/downloads.html — v4e PDF entry added at top — completed Mar 17
+- [x] Merge all changes to main — no open PRs — completed Mar 17
+- [ ] **[CRITICAL — TODAY]** Portal submission by March 17, 2026
 
 ## Strategy Pivot (Mar 14)
 
@@ -67,9 +65,11 @@ All abstracts have been polished to submission quality with the following change
 ### AKG-E — Agentic Knowledge Graphs for Engineering (Rank #2)
 - Primary Topic: AI Accelerated Science & Engineering
 - Secondary Topic: Agentic AI
-- Key framing: Reframed around 2 concrete applications (construction material takeoff with CV, transportation digital twin) with VVUQ as unifying validation backbone. Aligns with advisor's construction.ai initiative.
-- **v4b variant**: Further reframed with 2 focused domains (construction + transportation) and VVUQ as the backbone rather than a component.
-- **v4c variant**: Construction-only version of AKG-E — drops transportation domain entirely, tightens focus to construction material takeoff with VVUQ backbone. Based on v4b.
+- Key framing: Reframed around extensible application domains (construction primary, transportation, energy) with VVUQ as unifying validation backbone. Aligns with advisor's construction.ai initiative.
+- **v4e variant (PRIMARY)**: Full professor structure — application challenge (VVUQ gap), RQ1/RQ2 with evaluation criteria (benchmark suite for RQ1; constraint violation rate + task success rate for RQ2), intellectual merit, contributions, practice impact, expandability. Hypothesis reframed as evaluation design target (>50% constraint violation reduction), not a prediction. Authors: Jason Cusati + Kereshmeh Afsari.
+- **v4d variant**: Domain-agnostic synthesis with VVUQ + engineering-agent citations (Park2026MCPSIM, LLMAgentsFEM2025, Soman2025ConstructionDT). Superseded by v4e.
+- **v4c variant**: Construction-only. Superseded by v4e.
+- **v4b variant**: 2 focused domains (construction + transportation). Superseded by v4e.
 
 ### SVF — Structured Validation Framework (Rank #3)
 - Primary Topic: Foundation Model/Agentic Evaluation
@@ -80,12 +80,14 @@ All abstracts have been polished to submission quality with the following change
 
 - Project infrastructure complete (memory-bank, construction, agents)
 - CFP requirements fully captured
-- Abstracts v1-v4 (+ v4b, v4c) complete across 3 proposals (5 submission-ready variants)
-- All abstracts polished to submission quality
-- Deep research report published on dashboard
+- Abstracts v1-v4e (+ v4b, v4c, v4d) complete across 3 proposals (7 total variants)
+- All abstracts polished to submission quality with authors
+- Deep research reports published on dashboard (SVF + AKG-E)
 - Devil's advocate analysis completed
 - Submission strategy analysis completed
-- Website restructured with ranked proposal cards and dedicated pages
+- Website restructured with ranked proposal cards, dedicated pages, v4e posted
+- Citation matrix covers v2–v4e with 7 new citation keys registered Mar 17
+- All changes merged to main; no open PRs
 - GitHub repo, Pages site, and CI pipeline live
 
 ## What's Next
@@ -97,24 +99,25 @@ All abstracts have been polished to submission quality with the following change
 - [x] Create SVF v5 from deep research synthesis (completed Mar 16)
 - [x] Deploy deep research HTML pages for SVF and AKG-E (completed Mar 16)
 - [x] Add citation tooltips and keywords to proposal pages (completed Mar 16)
-- [ ] Complete citation review for abstract_v2 (in progress)
-- [ ] Select AKG-E variant to submit: v4b vs v4c (advisor decision, Mar 16)
-- [ ] Portal submission (CRITICAL — March 17, 2026)
+- [x] Fix abstract_v2 citation issues + add provenance sentence + add authors (completed Mar 17)
+- [x] Create AKG-E v4d (domain-agnostic + VVUQ + engineering-agent citations) (completed Mar 17)
+- [x] Create AKG-E v4e (full professor structure, RQ1/RQ2 with eval criteria) (completed Mar 17)
+- [x] Update citation matrix with v4d/v4e columns and 7 new keys (completed Mar 17)
+- [x] Update proposal-akge.html and downloads.html with v4e (completed Mar 17)
+- [x] Merge all changes to main (completed Mar 17)
+- [ ] Portal submission (CRITICAL — TODAY March 17, 2026)
 
 ## Active Decisions
 
-- **Decided**: PA-AKG (v2) is submission #1 — confirmed; citation review in progress
+- **Decided**: PA-AKG (v2) is submission #1 — citation issues fixed, authors added, ready to submit
+- **Decided**: AKG-E (v4e) is the primary AKG-E submission — professor structure, full evaluation framing, extensible domains
 - **Decided**: PA-AKG ranked #1, AKG-E #2, SVF #3
-- **Decided**: Created AKG-E v4b as alternative submission option alongside v4
-- **Decided**: Created AKG-E v4c (construction-only) as third AKG-E variant (Mar 15/16)
-- **Decided**: SVF v5 created as new synthesis from deep-research-svf.md (Mar 16)
-- **Pending**: Which AKG-E variant to submit — v4b (2-domain) or v4c (construction-only); advisor reviewing
-- **Pending**: SVF as third option only if AKG-E dropped entirely
+- **Decided**: v4e supersedes v4b, v4c, v4d — all prior AKG-E variants are archived
+- **Decided**: SVF (v5) reserved for other venues; not the current submission focus
 
 ## Blockers
 
-- Citation review for abstract_v2 must complete before portal submission
-- AKG-E variant decision (v4b vs v4c) needed today — deadline is tomorrow
+- Portal submission must be completed today (March 17, 2026 — deadline)
 
 ---
 
