@@ -1,0 +1,94 @@
+% ============================================================
+% Amazon-VT CFP 2026-2027 — 1-Page Abstract v4e
+% AKG-E: Simulation-Grounded Validation
+% Primary: AI Accelerated Science & Engineering
+% Secondary: Agentic AI
+% Format: IEEE 2-column
+% ============================================================
+
+\documentclass[conference, 10pt]{IEEEtran}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{microtype}
+\usepackage{cite}
+\usepackage{enumitem}
+\setlist{nosep, leftmargin=1.5em, topsep=0.2em}
+\usepackage{tikz}
+\usetikzlibrary{positioning, arrows.meta, shapes.geometric, fit, calc}
+
+\title{Agentic Knowledge Graphs for AI-Accelerated Engineering\\with Simulation-Grounded Validation}
+\author{Jason Cusati \and Kereshmeh Afsari}
+\date{}
+
+% ============================================================
+\begin{document}
+
+\maketitle
+\thispagestyle{empty}
+
+\vspace{-1.5em}
+
+\noindent\textbf{Primary Topic:} AI Accelerated Science \& Engineering \hfill
+\textbf{Secondary:} Agentic AI
+
+\vspace{0.5em}
+
+AI-driven scientific breakthroughs increasingly rely on tightly coupling learned models with structured knowledge and simulation~\cite{Abramson2024AlphaFold3,Merchant2023GNoME}. However, large language models (LLMs) remain fundamentally misaligned with engineering practice: they hallucinate physical quantities~\cite{Ji2023HallucinationSurvey}, fail to enforce constraints, and lack grounding in the structured ontologies and simulation feedback loops that govern real-world systems. While recent advances in knowledge-grounded generation---combining retrieval~\cite{Lewis2020RAG}, knowledge graphs~\cite{Edge2024GraphRAG}, and multi-source data integration---improve factual consistency, they do not address a critical gap: the absence of rigorous validation for AI-generated engineering outputs.
+
+This project proposes \textbf{Agentic Knowledge Graph Engineering (AKG-E)}, a domain-agnostic framework integrating knowledge-grounded reasoning with simulation-in-the-loop validation and Verification, Validation, and Uncertainty Quantification (VVUQ)~\cite{Oberkampf2010VVUQ}. AKG-E unifies three layers: (1)~a \textit{domain ontology layer} encoding engineering knowledge graphs with entities, constraints, and physical laws; (2)~a \textit{simulation integration layer} exposing domain tools (e.g., finite element analysis~\cite{Logg2012FEniCS}, digital twin microsimulation~\cite{Tao2019DigitalTwin}) as agent-callable interfaces; and (3)~a \textit{VVUQ validation layer} that verifies outputs against governing equations, quantifies uncertainty via propagation through agent pipelines, and enforces regulatory and physical constraints. Agents orchestrate across retrieval-augmented generation, structured graph queries, and simulation feedback, extending industry knowledge-grounding approaches (e.g., Amazon-scale knowledge graph systems~\cite{Yu2024COSMO}) with physics-based validation.
+
+\begin{figure}[t]
+    \centering
+    \resizebox{\columnwidth}{!}{%
+    \begin{tikzpicture}[
+        node distance=0.30cm and 0.20cm,
+        layerbox/.style={rectangle, rounded corners=3pt, draw=gray!60, fill=gray!8, minimum width=7.8cm, minimum height=0.65cm, align=center, font=\scriptsize},
+        dombox/.style={rectangle, rounded corners=3pt, draw=gray!50, fill=orange!6, minimum width=1.75cm, minimum height=1.0cm, align=center, font=\tiny},
+        extbox/.style={rectangle, rounded corners=3pt, draw=gray!35, fill=gray!4, minimum width=1.05cm, minimum height=1.0cm, align=center, font=\tiny, dashed},
+        agentbox/.style={rectangle, rounded corners=4pt, draw=black!70, fill=blue!8, minimum width=7.8cm, minimum height=0.65cm, align=center, font=\scriptsize\bfseries},
+        arr/.style={-{Stealth[length=4pt]}, thick, gray!50},
+    ]
+        \node[dombox] (con) {\textbf{Construction}\\[1pt]BIM/IFC + FEA\\material takeoff};
+        \node[dombox, right=0.20cm of con] (traf) {Transportation\\[1pt]Digital twin\\microsimulation};
+        \node[dombox, right=0.20cm of traf] (energy) {Energy\\[1pt]PDE solvers\\grid simulation};
+        \node[extbox, right=0.20cm of energy] (ext) {$\cdots$\\Extensible};
+
+        \node[layerbox, below=0.40cm of $(con.south)!0.5!(ext.south)$] (onto) {\textbf{Domain Ontology Layer} --- Engineering KGs: entities, constraints, physical laws};
+
+        \node[layerbox, below=0.25cm of onto] (sim) {\textbf{Simulation Integration Layer} --- FEA, digital twin microsimulators, PDE solvers (agent-callable)};
+
+        \node[agentbox, below=0.25cm of sim] (agent) {Agent Orchestration --- Retrieval + Graph Queries + Simulation Feedback};
+
+        \node[layerbox, below=0.25cm of agent, draw=black!70] (val) {\textbf{VVUQ Validation Layer} --- Governing equation checks, uncertainty propagation, constraint enforcement};
+
+        \node[font=\scriptsize, below=0.25cm of val] (out) {\textit{Validated, decision-ready engineering artifacts}};
+
+        \draw[arr] (con.south) -- (con.south |- onto.north);
+        \draw[arr] (traf.south) -- (traf.south |- onto.north);
+        \draw[arr] (energy.south) -- (energy.south |- onto.north);
+        \draw[arr] (ext.south) -- (ext.south |- onto.north);
+        \draw[arr] (onto) -- (sim);
+        \draw[arr] (sim) -- (agent);
+        \draw[arr] (agent) -- (val);
+        \draw[arr] (val) -- (out);
+        \draw[arr, dashed] (val.east) -- ++(0.35,0) |- (agent.east);
+    \end{tikzpicture}
+    }%
+    \caption{\textbf{AKG-E Architecture.} Domain modules (Construction: primary; Transportation, Energy: extensions) plug into shared ontology, simulation, and VVUQ layers. The dashed feedback arrow represents iterative constraint-driven refinement.}
+    \label{fig:framework}
+    \vspace{-0.5em}
+\end{figure}
+
+In construction engineering~\cite{Eastman2011BIM}, for example, an agent generates a structural design from a BIM model using knowledge-grounded retrieval; AKG-E then invokes finite element simulation to verify load constraints, propagates uncertainty through material assumptions, and either certifies the design or iteratively refines it under constraint violations. This simulation-grounded loop transforms generative outputs into validated, decision-ready artifacts.
+
+We evaluate AKG-E across construction (primary), transportation, and energy domains, measuring (i)~constraint violation reduction relative to LLM-only and RAG baselines, (ii)~calibration of uncertainty estimates, and (iii)~cross-domain generalization under a shared architecture. We hypothesize $>$50\% reduction in constraint violations and well-calibrated uncertainty bounds (within 10\% of nominal coverage). Expected outcomes include a reusable AKG-E framework, domain-adaptable knowledge graph templates, and VVUQ benchmarks for agentic systems.
+
+By elevating validation to a first-class component of AI reasoning, AKG-E advances key knowledge grounding challenges---including multi-source retrieval, knowledge fusion, and interaction between LLMs and external systems---while introducing a generalizable methodology for trustworthy, simulation-grounded AI in engineering.
+
+\bibliographystyle{IEEEtran}
+\bibliography{references}
+
+\end{document}
