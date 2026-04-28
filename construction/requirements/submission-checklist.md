@@ -1,6 +1,6 @@
 # Submission Checklist
 
-<!-- Updated: 2026-03-17 (deadline day) -->
+<!-- Updated: 2026-04-27 (fellowship deadline day) -->
 
 ## Submission Plan
 
@@ -74,6 +74,49 @@
 ### Content Requirements
 
 - [ ] TBD — details shared with invitation
+
+---
+
+## Fellowship Application (Due April 27, 2026)
+
+### Applicant
+- **Name:** Jason Cusati
+- **Role:** PhD Candidate, Virginia Tech
+- **Advisor:** Kereshmeh Afsari
+- **Eligibility confirmed:** 3rd-year+ PhD, qual exams passed, no other industry-sponsored fellowship
+
+### Topic Selections
+- **Primary:** AI Accelerated Science & Engineering Innovation
+- **Secondary:** Agentic AI
+
+### Required Artifacts (uploaded to portal)
+
+#### 1. 2-page proposal / personal statement
+- [x] Built: `abstract_v4e_fellowship/main.pdf` (2 pages, body + references)
+- [x] Published: `docs/abstract_v4e_fellowship.pdf`
+- [x] Authorship: Jason Cusati (sole applicant); Afsari listed as advisor
+- [x] Personal-statement sections present (Vision, Training Plan, Qualifications)
+- [x] Built from hybrid of AKG-E v4e research vision + net-new student-centric content
+
+#### 2. CV
+- [ ] **REBUILD REQUIRED:** `~/code/cv/build/academic/` has only `.aux`/`.log`; PDF not present. Run the CV repo's build before uploading
+- [ ] Spot-check: dates current, qual-exam status reflected, advisor listed
+- [ ] Final CV PDF path: `~/code/cv/build/academic/<filename>.pdf`
+
+#### 3. Letters of Recommendation (≤2)
+- [ ] **EXTERNAL DEPENDENCY** — coordinate with recommenders today
+- [ ] Recommender 1: _name / status / delivery method_
+- [ ] Recommender 2: _name / status / delivery method_
+- [ ] CFP allows up to 2; submission can proceed with 1 if necessary
+
+### Portal Submission
+- **URL:** https://home.academic-research-portal.amazon.science/login
+- **Profile role:** "Graduate student" or "PhD student"
+- [ ] Registered at portal
+- [ ] Profile set up (Institution: VT)
+- [ ] Application form completed
+- [ ] All 3 artifact types uploaded
+- [ ] Confirmation number captured (record in `memory-bank/activeContext.md` post-submit)
 
 ---
 

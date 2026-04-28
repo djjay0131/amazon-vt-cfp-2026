@@ -84,11 +84,27 @@
 - [x] Update docs/downloads.html: v4e PDF entry added at top
 - [x] Merge all changes to main — no open PRs
 
+### Phase 4: Fellowship Application (2026-04-27) — CRITICAL DEADLINE TODAY
+
+- [x] Spec written: `construction/design/fellowship-application-akg-e.md` — completed Apr 27
+- [x] Build fellowship LaTeX `abstract_v4e_fellowship/main.tex` — hybrid of AKG-E v4e research vision + net-new student-centric sections (Vision, Training Plan, Qualifications) — completed Apr 27
+- [x] Copy `references.bib` from v4e (verbatim) and add `BrownCusati2025SEBeliefs` (applicant's own arXiv paper) — completed Apr 27
+- [x] Build fellowship PDF locally (2 pages, body + references) — completed Apr 27
+- [x] Publish PDF to `docs/abstract_v4e_fellowship.pdf` — completed Apr 27
+- [x] Create internal-use page `docs/fellowship.html` (matches `proposal-akge.html` style) — completed Apr 27
+- [x] Update `docs/downloads.html` with new "Fellowship Application" section — completed Apr 27
+- [x] Update `docs/index.html` nav-bar with Fellowship link — completed Apr 27
+- [x] Update `construction/requirements/citation-matrix.md` with fellowship column — completed Apr 27
+- [x] Update `construction/requirements/submission-checklist.md` with fellowship section — completed Apr 27
+- [x] Verify v4e directory untouched (`git status abstract_v4e/` clean) — completed Apr 27
+
 ## In Progress
 
-### Phase 2e: Portal Submission (2026-03-17) — CRITICAL DEADLINE TODAY
+### Phase 4: Portal Submission (2026-04-27) — CRITICAL DEADLINE TODAY
 
-- [ ] **[CRITICAL]** Portal submission by March 17, 2026 — PA-AKG (v2) as #1; AKG-E (v4e) as #2
+- [ ] **[CRITICAL]** Rebuild CV PDF from `~/code/cv/` (currently no PDF in `~/code/cv/build/`)
+- [ ] **[CRITICAL]** Coordinate letters of recommendation (≤2)
+- [ ] **[CRITICAL]** Submit fellowship application to Amazon research portal by April 27, 2026
 
 ## Upcoming
 
@@ -120,8 +136,10 @@
 | Citation matrix updated (v4d/v4e; 7 new keys) | 2026-03-17 | Done |
 | proposal-akge.html + downloads.html updated (v4e) | 2026-03-17 | Done |
 | All changes merged to main (no open PRs) | 2026-03-17 | Done |
-| **Abstract(s) submitted — CRITICAL DEADLINE** | **2026-03-17** | **Pending** |
+| Abstract(s) submitted | 2026-03-17 | Done |
 | Full proposal invitation | 2026-04-06 | Pending |
+| Fellowship application LaTeX + page built | 2026-04-27 | Done |
+| **Fellowship application submitted — CRITICAL DEADLINE** | **2026-04-27** | **Pending** |
 | Full proposal submitted | 2026-04-27 | Pending |
 | Acceptance notification | 2026-06-30 | Pending |
 

@@ -1,16 +1,18 @@
 # Active Context
 
-_Last updated: 2026-03-17_
+_Last updated: 2026-04-27_
 
 ## Current Phase
 
-**Phase 2e: Submission Day — March 17, 2026 (DEADLINE TODAY)**
+**Phase 4: Fellowship Application Submission Day — April 27, 2026 (DEADLINE TODAY)**
 
-PA-AKG (abstract_v2) is confirmed as submission #1 — citation issues fixed, authors added, provenance definition sentence added. AKG-E (v4e) is the selected primary AKG-E submission — professor-guided structure with full VVUQ framing, RQ1/RQ2 with evaluation criteria, and extensible domain design. SVF (v5) remains available as a third option but is not the current focus. All changes have been merged to main; no open PRs.
+Fellowship application built — `abstract_v4e_fellowship/main.tex` adapts the AKG-E v4e research vision into a 2-page personal-statement / doctoral research plan for Jason Cusati (advisor: Kereshmeh Afsari). PDF (`docs/abstract_v4e_fellowship.pdf`) is published and ready for portal upload this afternoon. CV must be rebuilt from `~/code/cv/` before submission (no PDF currently in `~/code/cv/build/`). Letters of recommendation are tracked as an external dependency in `construction/requirements/submission-checklist.md`. A new internal-use page `docs/fellowship.html` archives the submission alongside the existing project proposals.
+
+Earlier work (March 17 abstract submissions for PA-AKG v2 and AKG-E v4e) is frozen and untouched.
 
 ## Current Workflow
 
-**~~Polish All 3~~ → ~~Run Reviewer Process~~ → ~~Incorporate Feedback~~ → ~~Finalize Citations~~ → ~~Select AKG-E Variant~~ → Submit by Mar 17**
+**~~Polish All 3~~ → ~~Run Reviewer Process~~ → ~~Incorporate Feedback~~ → ~~Finalize Citations~~ → ~~Select AKG-E Variant~~ → ~~Abstracts Submitted (Mar 17)~~ → Build Fellowship Application → Rebuild CV → Coordinate Letters → Submit by Apr 27**
 
 | Rank | Proposal | CFP Topics | Status |
 |---|---|---|---|
@@ -19,6 +21,18 @@ PA-AKG (abstract_v2) is confirmed as submission #1 — citation issues fixed, au
 | **#3** | **SVF** (v5) | Agentic Evaluation + Responsible AI | SUBMISSION-READY — reserved for other venues if AKG-E submitted |
 
 ## Current Focus
+
+- [x] Build fellowship application LaTeX (`abstract_v4e_fellowship/main.tex`) — completed Apr 27
+- [x] Build fellowship PDF and publish to docs/ — completed Apr 27
+- [x] Create internal-use page `docs/fellowship.html` — completed Apr 27
+- [x] Update downloads.html and index.html nav — completed Apr 27
+- [x] Update citation matrix with fellowship column — completed Apr 27
+- [x] Update submission-checklist.md with fellowship section — completed Apr 27
+- [ ] **[CRITICAL — TODAY]** Rebuild CV PDF from `~/code/cv/`
+- [ ] **[CRITICAL — TODAY]** Coordinate letters of recommendation (≤2)
+- [ ] **[CRITICAL — TODAY]** Portal submission to fellowship by April 27, 2026
+
+## Earlier Focus (March 17 submissions — completed)
 
 - [x] Apply advisor edits to PA-AKG (v2) — completed Mar 16 (PR #12)
 - [x] Fix citation issues in abstract_v2 (Yan2024CRAG, Yu2024COSMO) — completed Mar 17
@@ -117,7 +131,9 @@ All abstracts have been polished to submission quality with the following change
 
 ## Blockers
 
-- Portal submission must be completed today (March 17, 2026 — deadline)
+- Fellowship portal submission must be completed today (April 27, 2026 — deadline)
+- CV PDF rebuild required (no built PDF currently in `~/code/cv/build/`)
+- Letter-of-recommendation status to be confirmed with recommenders
 
 ---
 

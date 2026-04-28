@@ -1,30 +1,31 @@
 # Citation Matrix
 
-**Last verified:** 2026-03-17
+**Last verified:** 2026-04-27
 
 ## Cross-proposal map
 
-| Key | v2 | v3 | v4 | v4b | v4c | v4d | v4e |
-| --- | -- | -- | -- | --- | --- | --- | --- |
-| Lewis2020RAG | Y | Y | Y | Y | Y | Y | Y |
-| AWSBedrockHybridSearch2024 | Y | Y | — | — | — | Y | Y |
-| OpenAIFunctionCalling2025 | Y | — | — | — | — | — | — |
-| Edge2024GraphRAG | Y | Y | Y | Y | Y | Y | Y |
-| Yan2024CRAG | Y | Y | — | — | — | — | — |
-| Ji2023HallucinationSurvey | Y | Y | Y | Y | Y | Y | Y |
-| OpenTelemetryGenAI2024 | Y | Y | Y | — | — | — | — |
-| Asai2024SelfRAG | Y | Y | — | — | — | — | — |
-| Tao2019DigitalTwin | — | — | Y | Y | Y | Y | Y |
-| Karniadakis2021PINN | — | — | Y | Y | Y | — | — |
-| Abramson2024AlphaFold3 | — | — | Y | Y | Y | Y | Y |
-| Merchant2023GNoME | — | — | Y | Y | Y | Y | Y |
-| Oberkampf2010VVUQ | — | — | — | Y | Y | Y | Y |
-| Eastman2011BIM | — | — | — | — | Y | Y | Y |
-| Logg2012FEniCS | — | — | — | — | Y | Y | Y |
-| Yu2024COSMO | Y | — | — | — | — | — | Y |
-| LLMAgentsFEM2025 | — | — | — | — | — | Y | — |
-| Park2026MCPSIM | — | — | — | — | — | Y | — |
-| Soman2025ConstructionDT | — | — | — | — | — | Y | — |
+| Key | v2 | v3 | v4 | v4b | v4c | v4d | v4e | fellowship |
+| --- | -- | -- | -- | --- | --- | --- | --- | ---------- |
+| Lewis2020RAG | Y | Y | Y | Y | Y | Y | Y | Y |
+| AWSBedrockHybridSearch2024 | Y | Y | — | — | — | Y | Y | Y |
+| OpenAIFunctionCalling2025 | Y | — | — | — | — | — | — | — |
+| Edge2024GraphRAG | Y | Y | Y | Y | Y | Y | Y | Y |
+| Yan2024CRAG | Y | Y | — | — | — | — | — | — |
+| Ji2023HallucinationSurvey | Y | Y | Y | Y | Y | Y | Y | Y |
+| OpenTelemetryGenAI2024 | Y | Y | Y | — | — | — | — | — |
+| Asai2024SelfRAG | Y | Y | — | — | — | — | — | — |
+| Tao2019DigitalTwin | — | — | Y | Y | Y | Y | Y | Y |
+| Karniadakis2021PINN | — | — | Y | Y | Y | — | — | — |
+| Abramson2024AlphaFold3 | — | — | Y | Y | Y | Y | Y | Y |
+| Merchant2023GNoME | — | — | Y | Y | Y | Y | Y | Y |
+| Oberkampf2010VVUQ | — | — | — | Y | Y | Y | Y | Y |
+| Eastman2011BIM | — | — | — | — | Y | Y | Y | Y |
+| Logg2012FEniCS | — | — | — | — | Y | Y | Y | Y |
+| Yu2024COSMO | Y | — | — | — | — | — | Y | Y |
+| LLMAgentsFEM2025 | — | — | — | — | — | Y | — | — |
+| Park2026MCPSIM | — | — | — | — | — | Y | — | — |
+| Soman2025ConstructionDT | — | — | — | — | — | Y | — | — |
+| BrownCusati2025SEBeliefs | — | — | — | — | — | — | — | Y |
 
 ## Full reference list
 
@@ -49,6 +50,7 @@
 | LLMAgentsFEM2025 | Xia et al. | A Lightweight LLM-Based Multi-Agent System to Automate FEM of 2D Frames | 2025 | arXiv | arXiv:2510.05414 | P |
 | Park2026MCPSIM | Park et al. | A Self-Correcting Multi-Agent LLM Framework for Language-Based Physics Simulation | 2026 | npj AI | 10.1038/s44387-025-00057-z | Y |
 | Soman2025ConstructionDT | Soman et al. | Digital Twin Construction with a Focus on Human Interaction and Decision-Making | 2025 | Automation in Construction | 10.1016/j.autcon.2024.105652 | Y |
+| BrownCusati2025SEBeliefs | Brown & Cusati | Exploring the Evidence-Based SE Beliefs of Generative AI Tools | 2025 | arXiv | arXiv:2407.13900 | P |
 
 **Status:** Y = verified · P = preprint · N = unverified · X = failed
 
@@ -67,3 +69,4 @@
 | 2026-03-15 | Added v4c; restructured into single file with cross-proposal map + full reference list |
 | 2026-03-16 | Verified all v2 citations tracked; OpenAIFunctionCalling2025 confirmed present; last-verified date updated |
 | 2026-03-17 | Added v4d and v4e columns; registered Eastman2011BIM, Logg2012FEniCS, Yu2024COSMO, LLMAgentsFEM2025, Park2026MCPSIM, Soman2025ConstructionDT |
+| 2026-04-27 | Added fellowship column; registered BrownCusati2025SEBeliefs (applicant's own arXiv paper) for fellowship Qualifications section |
