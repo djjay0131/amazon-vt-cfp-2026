@@ -6,7 +6,7 @@ _Last updated: 2026-04-27_
 
 **Phase 4: Fellowship Application Submission Day — April 27, 2026 (DEADLINE TODAY)**
 
-Fellowship application built — `abstract_v4e_fellowship/main.tex` adapts the AKG-E v4e research vision into a 2-page personal-statement / doctoral research plan for Jason Cusati (advisor: Kereshmeh Afsari). PDF (`docs/abstract_v4e_fellowship.pdf`) is published and ready for portal upload this afternoon. CV must be rebuilt from `~/code/cv/` before submission (no PDF currently in `~/code/cv/build/`). Letters of recommendation are tracked as an external dependency in `construction/requirements/submission-checklist.md`. A new internal-use page `docs/fellowship.html` archives the submission alongside the existing project proposals.
+Fellowship application built — `abstract_v4e_fellowship/main.tex` adapts the AKG-E v4e research vision into a 2-page personal-statement / doctoral research plan for Jason Cusati (advisor: Chris Brown). PDF (`docs/abstract_v4e_fellowship.pdf`) is published and ready for portal upload this afternoon. CV must be rebuilt from `~/code/cv/` before submission (no PDF currently in `~/code/cv/build/`). Letters of recommendation are tracked as an external dependency in `construction/requirements/submission-checklist.md`. A new internal-use page `docs/fellowship.html` archives the submission alongside the existing project proposals.
 
 Earlier work (March 17 abstract submissions for PA-AKG v2 and AKG-E v4e) is frozen and untouched.
 
@@ -38,7 +38,7 @@ Earlier work (March 17 abstract submissions for PA-AKG v2 and AKG-E v4e) is froz
 - [x] Fix citation issues in abstract_v2 (Yan2024CRAG, Yu2024COSMO) — completed Mar 17
 - [x] Add provenance definition sentence to abstract_v2 — completed Mar 17
 - [x] Add authors to abstract_v2 (Jason Cusati, Chris Brown) — completed Mar 17
-- [x] Add authors to all AKG-E variants (v3/v4/v4b/v4c/v4d/v4e: Jason Cusati + Kereshmeh Afsari) — completed Mar 17
+- [x] Add authors to all AKG-E variants (v3/v4/v4b/v4c/v4d/v4e: Jason Cusati + Chris Brown) — completed Mar 17
 - [x] Create AKG-E v4d — domain-agnostic synthesis with VVUQ + engineering-agent citations — completed Mar 17
 - [x] Create AKG-E v4e — full professor structure, application challenge, RQ1/RQ2 with evaluation criteria, extensible domain design — completed Mar 17
 - [x] Update citation matrix — v4d and v4e columns; 7 new citation keys registered — completed Mar 17
@@ -80,7 +80,7 @@ All abstracts have been polished to submission quality with the following change
 - Primary Topic: AI Accelerated Science & Engineering
 - Secondary Topic: Agentic AI
 - Key framing: Reframed around extensible application domains (construction primary, transportation, energy) with VVUQ as unifying validation backbone. Aligns with advisor's construction.ai initiative.
-- **v4e variant (PRIMARY)**: Full professor structure — application challenge (VVUQ gap), RQ1/RQ2 with evaluation criteria (benchmark suite for RQ1; constraint violation rate + task success rate for RQ2), intellectual merit, contributions, practice impact, expandability. Hypothesis reframed as evaluation design target (>50% constraint violation reduction), not a prediction. Authors: Jason Cusati + Kereshmeh Afsari.
+- **v4e variant (PRIMARY)**: Full professor structure — application challenge (VVUQ gap), RQ1/RQ2 with evaluation criteria (benchmark suite for RQ1; constraint violation rate + task success rate for RQ2), intellectual merit, contributions, practice impact, expandability. Hypothesis reframed as evaluation design target (>50% constraint violation reduction), not a prediction. Authors: Jason Cusati + Chris Brown.
 - **v4d variant**: Domain-agnostic synthesis with VVUQ + engineering-agent citations (Park2026MCPSIM, LLMAgentsFEM2025, Soman2025ConstructionDT). Superseded by v4e.
 - **v4c variant**: Construction-only. Superseded by v4e.
 - **v4b variant**: 2 focused domains (construction + transportation). Superseded by v4e.

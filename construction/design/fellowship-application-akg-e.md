@@ -5,7 +5,9 @@
 **Author:** Feature Architect (AI-assisted)
 **Implemented:** 2026-04-27 (same day)
 **Applicant:** Jason Cusati (PhD candidate, Virginia Tech)
-**Advisor:** Kereshmeh Afsari
+**Advisor:** Chris Brown
+**Domain collaborator:** Kereshmeh Afsari (construction.ai)
+**VVUQ instructor:** Christopher Roy (CS6444)
 
 ## Problem
 
@@ -69,7 +71,7 @@ To eliminate any risk of accidentally modifying the already-submitted v4e and to
 ### Authorship reframe
 
 - v4e: `\author{Jason Cusati \and Kereshmeh Afsari}` (project proposal — co-authors)
-- Fellowship: `\author{Jason Cusati \\ PhD Candidate, Virginia Tech \\ Advisor: Kereshmeh Afsari}` (student is the applicant; advisor named as advisor)
+- Fellowship: `\author{Jason Cusati \\ PhD Candidate, Virginia Tech \\ Advisor: Chris Brown}` (student is the applicant; advisor named as advisor)
 
 ### Build pipeline
 
@@ -126,7 +128,7 @@ See Phase 5 in the conversation log. Skeleton (illustrative — not to ship):
 \title{Agentic Knowledge Graphs for AI-Accelerated Engineering: \\
        A Doctoral Research Vision with Simulation-Grounded Validation}
 \author{Jason Cusati \\ PhD Candidate, Virginia Tech \\
-        Advisor: Kereshmeh Afsari}
+        Advisor: Chris Brown}
 
 \begin{document}
 \maketitle
@@ -209,7 +211,7 @@ Acceptance criteria are split into two tiers. **Tier 1 (Blocking)** must clear b
 ### AC-2: Authorship reflects fellowship framing
 - **Given** the proposal PDF is built
 - **When** a reader views the title block
-- **Then** Jason Cusati is listed as the sole applicant with PhD candidate / VT affiliation, and Kereshmeh Afsari is listed as advisor (not co-author)
+- **Then** Jason Cusati is listed as the sole applicant with PhD candidate / VT affiliation, and Chris Brown is listed as advisor (not co-author)
 
 ### AC-3: Personal statement sections present and student-centric
 - **Given** the proposal PDF is built

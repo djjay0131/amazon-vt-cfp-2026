@@ -82,7 +82,9 @@
 ### Applicant
 - **Name:** Jason Cusati
 - **Role:** PhD Candidate, Virginia Tech
-- **Advisor:** Kereshmeh Afsari
+- **Advisor:** Chris Brown (writing recommendation letter)
+- **Domain collaborator:** Kereshmeh Afsari (construction.ai initiative)
+- **VVUQ instructor:** Christopher Roy (CS6444 graduate course)
 - **Eligibility confirmed:** 3rd-year+ PhD, qual exams passed, no other industry-sponsored fellowship
 
 ### Topic Selections
@@ -94,7 +96,7 @@
 #### 1. 2-page proposal / personal statement
 - [x] Built: `abstract_v4e_fellowship/main.pdf` (2 pages, body + references)
 - [x] Published: `docs/abstract_v4e_fellowship.pdf`
-- [x] Authorship: Jason Cusati (sole applicant); Afsari listed as advisor
+- [x] Authorship: Jason Cusati (sole applicant); Chris Brown listed as advisor
 - [x] Personal-statement sections present (Vision, Training Plan, Qualifications)
 - [x] Built from hybrid of AKG-E v4e research vision + net-new student-centric content
 
