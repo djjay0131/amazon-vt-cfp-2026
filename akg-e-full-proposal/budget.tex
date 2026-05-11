@@ -1,0 +1,71 @@
+% ============================================================
+% Amazon-VT CFP 2026-2027 — AKG-E Full Proposal: Budget (DRAFT)
+% Single-page LaTeX article
+% DRAFT — dollar amounts are placeholders for PI/lab-admin review
+% ============================================================
+
+\documentclass[10pt]{article}
+\usepackage[margin=0.75in]{geometry}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{microtype}
+\pagestyle{empty}
+
+\begin{document}
+
+\begin{center}
+{\large\bfseries Budget --- AKG-E Full Proposal (DRAFT)} \\[2pt]
+\small\itshape (DRAFT --- for PI / lab-admin review; dollar amounts are placeholders)
+\end{center}
+
+\vspace{0.4em}
+
+\noindent\textbf{Project:} Agentic Knowledge Graphs for AI-Accelerated Engineering with Simulation-Grounded Validation \\
+\textbf{PI:} Kereshmeh Afsari \quad \textbf{co-PI:} Jason Cusati \\
+\textbf{Sponsor:} Amazon--Virginia Tech Initiative, CFP 2026--2027 \\
+\textbf{Period:} 12 months (3-month aggressive build + 9-month dissemination / scaling)
+
+\vspace{0.6em}
+
+\begin{tabular}{p{4.4in} r}
+  \toprule
+  \textbf{Category}                                              & \textbf{Amount} \\
+  \midrule
+  \multicolumn{2}{l}{\textbf{Personnel}} \\
+  \quad GRA \#1 --- Cusati (12 mo; full-time during 3-mo build)  & \$XX,XXX \\
+  \quad\quad Stipend                                             & \$XX,XXX \\
+  \quad\quad Tuition                                             & \$XX,XXX \\
+  \quad\quad Benefits / fringe                                   & \$X,XXX \\
+  \quad GRA \#2 --- TBD (12 mo; full-time during 3-mo build)     & \$XX,XXX \\
+  \quad\quad Stipend                                             & \$XX,XXX \\
+  \quad\quad Tuition                                             & \$XX,XXX \\
+  \quad\quad Benefits / fringe                                   & \$X,XXX \\
+  \quad Faculty summer salary --- Afsari, 1 mo (optional)        & \$XX,XXX \\
+  \midrule
+  \multicolumn{2}{l}{\textbf{Materials and Computing}} \\
+  \quad \textbf{LLM API tokens} (development + benchmark runs)   & \$XX,XXX \\
+  \quad AWS Bedrock + cloud compute (training / serving / KG)    & \$XX,XXX \\
+  \quad Simulation software / FEA licenses                       & \$X,XXX \\
+  \midrule
+  \multicolumn{2}{l}{\textbf{Travel}} \\
+  \quad Conference venue \#1 (AI for engineering / agentic AI)   & \$X,XXX \\
+  \quad Conference venue \#2 (construction / civil engineering)  & \$X,XXX \\
+  \quad Amazon collaboration travel (Seattle / Arlington)        & \$X,XXX \\
+  \midrule
+  \textbf{Total Direct Costs}                                    & \$XXX,XXX \\
+  Indirect Costs (VT F\&A rate, to be confirmed by lab admin)    & \$XX,XXX \\
+  \midrule
+  \textbf{Total Project Cost}                                    & \textbf{\$XXX,XXX} \\
+  \bottomrule
+\end{tabular}
+
+\vspace{1em}
+
+\noindent\textbf{Justification --- LLM API Tokens.}
+AKG-E is, by construction, a high-volume LLM workload: each iteration of the propose~$\to$~VVUQ~$\to$~feedback loop spends tokens on retrieval-augmented generation over the curated knowledge graph, on structured graph queries that surface code provisions and physical-law constraints, on simulation feedback ingestion (FEA / digital-twin / PDE solver outputs returned to the agent), and on the refinement step that consumes gate-emitted violations to produce the next candidate artifact. The benchmark evaluation amplifies this footprint substantially: three baselines (B0 Claude alone; B1 Claude~+~graph-RAG; B2 full AKG-E) are run across three engineering domains (construction, transportation, energy), with $n\geq5$ random seeds per cell and bootstrap resampling for 95\% confidence intervals on the headline correctness, calibration, and efficiency metrics. The full benchmark therefore drives thousands of multi-turn agent runs at production-quality model tokens, and the LLM API line is sized to support both day-to-day development and full benchmark execution without throttling. Separating this line from cloud compute prevents the token spend from being absorbed into a generic AWS line item where Amazon reviewers and VT lab admin cannot audit it independently.
+
+\vspace{0.6em}
+
+\noindent\textit{Notes for reviewers:} All dollar figures above are placeholder ``XX,XXX'' tokens pending PI sign-off and VT lab-admin confirmation of (a) GRA stipend and tuition rates for the 2026--2027 academic year, (b) the VT F\&A indirect-cost rate applicable to this sponsor, and (c) the faculty-summer-salary decision (included as an optional line; the PI may zero it). The total ask will be finalized within the Amazon-VT CFP Phase~1 envelope.
+
+\end{document}

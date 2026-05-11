@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AKG-E Full Proposal &mdash; Amazon-VT CFP 2026-2027</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <style>
+        :root {
+            --amazon-orange: #FF9900;
+            --vt-maroon: #861F41;
+            --bg-dark: #0a0a0a;
+            --bg-card: #141414;
+            --text-primary: #e8e8e8;
+            --text-secondary: #a0a0a0;
+            --border: #2a2a2a;
+            --blue: #42a5f5;
+            --yellow: #ffc107;
+            --green: #66bb6a;
+            --red: #ef5350;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.7;
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--vt-maroon), #4a1128);
+            border-bottom: 3px solid var(--amazon-orange);
+            padding: 2rem 1rem;
+            text-align: center;
+        }
+
+        .header h1 { font-size: 1.5rem; font-weight: 700; margin-bottom: 0.3rem; }
+        .header .subtitle { color: var(--amazon-orange); font-size: 0.95rem; }
+
+        .nav-bar {
+            background: var(--bg-card);
+            border-bottom: 1px solid var(--border);
+            padding: 0.6rem 1rem;
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .nav-bar a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.82rem;
+            padding: 0.3rem 0.7rem;
+            border-radius: 4px;
+            transition: all 0.2s;
+        }
+
+        .nav-bar a:hover { color: var(--amazon-orange); background: rgba(255,153,0,0.08); }
+        .nav-bar a.active { color: var(--amazon-orange); background: rgba(255,153,0,0.12); font-weight: 600; }
+
+        .container { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem 4rem; }
+
+        .topic-tags {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin: 1rem 0 1.5rem;
+        }
+
+        .topic-tag {
+            font-size: 0.78rem;
+            padding: 0.3rem 0.7rem;
+            border-radius: 4px;
+            background: rgba(255,153,0,0.1);
+            color: var(--amazon-orange);
+            border: 1px solid rgba(255,153,0,0.25);
+        }
+
+        .topic-tag.secondary {
+            background: rgba(66,165,245,0.1);
+            color: var(--blue);
+            border-color: rgba(66,165,245,0.25);
+        }
+
+        h2 {
+            color: var(--amazon-orange);
+            font-size: 1.2rem;
+            margin: 2rem 0 0.7rem;
+            padding-bottom: 0.3rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        h3 {
+            color: var(--text-primary);
+            font-size: 1rem;
+            margin: 1rem 0 0.4rem;
+        }
+
+        p { margin: 0.5rem 0; color: var(--text-secondary); font-size: 0.92rem; }
+        strong { color: var(--text-primary); }
+
+        ul { margin: 0.5rem 0 0.5rem 1.4rem; color: var(--text-secondary); font-size: 0.92rem; }
+        li { margin: 0.3rem 0; }
+
+        code {
+            background: rgba(255,153,0,0.08);
+            padding: 0.1rem 0.35rem;
+            border-radius: 3px;
+            font-size: 0.85em;
+            color: var(--amazon-orange);
+        }
+
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--amazon-orange);
+            text-decoration: none;
+            font-size: 0.9rem;
+            padding: 0.6rem 1rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            transition: all 0.2s;
+            margin: 0.3rem 0.3rem 0.3rem 0;
+        }
+
+        .download-btn:hover {
+            border-color: var(--amazon-orange);
+            background: rgba(255,153,0,0.05);
+        }
+
+        .meta-grid {
+            display: grid;
+            grid-template-columns: max-content 1fr;
+            gap: 0.4rem 1rem;
+            font-size: 0.9rem;
+            margin: 1rem 0;
+        }
+
+        .meta-grid dt { color: var(--text-secondary); }
+        .meta-grid dd { color: var(--text-primary); }
+
+        .note-box {
+            background: rgba(66,165,245,0.06);
+            border: 1px solid rgba(66,165,245,0.2);
+            border-left: 4px solid var(--blue);
+            border-radius: 6px;
+            padding: 0.9rem 1.1rem;
+            margin: 1rem 0;
+            font-size: 0.88rem;
+            color: var(--text-primary);
+        }
+
+        .deadline-box {
+            background: rgba(255,193,7,0.08);
+            border: 1px solid rgba(255,193,7,0.3);
+            border-left: 4px solid var(--yellow);
+            border-radius: 6px;
+            padding: 0.9rem 1.1rem;
+            margin: 1rem 0;
+            font-size: 0.88rem;
+            color: var(--text-primary);
+        }
+
+        .deadline-box strong { color: var(--yellow); }
+
+        .status-pill {
+            display: inline-block;
+            padding: 0.15rem 0.5rem;
+            border-radius: 10px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-left: 0.4rem;
+        }
+
+        .status-pill.done { background: rgba(102,187,106,0.15); color: var(--green); border: 1px solid rgba(102,187,106,0.3); }
+        .status-pill.todo { background: rgba(239,83,80,0.12); color: var(--red); border: 1px solid rgba(239,83,80,0.3); }
+        .status-pill.open { background: rgba(66,165,245,0.12); color: var(--blue); border: 1px solid rgba(66,165,245,0.3); }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>AKG-E &mdash; Amazon-VT Full Proposal</h1>
+        <div class="subtitle">2026-2027 Call for Proposals &mdash; Internal Archive</div>
+    </div>
+
+    <nav class="nav-bar">
+        <a href="index.html">Dashboard</a>
+        <a href="proposal-pakg.html">PA-AKG</a>
+        <a href="proposal-akge.html">AKG-E Abstract</a>
+        <a href="akg-e-full-proposal.html" class="active">Full Proposal</a>
+        <a href="proposal-svf.html">SVF</a>
+        <a href="fellowship.html">Fellowship</a>
+        <a href="downloads.html">Downloads</a>
+    </nav>
+
+    <div class="container">
+
+        <div class="topic-tags">
+            <span class="topic-tag">Primary: AI Accelerated Science &amp; Engineering</span>
+            <span class="topic-tag secondary">Secondary: Agentic AI</span>
+        </div>
+
+        <div class="deadline-box">
+            <strong>Submission deadline:</strong> May 13, 2026 (extended from May 5). Submission via the Amazon Academic Research Portal.
+        </div>
+
+        <div class="note-box">
+            <strong>Internal-use page.</strong> This is a personal archive of the full-proposal submission. Amazon reviewers are not directed here &mdash; the submission itself is uploaded to the Amazon research portal.
+        </div>
+
+        <h2>Submission Summary</h2>
+
+        <dl class="meta-grid">
+            <dt>PI</dt><dd>Kereshmeh Afsari &mdash; Associate Professor, ARCADE Lab, Myers-Lawson School of Construction, Virginia Tech</dd>
+            <dt>Co-PI</dt><dd>Jason Cusati &mdash; PhD Candidate, Virginia Tech</dd>
+            <dt>Title</dt><dd>Agentic Knowledge Graphs for AI-Accelerated Engineering with Simulation-Grounded Validation</dd>
+            <dt>Status</dt><dd>Draft complete &mdash; awaiting PI sign-off, budget finalization, and portal upload</dd>
+            <dt>Source</dt><dd>Expands the AKG-E v4e abstract (invited per Amazon, April 10, 2026)</dd>
+        </dl>
+
+        <h2>Submission Package</h2>
+
+        <p>The Amazon research portal submission requires three artifacts:</p>
+
+        <h3>1. Proposal (3 pages + references)</h3>
+        <p>Six-section structure: Problem &amp; Motivation; Proposed Approach (the AKG-E Framework); Research Plan (RQs, Methodology, Evaluation Plan); Timeline, Deliverables, and Risks; Team and Capabilities; Intellectual Merit and Amazon Fit.</p>
+        <a class="download-btn" href="akg-e-full-proposal.pdf">
+            &#128196; AKG-E Full Proposal (PDF)
+        </a>
+
+        <h3>2. Budget (1 page)</h3>
+        <p>Draft budget structured into Personnel (two GRAs full-time during the 3-month build, optional faculty summer salary), Materials and Computing (with <em>LLM API tokens</em> as a featured line item plus justification paragraph), Travel, and indirect costs. Dollar amounts are placeholders &mdash; the PI and ARCADE lab admin own final figures and F&amp;A rate.</p>
+        <a class="download-btn" href="akg-e-full-proposal-budget.pdf">
+            &#128196; Budget Draft (PDF, 1 page)
+        </a>
+
+        <h3>3. CV</h3>
+        <p>Built out-of-tree from <code>~/code/cv/</code>; not published on this internal-archive page. Refreshed within 14 days of submission.</p>
+
+        <h2>Methodology Highlights</h2>
+
+        <p>The proposal builds the AKG-E framework around three reusable layers (domain ontology, simulation integration, VVUQ validation) and an explicit agentic <em>propose &rarr; VVUQ &rarr; feedback</em> loop &mdash; the loop is the net-new contribution beyond existing KG+agent systems. The differentiator from text-based critic loops (Reflexion, Self-RAG) is that AKG-E&rsquo;s gate closes against <em>quantitative simulation outputs</em> held to <em>codified engineering standards</em> (AWC-NDS / HCM2022 / NERC-TPL), enabling iterative validation at simulation-loop speed where manufacturer-cycle verification today takes weeks to months.</p>
+
+        <h3>Evaluation framework (three tiers, in order)</h3>
+        <ul>
+            <li><strong>Correctness</strong> (non-negotiable floor) &mdash; constraint-violation rate vs codified standards. The abstract's &gt;50% violation-reduction target is preserved as the floor.</li>
+            <li><strong>Calibration</strong> &mdash; empirical coverage probability of the 95% CI against ground-truth simulator outputs.</li>
+            <li><strong>Efficiency</strong> (headline contribution) &mdash; wall-clock time-to-validated-decision vs the manufacturer-cycle baseline.</li>
+        </ul>
+
+        <h3>Baselines (three-tier ablation)</h3>
+        <ul>
+            <li><strong>B0</strong> &mdash; Claude alone (LLM-only)</li>
+            <li><strong>B1</strong> &mdash; Claude + graph-RAG over curated KG</li>
+            <li><strong>B2</strong> &mdash; Claude + graph-RAG + agentic VVUQ loop (full AKG-E)</li>
+        </ul>
+
+        <h3>Domains</h3>
+        <p>Two funded domains during the 3-month build: <strong>Construction</strong> (LVL VVUQ pipeline as anchor, BIM/IFC + FEA) and <strong>Transportation</strong> (existing VTTI digital-twin proposal as anchor, signal-timing scenarios). <strong>Energy</strong> is included as a designed extension (NERC-TPL contingency analysis) for Months 4&ndash;12.</p>
+
+        <h2>Underlying Research Vision</h2>
+
+        <p>The full proposal expands the AKG-E v4e abstract that was invited on April 10, 2026. Related artifacts:</p>
+
+        <a class="download-btn" href="abstract_v4e.pdf">
+            &#128196; AKG-E v4e Abstract (PDF, 1 page)
+        </a>
+        <a class="download-btn" href="proposal-akge.html">
+            &#128279; AKG-E Abstract Page
+        </a>
+        <a class="download-btn" href="deep-research-akge.html">
+            &#128279; AKG-E Deep Research Report
+        </a>
+
+        <h2>What&rsquo;s Left to Do</h2>
+
+        <p>Tracked here so the path to portal-submit is explicit. Status pills: <span class="status-pill done">done</span> <span class="status-pill open">in progress</span> <span class="status-pill todo">to do</span>.</p>
+
+        <h3>Submission-blocking (must clear before May 13)</h3>
+        <ul>
+            <li>Draft proposal LaTeX (<code>akg-e-full-proposal/main.tex</code>) &mdash; <span class="status-pill done">done</span></li>
+            <li>Draft budget LaTeX (<code>akg-e-full-proposal/budget.tex</code>) &mdash; <span class="status-pill done">done</span></li>
+            <li>Build verification (page counts, AC-1 / AC-2 / AC-3 / AC-RISK / AC-4 / AC-5 / AC-6) &mdash; <span class="status-pill done">done</span></li>
+            <li>PI review &amp; sign-off on proposal narrative &mdash; <span class="status-pill open">in progress</span> (Afsari meeting scheduled)</li>
+            <li>Budget dollar amounts finalized by PI / ARCADE lab admin &mdash; <span class="status-pill todo">to do</span></li>
+            <li>F&amp;A rate confirmed (VT indirect-cost rate) &mdash; <span class="status-pill todo">to do</span></li>
+            <li>Faculty summer salary line decision &mdash; <span class="status-pill todo">to do</span> (currently optional)</li>
+            <li>CV PDF rebuilt from <code>~/code/cv/</code>, dated within 14 days of submission &mdash; <span class="status-pill todo">to do</span></li>
+            <li>Three-document package uploaded to Amazon research portal &mdash; <span class="status-pill todo">to do</span></li>
+        </ul>
+
+        <h3>Open questions to surface with the PI</h3>
+        <ul>
+            <li>GRA #2 identity &mdash; named or to-be-recruited?</li>
+            <li>Co-PI structure &mdash; Dr. Chris Brown's involvement deferred; revisit post-Afsari meeting</li>
+            <li>Reviewer feedback &mdash; promised by Burrell on Apr 10, never received as of May 11; follow-up email sent</li>
+        </ul>
+
+        <h3>Same-week follow-up (does not block submission)</h3>
+        <ul>
+            <li>Spec sync &mdash; <code>construction/design/full-proposal-akg-e.md</code> still references Sandia / Claude / old <code>abstract_v4e_full/</code> directory naming in a few places &mdash; <span class="status-pill todo">to do</span></li>
+            <li>Update <code>downloads.html</code> with the full-proposal PDFs &mdash; <span class="status-pill open">in progress</span></li>
+            <li>Update <code>index.html</code> dashboard navigation &mdash; <span class="status-pill open">in progress</span></li>
+            <li>Update <code>construction/requirements/citation-matrix.md</code> with a <code>full</code> column &mdash; <span class="status-pill todo">to do</span></li>
+            <li>Update <code>construction/requirements/submission-checklist.md</code> with full-proposal section (3-document upload, May 13 deadline, PI sign-off) &mdash; <span class="status-pill todo">to do</span></li>
+            <li>Update <code>memory-bank/activeContext.md</code> and <code>progress.md</code> &mdash; both still dated 2026-03-17; need full-proposal workstream entry &mdash; <span class="status-pill todo">to do</span></li>
+        </ul>
+
+        <h3>Future extensions (Months 4&ndash;12 of funded year)</h3>
+        <ul>
+            <li>Energy-domain proof-of-concept (NERC-TPL contingency analysis) &mdash; designed in the proposal as the domain-swap demonstration</li>
+            <li>Open-source release of the AKG-E framework, domain-adaptable KG templates, and the three-domain benchmark</li>
+            <li>Robustness experiments (model swaps, prompt perturbations, distribution shift)</li>
+            <li>Peer-reviewed publications targeting AI-for-engineering and agentic-AI venues</li>
+        </ul>
+
+    </div>
+</body>
+</html>
