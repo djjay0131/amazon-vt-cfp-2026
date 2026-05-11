@@ -99,9 +99,9 @@ The \textit{net-new contribution} that AKG-E adds beyond prior KG+agent systems 
 
 \section{Research Plan}
 
-\subsection{Research Questions}
+\subsection{Research Objectives}
 
-This research pursues two questions. \textbf{RQ1:} How can VVUQ methodology be adapted to validate AI agent-generated engineering outputs, providing quantified uncertainty bounds and enforceable physical and regulatory constraints---evaluated against a curated benchmark of engineering tasks with known ground-truth solutions? \textbf{RQ2:} Does a domain-agnostic AKG-E architecture achieve measurable reductions in constraint violation rate and task success rate across engineering domains, relative to LLM-only and RAG-only baselines~\cite{Lewis2020RAG}?
+This project pursues three objectives. \textbf{Objective~1 (Framework):} generalize the existing LVL VVUQ pipeline into the AKG-E framework---a typed, agent-callable propose~$\to$~VVUQ~$\to$~feedback loop coupling a domain knowledge graph, a simulation tool surface, and a governing-equation / code-compliance / constraint-satisfiability validation gate. \textbf{Objective~2 (Validation):} demonstrate AKG-E on two engineering domains (construction: BIM/IFC + FEA against AWC-NDS; transportation: digital-twin microsimulation against HCM2022) and measure the three-tier metrics---correctness, calibration, efficiency---against B0/B1/B2 baselines. \textbf{Objective~3 (Dissemination):} release the AKG-E framework, KG ontology templates, the simulator-tool interface specification, and the cross-domain benchmark as open source; publish peer-reviewed results in AI-for-engineering and agentic-AI venues.
 
 \subsection{Methodology}
 
