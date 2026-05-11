@@ -98,17 +98,35 @@
 - [x] Update `construction/requirements/submission-checklist.md` with fellowship section — completed Apr 27
 - [x] Verify v4e directory untouched (`git status abstract_v4e/` clean) — completed Apr 27
 
+### Phase 5: AKG-E Full Proposal Build (2026-04-10 — 2026-05-11)
+
+- [x] AKG-E v4e abstract invited to full proposal (Burrell email, 2026-04-10) — confirmed Apr 10
+- [x] Spec authored: `construction/design/full-proposal-akg-e.md` — completed Apr 28; revised May 11 with team / scope / eval / deadline corrections
+- [x] LaTeX source authored at `akg-e-full-proposal/main.tex` (3-page body + refs, six sections, IEEE 2-column) — completed May 11
+- [x] Budget LaTeX at `akg-e-full-proposal/budget.tex` (1 page DRAFT, $100K total, gift research no F&A) — completed May 11
+- [x] Inline Gantt chart added (Table I) — workstreams × Aug 2026 – Jul 2027 — completed May 11
+- [x] Authorship resolved: Afsari (PI, ARCADE Lab) + Brown (Co-PI, Code World No Blanket lab) + Cusati (Student Researcher) — completed May 11
+- [x] §II / §3.2 contribution framing softened from prescriptive algorithm to coupling interface — completed May 11
+- [x] Eval framing: three-tier correctness/calibration/efficiency; abstract's >50% target preserved as correctness floor; B0/B1/B2 ablation — completed May 11
+- [x] Scope: 2-domain funded (construction + transportation) + energy as designed extension — completed May 11
+- [x] Acronyms audit: every domain-specific term defined at first body-text use — completed May 11
+- [x] Brown added 6 references to bib (Brown-Cusati ESEM 2025, Cusati-Brown ICSE-FoSE 2026, 4 Code-World-No-Blanket-lab orphans) in commit a4af8b0 — completed May 11
+- [x] Citation audit: no hallucinations; matrix updated with `full` column; brown2025exploring + cusati2026fose registered — completed May 11
+- [x] PDFs published to docs/, dedicated full-proposal page at `docs/akg-e-full-proposal.html` with built-in what's-left-to-do tracker, nav added across pages — completed May 11
+
 ## In Progress
 
-### Phase 4: Portal Submission (2026-04-27) — CRITICAL DEADLINE TODAY
+### Phase 5: Portal Submission (2026-05-11 at 11:59 PM PT) — CRITICAL DEADLINE TODAY
 
-- [ ] **[CRITICAL]** Rebuild CV PDF from `~/code/cv/` (currently no PDF in `~/code/cv/build/`)
-- [ ] **[CRITICAL]** Coordinate letters of recommendation (≤2)
-- [ ] **[CRITICAL]** Submit fellowship application to Amazon research portal by April 27, 2026
+- [ ] **[CRITICAL]** Afsari (PI) CV PDF dated within 14 days of submission (PI provides directly)
+- [ ] **[CRITICAL]** Decision: include Brown (Co-PI) CV alongside Afsari CV? (CFP says singular CV)
+- [ ] **[CRITICAL]** PI + Co-PI sign-off on proposal + budget dollar amounts and F&A treatment
+- [ ] **[CRITICAL]** Submit full-proposal package to Amazon research portal by May 11, 2026 at 11:59 PM PT
 
 ## Upcoming
 
-- [ ] Phase 3: Full proposal development (if invited, due April 27, 2026)
+- [ ] Phase 6: Acceptance notification (June 30, 2026)
+- [ ] Phase 7: Project execution if funded (Aug 2026 – Jul 2027)
 
 ## Key Milestones
 
