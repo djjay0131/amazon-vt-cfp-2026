@@ -1,18 +1,34 @@
 # Active Context
 
-_Last updated: 2026-04-27_
+_Last updated: 2026-05-11_
 
 ## Current Phase
 
-**Phase 4: Fellowship Application Submission Day — April 27, 2026 (DEADLINE TODAY)**
+**Phase 5: AKG-E Full Proposal Submission Day — May 11, 2026 at 11:59 PM PT (DEADLINE TODAY)**
 
-Fellowship application built — `abstract_v4e_fellowship/main.tex` adapts the AKG-E v4e research vision into a 2-page personal-statement / doctoral research plan for Jason Cusati (advisor: Chris Brown). PDF (`docs/abstract_v4e_fellowship.pdf`) is published and ready for portal upload this afternoon. CV must be rebuilt from `~/code/cv/` before submission (no PDF currently in `~/code/cv/build/`). Letters of recommendation are tracked as an external dependency in `construction/requirements/submission-checklist.md`. A new internal-use page `docs/fellowship.html` archives the submission alongside the existing project proposals.
+The Amazon-VT full proposal for AKG-E is built, polished, and live on the docs site. Three documents staged for portal upload:
 
-Earlier work (March 17 abstract submissions for PA-AKG v2 and AKG-E v4e) is frozen and untouched.
+1. **Proposal**: `docs/akg-e-full-proposal.pdf` (3-page body + references, 4 pages total). Six-section structure (Problem & Motivation, Proposed Approach, Research Plan [Objectives, Methodology, Evaluation], Timeline + Risks, Team, Intellectual Merit + Amazon Fit). Inline Gantt chart spans full Aug 2026 – Jul 2027 calendar.
+2. **Budget**: `docs/akg-e-full-proposal-budget.pdf` (1 page, DRAFT label). $100K total, gift research (no F&A). Cusati primary GRA at $50K full-time; GRA #2 at ~25% effort at $14K; Afsari summer salary optional at $14K; LLM tokens featured at $8K; AWS at $10K.
+3. **CV**: Afsari's (PI) — provided by PI directly (Brown's Co-PI CV is an open decision).
+
+**Team structure (final)**: Afsari (PI, ARCADE Lab) + Brown (Co-PI, Code World No Blanket lab) + Cusati (Student Researcher).
+
+Earlier work (Mar 17 abstract submissions, Apr 27 fellowship submission) is frozen and untouched.
 
 ## Current Workflow
 
-**~~Polish All 3~~ → ~~Run Reviewer Process~~ → ~~Incorporate Feedback~~ → ~~Finalize Citations~~ → ~~Select AKG-E Variant~~ → ~~Abstracts Submitted (Mar 17)~~ → Build Fellowship Application → Rebuild CV → Coordinate Letters → Submit by Apr 27**
+**~~Polish All 3~~ → ~~Run Reviewer Process~~ → ~~Incorporate Feedback~~ → ~~Finalize Citations~~ → ~~Select AKG-E Variant~~ → ~~Abstracts Submitted (Mar 17)~~ → ~~Fellowship Submitted (Apr 27)~~ → ~~Full Proposal Drafted~~ → ~~PI/Co-PI Sign-off~~ → Portal Upload (May 11 11:59 PM PT)**
+
+### Key project decisions baked into the full proposal
+
+- **Scope**: 2-domain funded build (Construction + Transportation); Energy is a *designed extension* for Months 4–12 (not a promised partnership)
+- **Eval framing**: three-tier metrics with correctness (preserves abstract's >50% target as floor), calibration, and efficiency (headline contribution). Baselines: B0 Claude / B1 Claude+graph-RAG / B2 full AKG-E.
+- **Timeline**: 3-month aggressive build (Aug–Oct 2026) + 9-month dissemination/scaling (Nov 2026 – Jul 2027). Inline Gantt in Table I.
+- **Methodology framing softened**: §II + §3.2 frame the contribution as the closed-loop *coupling interface* (typed inputs, structured signals, propagated UQ) — not a fixed catalog of specific check types. Per PI feedback the previous prescriptive prose read as "made up."
+- **AI tooling**: deliberately *not* mentioned in the proposal narrative (was briefly included as "AI-assisted development force multiplier" but stripped at PI direction — reads as inflated capability claim or academically thin).
+- **Sandia / external partnerships**: deliberately *not* mentioned. Was briefly included as energy-domain partnership but stripped at PI direction — proposals shouldn't promise external partnerships without paper-confirmed letters of support.
+- **Acronyms**: every domain-specific acronym (16+) defined parenthetically at first body-text use.
 
 | Rank | Proposal | CFP Topics | Status |
 |---|---|---|---|
