@@ -19,6 +19,7 @@
 \setlist{nosep, leftmargin=1.2em, topsep=0.15em}
 \usepackage{tikz}
 \usetikzlibrary{positioning, arrows.meta, shapes.geometric, fit, calc}
+\newcommand{\gantt}{\rule[0.5pt]{14pt}{6pt}}
 
 \title{Agentic Knowledge Graphs for AI-Accelerated Engineering \\
        with Simulation-Grounded Validation}
@@ -121,12 +122,36 @@ The evaluation enforces a three-tier metric framework that refines the abstract'
 
 \section{Timeline, Deliverables, and Risks}
 
-The funded year is structured as a 3-month aggressive build followed by 9 months of dissemination, robustness, and scaling.
-\textit{Month~1:} generalize the LVL VVUQ pipeline (construction-ai/construction/design/vvuq-integration-plan.md) into the pluggable AKG-E framework; refactor KG curation and graph-RAG over the construction ontology; implement the propose-VVUQ-feedback agent loop on the construction pilot.
-\textit{Month~2:} stand up the transportation digital twin per the existing VTSI extension proposal; begin cross-domain ablation runs across B0/B1/B2; build out the benchmark harness with per-cell logging and bootstrap analysis.
-\textit{Month~3:} complete the 2-domain $\times$ 3-baseline $\times$ $n\geq5$-seed benchmark suite (construction + transportation); statistical analysis on all three metrics; first paper draft; scope the energy proof-of-concept (KG schema + PDE-solver interface) for Months~4--12 execution.
-\textit{Months~4--12:} robustness experiments (model swaps, prompt perturbations, distribution shift), scaling studies on AWS, additional publications, and open-source release of the AKG-E framework, KG templates, and benchmark.
-\textit{Deliverables:} (1)~the open-source AKG-E framework; (2)~domain-adaptable KG ontology templates and the typed FEA / digital-twin / PDE simulator-tool interface specification; (3)~the three-domain benchmark with ground-truth datasets; (4)~peer-reviewed publications targeting AI for engineering and agentic AI venues.
+The funded year begins \textbf{August 2026} and is structured as a 3-month aggressive build (M1--M3, Aug--Oct 2026) followed by 9 months of dissemination, robustness, scaling, and the energy-domain extension (M4--M12, Nov 2026--Jul 2027). Table~\ref{tab:gantt} maps the workstreams onto the calendar.
+
+\begin{table*}[!ht]
+\centering
+\renewcommand{\arraystretch}{1.15}
+\setlength{\tabcolsep}{4pt}
+\caption{Project timeline. \textbf{M1--M3} is the aggressive build phase; \textbf{M4--M12} delivers dissemination, robustness, scaling, and the energy domain-swap proof-of-concept that demonstrates AKG-E's extensibility claim.}
+\label{tab:gantt}
+\footnotesize
+\begin{tabular}{p{2.7in}|cccccccccccc}
+\toprule
+\textbf{Activity} & \multicolumn{12}{c}{\textbf{Month (Aug 2026 -- Jul 2027)}} \\
+& M1 & M2 & M3 & M4 & M5 & M6 & M7 & M8 & M9 & M10 & M11 & M12 \\
+\midrule
+Framework: agentic propose$\to$VVUQ$\to$feedback loop & \gantt & \gantt & \gantt & & & & & & & & & \\
+Construction pilot: LVL VVUQ generalization (BIM/IFC + FEA) & \gantt & \gantt & \gantt & & & & & & & & & \\
+Transportation pilot: digital-twin microsim integration & & \gantt & \gantt & \gantt & & & & & & & & \\
+Benchmark suite: B0 / B1 / B2 $\times$ 2 domains $\times$ $n{\geq}5$ seeds & & & \gantt & \gantt & \gantt & & & & & & & \\
+Statistical analysis + first paper draft & & & & & \gantt & \gantt & & & & & & \\
+Energy extension: NERC-TPL KG + PDE-solver interface (POC) & & & & & \gantt & \gantt & \gantt & \gantt & & & & \\
+Robustness experiments (model swaps, prompt perturbations) & & & & & & & \gantt & \gantt & \gantt & \gantt & & \\
+Scaling studies on AWS Bedrock & & & & & & & & \gantt & \gantt & \gantt & \gantt & \gantt \\
+Publications + open-source release & & & & & & & & & & \gantt & \gantt & \gantt \\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+\textit{Build phase rationale (M1--M3).} The construction-pilot anchor reuses the existing LVL VVUQ pipeline (BIM/IFC parser, FEniCS tool-call surface, Monte Carlo refinement), so M1 \textit{generalizes} existing code rather than green-fielding the framework; the transportation pilot lands per the existing VTTI digital-twin proposal across M2--M4; the cross-domain benchmark begins on construction and adds transportation as the second pilot stabilizes, with statistical analysis and the first paper draft completing in M5--M6.
+\textit{Extension phase (M4--M12).} The energy domain-swap POC (NERC-TPL KG + PDE-solver interface) empirically validates the framework's extensibility claim across M5--M8 by swapping only the domain KG and simulator without modifying the shared ontology, simulation-integration, or VVUQ-validation layers. Robustness experiments stress-test model swaps and prompt perturbations; AWS Bedrock scaling studies establish the deployment surface; the final quarter delivers publications and the open-source release.
+\textit{Deliverables:} (1)~the open-source AKG-E framework; (2)~domain-adaptable KG ontology templates and the typed FEA / digital-twin / PDE simulator-tool interface specification; (3)~the cross-domain benchmark with ground-truth datasets (construction + transportation funded, energy POC for the extensibility demonstration); (4)~peer-reviewed publications targeting AI-for-engineering and agentic-AI venues.
 
 \textbf{Risks and Mitigation.} \textit{(a)~Agentic VVUQ loop slow to converge.} The propose-validate-refine loop may iterate beyond budget on edge cases. Mitigation: cap iterations at $K=10$ per artifact and accept best-so-far with explicit UQ caveats; this preserves correctness and calibration metrics while exposing efficiency as the variable under study. \textit{(b)~Code-compliance ontology completeness.} The AWC-NDS and HCM2022 corpora are large; if the curated KG ontology misses provisions, the gate may undercount violations. Mitigation: prioritize the highest-frequency provisions in the benchmark suite (header sizing for construction; uninterrupted-flow segments for transportation) and document ontology-coverage scope explicitly so reviewers can interpret reported violation rates against a stated provision boundary; coverage expands in Months~4--6 before publication. \textit{(c)~Benchmark ground-truth coverage thinner than expected.} If curating AWC-NDS reference designs or HCM-validated microsimulation scenarios takes longer than budgeted, mitigation is to ship a minimum-viable benchmark exercising B0/B1/B2 across a reduced task taxonomy in Month~3 and expand the suite in Months~4--6 before publication; the three-tier metrics remain reportable on the MVP, and the energy extension's KG-schema design proceeds in parallel rather than after.
 
