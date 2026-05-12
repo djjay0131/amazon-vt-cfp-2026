@@ -1,0 +1,1142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AWS Agentic AI · ARA Spring 2026</title>
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+    <style>
+        :root {
+            --aws-squid-ink: #232F3E;
+            --aws-teal: #00C7B7;
+            --aws-teal-hover: #14E0D0;
+            --aws-amber: #FFB400;
+            --bg-dark: #0a0e14;
+            --bg-card: #11161d;
+            --bg-card-elev: #161c25;
+            --text-primary: #e8edf2;
+            --text-secondary: #98a4b1;
+            --border: #243040;
+            --border-soft: #1c2632;
+            --danger: #ff5d6c;
+            --success: #00d4a0;
+            --warn: #ffb400;
+            --info: #5fb8ff;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.55;
+        }
+
+        .header {
+            position: relative;
+            background: linear-gradient(135deg, var(--aws-squid-ink) 0%, #1a2330 100%);
+            border-bottom: 3px solid var(--aws-teal);
+            padding: 1.5rem 1rem;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 1.6rem;
+            font-weight: 700;
+            letter-spacing: -0.01em;
+        }
+
+        .header .subtitle {
+            color: var(--aws-teal);
+            font-size: 0.95rem;
+            font-weight: 500;
+            margin-top: 0.4rem;
+        }
+
+        .header .program {
+            margin-top: 0.5rem;
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.65);
+        }
+
+        .deadline-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            margin-top: 0.75rem;
+            padding: 0.35rem 0.75rem;
+            background: rgba(255,93,108,0.12);
+            border: 1px solid rgba(255,93,108,0.4);
+            border-radius: 4px;
+            font-size: 0.78rem;
+            color: var(--danger);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+
+        /* Hamburger */
+        .hamburger {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            width: 38px;
+            height: 38px;
+            background: rgba(0,199,183,0.08);
+            border: 1px solid rgba(0,199,183,0.35);
+            border-radius: 6px;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 4px;
+            transition: all 0.15s;
+        }
+
+        .hamburger:hover {
+            background: rgba(0,199,183,0.15);
+            border-color: var(--aws-teal);
+        }
+
+        .hamburger span {
+            display: block;
+            width: 18px;
+            height: 2px;
+            background: var(--aws-teal);
+            border-radius: 1px;
+            transition: all 0.2s;
+        }
+
+        .hamburger.open span:nth-child(1) {
+            transform: translateY(6px) rotate(45deg);
+        }
+        .hamburger.open span:nth-child(2) {
+            opacity: 0;
+        }
+        .hamburger.open span:nth-child(3) {
+            transform: translateY(-6px) rotate(-45deg);
+        }
+
+        .menu-panel {
+            position: absolute;
+            top: calc(100% + 4px);
+            right: 1rem;
+            min-width: 280px;
+            background: var(--bg-card-elev);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 0.5rem;
+            display: none;
+            z-index: 100;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+        }
+
+        .menu-panel.open {
+            display: block;
+        }
+
+        .menu-panel .menu-label {
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--text-secondary);
+            padding: 0.5rem 0.75rem 0.25rem;
+        }
+
+        .menu-panel a {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.55rem 0.75rem;
+            color: var(--text-primary);
+            text-decoration: none;
+            font-size: 0.88rem;
+            border-radius: 5px;
+            transition: background 0.15s;
+        }
+
+        .menu-panel a:hover {
+            background: rgba(0,199,183,0.08);
+            color: var(--aws-teal);
+        }
+
+        .menu-panel .menu-arrow {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+
+        .status-banner {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-left: 4px solid var(--aws-teal);
+            border-radius: 6px;
+            padding: 1rem 1.25rem;
+            margin-bottom: 2rem;
+        }
+
+        .status-banner .phase {
+            color: var(--aws-teal);
+            font-weight: 600;
+            font-size: 0.82rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .status-banner .detail {
+            color: var(--text-secondary);
+            font-size: 0.88rem;
+            margin-top: 0.3rem;
+        }
+
+        .section {
+            margin-bottom: 2.5rem;
+        }
+
+        .section h2 {
+            font-size: 1.15rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid var(--border);
+            color: var(--text-primary);
+        }
+
+        .section h2 .anchor {
+            font-size: 0.7rem;
+            color: var(--text-secondary);
+            font-weight: 400;
+            margin-left: 0.5rem;
+        }
+
+        .section h3 {
+            font-size: 0.98rem;
+            font-weight: 600;
+            margin: 1.2rem 0 0.5rem;
+            color: var(--aws-teal);
+        }
+
+        .section p {
+            font-size: 0.92rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.65rem;
+        }
+
+        .section ul, .section ol {
+            margin: 0.5rem 0 0.5rem 1.5rem;
+            color: var(--text-secondary);
+            font-size: 0.92rem;
+        }
+
+        .section li {
+            margin-bottom: 0.35rem;
+        }
+
+        .section li strong {
+            color: var(--text-primary);
+        }
+
+        /* Summary grid */
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+        }
+
+        .summary-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 0.85rem 1rem;
+        }
+
+        .summary-card .summary-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: var(--text-secondary);
+            margin-bottom: 0.3rem;
+        }
+
+        .summary-card .summary-value {
+            font-size: 0.95rem;
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+
+        .summary-card .summary-sub {
+            font-size: 0.78rem;
+            color: var(--text-secondary);
+            margin-top: 0.2rem;
+        }
+
+        /* Topic fit cards */
+        .topic-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 0.75rem;
+        }
+
+        .topic-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 7px;
+            padding: 1rem 1.15rem;
+            border-left: 4px solid var(--border);
+        }
+
+        .topic-card.fit-strong { border-left-color: var(--success); }
+        .topic-card.fit-medium { border-left-color: var(--warn); }
+        .topic-card.fit-weak { border-left-color: var(--danger); opacity: 0.85; }
+
+        .topic-card .topic-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 0.75rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .topic-card .topic-title {
+            font-size: 0.98rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .topic-card .topic-meta {
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+            margin-top: 0.15rem;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+
+        .fit-badge {
+            font-size: 0.66rem;
+            padding: 0.18rem 0.55rem;
+            border-radius: 3px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+
+        .fit-badge.strong {
+            background: rgba(0,212,160,0.15);
+            color: var(--success);
+            border: 1px solid rgba(0,212,160,0.3);
+        }
+
+        .fit-badge.medium {
+            background: rgba(255,180,0,0.15);
+            color: var(--warn);
+            border: 1px solid rgba(255,180,0,0.3);
+        }
+
+        .fit-badge.weak {
+            background: rgba(255,93,108,0.12);
+            color: var(--danger);
+            border: 1px solid rgba(255,93,108,0.3);
+        }
+
+        .topic-card .topic-body {
+            font-size: 0.88rem;
+            color: var(--text-secondary);
+            line-height: 1.55;
+        }
+
+        .topic-card .topic-body strong {
+            color: var(--text-primary);
+        }
+
+        /* Recommendation callout */
+        .callout {
+            background: linear-gradient(135deg, rgba(0,199,183,0.08), rgba(0,199,183,0.02));
+            border: 1px solid rgba(0,199,183,0.35);
+            border-radius: 8px;
+            padding: 1.25rem 1.5rem;
+            margin: 1rem 0;
+        }
+
+        .callout .callout-label {
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--aws-teal);
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .callout .callout-title {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .callout .callout-body {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .callout .callout-body strong {
+            color: var(--text-primary);
+        }
+
+        /* Related-work table */
+        .work-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.85rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        .work-table th {
+            text-align: left;
+            padding: 0.6rem 0.75rem;
+            background: var(--bg-card-elev);
+            color: var(--text-secondary);
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-weight: 600;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .work-table td {
+            padding: 0.6rem 0.75rem;
+            border-bottom: 1px solid var(--border-soft);
+            vertical-align: top;
+        }
+
+        .work-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .work-table tr:hover td {
+            background: rgba(0,199,183,0.04);
+        }
+
+        .work-table .paper-title {
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+
+        .work-table .paper-venue {
+            color: var(--text-secondary);
+            font-size: 0.78rem;
+        }
+
+        .work-table .gap-note {
+            color: var(--aws-teal);
+            font-size: 0.82rem;
+        }
+
+        /* AWS hooks list */
+        .aws-hooks {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 7px;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        .aws-hook {
+            padding: 0.85rem 1.15rem;
+            border-bottom: 1px solid var(--border-soft);
+        }
+
+        .aws-hook:last-child {
+            border-bottom: none;
+        }
+
+        .aws-hook .hook-name {
+            font-size: 0.92rem;
+            font-weight: 600;
+            color: var(--aws-teal);
+            margin-bottom: 0.2rem;
+        }
+
+        .aws-hook .hook-purpose {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        /* Timeline tracker */
+        .tracker {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 0.5rem;
+        }
+
+        .tracker-row {
+            display: grid;
+            grid-template-columns: 100px 1fr 90px;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.65rem 0.85rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            font-size: 0.88rem;
+        }
+
+        .tracker-row .tracker-date {
+            color: var(--text-secondary);
+            font-size: 0.78rem;
+            font-weight: 600;
+        }
+
+        .tracker-row .tracker-label {
+            color: var(--text-primary);
+        }
+
+        .status-pill {
+            font-size: 0.66rem;
+            padding: 0.2rem 0.55rem;
+            border-radius: 3px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            text-align: center;
+            white-space: nowrap;
+        }
+
+        .status-pill.done {
+            background: rgba(0,212,160,0.12);
+            color: var(--success);
+            border: 1px solid rgba(0,212,160,0.3);
+        }
+
+        .status-pill.active {
+            background: rgba(95,184,255,0.12);
+            color: var(--info);
+            border: 1px solid rgba(95,184,255,0.3);
+        }
+
+        .status-pill.todo {
+            background: rgba(152,164,177,0.1);
+            color: var(--text-secondary);
+            border: 1px solid var(--border);
+        }
+
+        .status-pill.deadline {
+            background: rgba(255,93,108,0.12);
+            color: var(--danger);
+            border: 1px solid rgba(255,93,108,0.3);
+        }
+
+        /* Two-column splits */
+        .two-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        @media (max-width: 720px) {
+            .two-col { grid-template-columns: 1fr; }
+            .tracker-row { grid-template-columns: 1fr; gap: 0.35rem; }
+        }
+
+        .footer {
+            text-align: center;
+            padding: 2rem 1rem;
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            border-top: 1px solid var(--border);
+        }
+
+        .footer a {
+            color: var(--aws-teal);
+            text-decoration: none;
+        }
+
+        code {
+            font-family: 'SF Mono', Monaco, 'Cascadia Code', monospace;
+            font-size: 0.82em;
+            background: rgba(0,199,183,0.08);
+            color: var(--aws-teal);
+            padding: 0.1rem 0.35rem;
+            border-radius: 3px;
+        }
+
+        a.ref-link {
+            color: var(--aws-teal);
+            text-decoration: none;
+        }
+        a.ref-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <button class="hamburger" id="hamburgerBtn" aria-label="Menu" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+        <div class="menu-panel" id="menuPanel">
+            <div class="menu-label">This site</div>
+            <a href="#cfp-fit">CFP fit analysis<span class="menu-arrow">↓</span></a>
+            <a href="#related-work">Related work<span class="menu-arrow">↓</span></a>
+            <a href="#aws-hooks">AWS hooks<span class="menu-arrow">↓</span></a>
+            <a href="#timeline">Timeline<span class="menu-arrow">↓</span></a>
+            <div class="menu-label">Other site</div>
+            <a href="../index.html">Amazon-VT CFP 2026-2027<span class="menu-arrow">→</span></a>
+            <a href="../akg-e-full-proposal.html">AKG-E full proposal<span class="menu-arrow">→</span></a>
+        </div>
+
+        <h1>AWS Agentic AI · ARA Spring 2026</h1>
+        <div class="subtitle">Provenance-Aware Multi-Agent Retrieval</div>
+        <div class="program">Amazon Research Awards · AWS AI: Agentic AI call for proposals</div>
+        <div class="deadline-badge">⏱ Submit by May 13, 2026 · 11:59 PM PT</div>
+    </div>
+
+    <div class="container">
+        <div class="status-banner">
+            <div class="phase">Current Phase: Topic Analysis → Spec → Draft → Submit</div>
+            <div class="detail">CFP fit analysis complete. PA-AKG (provenance-aware agentic KG) reframed for Topic 3 (multi-agent) + hybrid-retrieval welcome topic. Software engineering as the application domain. Brown PI + Cusati student researcher.</div>
+        </div>
+
+        <!-- Submission summary -->
+        <div class="section">
+            <h2>Submission summary</h2>
+            <div class="summary-grid">
+                <div class="summary-card">
+                    <div class="summary-label">Program</div>
+                    <div class="summary-value">AWS Agentic AI — Spring 2026</div>
+                    <div class="summary-sub">Under Amazon Research Awards (ARA)</div>
+                </div>
+                <div class="summary-card">
+                    <div class="summary-label">Deadline</div>
+                    <div class="summary-value">May 13, 2026 · 11:59 PM PT</div>
+                    <div class="summary-sub">Window opened March 25, 2026</div>
+                </div>
+                <div class="summary-card">
+                    <div class="summary-label">Page limit</div>
+                    <div class="summary-value">4 pages + appendices</div>
+                    <div class="summary-sub">ARA proposal template (agentic-ai-spring-2026)</div>
+                </div>
+                <div class="summary-card">
+                    <div class="summary-label">Award size</div>
+                    <div class="summary-value">~$70K cash + ~$50K AWS credits</div>
+                    <div class="summary-sub">Unrestricted gift; no F&amp;A</div>
+                </div>
+                <div class="summary-card">
+                    <div class="summary-label">Team</div>
+                    <div class="summary-value">Brown (PI) · Cusati (student researcher)</div>
+                    <div class="summary-sub">Code World No Blanket Lab · CS · VT</div>
+                </div>
+                <div class="summary-card">
+                    <div class="summary-label">Primary topic</div>
+                    <div class="summary-value">Multi-agent systems &amp; collaborations</div>
+                    <div class="summary-sub">Secondary: data integration / hybrid retrieval</div>
+                </div>
+                <div class="summary-card">
+                    <div class="summary-label">Decision date</div>
+                    <div class="summary-value">August 2026</div>
+                    <div class="summary-sub">Period of performance: ~1 year</div>
+                </div>
+                <div class="summary-card">
+                    <div class="summary-label">Required content</div>
+                    <div class="summary-value">3 mandated sections</div>
+                    <div class="summary-sub">Differentiation from prior · OSS list · AWS ML tools</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Topic fit analysis -->
+        <div class="section" id="cfp-fit">
+            <h2>CFP fit analysis — each topic evaluated <span class="anchor">#cfp-fit</span></h2>
+            <p>The CFP names four primary topics and ~5 welcome topics. Each is rated against this repo's existing research threads: <strong>PA-AKG</strong> (provenance-aware agentic KG, hybrid retrieval), <strong>AKG-E</strong> (engineering KGs with VVUQ — just submitted to Amazon-VT), <strong>SVF</strong> (structured validation framework), and the <strong>Brown lab SE thread</strong> (GenAI tool evaluation for software engineering: AutoPyDep, AutoPrint, SE belief auditing).</p>
+
+            <div class="topic-grid">
+
+                <div class="topic-card fit-weak">
+                    <div class="topic-header">
+                        <div>
+                            <div class="topic-title">Topic 1 — No-code / low-code agentic AI solutions</div>
+                            <div class="topic-meta">Primary · CFP headline</div>
+                        </div>
+                        <span class="fit-badge weak">Weak</span>
+                    </div>
+                    <div class="topic-body">
+                        <strong>What it asks for:</strong> Platforms letting non-developers deploy and manage AI agents at scale.<br>
+                        <strong>Fit:</strong> Nothing in the portfolio is no-code / low-code. PA-AKG, AKG-E, SVF are research-grade developer-facing systems. Force-fitting AKG-E's typed-interface framing as a "low-code spec for domain experts" is visible as topic mismatch.
+                        <br><strong>Verdict:</strong> Skip — not primary, not secondary.
+                    </div>
+                </div>
+
+                <div class="topic-card fit-medium">
+                    <div class="topic-header">
+                        <div>
+                            <div class="topic-title">Topic 2 — AI-enhanced productivity applications</div>
+                            <div class="topic-meta">Primary · CFP headline</div>
+                        </div>
+                        <span class="fit-badge medium">Moderate</span>
+                    </div>
+                    <div class="topic-body">
+                        <strong>What it asks for:</strong> Human-AI collaboration for productivity / automation.<br>
+                        <strong>Fit:</strong> Moderate via the Brown lab SE thread — AutoPyDep (Python dependency mgmt, FSE '25), AutoPrint (debugging, VL/HCC '25), SQL-LLM eval (VL/HCC '24). But the work <em>evaluates</em> productivity tools rather than building new ones. Productivity as primary would require a fresh build commitment.
+                        <br><strong>Verdict:</strong> Viable secondary only.
+                    </div>
+                </div>
+
+                <div class="topic-card fit-strong">
+                    <div class="topic-header">
+                        <div>
+                            <div class="topic-title">Topic 3 — Multi-agent systems and collaborations</div>
+                            <div class="topic-meta">Primary · CFP headline · <strong>Recommended primary</strong></div>
+                        </div>
+                        <span class="fit-badge strong">Strong</span>
+                    </div>
+                    <div class="topic-body">
+                        <strong>What it asks for:</strong> Agents working together securely and effectively — orchestration, coordination, governance.<br>
+                        <strong>Fit:</strong> Three direct matches.
+                        <ul>
+                            <li><strong>PA-AKG</strong> is multi-agent by construction — retrieval, KG-curation, validation agents, with provenance routed between them.</li>
+                            <li><strong>AKG-E</strong> orchestrates domain-ontology + simulation + VVUQ-validation agents.</li>
+                            <li><strong>SVF</strong> evaluates multi-agent systems with structured validation criteria (meta-fit but defensible).</li>
+                        </ul>
+                        Novelty wedge: <em>provenance-aware</em> coordination — every inter-agent message carries verifiable evidence chains, addressing Topic 3's "securely and effectively" qualifier directly.
+                        <br><strong>Verdict:</strong> Strongest primary candidate.
+                    </div>
+                </div>
+
+                <div class="topic-card fit-medium">
+                    <div class="topic-header">
+                        <div>
+                            <div class="topic-title">Topic 4 — Agentic AI for scientific discovery</div>
+                            <div class="topic-meta">Primary · CFP headline</div>
+                        </div>
+                        <span class="fit-badge medium">Moderate</span>
+                    </div>
+                    <div class="topic-body">
+                        <strong>What it asks for:</strong> Health, life sciences, chemistry, materials science, physics.<br>
+                        <strong>Fit:</strong> Strong only via AKG-E — cites Merchant2023GNoME (materials), Abramson2024AlphaFold3 (biology), Karniadakis2021PINN (physics). PA-AKG fits weakly unless pointed at scientific literature retrieval. Brown SE thread doesn't fit.
+                        <br><strong>Concern:</strong> AKG-E was submitted to Amazon-VT yesterday targeting "AI Accelerated Science &amp; Engineering Innovation," structurally the same as Topic 4. Submitting the same engineering-AKG material to ARA risks reviewer overlap optics.
+                        <br><strong>Verdict:</strong> Viable in isolation but risky as a second Amazon submission of the same material.
+                    </div>
+                </div>
+
+                <div class="topic-card fit-strong">
+                    <div class="topic-header">
+                        <div>
+                            <div class="topic-title">Data integration / retrieval access methods (hybrid: vector, lexical, graph, relational)</div>
+                            <div class="topic-meta">Welcome topic · <strong>Recommended secondary</strong></div>
+                        </div>
+                        <span class="fit-badge strong">Strong</span>
+                    </div>
+                    <div class="topic-body">
+                        <strong>Fit:</strong> Literally PA-AKG's bread and butter — hybrid retrieval over sparse + dense + graph + relational with provenance tracking. Cites <code>AWSBedrockHybridSearch2024</code>, <code>Lewis2020RAG</code>, <code>Edge2024GraphRAG</code>, <code>Yan2024CRAG</code>, <code>Asai2024SelfRAG</code>. Maps cleanly to Bedrock KB hybrid search + Neptune Analytics graphs + Kendra GenAI index.
+                        <br><strong>Verdict:</strong> Strongest secondary. Pairs naturally with Topic 3 primary.
+                    </div>
+                </div>
+
+                <div class="topic-card fit-medium">
+                    <div class="topic-header">
+                        <div>
+                            <div class="topic-title">Safety and responsible AI for agentic behavior</div>
+                            <div class="topic-meta">Welcome topic</div>
+                        </div>
+                        <span class="fit-badge medium">Moderate-Strong</span>
+                    </div>
+                    <div class="topic-body">
+                        <strong>Fit:</strong> PA-AKG's evidence chains are <em>the</em> mechanism for verifiable agent behavior — every claim traces to a source. SVF directly addresses agentic evaluation as a responsibility framework.
+                        <br><strong>Verdict:</strong> Tertiary mention in the contribution narrative.
+                    </div>
+                </div>
+
+                <div class="topic-card fit-medium">
+                    <div class="topic-header">
+                        <div>
+                            <div class="topic-title">Agent customization (post-training, prompt optimization, tool specs)</div>
+                            <div class="topic-meta">Welcome topic</div>
+                        </div>
+                        <span class="fit-badge medium">Moderate</span>
+                    </div>
+                    <div class="topic-body">
+                        <strong>Fit:</strong> PA-AKG and AKG-E have agent customization via tool specs and prompt scaffolding, but it's plumbing — not the headline.
+                        <br><strong>Verdict:</strong> Tertiary mention, not a topic anchor.
+                    </div>
+                </div>
+
+                <div class="topic-card fit-medium">
+                    <div class="topic-header">
+                        <div>
+                            <div class="topic-title">Enterprise-scale agent operations and governance</div>
+                            <div class="topic-meta">Welcome topic</div>
+                        </div>
+                        <span class="fit-badge medium">Moderate</span>
+                    </div>
+                    <div class="topic-body">
+                        <strong>Fit:</strong> PA-AKG's provenance + KG governance is enterprise-relevant — auditable evidence chains are an enterprise compliance feature. Useful for intellectual merit framing.
+                        <br><strong>Verdict:</strong> Tertiary mention.
+                    </div>
+                </div>
+
+                <div class="topic-card fit-strong">
+                    <div class="topic-header">
+                        <div>
+                            <div class="topic-title">Application domain: software engineering</div>
+                            <div class="topic-meta">Welcome topic · <strong>Recommended application domain</strong></div>
+                        </div>
+                        <span class="fit-badge strong">Strong</span>
+                    </div>
+                    <div class="topic-body">
+                        <strong>Fit:</strong> AutoPyDep, AutoPrint, SQL-LLM eval, <code>brown2025exploring</code> (ESEM '25), <code>cusati2026fose</code> (ICSE-FoSE '26 forthcoming) — entire Brown-lab publication thread sits here. Cusati's fellowship narrative is in this space too.
+                        <br><strong>Verdict:</strong> Natural application-domain framing. Brown-lab's existing tools become case studies / evaluation targets for the multi-agent provenance-aware retrieval system.
+                    </div>
+                </div>
+
+                <div class="topic-card fit-weak">
+                    <div class="topic-header">
+                        <div>
+                            <div class="topic-title">Application domains: healthcare, finance, media, consumer assistants</div>
+                            <div class="topic-meta">Welcome topic</div>
+                        </div>
+                        <span class="fit-badge weak">Weak</span>
+                    </div>
+                    <div class="topic-body">
+                        No prior work in these domains. Skip.
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Recommended shape -->
+        <div class="section">
+            <h2>Recommended shape</h2>
+            <div class="callout">
+                <div class="callout-label">Shape A — Recommended</div>
+                <div class="callout-title">PA-AKG → Multi-agent provenance-aware retrieval, applied to software engineering</div>
+                <div class="callout-body">
+                    <strong>Primary topic:</strong> Topic 3 — Multi-agent systems and collaborations<br>
+                    <strong>Secondary topic:</strong> Welcome — Data integration / hybrid retrieval (vector + lexical + graph + relational)<br>
+                    <strong>Application domain:</strong> Software engineering (Brown-lab tools as case studies)<br>
+                    <strong>Headline:</strong> "Multi-agent provenance-aware retrieval for trustworthy software engineering AI"<br><br>
+                    <strong>Why this shape wins:</strong>
+                    <ol>
+                        <li>Reuses PA-AKG content directly — <code>abstract_v2.pdf</code> was already designed for Knowledge Grounding + Agentic AI; multi-agent reframing is small surgery, not a rewrite.</li>
+                        <li>Avoids overlap with the just-submitted Amazon-VT AKG-E proposal (different thread, different team, different topic family — no overlap concern).</li>
+                        <li>Cleanly satisfies the CFP's "list AWS ML tools" requirement — Bedrock KB hybrid search, Bedrock Agents multi-agent collaboration, Neptune Analytics graphs, Bedrock reranking are all directly applicable.</li>
+                        <li>Gives the Brown-lab SE thread a concrete evaluation surface — case-studies on AutoPyDep / AutoPrint / SE-belief auditing.</li>
+                    </ol>
+                    <strong>Two alternatives considered and declined:</strong> Shape B (AKG-E reframed for Topic 4) creates reviewer overlap with the Amazon-VT submission. Shape C (fresh SE-agents proposal) means no PA-AKG carry-over and full fresh writing under a 24-hour deadline.
+                </div>
+            </div>
+        </div>
+
+        <!-- Related work landscape -->
+        <div class="section" id="related-work">
+            <h2>Related work landscape (2024–2026) <span class="anchor">#related-work</span></h2>
+            <p>Active field. Multi-agent + GraphRAG + agentic-RAG has been the dominant 2025 research thread. The novelty wedge for PA-AKG is that <strong>no existing system treats per-claim provenance as a typed, propagated, verifiable artifact across multi-agent message passing</strong> — the closest comparator is GraphTracer (failure attribution, after-the-fact), and the SoK March 2026 survey explicitly lists "oversight mechanisms for autonomous loops" as an open gap.</p>
+
+            <table class="work-table">
+                <thead>
+                    <tr>
+                        <th>Paper</th>
+                        <th>Year</th>
+                        <th>What it does</th>
+                        <th>How PA-AKG differs</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><a class="ref-link" href="https://arxiv.org/abs/2603.07379" target="_blank">SoK: Agentic RAG — Taxonomy &amp; Research Directions</a><br><span class="paper-venue">arXiv 2603.07379</span></td>
+                        <td>Mar 2026</td>
+                        <td>Names 4 open gaps: adaptive retrieval, cost-aware orchestration, formal trajectory eval, <strong>oversight for autonomous loops</strong>.</td>
+                        <td class="gap-note">PA-AKG addresses the oversight gap by making provenance first-class.</td>
+                    </tr>
+                    <tr>
+                        <td><a class="ref-link" href="https://hf.co/papers/2509.21710" target="_blank">Think-on-Graph 3.0 (ToG-3)</a><br><span class="paper-venue">arXiv, Sept 2025</span></td>
+                        <td>Sep 2025</td>
+                        <td>Multi-agent dual-evolving context retrieval over heterogeneous graphs. Constructor / Retriever / Reflector / Responser agents.</td>
+                        <td class="gap-note">Focuses on retrieval quality, not provenance propagation. No verifiable evidence chains across agents.</td>
+                    </tr>
+                    <tr>
+                        <td><a class="ref-link" href="https://hf.co/papers/2508.19855" target="_blank">Youtu-GraphRAG</a><br><span class="paper-venue">arXiv, Aug 2025</span></td>
+                        <td>Aug 2025</td>
+                        <td>Vertically unified agents for graph RAG; seed schema, dual community detection, hierarchical knowledge tree.</td>
+                        <td class="gap-note">Schema-driven retrieval. No claim-level audit trail.</td>
+                    </tr>
+                    <tr>
+                        <td><a class="ref-link" href="https://hf.co/papers/2510.10581" target="_blank">GraphTracer</a><br><span class="paper-venue">arXiv, Oct 2025</span></td>
+                        <td>Oct 2025</td>
+                        <td>Information Dependency Graphs for <em>failure attribution</em> in multi-agent deep search.</td>
+                        <td class="gap-note">Closest comparator. But diagnostic (after-the-fact) — not runtime-enforcing. PA-AKG enforces provenance during retrieval/generation.</td>
+                    </tr>
+                    <tr>
+                        <td><a class="ref-link" href="https://hf.co/papers/2511.05385" target="_blank">TeaRAG</a><br><span class="paper-venue">arXiv, Nov 2025</span></td>
+                        <td>Nov 2025</td>
+                        <td>Token-efficient agentic RAG with knowledge association graph + iterative DPO.</td>
+                        <td class="gap-note">Efficiency-focused. No provenance propagation contract between agents.</td>
+                    </tr>
+                    <tr>
+                        <td><a class="ref-link" href="https://hf.co/papers/2506.03939" target="_blank">Graph Counselor</a><br><span class="paper-venue">arXiv, Jun 2025</span></td>
+                        <td>Jun 2025</td>
+                        <td>Multi-agent adaptive graph exploration; Planning / Thought / Execution agents with self-reflection.</td>
+                        <td class="gap-note">Reasoning-quality focus. Source attribution is best-effort, not typed.</td>
+                    </tr>
+                    <tr>
+                        <td><a class="ref-link" href="https://hf.co/papers/2507.15245" target="_blank">SPAR (scholar paper retrieval)</a><br><span class="paper-venue">arXiv, Jul 2025</span></td>
+                        <td>Jul 2025</td>
+                        <td>Multi-agent academic search with RefChain-based query decomposition.</td>
+                        <td class="gap-note">Domain-specific (academic search). PA-AKG is domain-agnostic with SE as case study.</td>
+                    </tr>
+                    <tr>
+                        <td><a class="ref-link" href="https://hf.co/papers/2508.04118" target="_blank">AgREE (agentic KG completion)</a><br><span class="paper-venue">arXiv, Aug 2025</span></td>
+                        <td>Aug 2025</td>
+                        <td>Agentic framework for KG triplet construction on emerging entities; iterative retrieval + multi-step reasoning.</td>
+                        <td class="gap-note">Single-agent loop. No verifiable chain for downstream consumers.</td>
+                    </tr>
+                    <tr>
+                        <td><a class="ref-link" href="https://hf.co/papers/2602.02934" target="_blank">AgenticSZZ</a><br><span class="paper-venue">arXiv, Feb 2026</span></td>
+                        <td>Feb 2026</td>
+                        <td>Temporal Knowledge Graphs + LLM agents for bug-inducing commit identification (SE domain).</td>
+                        <td class="gap-note">Direct SE-application precedent. PA-AKG generalizes the pattern with provenance as protocol primitive.</td>
+                    </tr>
+                    <tr>
+                        <td><a class="ref-link" href="https://hf.co/papers/2406.01422" target="_blank">RepoUnderstander</a><br><span class="paper-venue">arXiv, Jun 2024</span></td>
+                        <td>Jun 2024</td>
+                        <td>Repository knowledge graph + MCTS for whole-repo navigation by SE agents.</td>
+                        <td class="gap-note">Single-agent. PA-AKG is multi-agent with typed message provenance.</td>
+                    </tr>
+                    <tr>
+                        <td><a class="ref-link" href="https://arxiv.org/abs/2501.09136" target="_blank">Agentic RAG — Survey</a><br><span class="paper-venue">arXiv, Jan 2025</span></td>
+                        <td>Jan 2025</td>
+                        <td>Field survey of agentic RAG design patterns.</td>
+                        <td class="gap-note">Reference. PA-AKG positions provenance as a missing first-class primitive in the survey's taxonomy.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- AWS Bedrock hook story -->
+        <div class="section" id="aws-hooks">
+            <h2>AWS hooks for the proposal <span class="anchor">#aws-hooks</span></h2>
+            <p>The CFP requires "a list of AWS ML tools to be used." Bedrock's current stack maps almost 1:1 to PA-AKG's architecture, which makes the AWS-fit story unusually clean. Verified against Bedrock docs (May 2026):</p>
+
+            <div class="aws-hooks">
+                <div class="aws-hook">
+                    <div class="hook-name">Amazon Bedrock Agents — Multi-Agent Collaboration</div>
+                    <div class="hook-purpose">Supervisor agent breaks down requests into sub-agent tasks. Directly maps to PA-AKG's orchestrator coordinating retrieval / curation / validation specialists.</div>
+                </div>
+                <div class="aws-hook">
+                    <div class="hook-name">Amazon Bedrock Knowledge Bases — Hybrid Search</div>
+                    <div class="hook-purpose">Built-in vector + lexical hybrid retrieval over unstructured sources; built-in citation/source attribution. The retrieval layer of PA-AKG runs here directly.</div>
+                </div>
+                <div class="aws-hook">
+                    <div class="hook-name">Bedrock KB — Neptune Analytics graphs</div>
+                    <div class="hook-purpose">Managed graph backend for the knowledge graph layer. PA-AKG's KG-curation agent reads / writes here. No custom graph infra to stand up.</div>
+                </div>
+                <div class="aws-hook">
+                    <div class="hook-name">Bedrock KB — structured data (NL → SQL)</div>
+                    <div class="hook-purpose">Relational store integration with NL-to-SQL conversion. Supports the "relational" leg of the CFP's hybrid retrieval welcome topic.</div>
+                </div>
+                <div class="aws-hook">
+                    <div class="hook-name">Bedrock — Reranking models</div>
+                    <div class="hook-purpose">Provenance-weighted reranking. Provenance scores feed into rerank as a typed signal — novel use of an existing primitive.</div>
+                </div>
+                <div class="aws-hook">
+                    <div class="hook-name">Bedrock — Action Groups</div>
+                    <div class="hook-purpose">Tool-invocation surface for validation agents (e.g., call a static-analysis tool, call a test runner). Each invocation tagged with provenance.</div>
+                </div>
+                <div class="aws-hook">
+                    <div class="hook-name">Amazon SageMaker (training)</div>
+                    <div class="hook-purpose">Optional: fine-tune a small provenance-routing model on validation traces. Spec calls this out as a Year-1 stretch goal, not a critical path item.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Open-source contribution -->
+        <div class="section">
+            <h2>Open-source contribution (mandatory CFP element)</h2>
+            <p>The CFP requires "list of open-source tools to be contributed." Three candidates evaluated; final decision pending PI sign-off:</p>
+            <ul>
+                <li><strong>PA-AKG reference implementation</strong> — full agent stack (retrieval / KG-curation / validation) on Bedrock. Highest-value deliverable; biggest engineering scope.</li>
+                <li><strong>Provenance evaluation harness</strong> — benchmark + eval suite specifically for provenance-aware agentic retrieval. Smaller scope, defensible.</li>
+                <li><strong>Extend a Brown-lab tool</strong> (AutoPyDep / AutoPrint) with provenance-aware retrieval. Narrowest scope, leverages prior infra.</li>
+            </ul>
+            <p>Recommendation pending: <strong>PA-AKG reference impl + lightweight eval harness</strong>, with case-study integration into an existing Brown-lab tool as the empirical anchor.</p>
+        </div>
+
+        <!-- ARA rules summary -->
+        <div class="section">
+            <h2>ARA program rules — what we verified</h2>
+            <div class="two-col">
+                <div class="summary-card">
+                    <div class="summary-label">Eligibility</div>
+                    <div class="summary-value">Full-time faculty, accredited institution</div>
+                    <div class="summary-sub">Brown qualifies. Geo restrictions: void in Cuba, Iran, Syria, NK, Crimea/Luhansk/Donetsk.</div>
+                </div>
+                <div class="summary-card">
+                    <div class="summary-label">One per PI per call</div>
+                    <div class="summary-value">PI may submit only one proposal per CFP cycle</div>
+                    <div class="summary-sub">Brown wasn't PI on Amazon-VT AKG-E — no conflict.</div>
+                </div>
+                <div class="summary-card">
+                    <div class="summary-label">ARA ↔ Amazon-VT overlap</div>
+                    <div class="summary-value">Not explicitly restricted</div>
+                    <div class="summary-sub">Rules page does not address cross-program submissions; reviewer-optics is the real concern, mitigated by using different research thread + different team.</div>
+                </div>
+                <div class="summary-card">
+                    <div class="summary-label">Funding structure</div>
+                    <div class="summary-value">One-time unrestricted gift to institution</div>
+                    <div class="summary-sub">Cannot be used for indirect expenses (F&amp;A). Same gift-research treatment as Amazon-VT.</div>
+                </div>
+                <div class="summary-card">
+                    <div class="summary-label">IP terms</div>
+                    <div class="summary-value">Amazon reserves right to implement similar work</div>
+                    <div class="summary-sub">Standard ARA boilerplate. No exclusivity.</div>
+                </div>
+                <div class="summary-card">
+                    <div class="summary-label">Budget guidance</div>
+                    <div class="summary-value">1–2 grad students + travel + equipment for 1 year</div>
+                    <div class="summary-sub">Matches the Amazon-VT AKG-E budget structure we already used.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Timeline tracker -->
+        <div class="section" id="timeline">
+            <h2>Timeline — updated with memory-bank <span class="anchor">#timeline</span></h2>
+            <p>This tracker is updated by hand each time <code>memory-bank/progress.md</code> is updated. Status pills: <span class="status-pill done" style="display:inline-block">Done</span> · <span class="status-pill active" style="display:inline-block">In progress</span> · <span class="status-pill todo" style="display:inline-block">To do</span> · <span class="status-pill deadline" style="display:inline-block">Deadline</span></p>
+
+            <div class="tracker">
+                <div class="tracker-row">
+                    <div class="tracker-date">May 12 AM</div>
+                    <div class="tracker-label">Amazon-VT AKG-E full proposal submitted (Phase 5 closed)</div>
+                    <span class="status-pill done">Done</span>
+                </div>
+                <div class="tracker-row">
+                    <div class="tracker-date">May 12 PM</div>
+                    <div class="tracker-label">AWS Agentic AI CFP kickoff · topic-by-topic fit analysis</div>
+                    <span class="status-pill done">Done</span>
+                </div>
+                <div class="tracker-row">
+                    <div class="tracker-date">May 12 PM</div>
+                    <div class="tracker-label">Deep research: ARA rules, Bedrock stack, related-work landscape</div>
+                    <span class="status-pill done">Done</span>
+                </div>
+                <div class="tracker-row">
+                    <div class="tracker-date">May 12 PM</div>
+                    <div class="tracker-label">New landing page published with CFP analysis + recommended shape</div>
+                    <span class="status-pill done">Done</span>
+                </div>
+                <div class="tracker-row">
+                    <div class="tracker-date">May 12 PM</div>
+                    <div class="tracker-label">Decision: open-source contribution commitment (PA-AKG impl, eval harness, or Brown-lab tool extension)</div>
+                    <span class="status-pill active">In progress</span>
+                </div>
+                <div class="tracker-row">
+                    <div class="tracker-date">May 12 evening</div>
+                    <div class="tracker-label">Spec document for the proposal at <code>construction/design/aws-agentic-ai-proposal.md</code></div>
+                    <span class="status-pill todo">To do</span>
+                </div>
+                <div class="tracker-row">
+                    <div class="tracker-date">May 12 evening</div>
+                    <div class="tracker-label">4-page proposal LaTeX draft (reframed from PA-AKG abstract_v2)</div>
+                    <span class="status-pill todo">To do</span>
+                </div>
+                <div class="tracker-row">
+                    <div class="tracker-date">May 13 AM</div>
+                    <div class="tracker-label">Internal review and revisions; verify against CFP required-content checklist</div>
+                    <span class="status-pill todo">To do</span>
+                </div>
+                <div class="tracker-row">
+                    <div class="tracker-date">May 13 AM</div>
+                    <div class="tracker-label">PI (Brown) sign-off on narrative + budget + OSS commitment</div>
+                    <span class="status-pill todo">To do</span>
+                </div>
+                <div class="tracker-row">
+                    <div class="tracker-date">May 13 11:59 PM PT</div>
+                    <div class="tracker-label">Portal submission: proposal + budget + CV</div>
+                    <span class="status-pill deadline">Deadline</span>
+                </div>
+                <div class="tracker-row">
+                    <div class="tracker-date">Aug 2026</div>
+                    <div class="tracker-label">ARA funding decisions announced</div>
+                    <span class="status-pill todo">To do</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Open questions -->
+        <div class="section">
+            <h2>Open questions / decisions pending</h2>
+            <ul>
+                <li><strong>OSS commitment</strong> — pick one of three options (PA-AKG impl / eval harness / Brown-lab tool extension); leaning toward impl + lightweight harness.</li>
+                <li><strong>Budget composition</strong> — 1–2 grad students per ARA guidance; same gift-research treatment as Amazon-VT. Cusati primary?</li>
+                <li><strong>CV requirement</strong> — Brown's PI CV needs to be portal-ready (Cusati's was used for the Amazon-VT fellowship).</li>
+                <li><strong>Application domain framing</strong> — SE as the case-study surface is the cleanest fit, but is there enterprise-domain framing the PI prefers?</li>
+                <li><strong>Site name</strong> — currently "AWS Agentic AI · ARA Spring 2026" with project codename "Provenance Multi-Agent." Rename if you prefer.</li>
+            </ul>
+        </div>
+
+        <!-- Sources -->
+        <div class="section">
+            <h2>Sources cited in this analysis</h2>
+            <ul>
+                <li><a class="ref-link" href="https://www.amazon.science/research-awards/call-for-proposals/aws-agentic-ai-call-for-proposals-spring-2026" target="_blank">AWS Agentic AI Spring 2026 CFP — Amazon Science</a></li>
+                <li><a class="ref-link" href="https://www.amazon.science/research-awards/program-rules" target="_blank">ARA Program Rules — Amazon Science</a></li>
+                <li><a class="ref-link" href="https://aws.amazon.com/bedrock/agents/" target="_blank">Amazon Bedrock Agents — AWS</a></li>
+                <li><a class="ref-link" href="https://docs.aws.amazon.com/bedrock/latest/userguide/knowledge-base.html" target="_blank">Amazon Bedrock Knowledge Bases — AWS Docs</a></li>
+                <li><a class="ref-link" href="https://www.amazon.science/research-areas/latest-news/63-amazon-research-award-recipients-announced-spring-2025" target="_blank">Spring 2025 ARA Recipients (63 awards / 41 universities)</a></li>
+                <li><a class="ref-link" href="https://arxiv.org/abs/2501.09136" target="_blank">Agentic RAG Survey (arXiv 2501.09136)</a></li>
+                <li><a class="ref-link" href="https://arxiv.org/abs/2603.07379" target="_blank">SoK: Agentic RAG — Taxonomy &amp; Directions (arXiv 2603.07379)</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="footer">
+        Last updated: 2026-05-12 ·
+        <a href="../index.html">Back to Amazon-VT site</a> ·
+        <a href="https://home.academic-research-portal.amazon.science/login" target="_blank">ARA portal</a>
+    </div>
+
+    <script>
+        const btn = document.getElementById('hamburgerBtn');
+        const panel = document.getElementById('menuPanel');
+
+        btn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            btn.classList.toggle('open');
+            panel.classList.toggle('open');
+            btn.setAttribute('aria-expanded', panel.classList.contains('open'));
+        });
+
+        document.addEventListener('click', (e) => {
+            if (!panel.contains(e.target) && !btn.contains(e.target)) {
+                btn.classList.remove('open');
+                panel.classList.remove('open');
+                btn.setAttribute('aria-expanded', 'false');
+            }
+        });
+
+        // Smooth-scroll to in-page anchors and close menu
+        document.querySelectorAll('.menu-panel a[href^="#"]').forEach(a => {
+            a.addEventListener('click', (e) => {
+                e.preventDefault();
+                const target = document.querySelector(a.getAttribute('href'));
+                if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                btn.classList.remove('open');
+                panel.classList.remove('open');
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,155 +1,116 @@
 # Active Context
 
-_Last updated: 2026-05-11_
+_Last updated: 2026-05-12_
 
 ## Current Phase
 
-**Phase 5: AKG-E Full Proposal Submission Day — May 11, 2026 at 11:59 PM PT (DEADLINE TODAY)**
+**Phase 6: AWS Agentic AI CFP — Spec, Draft, Submit (deadline May 13, 2026 at 11:59 PM PT)**
 
-The Amazon-VT full proposal for AKG-E is built, polished, and live on the docs site. Three documents staged for portal upload:
+A second Amazon proposal effort under the AWS AI: Agentic AI Spring 2026 call (Amazon Research Awards program). Separate from the just-submitted Amazon-VT effort — different program, different team. PA-AKG (provenance-aware agentic knowledge graph) reframed for this CFP's Topic 3 (multi-agent systems) primary + hybrid-retrieval welcome topic secondary, with software engineering as the application domain.
 
-1. **Proposal**: `docs/akg-e-full-proposal.pdf` (3-page body + references, 4 pages total). Six-section structure (Problem & Motivation, Proposed Approach, Research Plan [Objectives, Methodology, Evaluation], Timeline + Risks, Team, Intellectual Merit + Amazon Fit). Inline Gantt chart spans full Aug 2026 – Jul 2027 calendar.
-2. **Budget**: `docs/akg-e-full-proposal-budget.pdf` (1 page, DRAFT label). $100K total, gift research (no F&A). Cusati primary GRA at $50K full-time; GRA #2 at ~25% effort at $14K; Afsari summer salary optional at $14K; LLM tokens featured at $8K; AWS at $10K.
-3. **CV**: Afsari's (PI) — provided by PI directly (Brown's Co-PI CV is an open decision).
+**Three deliverables needed for portal upload by May 13 11:59 PM PT:**
 
-**Team structure (final)**: Afsari (PI, ARCADE Lab) + Brown (Co-PI, Code World No Blanket lab) + Cusati (Student Researcher).
+1. **Proposal** — 4 pages + appendices (ARA template `agentic-ai-spring-2026`). Required content sections: (a) differentiation from prior work, (b) list of open-source tools to be contributed, (c) list of AWS ML tools to be used.
+2. **Budget** — gift research, no F&A. ARA budget guidance: 1–2 grad students + travel + equipment for 1 year. Award range: ~$70K cash + ~$50K AWS credits.
+3. **CV** — Brown (PI). Cusati does not need a CV for this CFP (student researcher, not PI/Co-PI).
 
-Earlier work (Mar 17 abstract submissions, Apr 27 fellowship submission) is frozen and untouched.
+**Team (final):** Brown (PI, Code World No Blanket lab, CS, VT) + Cusati (student researcher).
+
+Phase 5 (Amazon-VT AKG-E full proposal) closed yesterday. Portal-submission action (upload of the three documents to the Amazon-VT portal by 11:59 PM PT on May 11) is user-side; PR #32 merging memory-bank updates was the last code action before this Phase 6 pivot.
 
 ## Current Workflow
 
-**~~Polish All 3~~ → ~~Run Reviewer Process~~ → ~~Incorporate Feedback~~ → ~~Finalize Citations~~ → ~~Select AKG-E Variant~~ → ~~Abstracts Submitted (Mar 17)~~ → ~~Fellowship Submitted (Apr 27)~~ → ~~Full Proposal Drafted~~ → ~~PI/Co-PI Sign-off~~ → Portal Upload (May 11 11:59 PM PT)**
+**~~Polish All 3~~ → ~~Run Reviewer Process~~ → ~~Incorporate Feedback~~ → ~~Finalize Citations~~ → ~~Select AKG-E Variant~~ → ~~Abstracts Submitted (Mar 17)~~ → ~~Fellowship Submitted (Apr 27)~~ → ~~Full Proposal Drafted~~ → ~~PI/Co-PI Sign-off~~ → ~~Amazon-VT Portal Upload (May 11)~~ → ~~AWS Agentic AI CFP Analyzed~~ → ~~Site Published~~ → Spec & Draft AWS Agentic AI Proposal → Brown Sign-off → Portal Upload (May 13 11:59 PM PT)**
 
-### Key project decisions baked into the full proposal
+### Key Phase 6 decisions baked in
 
-- **Scope**: 2-domain funded build (Construction + Transportation); Energy is a *designed extension* for Months 4–12 (not a promised partnership)
-- **Eval framing**: three-tier metrics with correctness (preserves abstract's >50% target as floor), calibration, and efficiency (headline contribution). Baselines: B0 Claude / B1 Claude+graph-RAG / B2 full AKG-E.
-- **Timeline**: 3-month aggressive build (Aug–Oct 2026) + 9-month dissemination/scaling (Nov 2026 – Jul 2027). Inline Gantt in Table I.
-- **Methodology framing softened**: §II + §3.2 frame the contribution as the closed-loop *coupling interface* (typed inputs, structured signals, propagated UQ) — not a fixed catalog of specific check types. Per PI feedback the previous prescriptive prose read as "made up."
-- **AI tooling**: deliberately *not* mentioned in the proposal narrative (was briefly included as "AI-assisted development force multiplier" but stripped at PI direction — reads as inflated capability claim or academically thin).
-- **Sandia / external partnerships**: deliberately *not* mentioned. Was briefly included as energy-domain partnership but stripped at PI direction — proposals shouldn't promise external partnerships without paper-confirmed letters of support.
-- **Acronyms**: every domain-specific acronym (16+) defined parenthetically at first body-text use.
+- **Recommended shape locked**: PA-AKG reframed for Topic 3 (multi-agent) primary + Welcome topic (data integration / hybrid retrieval: vector + lexical + graph + relational) secondary. Software engineering as application domain (Brown-lab tools as case studies).
+- **Team**: Brown PI + Cusati student researcher. No Afsari on this proposal (different program, different research thread).
+- **Why not Shape B (AKG-E for Topic 4)**: Same engineering-AKG material was submitted to Amazon-VT yesterday targeting "AI Accelerated Science & Engineering Innovation" — too close to ARA Topic 4 (scientific discovery). Reviewer-overlap optics is a real risk. Different research thread is safer.
+- **Why not Shape C (fresh SE-agents proposal)**: No PA-AKG carry-over. Fresh writing in a 24-hour window is high-risk.
+- **AWS hooks** (verified against Bedrock docs May 2026): Bedrock Agents multi-agent collaboration, Bedrock KB hybrid search, Bedrock KB Neptune Analytics graphs, Bedrock KB structured-data NL→SQL, Bedrock reranking, Action Groups. Optional: SageMaker fine-tuning of provenance-routing model as Year-1 stretch.
+- **Novelty wedge** (verified against Mar 2026 SoK and 10 related 2024–2026 papers): typed propagation of per-claim provenance across multi-agent message passing. Closest comparator (GraphTracer, Oct 2025) is diagnostic, not runtime-enforcing.
+- **OSS commitment** (open decision): PA-AKG reference impl, provenance eval harness, or Brown-lab tool extension. Recommendation pending: impl + lightweight harness.
+- **Site identity**: AWS squid-ink (#232F3E) + teal (#00C7B7) palette, distinct from VT maroon + Amazon orange. Hamburger menu in header replaces full nav-bar. Cross-site hamburger added to Amazon-VT `index.html` for bi-directional nav.
 
-| Rank | Proposal | CFP Topics | Status |
-|---|---|---|---|
-| **#1** | **PA-AKG** (v2) | Knowledge Grounding + Agentic AI | SUBMISSION-READY — citation issues fixed (Yan2024CRAG, Yu2024COSMO), provenance definition sentence added, authors added (Jason Cusati, Chris Brown); all changes on main |
-| **#2** | **AKG-E** (v4e) | AI for Science & Engineering + Agentic AI | SUBMISSION-READY — professor structure, VVUQ backbone, RQ1/RQ2 with evaluation criteria, extensible 3-domain design (construction primary + transportation + energy), Bedrock hook; site fully updated; on main |
-| **#3** | **SVF** (v5) | Agentic Evaluation + Responsible AI | SUBMISSION-READY — reserved for other venues if AKG-E submitted |
+## ARA program rules verified
+
+- Eligibility: full-time faculty, accredited institution. Brown qualifies.
+- One proposal per PI per call (Brown wasn't PI on Amazon-VT → no conflict).
+- Awards = one-time unrestricted gift to institution. **Cannot be used for indirect expenses (F&A)** — same gift treatment as Amazon-VT.
+- IP: Amazon reserves right to implement similar work. No exclusivity.
+- ARA program rules do **not** explicitly restrict ARA↔Amazon-VT cross-submission. Reviewer-optics is the real concern; mitigated here by using different research thread + different team.
 
 ## Current Focus
 
-- [x] Build fellowship application LaTeX (`abstract_v4e_fellowship/main.tex`) — completed Apr 27
-- [x] Build fellowship PDF and publish to docs/ — completed Apr 27
-- [x] Create internal-use page `docs/fellowship.html` — completed Apr 27
-- [x] Update downloads.html and index.html nav — completed Apr 27
-- [x] Update citation matrix with fellowship column — completed Apr 27
-- [x] Update submission-checklist.md with fellowship section — completed Apr 27
-- [ ] **[CRITICAL — TODAY]** Rebuild CV PDF from `~/code/cv/`
-- [ ] **[CRITICAL — TODAY]** Coordinate letters of recommendation (≤2)
-- [ ] **[CRITICAL — TODAY]** Portal submission to fellowship by April 27, 2026
+- [x] CFP fetched, analyzed; recommended shape locked — completed May 12
+- [x] Deep research published to GitHub Pages: `docs/aws-agentic-ai/index.html` — completed May 12
+- [x] Cross-site hamburger navigation between Amazon-VT and AWS Agentic AI sites — completed May 12
+- [ ] **[CRITICAL]** Decide open-source contribution commitment
+- [ ] **[CRITICAL]** Author spec at `construction/design/aws-agentic-ai-proposal.md`
+- [ ] **[CRITICAL]** Draft 4-page LaTeX proposal (reframe PA-AKG `abstract_v2`)
+- [ ] **[CRITICAL]** Internal review against CFP required-content checklist
+- [ ] **[CRITICAL]** Brown (PI) sign-off
+- [ ] **[CRITICAL — DEADLINE TOMORROW]** Portal submission by May 13, 2026 at 11:59 PM PT
 
-## Earlier Focus (March 17 submissions — completed)
+## Proposal Track Record
 
-- [x] Apply advisor edits to PA-AKG (v2) — completed Mar 16 (PR #12)
-- [x] Fix citation issues in abstract_v2 (Yan2024CRAG, Yu2024COSMO) — completed Mar 17
-- [x] Add provenance definition sentence to abstract_v2 — completed Mar 17
-- [x] Add authors to abstract_v2 (Jason Cusati, Chris Brown) — completed Mar 17
-- [x] Add authors to all AKG-E variants (v3/v4/v4b/v4c/v4d/v4e: Jason Cusati + Chris Brown) — completed Mar 17
-- [x] Create AKG-E v4d — domain-agnostic synthesis with VVUQ + engineering-agent citations — completed Mar 17
-- [x] Create AKG-E v4e — full professor structure, application challenge, RQ1/RQ2 with evaluation criteria, extensible domain design — completed Mar 17
-- [x] Update citation matrix — v4d and v4e columns; 7 new citation keys registered — completed Mar 17
-- [x] Update docs/proposal-akge.html — full v4e professor structure posted — completed Mar 17
-- [x] Update docs/downloads.html — v4e PDF entry added at top — completed Mar 17
-- [x] Merge all changes to main — no open PRs — completed Mar 17
-- [ ] **[CRITICAL — TODAY]** Portal submission by March 17, 2026
-
-## Strategy Pivot (Mar 14)
-
-The devil's advocate analysis revealed key insights that shifted our strategy:
-
-1. **PA-AKG is our strongest proposal** — highest reviewer alignment, feasibility, and Amazon relevance
-2. **SVF has honest weaknesses** — "meta" nature (evaluates systems but doesn't build one), overclaimed novelty
-3. **Topic overlap concern was overstated** — different primary topics go to different reviewer pools; PA-AKG and AKG-E are genuinely different proposals
-4. **PA-AKG is most feasible in 1 year** — clearly scoped system with natural ablation points
-
-As a result, PA-AKG is ranked #1, AKG-E is #2, and SVF is #3 (reserved for other venues if not submitted).
-
-See `memory-bank/strategy-pivot.md` for full analysis and AKG-E reframing notes.
-
-## Polish Summary (Completed Mar 14)
-
-All abstracts have been polished to submission quality with the following changes:
-
-- **PA-AKG (v2)**: Sharpened novelty framing (unified substrate vs isolated components), added Self-RAG citation, added concrete evaluation tasks
-- **SVF (v3)**: Toned down overclaims (removed "first framework" language), developed coordination reliability dimension, narrowed scope to feasible 1-year plan
-- **AKG-E (v4)**: Added concrete simulation tools (OpenSeesPy, SUMO), tightened prose throughout, narrowed focus to 2+1 domains
-- **AKG-E (v4b)**: New file created as reframed variant with 2 focused application domains + VVUQ as unifying validation backbone
+| Rank | Proposal | Program | CFP Topics | Status |
+|---|---|---|---|---|
+| #1 | **PA-AKG → AWS Agentic AI** (new) | ARA Spring 2026 | Multi-agent + Hybrid Retrieval | Phase 6 in progress; deadline May 13 |
+| #2 | **AKG-E (v4e)** full proposal | Amazon-VT 2026 | AI for Science & Engineering + Agentic AI | Phase 5 closed May 11 (user portal upload was the final action) |
+| #3 | **PA-AKG (v2)** abstract | Amazon-VT 2026 | Knowledge Grounding + Agentic AI | Submitted Mar 17 |
+| #4 | **AKG-E (v4e)** abstract | Amazon-VT 2026 | AI for Science & Engineering + Agentic AI | Submitted Mar 17 |
+| #5 | **AKG-E (v4e)** fellowship | Amazon-VT 2026 | Doctoral fellowship | Submitted Apr 27 |
+| #6 | **SVF (v5)** abstract | Amazon-VT 2026 | Agentic Evaluation + Responsible AI | Submission-ready; reserved for other venues |
 
 ## Research Directions
 
-### PA-AKG — Provenance-Aware Agentic Knowledge Graph Systems (Rank #1)
-- Primary Topic: Knowledge Grounding
-- Secondary Topic: Agentic AI
-- Key framing: Hybrid retrieval (sparse+dense) is now mainstream. Novelty is in provenance-aware KG grounding + validation loops — addressing gaps in multi-hop structured reasoning and fine-grained verifiable evidence chains.
+### PA-AKG — Provenance-Aware Agentic Knowledge Graph Systems (active for ARA Phase 6)
+- ARA Primary Topic: Multi-agent systems and collaborations
+- ARA Secondary Topic: Welcome — data integration / hybrid retrieval
+- Application domain: software engineering (Brown-lab tools as case studies)
+- Novelty wedge: typed propagation of per-claim provenance across multi-agent message passing
+- AWS hooks: Bedrock Agents (multi-agent collaboration with supervisor), Bedrock KB (hybrid search + Neptune Analytics graphs), reranking, action groups
 
-### AKG-E — Agentic Knowledge Graphs for Engineering (Rank #2)
-- Primary Topic: AI Accelerated Science & Engineering
-- Secondary Topic: Agentic AI
-- Key framing: Reframed around extensible application domains (construction primary, transportation, energy) with VVUQ as unifying validation backbone. Aligns with advisor's construction.ai initiative.
-- **v4e variant (PRIMARY)**: Full professor structure — application challenge (VVUQ gap), RQ1/RQ2 with evaluation criteria (benchmark suite for RQ1; constraint violation rate + task success rate for RQ2), intellectual merit, contributions, practice impact, expandability. Hypothesis reframed as evaluation design target (>50% constraint violation reduction), not a prediction. Authors: Jason Cusati + Chris Brown.
-- **v4d variant**: Domain-agnostic synthesis with VVUQ + engineering-agent citations (Park2026MCPSIM, LLMAgentsFEM2025, Soman2025ConstructionDT). Superseded by v4e.
-- **v4c variant**: Construction-only. Superseded by v4e.
-- **v4b variant**: 2 focused domains (construction + transportation). Superseded by v4e.
+### AKG-E — Agentic Knowledge Graphs for Engineering (Phase 5 closed)
+- Submitted to Amazon-VT 2026 targeting AI Accelerated Science & Engineering Innovation
+- 3-page proposal + 1-page budget + Afsari CV submitted to portal May 11
+- Decision expected June 30, 2026
 
-### SVF — Structured Validation Framework (Rank #3)
-- Primary Topic: Foundation Model/Agentic Evaluation
-- Secondary Topic: Responsible Generative AI
-- Status: May be reserved for other venues.
+### SVF — Structured Validation Framework (reserved)
+- Submission-ready abstract retained for future venues
 
 ## What's Working
 
-- Project infrastructure complete (memory-bank, construction, agents)
-- CFP requirements fully captured
-- Abstracts v1-v4e (+ v4b, v4c, v4d) complete across 3 proposals (7 total variants)
-- All abstracts polished to submission quality with authors
-- Deep research reports published on dashboard (SVF + AKG-E)
-- Devil's advocate analysis completed
-- Submission strategy analysis completed
-- Website restructured with ranked proposal cards, dedicated pages, v4e posted
-- Citation matrix covers v2–v4e with 7 new citation keys registered Mar 17
-- All changes merged to main; no open PRs
-- GitHub repo, Pages site, and CI pipeline live
+- Two parallel Amazon proposal sites live and cross-linked via hamburger
+- AWS Agentic AI CFP analysis complete with deep research grounding
+- Bedrock stack maps 1:1 to PA-AKG architecture (no force-fitting)
+- Novelty wedge verified against current literature (March 2026 SoK + 10 recent papers)
+- Memory-bank and auto-memory updated; PR ready for push
 
 ## What's Next
 
-- [x] Polish all 3 abstracts to submission quality (completed Mar 14)
-- [x] Create AKG-E v4b variant (completed Mar 14)
-- [x] Create AKG-E v4c variant (construction-only) (completed Mar 15/16)
-- [x] Apply advisor edits to PA-AKG v2 (completed Mar 16)
-- [x] Create SVF v5 from deep research synthesis (completed Mar 16)
-- [x] Deploy deep research HTML pages for SVF and AKG-E (completed Mar 16)
-- [x] Add citation tooltips and keywords to proposal pages (completed Mar 16)
-- [x] Fix abstract_v2 citation issues + add provenance sentence + add authors (completed Mar 17)
-- [x] Create AKG-E v4d (domain-agnostic + VVUQ + engineering-agent citations) (completed Mar 17)
-- [x] Create AKG-E v4e (full professor structure, RQ1/RQ2 with eval criteria) (completed Mar 17)
-- [x] Update citation matrix with v4d/v4e columns and 7 new keys (completed Mar 17)
-- [x] Update proposal-akge.html and downloads.html with v4e (completed Mar 17)
-- [x] Merge all changes to main (completed Mar 17)
-- [ ] Portal submission (CRITICAL — TODAY March 17, 2026)
+- Spec authoring for the AWS Agentic AI proposal
+- LaTeX draft reframing `abstract_v2` (PA-AKG) to 4 pages with multi-agent emphasis
+- Required-content checklist verification (CFP §required content)
+- Brown sign-off
+- Portal upload by May 13 11:59 PM PT
 
 ## Active Decisions
 
-- **Decided**: PA-AKG (v2) is submission #1 — citation issues fixed, authors added, ready to submit
-- **Decided**: AKG-E (v4e) is the primary AKG-E submission — professor structure, full evaluation framing, extensible domains
-- **Decided**: PA-AKG ranked #1, AKG-E #2, SVF #3
-- **Decided**: v4e supersedes v4b, v4c, v4d — all prior AKG-E variants are archived
-- **Decided**: SVF (v5) reserved for other venues; not the current submission focus
+- **Decided**: Shape A locked (PA-AKG → Topic 3 + hybrid retrieval welcome, SE as application domain)
+- **Decided**: Brown PI + Cusati student researcher (no Afsari on this proposal)
+- **Decided**: AWS site identity (squid-ink + teal palette, hamburger nav)
+- **Open**: OSS contribution commitment — leaning toward PA-AKG reference impl + lightweight eval harness
+- **Open**: Budget allocation between cash gift and AWS credits utilization
+- **Open**: Final proposal title
 
 ## Blockers
 
-- Fellowship portal submission must be completed today (April 27, 2026 — deadline)
-- CV PDF rebuild required (no built PDF currently in `~/code/cv/build/`)
-- Letter-of-recommendation status to be confirmed with recommenders
+- AWS Agentic AI portal submission must be completed by **May 13, 2026 at 11:59 PM PT** (deadline tomorrow)
+- Brown's PI CV must be portal-ready
+- PI sign-off on the OSS commitment and budget
 
 ---
 
