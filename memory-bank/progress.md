@@ -114,19 +114,41 @@
 - [x] Citation audit: no hallucinations; matrix updated with `full` column; brown2025exploring + cusati2026fose registered — completed May 11
 - [x] PDFs published to docs/, dedicated full-proposal page at `docs/akg-e-full-proposal.html` with built-in what's-left-to-do tracker, nav added across pages — completed May 11
 
+### Phase 6: AWS Agentic AI CFP — Kickoff & Deep Research (2026-05-12)
+
+A second Amazon proposal effort under the AWS AI: Agentic AI Spring 2026 ARA call. Separate from Amazon-VT (different program, different team). PA-AKG reframed for this CFP. Deadline May 13, 2026 at 11:59 PM PT.
+
+- [x] CFP fetched and analyzed: AWS Agentic AI Spring 2026 (ARA program); 4-page limit + appendices; ~$70K cash + ~$50K AWS credits; gift research (no F&A); decisions Aug 2026 — completed May 12
+- [x] Topic-by-topic fit analysis against PA-AKG / AKG-E / SVF / Brown-lab SE thread — completed May 12
+- [x] Recommended shape locked: **Shape A** — PA-AKG → Topic 3 (multi-agent) primary + hybrid-retrieval welcome topic secondary + SE as application domain — completed May 12
+- [x] Team locked: Brown (PI) + Cusati (student researcher) — Code World No Blanket lab, CS, VT — completed May 12
+- [x] Deep research: ARA program rules (eligibility, gift treatment, IP, one-proposal-per-PI-per-call, no explicit ARA↔Amazon-VT restriction) — completed May 12
+- [x] Deep research: Bedrock stack mapping (Agents multi-agent collaboration, KB hybrid search, Neptune Analytics graphs, reranking, structured-data NL→SQL, action groups) — completed May 12
+- [x] Deep research: related-work landscape 2024–2026 (SoK Mar 2026 + 10 related agentic-RAG / GraphRAG papers; novelty wedge = typed provenance propagation across agents) — completed May 12
+- [x] New GitHub Pages site published at `docs/aws-agentic-ai/index.html` with AWS squid-ink + teal palette, hamburger menu for cross-site nav, embedded timeline tracker — completed May 12
+- [x] Cross-site hamburger added to `docs/index.html` Amazon-VT header (bi-directional navigation between the two proposal sites) — completed May 12
+
 ## In Progress
 
-### Phase 5: Portal Submission (2026-05-11 at 11:59 PM PT) — CRITICAL DEADLINE TODAY
+### Phase 6: AWS Agentic AI CFP — Spec, Draft, Submit (2026-05-12 → 2026-05-13)
 
-- [ ] **[CRITICAL]** Afsari (PI) CV PDF dated within 14 days of submission (PI provides directly)
-- [ ] **[CRITICAL]** Decision: include Brown (Co-PI) CV alongside Afsari CV? (CFP says singular CV)
-- [ ] **[CRITICAL]** PI + Co-PI sign-off on proposal + budget dollar amounts and F&A treatment
-- [ ] **[CRITICAL]** Submit full-proposal package to Amazon research portal by May 11, 2026 at 11:59 PM PT
+- [ ] Decide open-source contribution commitment (PA-AKG impl / eval harness / Brown-lab tool extension)
+- [ ] Author spec at `construction/design/aws-agentic-ai-proposal.md`
+- [ ] Draft 4-page LaTeX proposal reframing PA-AKG abstract_v2 for Topic 3 + hybrid retrieval
+- [ ] Verify proposal against CFP required-content checklist (differentiation from prior, OSS list, AWS ML tools list)
+- [ ] Internal review and revisions
+- [ ] Brown (PI) sign-off on narrative + budget + OSS commitment
+- [ ] Portal submission by **May 13, 2026 at 11:59 PM PT**
+
+### Phase 5 carryover
+
+- [ ] User to confirm whether Amazon-VT full-proposal portal upload was completed on May 11 (materials were staged and PRs merged; submission action is user-side)
 
 ## Upcoming
 
-- [ ] Phase 6: Acceptance notification (June 30, 2026)
-- [ ] Phase 7: Project execution if funded (Aug 2026 – Jul 2027)
+- [ ] Phase 7: AWS Agentic AI award decisions (August 2026)
+- [ ] Phase 8: Amazon-VT acceptance notification (June 30, 2026)
+- [ ] Phase 9: Project execution if funded (Aug 2026 – Jul 2027)
 
 ## Key Milestones
 
