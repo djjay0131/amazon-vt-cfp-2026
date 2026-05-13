@@ -1,6 +1,6 @@
 # Citation Matrix
 
-**Last verified:** 2026-05-11
+**Last verified:** 2026-05-13
 
 ## Cross-proposal map
 
@@ -84,3 +84,4 @@ The following entries live in `akg-e-full-proposal/references.bib` but are not `
 | 2026-03-17 | Added v4d and v4e columns; registered Eastman2011BIM, Logg2012FEniCS, Yu2024COSMO, LLMAgentsFEM2025, Park2026MCPSIM, Soman2025ConstructionDT |
 | 2026-04-27 | Added fellowship column; registered BrownCusati2025SEBeliefs (applicant's own arXiv paper) for fellowship Qualifications section |
 | 2026-05-11 | Added `full` column for the Amazon-VT full proposal (akg-e-full-proposal); renamed BrownCusati2025SEBeliefs → brown2025exploring and updated venue to ESEM 2025 (published) reflecting Brown's bib addition in commit a4af8b0; registered cusati2026fose (Cusati & Brown, ICSE-FoSE 2026, forthcoming); documented 4 bib orphans (Brown's lab papers added to bib but not cited) — IEEEtran-safe, kept for completeness; audited all 13 cited references — no hallucinations found, all entries plausibly real and correctly formatted |
+| 2026-05-13 | New proposal track: `aws-agentic-ai-proposal/` for AWS Agentic AI Spring 2026 ARA. Cites are scoped to the new bib file `aws-agentic-ai-proposal/references.bib` — overlaps with existing matrix where appropriate but does not require a new column (different team: Brown PI + Cusati). New refs registered for the related-work landscape: Singh2026AgenticRAGSoK (arXiv 2603.07379), Singh2025AgenticRAGSurvey (arXiv 2501.09136), Wu2025ToG3 (arXiv 2509.21710), Dong2025YoutuGraphRAG (arXiv 2508.19855), Zhang2025GraphTracer (arXiv 2510.10581), Shi2026AgenticSZZ (arXiv 2602.02934), AWSBedrockAgents2026 (URL ref). brown2025esem key used in this proposal's bib (matches `brown2025exploring` content; the proposal uses the `brown2025esem` key for consistency with abstract_v2's bib). bose2025autopydep also cited (was an orphan in `full` column, now active citation). Audit: all 18 cited entries plausibly real; no hallucinations found. |

@@ -128,16 +128,28 @@ A second Amazon proposal effort under the AWS AI: Agentic AI Spring 2026 ARA cal
 - [x] New GitHub Pages site published at `docs/aws-agentic-ai/index.html` with AWS squid-ink + teal palette, hamburger menu for cross-site nav, embedded timeline tracker — completed May 12
 - [x] Cross-site hamburger added to `docs/index.html` Amazon-VT header (bi-directional navigation between the two proposal sites) — completed May 12
 
+### Phase 6: AWS Agentic AI CFP — Spec & Draft Built (2026-05-13)
+
+- [x] Adversarial interview through 4 blocking questions; all decisions locked — completed May 13
+- [x] OSS commitment locked: PA-AKG reference impl on Bedrock (MIT) + provenance eval harness (MIT) — Option D — completed May 13
+- [x] Case-study surfaces locked: AutoPyDep extension (Brown-led, code-level) + cusati2026fose application (Cusati-led, paper-level) — Option D — completed May 13
+- [x] Budget shape locked: Shape α — Cusati only full-ride ($60K package + $5K travel + $5K equipment = $70K cash gift) + $50K AWS credits separately (Bedrock $25K / Neptune $10K / SageMaker $10K / misc $5K) — completed May 13
+- [x] Reuse strategy locked: Option A+D — clone LaTeX scaffolding from `akg-e-full-proposal/`; lift §Problem + §Approach verbatim from `abstract_v2`; write fresh everything else — completed May 13
+- [x] Spec authored: `construction/design/aws-agentic-ai-proposal.md` — completed May 13
+- [x] LaTeX scaffolding: `aws-agentic-ai-proposal/{main.tex, budget.tex, references.bib, Makefile}` created (Makefile cloned from akg-e-full-proposal/ with publish target retargeted) — completed May 13
+- [x] 4-page proposal body drafted: 6 sections (Problem, Approach, Methodology, Evaluation, Risks, Team/Timeline/OSS) + inline Gantt + references — completed May 13
+- [x] 1-page budget drafted: $70K cash table + $50K AWS credits table + combined-award line + footnote — completed May 13
+- [x] PDFs built and published: `docs/aws-agentic-ai-proposal.pdf` (4 pages) + `docs/aws-agentic-ai-proposal-budget.pdf` (1 page) — completed May 13
+- [x] Landing page updated with PDF download buttons + timeline tracker flipped to Done for drafting steps — completed May 13
+
 ## In Progress
 
-### Phase 6: AWS Agentic AI CFP — Spec, Draft, Submit (2026-05-12 → 2026-05-13)
+### Phase 6: AWS Agentic AI CFP — Review, Sign-off, Submit (2026-05-13 PM)
 
-- [ ] Decide open-source contribution commitment (PA-AKG impl / eval harness / Brown-lab tool extension)
-- [ ] Author spec at `construction/design/aws-agentic-ai-proposal.md`
-- [ ] Draft 4-page LaTeX proposal reframing PA-AKG abstract_v2 for Topic 3 + hybrid retrieval
-- [ ] Verify proposal against CFP required-content checklist (differentiation from prior, OSS list, AWS ML tools list)
-- [ ] Internal review and revisions
+- [ ] Internal review against CFP required-content checklist: differentiation paragraph (in §II), OSS list (in §VI), AWS ML tools list (in §III) — all three are present, verify they read cleanly
+- [ ] Citation audit: verify no hallucinations against `construction/requirements/citation-matrix.md`
 - [ ] Brown (PI) sign-off on narrative + budget + OSS commitment
+- [ ] Brown's PI CV portal-ready (PI provides directly)
 - [ ] Portal submission by **May 13, 2026 at 11:59 PM PT**
 
 ### Phase 5 carryover

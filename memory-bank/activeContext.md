@@ -1,6 +1,6 @@
 # Active Context
 
-_Last updated: 2026-05-12_
+_Last updated: 2026-05-13_
 
 ## Current Phase
 
@@ -46,12 +46,18 @@ Phase 5 (Amazon-VT AKG-E full proposal) closed yesterday. Portal-submission acti
 - [x] CFP fetched, analyzed; recommended shape locked — completed May 12
 - [x] Deep research published to GitHub Pages: `docs/aws-agentic-ai/index.html` — completed May 12
 - [x] Cross-site hamburger navigation between Amazon-VT and AWS Agentic AI sites — completed May 12
-- [ ] **[CRITICAL]** Decide open-source contribution commitment
-- [ ] **[CRITICAL]** Author spec at `construction/design/aws-agentic-ai-proposal.md`
-- [ ] **[CRITICAL]** Draft 4-page LaTeX proposal (reframe PA-AKG `abstract_v2`)
-- [ ] **[CRITICAL]** Internal review against CFP required-content checklist
-- [ ] **[CRITICAL]** Brown (PI) sign-off
-- [ ] **[CRITICAL — DEADLINE TOMORROW]** Portal submission by May 13, 2026 at 11:59 PM PT
+- [x] All 4 blocking decisions locked (OSS = D, case studies = D, budget = α, reuse = A+D) — completed May 13
+- [x] Spec authored at `construction/design/aws-agentic-ai-proposal.md` — completed May 13
+- [x] LaTeX scaffolding cloned into `aws-agentic-ai-proposal/` — completed May 13
+- [x] 4-page proposal drafted; §Problem + §Approach lifted from `abstract_v2`; §Methodology, §Eval, §Risks, §Team written fresh — completed May 13
+- [x] 1-page budget drafted (Shape α: $70K cash + $50K AWS credits) — completed May 13
+- [x] PDFs built (`main.pdf` 4 pages, `budget.pdf` 1 page) and published to `docs/` — completed May 13
+- [x] Landing page updated with PDF download buttons + timeline pills flipped to Done for drafting — completed May 13
+- [ ] **[CRITICAL]** Internal review against CFP required-content checklist (differentiation / OSS / AWS tools)
+- [ ] **[CRITICAL]** Citation audit against citation matrix
+- [ ] **[CRITICAL]** Brown (PI) sign-off on narrative + budget + OSS commitment
+- [ ] **[CRITICAL]** Brown's PI CV portal-ready
+- [ ] **[CRITICAL — DEADLINE TODAY]** Portal submission by May 13, 2026 at 11:59 PM PT
 
 ## Proposal Track Record
 

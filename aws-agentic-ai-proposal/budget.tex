@@ -1,0 +1,102 @@
+% ============================================================
+% AWS Agentic AI Spring 2026 — Budget (DRAFT, pending PI sign-off)
+% 1 page; gift research; no F&A indirect costs.
+% Shape α — Cusati only, full ride
+% Total cash gift: $70,000 USD
+% Total AWS credits (separate): $50,000 USD
+% ============================================================
+
+\documentclass[11pt]{article}
+
+\usepackage[letterpaper, margin=0.7in]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{microtype}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{xcolor}
+\usepackage{titlesec}
+\titlespacing*{\section}{0pt}{0.8em}{0.25em}
+\setlength{\parskip}{0.25em}
+\setlength{\parindent}{0pt}
+\renewcommand{\arraystretch}{0.95}
+
+\begin{document}
+
+\thispagestyle{empty}
+
+\begin{center}
+\Large\textbf{Budget --- AWS Agentic AI Spring 2026 (Amazon Research Awards)} \\[2pt]
+\normalsize Project: Multi-Agent Provenance-Aware Retrieval for Trustworthy Software Engineering AI \\
+\normalsize PI: Chris Brown $\cdot$ Student Researcher: Jason Cusati $\cdot$ Virginia Tech \\
+\normalsize Period of Performance: Aug 1, 2026 -- Jul 31, 2027 (12 months) \\
+\textcolor{red!70!black}{\textbf{DRAFT --- pending PI sign-off}}
+\end{center}
+
+\vspace{0.4em}
+
+\section*{Cash Gift Budget --- USD \$70,000 total}
+
+Amazon Research Awards are structured as a one-time unrestricted gift to the institution. \textbf{Per the ARA Program Rules, awards may not be used for indirect (F\&A) costs.} AWS Promotional Credits are allocated separately, below.
+
+\vspace{-0.3em}
+
+\begin{table}[h]
+\centering
+\small
+\begin{tabular}{p{3.2in} r}
+\toprule
+\textbf{Line item} & \textbf{Amount} \\
+\midrule
+Cusati GRA stipend (12 mo, 100\% effort academic + summer) & \$30,000 \\
+Cusati GRA tuition remission (2 semesters, in-state) & \$24,000 \\
+Cusati GRA fringe / benefits & \$6,000 \\
+Conference travel (1 agentic-AI venue + Amazon visit) & \$5,000 \\
+Equipment (workstation upgrade + accelerator) & \$5,000 \\
+\midrule
+\textbf{Total cash gift} & \textbf{\$70,000} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\vspace{-0.4em}
+
+\textbf{Justification.} The cash budget concentrates on a single doctoral student (Cusati) at 100\% effort across 12 months, matching ARA budget guidance (``one to two graduate students \dots\ for one year, plus some conference travel and equipment''). Mr.~Cusati owns the Bedrock implementation, the evaluation harness, and the knowledge-accumulation case study. Travel funds support dissemination of the open-source release; equipment supports local development of agent topologies before deployment to AWS. No PI summer-salary line is included; Dr.~Brown supervises the project as part of his ongoing faculty effort.
+
+\section*{AWS Promotional Credits --- USD \$50,000 (separately budgeted)}
+
+The CFP allocates AWS Promotional Credits as a complement to the cash gift. Allocation reflects the AWS-native architecture described in the proposal:
+
+\vspace{-0.3em}
+
+\begin{table}[h]
+\centering
+\small
+\begin{tabular}{p{2.6in} r p{2.0in}}
+\toprule
+\textbf{Service} & \textbf{Alloc.} & \textbf{Use} \\
+\midrule
+Bedrock Agents (Multi-Agent Collab.) & \$20,000 & Supervisor + specialist agent runtime \\
+Bedrock KB (hybrid search + reranking) & \$5,000 & Retrieval over SE corpora \\
+Neptune Analytics (via Bedrock KB) & \$10,000 & KG layer storage + queries \\
+SageMaker FT (stretch goal) & \$10,000 & Provenance-routing model \\
+Misc Bedrock (multimodal, action groups) & \$5,000 & Validation tool invocations \\
+\midrule
+\textbf{Total AWS credits} & \textbf{\$50,000} & \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\vspace{-0.4em}
+
+\textbf{Justification.} Bedrock Agents and Bedrock Knowledge Bases together account for half of credits and run year-round during system development and evaluation. Neptune Analytics funds the managed graph backend underlying the KG layer. SageMaker fine-tuning is a Year-1 stretch goal and may be deferred or reallocated to additional Bedrock inference capacity if empirical workload requires.
+
+\vspace{0.4em}
+
+\noindent\textbf{Combined award:} \$70{,}000 cash + \$50{,}000 AWS credits = \textbf{\$120{,}000}.
+
+\vspace{0.5em}
+
+\footnotesize\textit{Notes: (1)~Dollar amounts are draft estimates pending PI sign-off; tuition remission rates follow VT in-state graduate published rates for AY 2026--27. (2)~F\&A is zero per ARA Program Rules (one-time unrestricted gift; no indirect costs). (3)~AWS credits are subject to the AWS Promotional Credit T\&C and AWS Customer Agreement, which take precedence over ARA Rules in case of conflict. (4)~Travel and equipment lines are conservative; unspent residual will be redirected to extending Mr.~Cusati's appointment.}
+
+\end{document}

@@ -1,0 +1,133 @@
+% ============================================================
+% AWS Agentic AI Spring 2026 — Full Proposal (PA-AKG reframed)
+% 4-page body + references (refs may overflow to page 5)
+% Primary: Multi-Agent Systems and Collaborations
+% Secondary: Data Integration / Retrieval (Hybrid)
+% Format: IEEE 2-column
+% Reuse: §I and §II.1 lifted verbatim from abstract_v2/main.tex;
+%        scaffolding patterns cloned from akg-e-full-proposal/main.tex
+% ============================================================
+
+\documentclass[conference, 10pt]{IEEEtran}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{microtype}
+\usepackage{cite}
+\usepackage{enumitem}
+\setlist{nosep, leftmargin=1.2em, topsep=0.15em}
+\usepackage{booktabs}
+\usepackage{array}
+\newcommand{\gantt}{\rule[0.5pt]{12pt}{6pt}}
+
+\title{Multi-Agent Provenance-Aware Retrieval \\ for Trustworthy Software Engineering AI}
+\author{
+    \IEEEauthorblockN{Chris Brown (PI)}
+    \IEEEauthorblockA{Code World No Blanket \\
+                      Department of Computer Science \\
+                      Virginia Tech}
+    \and
+    \IEEEauthorblockN{Jason Cusati (Student Researcher)}
+    \IEEEauthorblockA{Code World No Blanket \\
+                      Department of Computer Science \\
+                      Virginia Tech}
+}
+\date{}
+
+\begin{document}
+
+\maketitle
+\thispagestyle{empty}
+
+\vspace{-1.5em}
+
+\noindent\textbf{Primary Topic:} Multi-Agent Systems and Collaborations \hfill
+\textbf{Secondary:} Data Integration / Retrieval (Hybrid)
+
+\vspace{0.5em}
+
+\section{Problem Statement and Motivation}
+
+Retrieval-augmented generation (RAG)~\cite{Lewis2020RAG} has become a foundational technique for grounding large language model (LLM) inference in external knowledge. Production systems have matured substantially: hybrid retrieval combining semantic (dense) and keyword (sparse) search is now standard practice~\cite{AWSBedrockHybridSearch2024}, and retrieval is increasingly exposed as a tool within agentic workflows where models decide \textit{when} and \textit{what} to retrieve. Recent industrial work, including Amazon's research on commonsense knowledge graphs (KGs) for improving recommendation systems~\cite{Yu2024COSMO}, further demonstrates the value of structured knowledge representations for enhancing downstream AI reasoning tasks. Multi-agent variants—where specialized agents coordinate retrieval and reasoning over heterogeneous sources—have rapidly emerged as the dominant 2024--2026 research thread~\cite{Singh2025AgenticRAGSurvey,Wu2025ToG3,Dong2025YoutuGraphRAG}.
+
+However, reliability remains a fundamental challenge for multi-agent retrieval systems, especially in software engineering (SE) contexts where downstream consumers must audit each claim. Consider an engineer using an AI assistant to synthesize design rationale across pull requests, dependency manifests, and published research. While modern RAG and multi-agent systems can retrieve relevant artifacts, they often fail to provide verifiable reasoning chains explaining how individual claims were derived. This limitation arises from two key gaps. First, even advanced retrieval systems lack structured reasoning substrates capable of multi-hop synthesis across heterogeneous knowledge sources---an issue that graph-based approaches such as GraphRAG~\cite{Edge2024GraphRAG} begin to address but do not fully resolve. Second, current multi-agent systems provide limited \textit{provenance}: they may cite documents but cannot generate fine-grained evidence chains linking specific outputs to the entities, relationships, and source spans that support them, nor can they reliably detect or recover from retrieval failures~\cite{Yan2024CRAG,Ji2023HallucinationSurvey}. A recent systematization of the agentic-RAG field~\cite{Singh2026AgenticRAGSoK} explicitly names ``oversight mechanisms for autonomous loops'' as an open research gap. We define \textit{provenance} as the structured tracking of how each generated claim flows from retrieval through reasoning to output, linking it to originating sources, intermediate transformations, and agent decisions for auditability and verifiable grounding.
+
+\section{Proposed Approach: PA-AKG}
+
+This project proposes \textbf{Provenance-Aware Agentic Knowledge Graph Systems (PA-AKG)}, a multi-agent framework in which a supervisor agent coordinates retrieval, knowledge-graph (KG) curation, and validation specialist agents with \textit{typed provenance routing} between them, producing verifiable grounded reasoning over heterogeneous knowledge sources. PA-AKG constructs a \textit{provenance graph} linking each generated output span to KG entities, relationships, and source passages with associated confidence scores. Each inter-agent message carries a typed evidence chain: the retrieval agent emits sourced candidate sets; the KG-curation agent emits structured triples with source attribution; the validation agent emits accept/reject signals with cited justification~\cite{Asai2024SelfRAG}. Agents dynamically route queries across dense vector search, sparse retrieval, and structured KG pathways, while validation specialists analyze provenance completeness and evidence consistency to detect weak grounding or contradictory signals.
+
+\textbf{Differentiation from prior work.} Recent multi-agent retrieval systems advance the state of the art along several axes but treat provenance as best-effort, not as a typed protocol primitive. Think-on-Graph~3.0~\cite{Wu2025ToG3} introduces multi-agent dual-evolving context retrieval over heterogeneous graphs but optimizes for retrieval quality, not for verifiable evidence chains across agents. Youtu-GraphRAG~\cite{Dong2025YoutuGraphRAG} unifies graph construction, retrieval, and reasoning under a single schema but provides no claim-level audit trail. GraphTracer~\cite{Zhang2025GraphTracer} constructs Information Dependency Graphs for \textit{post-hoc} failure attribution in multi-agent deep search---diagnostic, not runtime-enforcing. Domain-specific agentic systems for SE knowledge graphs~\cite{Shi2026AgenticSZZ} demonstrate the value of graph-based agent reasoning for bug-inducing-commit identification but do not generalize the provenance pattern. PA-AKG's net-new contribution is positioning per-claim provenance as a \textit{typed, propagated, verifiable artifact} across every multi-agent message, rather than a post-hoc tracing afterthought or a per-system bespoke feature.
+
+\section{Methodology}
+
+\textbf{AWS architectural substrate.} PA-AKG is built natively on Amazon Bedrock, exploiting a clean 1:1 mapping between the framework and current Bedrock primitives. The \textit{supervisor agent} pattern is implemented using \textbf{Amazon Bedrock Agents — Multi-Agent Collaboration}~\cite{AWSBedrockAgents2026}, which exposes a supervisor that decomposes user requests into specialist sub-agent tasks. The \textit{retrieval agent} is backed by \textbf{Amazon Bedrock Knowledge Bases (hybrid search)}~\cite{AWSBedrockHybridSearch2024}, combining vector + lexical retrieval over unstructured SE corpora with built-in citation/source attribution. The \textit{KG-curation agent} reads and writes the KG layer via \textbf{Amazon Neptune Analytics graphs} (integrated as a Bedrock KB source), giving us a managed graph backend with no custom infrastructure. The \textit{validation agent} invokes external tools (static analyzers, test runners, claim-verification services) via \textbf{Bedrock Action Groups}, each invocation tagged with provenance metadata. Provenance scores feed into \textbf{Bedrock reranking models} as a typed signal, biasing retrieval toward high-trust sources. As a Year-1 stretch goal, \textbf{Amazon SageMaker} is used to fine-tune a small provenance-routing model on validation traces.
+
+\textbf{Case studies (software engineering domain).} PA-AKG is evaluated on two concrete SE tasks that exercise the framework's generality:
+
+\textit{(a) AutoPyDep extension (Brown-led).} The existing AutoPyDep system~\cite{bose2025autopydep} uses graph-based analytics to recommend Python dependency updates. We extend AutoPyDep with PA-AKG's provenance-aware multi-agent retrieval layer so that each dependency suggestion is accompanied by a typed evidence chain: which CVEs, semver constraints, transitive callers, and prior project decisions justify the recommendation. The KG layer encodes the package-dependency graph + version-constraint history; the retrieval agent surfaces release notes and security advisories; the validation agent checks recommendations against test-suite outcomes via Action Groups.
+
+\textit{(b) Knowledge accumulation across SE papers (Cusati-led).} Building on prior work that identifies SE researchers' desire for knowledge synthesis and tracking across research outcomes~\cite{cusati2026fose,brown2025esem}, we apply PA-AKG to the task of accumulating evidence across published SE literature. The KG layer encodes claims, study designs, and findings extracted from a corpus of empirical SE papers; the retrieval agent performs multi-hop synthesis across studies; the validation agent surfaces contradictions and confidence-weighted summaries. The provenance graph allows downstream users (researchers, practitioners) to trace each synthesized claim back to its supporting study—turning literature review into an auditable rather than opaque process.
+
+\textbf{Open-source contribution.} Two artifacts will be released. (1)~A \textbf{PA-AKG reference implementation} on Bedrock as a research-prototype-quality, MIT-licensed repository, deployable via Bedrock Agents + KB. (2)~A \textbf{provenance evaluation harness} (MIT-licensed) providing reusable datasets, metrics (defined in \S\ref{sec:eval}), and reproducible runners for evaluating provenance-aware agentic retrieval systems beyond the two case studies above.
+
+\section{Evaluation}\label{sec:eval}
+
+The evaluation answers two questions: \textbf{RQ1}---Does typed provenance routing across multi-agent message passing improve claim verifiability over current multi-agent retrieval baselines? \textbf{RQ2}---Does the resulting framework generalize across distinct SE tasks (code-level dependency reasoning vs.\ paper-level knowledge accumulation)?
+
+\textbf{Metrics.} (1)~\textit{Provenance fidelity}: the fraction of generated claims for which the evidence chain (source span $\to$ KG path $\to$ claim) is reconstructable and consistent. (2)~\textit{Retrieval accuracy}: hit@$k$ and mean reciprocal rank (MRR) on multi-hop retrieval benchmarks. (3)~\textit{Claim verifiability}: human-judged correctness of the provenance chain on a stratified sample. (4)~\textit{Failure recovery}: success rate under perturbed or partially-missing retrieval evidence~\cite{Yan2024CRAG}.
+
+\textbf{Baselines.} Three baselines isolate the contribution of each PA-AKG layer:
+
+\begin{itemize}
+    \item \textbf{B0 (vanilla Bedrock Agent)}: single-agent retrieval-then-generate using default Bedrock Knowledge Bases without KG layer or validation specialist.
+    \item \textbf{B1 (Bedrock + KB hybrid search)}: Bedrock Agent with hybrid retrieval over the same SE corpora, but no provenance routing across multi-agent messages.
+    \item \textbf{B2 (full PA-AKG)}: supervisor + retrieval + KG-curation + validation specialists with typed provenance routing.
+\end{itemize}
+
+\textbf{Test surfaces.} For \textit{(a) AutoPyDep}, we curate an evaluation set of real Python projects with known-good dependency-resolution outcomes; ground truth is the maintainer-accepted dependency update. For \textit{(b) knowledge accumulation}, we use a stratified sample of empirical SE papers with researcher-annotated claim-to-source mappings (built collaboratively as part of the Year-1 work), enabling fine-grained provenance-chain evaluation.
+
+\section{Risks and Mitigation}
+
+\textit{Scope risk.} A full reference implementation in one year is ambitious. \textbf{Mitigation}: research-prototype framing in all deliverables; minimum viable feature set defined at Month~3 review with quarterly scope adjustments. \textit{Single-student bandwidth.} Cusati is the sole funded student. \textbf{Mitigation}: Brown-lab existing infrastructure (AutoPyDep~\cite{bose2025autopydep} is already released); two case studies share the same architectural substrate. \textit{Eval-data risk.} The cusati2026fose annotated corpus is in active development. \textbf{Mitigation}: fallback to existing public SE evidence-mapping datasets if annotation throughput is insufficient by Month~6. \textit{AWS service evolution.} Bedrock features change rapidly. \textbf{Mitigation}: design protocol-level abstractions (typed message contracts) that are not tied to a specific Bedrock API version.
+
+\section{Team, Timeline, and Open Source}
+
+\textbf{Team.} The principal investigator, Dr.~Chris Brown, leads the Code World No Blanket lab in the Department of Computer Science at Virginia Tech, with an active research program in generative-AI tools for software engineering~\cite{brown2025esem}; he supervises the architectural design and the AutoPyDep extension. The student researcher, Jason Cusati, is a CS doctoral student in the Code World No Blanket lab with research on knowledge accumulation in SE~\cite{cusati2026fose}; he owns the Bedrock implementation, the eval harness, and the knowledge-accumulation case study.
+
+\textbf{Timeline.} Workstreams are phased across 12 months (Aug~2026 -- Jul~2027) as shown in Table~\ref{tab:gantt}.
+
+\begin{table*}[!ht]
+\centering
+\caption{Year-1 workstream Gantt (Aug 2026 -- Jul 2027). Provenance routing is the critical-path protocol primitive.}
+\label{tab:gantt}
+\small
+\begin{tabular}{lcccccccccccc}
+\toprule
+\textbf{Workstream} & A & S & O & N & D & J & F & M & A & M & J & J \\
+\midrule
+Architecture \& typed-protocol design                & \gantt & \gantt &        &        &        &        &        &        &        &        &        &        \\
+Bedrock supervisor + specialist agents               & \gantt & \gantt & \gantt & \gantt &        &        &        &        &        &        &        &        \\
+KG layer (Neptune Analytics) + retrieval             &        & \gantt & \gantt & \gantt &        &        &        &        &        &        &        &        \\
+Provenance routing protocol                          &        &        & \gantt & \gantt & \gantt &        &        &        &        &        &        &        \\
+Case~A: AutoPyDep extension                          &        &        &        & \gantt & \gantt & \gantt & \gantt &        &        &        &        &        \\
+Case~B: knowledge-accumulation app                   &        &        &        &        &        & \gantt & \gantt & \gantt & \gantt &        &        &        \\
+Evaluation harness (OSS \#2)                         &        &        & \gantt & \gantt & \gantt & \gantt & \gantt &        &        &        &        &        \\
+Empirical evaluation (B0/B1/B2)                      &        &        &        &        &        &        &        & \gantt & \gantt & \gantt &        &        \\
+SageMaker FT (stretch)                               &        &        &        &        &        &        &        &        & \gantt & \gantt &        &        \\
+Dissemination (paper, repo release)                  &        &        &        &        &        &        &        &        &        & \gantt & \gantt & \gantt \\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+\textbf{Open-source tools to be contributed.} (1)~\textbf{PA-AKG reference implementation} on Amazon Bedrock (MIT-licensed). (2)~\textbf{Provenance evaluation harness} (MIT-licensed) including datasets, metrics, and reproducible runners.
+
+\textbf{AWS ML tools to be used.} Amazon Bedrock Agents (Multi-Agent Collaboration), Amazon Bedrock Knowledge Bases (hybrid search), Amazon Neptune Analytics graphs (via Bedrock KB), Bedrock reranking models, Bedrock Action Groups (validation tool calls), Amazon SageMaker (stretch goal: provenance-routing FT).
+
+\textbf{Intellectual merit and Amazon fit.} PA-AKG directly addresses the SoK 2026 gap of ``oversight mechanisms for autonomous loops''~\cite{Singh2026AgenticRAGSoK} by making provenance a first-class protocol primitive, with both case studies (code-level and paper-level) demonstrating generality. The framework's enterprise-scale-governance properties (auditable evidence chains, retrieval-native access control via Bedrock IAM, observability via OpenTelemetry GenAI conventions~\cite{OpenTelemetryGenAI2024}) align directly with Amazon's interest in trustworthy multi-agent operations.
+
+\bibliographystyle{IEEEtran}
+\bibliography{references}
+
+\end{document}
