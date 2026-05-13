@@ -76,7 +76,7 @@ Amazon contact (optional): N/A \vspace{2pt}
 
 \section*{\normalsize Introduction}
 
-Retrieval-augmented generation (RAG)~\cite{Lewis2020RAG} has become a foundational technique for grounding large language model (LLM) inference in external knowledge. Production systems have matured substantially: hybrid retrieval combining semantic (dense) and keyword (sparse) search is now standard practice~\cite{AWSBedrockHybridSearch2024}, and retrieval is increasingly exposed as a tool within agentic workflows where models decide \textit{when} and \textit{what} to retrieve. Recent industrial work, including Amazon's research on commonsense knowledge graphs (KGs) for improving recommendation systems~\cite{Yu2024COSMO}, further demonstrates the value of structured knowledge representations for enhancing downstream AI reasoning tasks. Multi-agent variants—where specialized agents coordinate retrieval and reasoning over heterogeneous sources—have rapidly emerged as the dominant 2024--2026 research thread~\cite{Singh2025AgenticRAGSurvey,Wu2025ToG3,Dong2025YoutuGraphRAG}.
+Retrieval-augmented generation (RAG)~\cite{Lewis2020RAG} has become a foundational technique for grounding large language model (LLM) inference in external knowledge. Production systems have matured substantially: hybrid retrieval combining semantic (dense) and keyword (sparse) search is now standard practice~\cite{AWSBedrockHybridSearch2024}, and retrieval is increasingly exposed as a tool within agentic workflows where models decide \textit{when} and \textit{what} to retrieve. Recent industrial work, including Amazon's research on commonsense knowledge graphs (KGs) for improving recommendation systems~\cite{Yu2024COSMO}, further demonstrates the value of structured knowledge representations for enhancing downstream AI reasoning tasks. Multi-agent variants—where specialized agents coordinate retrieval and reasoning over heterogeneous sources—have rapidly emerged as a dominant research thread~\cite{Singh2025AgenticRAGSurvey,Wu2025ToG3,Dong2025YoutuGraphRAG}.
 
 However, reliability remains a fundamental challenge for multi-agent retrieval systems, especially in software engineering (SE) contexts where downstream consumers must audit each claim. Consider an engineer using an AI assistant to synthesize design rationale across pull requests, dependency manifests, and published research. While modern RAG and multi-agent systems can retrieve relevant artifacts, they often fail to provide verifiable reasoning chains explaining how individual claims were derived. This limitation arises from two key gaps. First, even advanced retrieval systems lack structured reasoning substrates capable of multi-hop synthesis across heterogeneous knowledge sources---an issue that graph-based approaches such as GraphRAG~\cite{Edge2024GraphRAG} begin to address but do not fully resolve. Second, current multi-agent systems provide limited \textit{provenance}: they may cite documents but cannot generate fine-grained evidence chains linking specific outputs to the entities, relationships, and source spans that support them, nor can they reliably detect or recover from retrieval failures~\cite{Yan2024CRAG,Ji2023HallucinationSurvey}. A recent systematization of the agentic-RAG field~\cite{Singh2026AgenticRAGSoK} explicitly names ``oversight mechanisms for autonomous loops'' as an open research gap. We define \textit{provenance} as the structured tracking of how each generated claim flows from retrieval through reasoning to output, linking it to originating sources, intermediate transformations, and agent decisions for auditability and verifiable grounding.
 
@@ -113,6 +113,52 @@ The evaluation answers two questions: \textbf{RQ1}---Does typed provenance routi
 \end{itemize}
 
 \textbf{Test surfaces.} For \textit{(a) AutoPyDep}, we curate an evaluation set of real Python projects with known-good dependency-resolution outcomes; ground truth is the maintainer-accepted dependency update. For \textit{(b) knowledge accumulation}, we use a stratified sample of empirical SE papers with researcher-annotated claim-to-source mappings (built collaboratively as part of the Year-1 work), enabling fine-grained provenance-chain evaluation.
+
+\section*{\normalsize Funds needed} 
+
+\begin{table}[h]
+\centering
+\small
+\begin{tabular}{p{3.2in} r}
+\toprule
+\textbf{Line item} & \textbf{Amount} \\
+\midrule
+Cusati GRA stipend (12 mo, 100\% effort academic + summer) & \$30,000 \\
+Cusati GRA tuition remission (2 semesters, in-state) & \$24,000 \\
+Cusati GRA fringe / benefits & \$6,000 \\
+Conference travel (1 agentic-AI venue + Amazon visit) & \$5,000 \\
+Equipment (workstation upgrade + accelerator) & \$5,000 \\
+\midrule
+\textbf{Total cash gift} & \textbf{\$70,000} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[h]
+\centering
+\small
+\begin{tabular}{p{2.6in} r p{2.0in}}
+\toprule
+\textbf{Service} & \textbf{Alloc.} & \textbf{Use} \\
+\midrule
+Bedrock Agents (Multi-Agent Collab.) & \$20,000 & Supervisor + specialist agent runtime \\
+Bedrock KB (hybrid search + reranking) & \$5,000 & Retrieval over SE corpora \\
+Neptune Analytics (via Bedrock KB) & \$10,000 & KG layer storage + queries \\
+SageMaker FT (stretch goal) & \$10,000 & Provenance-routing model \\
+Misc Bedrock (multimodal, action groups) & \$5,000 & Validation tool invocations \\
+\midrule
+\textbf{Total AWS credits} & \textbf{\$50,000} & \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\vspace{-0.4em}
+
+\textbf{Justification.} The cash budget concentrates on a single doctoral student (Cusati) at 100\% effort across 12 months, matching ARA budget guidance (``one to two graduate students \dots\ for one year, plus some conference travel and equipment''). Mr.~Cusati owns the Bedrock implementation, the evaluation harness, and the knowledge-accumulation case study. Travel funds support dissemination of the open-source release; equipment supports local development of agent topologies before deployment to AWS. No PI summer-salary line is included; Dr.~Brown supervises the project as part of his ongoing faculty effort. Bedrock Agents and Bedrock Knowledge Bases together account for half of credits and run year-round during system development and evaluation. Neptune Analytics funds the managed graph backend underlying the KG layer. SageMaker fine-tuning is a Year-1 stretch goal and may be deferred or reallocated to additional Bedrock inference capacity if empirical workload requires.
+
+\vspace{0.4em}
+
+\noindent\textbf{Combined award:} \$70{,}000 cash + \$50{,}000 AWS credits = \textbf{\$120{,}000}.
 
 \section*{\normalsize Risks and Mitigation}
 
@@ -152,11 +198,19 @@ Dissemination (paper, repo release)                  &        &        &        
 \textbf{AWS ML tools to be used.} Amazon Bedrock Agents (Multi-Agent Collaboration), Amazon Bedrock Knowledge Bases (hybrid search), Amazon Neptune Analytics graphs (via Bedrock KB), Bedrock reranking models, Bedrock Action Groups (validation tool calls), Amazon SageMaker (stretch goal: provenance-routing FT).
 
 \textbf{Intellectual merit and Amazon fit.} PA-AKG directly addresses the SoK 2026 gap of ``oversight mechanisms for autonomous loops''~\cite{Singh2026AgenticRAGSoK} by making provenance a first-class protocol primitive, with both case studies (code-level and paper-level) demonstrating generality. The framework's enterprise-scale-governance properties (auditable evidence chains, retrieval-native access control via Bedrock IAM, observability via OpenTelemetry GenAI conventions~\cite{OpenTelemetryGenAI2024}) align directly with Amazon's interest in trustworthy multi-agent operations.
+\newpage
 
-\begingroup
-\titleformat*{\section}{\normalsize\bfseries\selectfont}
-\titlespacing{\section}{0pt}{1pt}{0pt}
-{\scriptsize
+\appendix
+
+\section*{Appendix A}
+
 \bibliography{references}
-\bibliographystyle{abbrv}}
+\bibliographystyle{abbrv}
+
+\section*{Appendix B: CV of PI}
+
+\section*{Appendix C: Previously Funded Project Summary}
+
+N/A
+
 \end{document}
