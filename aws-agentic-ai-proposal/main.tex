@@ -18,6 +18,7 @@
 \usepackage{microtype}
 \usepackage{natbib}
 \usepackage{xcolor}
+\usepackage{pdfpages}
 \usepackage{enumitem}
 \setlist{nosep, leftmargin=1.2em, topsep=0.15em}
 \usepackage[compact]{titlesec}
@@ -69,10 +70,9 @@ Amazon contact (optional): N/A \vspace{2pt}
 
 
 \noindent
-\textbf{Abstract –} \todo{}
+\textbf{Abstract –} Multi-agent systems excel at retrieving external knowledge, but fail to provide verifiable reasoning and fine-grained provenance linking outputs to supporting evidence—a critical gap in AI-supported workflows. We address this by developing provenance-aware techniques that enable structured tracking of claims from retrieval through reasoning to output, linking them to originating sources and agent decisions. Our approach provides verifiable grounding and auditability as architectural guarantees for trustworthy AI reasoning in software engineering.
 
-\noindent\textit{Primary Topic:} Multi-Agent Systems and Collaborations\\
-\noindent\textit{Secondary:} Data Integration / Retrieval (Hybrid) 
+\noindent\textit{Keywords:} Multi-Agent Systems and Collaborations; Data Integration / Retrieval (Hybrid)
 
 \section*{\normalsize Introduction}
 
@@ -118,12 +118,12 @@ The evaluation answers two questions: \textbf{RQ1}---Does typed provenance routi
 
 \begin{table}[h]
 \centering
-\small
+\footnotesize
 \begin{tabular}{p{3.2in} r}
 \toprule
 \textbf{Line item} & \textbf{Amount} \\
 \midrule
-Cusati GRA stipend (12 mo, 100\% effort academic + summer) & \$30,000 \\
+Cusati GRA stipend (12 mo, 100\% effort) & \$30,000 \\
 Cusati GRA tuition remission (2 semesters, in-state) & \$24,000 \\
 Cusati GRA fringe / benefits & \$6,000 \\
 Conference travel (1 agentic-AI venue + Amazon visit) & \$5,000 \\
@@ -136,7 +136,7 @@ Equipment (workstation upgrade + accelerator) & \$5,000 \\
 
 \begin{table}[h]
 \centering
-\small
+\footnotesize
 \begin{tabular}{p{2.6in} r p{2.0in}}
 \toprule
 \textbf{Service} & \textbf{Alloc.} & \textbf{Use} \\
@@ -154,25 +154,25 @@ Misc Bedrock (multimodal, action groups) & \$5,000 & Validation tool invocations
 
 \vspace{-0.4em}
 
-\textbf{Justification.} The cash budget concentrates on a single doctoral student (Cusati) at 100\% effort across 12 months, matching ARA budget guidance (``one to two graduate students \dots\ for one year, plus some conference travel and equipment''). Mr.~Cusati owns the Bedrock implementation, the evaluation harness, and the knowledge-accumulation case study. Travel funds support dissemination of the open-source release; equipment supports local development of agent topologies before deployment to AWS. No PI summer-salary line is included; Dr.~Brown supervises the project as part of his ongoing faculty effort. Bedrock Agents and Bedrock Knowledge Bases together account for half of credits and run year-round during system development and evaluation. Neptune Analytics funds the managed graph backend underlying the KG layer. SageMaker fine-tuning is a Year-1 stretch goal and may be deferred or reallocated to additional Bedrock inference capacity if empirical workload requires.
+\textbf{Justification.} The cash budget concentrates on a single doctoral student (Cusati) at 100\% effort across 12 months, matching ARA budget guidance (``one to two graduate students \dots\ for one year, plus some conference travel and equipment''). Mr.~Cusati owns the Bedrock implementation, the evaluation harness, and the knowledge-accumulation case study. Travel funds support dissemination of the open-source release; equipment supports local development of agent topologies before deployment to AWS. Bedrock Agents and Bedrock Knowledge Bases together account for half of credits and run year-round during system development and evaluation. Neptune Analytics funds the managed graph backend underlying the KG layer. SageMaker fine-tuning is a Year-1 stretch goal and may be deferred or reallocated to additional Bedrock inference capacity if empirical workload requires.
 
-\vspace{0.4em}
+% \vspace{0.4em}
 
-\noindent\textbf{Combined award:} \$70{,}000 cash + \$50{,}000 AWS credits = \textbf{\$120{,}000}.
+% \noindent\textbf{Combined award:} \$70{,}000 cash + \$50{,}000 AWS credits = \textbf{\$120{,}000}.
 
-\section*{\normalsize Risks and Mitigation}
+% \section*{\normalsize Risks and Mitigation}
 
-\textit{Scope risk.} A full reference implementation in one year is ambitious. \textbf{Mitigation}: research-prototype framing in all deliverables; minimum viable feature set defined at Month~3 review with quarterly scope adjustments. \textit{Single-student bandwidth.} Cusati is the sole funded student. \textbf{Mitigation}: Brown-lab existing infrastructure (AutoPyDep~\cite{bose2025autopydep} is already released); two case studies share the same architectural substrate. \textit{Eval-data risk.} The cusati2026fose annotated corpus is in active development. \textbf{Mitigation}: fallback to existing public SE evidence-mapping datasets if annotation throughput is insufficient by Month~6. \textit{AWS service evolution.} Bedrock features change rapidly. \textbf{Mitigation}: design protocol-level abstractions (typed message contracts) that are not tied to a specific Bedrock API version.
+% \textit{Scope risk.} A full reference implementation in one year is ambitious. \textbf{Mitigation}: research-prototype framing in all deliverables; minimum viable feature set defined at Month~3 review with quarterly scope adjustments. \textit{Single-student bandwidth.} Cusati is the sole funded student. \textbf{Mitigation}: Brown-lab existing infrastructure (AutoPyDep~\cite{bose2025autopydep} is already released); two case studies share the same architectural substrate. \textit{Eval-data risk.} The cusati2026fose annotated corpus is in active development. \textbf{Mitigation}: fallback to existing public SE evidence-mapping datasets if annotation throughput is insufficient by Month~6. \textit{AWS service evolution.} Bedrock features change rapidly. \textbf{Mitigation}: design protocol-level abstractions (typed message contracts) that are not tied to a specific Bedrock API version.
 
 \section*{\normalsize Team, Timeline, and Open Source}
 
-\textbf{Team.} The principal investigator, Dr.~Chris Brown, leads the Code World No Blanket lab in the Department of Computer Science at Virginia Tech, with an active research program in generative-AI tools for software engineering~\cite{brown2025esem}; he supervises the architectural design and the AutoPyDep extension. The student researcher, Jason Cusati, is a CS doctoral student in the Code World No Blanket lab with research on knowledge accumulation in SE~\cite{cusati2026fose}; he owns the Bedrock implementation, the eval harness, and the knowledge-accumulation case study.
+\textbf{Team.} The principal investigator, Dr.~Chris Brown, leads the Code World, No Blanket lab in the Department of Computer Science at Virginia Tech. He has an active research program in generative AI tools for software engineering (\ie~\cite{promise,agenticse,brown2025esem,chi}). Dr. Brown will supervise the architectural design and the AutoPyDep extension. The student researcher, Jason Cusati, is a CS doctoral student in the Code World No Blanket lab with research on knowledge accumulation in SE~\cite{cusati2026fose}; he will own the Bedrock implementation, the eval harness, and the knowledge-accumulation case study.
 
 \textbf{Timeline.} Workstreams are phased across 12 months (Aug~2026 -- Jul~2027) as shown in Table~\ref{tab:gantt}.
 
 \begin{table*}[!ht]
 \centering
-\caption{Year-1 workstream Gantt (Aug 2026 -- Jul 2027). Provenance routing is the critical-path protocol primitive.}
+\caption{Proposed Timeline (Aug 2026 -- Jul 2027)}
 \label{tab:gantt}
 \small
 \begin{tabular}{lcccccccccccc}
@@ -207,7 +207,10 @@ Dissemination (paper, repo release)                  &        &        &        
 \bibliography{references}
 \bibliographystyle{abbrv}
 
+\newpage
 \section*{Appendix B: CV of PI}
+
+\includepdf[scale=1.0,offset=1in -1in,pages=-,width=8in]{Brown.pdf}
 
 \section*{Appendix C: Previously Funded Project Summary}
 
